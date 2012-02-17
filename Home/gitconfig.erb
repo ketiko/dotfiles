@@ -1,0 +1,55 @@
+[user]
+  name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
+  email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+  editor = gvim
+[github]
+  user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
+  token = <%= print("GitHub API Token: "); STDOUT.flush; STDIN.gets.chomp %>
+[core]
+  autocrlf = true
+  whitespace = cr-at-eol
+  editor = gvim -f
+  excludesfile = <%= ENV['HOME'] %>/.gitignore
+[color]
+  pager = true
+  status = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+[push]
+  default = tracking
+[alias]
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --date=relative
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  dt = difftool
+  da = diffall
+  mg = merge
+  mt = mergetool
+  rb = rebase
+  ft = fetch
+  ps = push
+  pl = pull
+[gui]
+  spellingdictionary = en_US
+  pruneduringfetch = true
+  matchtrackingbranch = true
+[diff]
+  tool = beyondcompare
+  guitool = beyondcompare
+[difftool]
+  prompt = false
+[merge]
+  tool = beyondcompare
+[mergetool]
+  prompt = false
+  keepBackup = false
+[difftool "beyondcompare"]
+  cmd = \"c:/program files (x86)/beyond compare 3/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" -nobackups -title1=\"Old Version\" -title2=\"New Version\"
+  trustExitCode = true
+[mergetool "beyondcompare"]
+  cmd =  \"c:/program files (x86)/beyond compare 3/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\" -nobackups -title1=\"Local Changes\" -title2=\"Remote Changes\" -title3=\"Committed\"
+  trustExitCode = true
