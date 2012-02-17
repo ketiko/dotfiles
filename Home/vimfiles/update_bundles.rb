@@ -17,6 +17,8 @@ require 'open-uri'
 
 bundles_dir = File.join(File.dirname(__FILE__), "bundle")
 
+Dir.mkdir(bundles_dir)
+
 FileUtils.cd(bundles_dir)
 
 puts "trashing everything (lookout!)"
