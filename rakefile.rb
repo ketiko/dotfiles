@@ -23,6 +23,7 @@ items.each do |item|
 end
 
   copy_vimfiles()
+  sh "source ~/.bashrc"
 end
 
 def copy_vimfiles()
