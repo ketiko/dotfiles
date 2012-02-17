@@ -16,16 +16,15 @@ set matchtime=2         " for .2 seconds
 set linebreak           " Don't wrap text in the middle of a word
 set mouse=a             " Always enable mouse
 set clipboard+=unnamed  " Makes using clipboard easier
-" Navigate by display line NOT by actual line
-nnoremap j gj
-nnoremap k gk
-" Navigate by actual line NOT by display line
-nnoremap gj j
-nnoremap k gk
+
 " Stay in visual mode after >>
 vnoremap << <gv
 vnoremap >> >gv
 nmap ,gf magg<S-v>G=`a
+
+set nobackup
+set nowritebackup
+set noswapfile
 
 " Search / Replace
 "
@@ -86,6 +85,7 @@ set smartindent
 
 " Some file type really do require explicit tabs
 autocmd FileType make       set noexpandtab
+au BufEnter * silent! lcd %:p:h
 
 "
 " Reading/Writing
@@ -98,7 +98,6 @@ set ffs=unix,dos,mac    " Try and recognize line endings in that order
 "
 " Backup / Swap files
 "
-set noswapfile
 
 "
 " Command Line
@@ -122,6 +121,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd BufRead *.spark set filetype=html
 syntax on               " Enable per-filetype syntax highlighting
 
 "
