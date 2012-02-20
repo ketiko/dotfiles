@@ -5,7 +5,6 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-
 if [ -f ~/.git-completion.sh ]; then
   source ~/.git-completion.sh
 fi
@@ -14,7 +13,7 @@ fi
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWSTASHSTATE=true
-export GIT_PS1_SHOWUPSTREAM="auto"
+#export GIT_PS1_SHOWUPSTREAM="auto"
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -48,29 +47,27 @@ alias l='ls -CF --color=auto'
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+  . /etc/bash_completion
 fi
 
 # see environ manfile
-export EDITOR=vim	# Default Editor
-export VISUAL=$EDITOR	# Visual not really used differently from EDITOR anymore
-export LESS='-iMR'	# Case insensitive search, verbose prompting and raw output
-export PAGER=LESS	# Used to display text / man files
+export EDITOR=vim # Default Editor
+export VISUAL=$EDITOR # Visual not really used differently from EDITOR anymore
+export LESS='-iMR' # Case insensitive search, verbose prompting and raw output
+export PAGER=less # Used to display text / man files
 
 # History
-
-PROMPT_COMMAND='history -a ; history -n'	# Keep history sync'd between bash sessions (Can slow bash down)
+#PROMPT_COMMAND='history -a ; history -n'	# Keep history sync'd between bash sessions (Can slow bash down)
 
 # Bash behavior
-shopt -s cdspell	# Corrects minor spelling errors when cd-ing
-set -o vi		# Set prompt to vi mode
-set -o notify		# Report status of terminated background jobs immediately
+shopt -s cdspell # Corrects minor spelling errors when cd-ing
+set -o vi # Set prompt to vi mode
+set -o notify # Report status of terminated background jobs immediately
