@@ -1,9 +1,10 @@
-call pathogen#infect()
-call pathogen#helptags()
-
 set nocompatible " vim > vi mode.
 set shell=bash\ --login
+set runtimepath+=$HOME/.vim
 set viminfo+=n$HOME/.viminfo
+
+call pathogen#infect()
+call pathogen#helptags()
 
 "
 " Moving around / editing
