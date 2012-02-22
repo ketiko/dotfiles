@@ -2,9 +2,9 @@ require 'rake'
 require 'erb'
 require 'fileutils'
 
-task :default => ['dot_files', 'vim_bundles']
+task :default => ['link_files', 'update_bundles']#, 'run_templates']
 
-task :dot_files do
+task :link_files do
   Dir.chdir('src')
   items = find_files
   items.each do |item|
@@ -12,16 +12,25 @@ task :dot_files do
   end
 end
 
-task :vim_bundles do
-  #Dir.chdir('src')
-  #items = Dir['.vim/**/*'].reject { |item| File.directory?(item) }
-  #puts items
-  #items.each do |item|
-  #  destination = "#{Dir.home()}/#{item}"
-  #  FileUtils.mkdir_p File.dirname(destination)
-  #  system %Q{cmd /C mklink /H "#{destination}" "#{item}"}
-  #end
-  #system "ruby ~/.vim/update_bundles.rb"
+task :run_templates do
+  Dir.chdir('src')
+  files = Dir['*.erb']
+  files.each do |item|
+    destination = "#{Dir.home()}/.#{item.sub('.erb','')}"
+    if File.exist?(destination)
+      print "overwrite #{File.basename(destination)}? [yn] "
+      if $stdin.gets.chomp == 'n'
+        next
+      end
+    end
+
+    template_erb(File.expand_path(item), destination)
+  end
+end
+
+task :update_bundles do
+  Dir.chdir(File.expand_path('~/.vim/'))
+  system "ruby update_bundles.rb"
 end
 
 def find_files
@@ -33,7 +42,6 @@ end
 def link_file(item)
   source = File.expand_path(item)
   destination = "#{Dir.home()}/#{item}"
-  FileUtils.mkdir_p File.dirname(destination)
 
   if File.exist?(destination)
     print "overwrite #{File.basename(destination)}? [yn] "
@@ -46,53 +54,22 @@ def link_file(item)
 end
 
 def link_item(source, destination)
-    if File.exists?(destination)
-      remove_item(destination)
-    end
-    system %Q{cmd /C mklink /H "#{destination}" "#{source}"}
+  FileUtils.mkdir_p File.dirname(destination)
+  if File.exists?(destination)
+    remove_item(destination)
+  end
+  system %Q{cmd /C mklink /H "#{destination}" "#{source}"}
 end
 
 def remove_item(destination)
-  if File.directory?(destination)
-    Dir.delete(destination)
-  else
-    File.delete(destination)
-  end
+  File.delete(destination)
 end
 
 def template_erb(template, destination)
   if File.extname(template) == '.erb'
+    remove_item(destination)
     File.open(destination, 'w') do |new_file|
       new_file.write ERB.new(File.read(file)).result(binding)
     end
   end
 end
-
-#desc "install the dot files into user's home directory"
-#task :oldinstall do
-#	replace_all = false
-#	Dir['Home/*'].each do |file|
-#		next if %w[Rakefile README.rdoc LICENSE].include? file
-#
-#		if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
-#			if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
-#				puts "identical ~/.#{file.sub('.erb', '')}"
-#			elsif replace_all
-#				replace_file(file)
-#			else
-#				print "overwrite ~/.#{file.sub('.erb', '')}? [ynq] "
-#				case $stdin.gets.chomp
-#				when 'y'
-#				  replace_file(file)
-#				when 'q'
-#				  exit
-#				else
-#				  puts "skipping ~/.#{file.sub('.erb', '')}"
-#				end
-#			end
-#		else
-#			link_file(file)
-#		end
-#	end
-#end
-
