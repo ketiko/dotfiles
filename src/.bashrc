@@ -31,8 +31,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
-if [ -f ~/.git-completion.sh ]; then
-  source ~/.git-completion.sh
+if [ -f ~/.git-completion ]; then
+  source ~/.git-completion
 fi
 
 # see environ manfile
@@ -73,6 +73,7 @@ alias egrep='egrep --color=auto'
 alias ll='ls -alF --color=auto'
 alias la='ls -A --color=auto'
 alias l='ls -CF --color=auto'
+
 alias os='start src/*.sln'
 alias bake='bundle exec rake'
 
