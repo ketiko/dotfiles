@@ -1,41 +1,56 @@
 require 'rake'
 require 'erb'
+require 'fileutils'
 
-task :default => ['install']
+task :default => ['dot_files', 'vim_bundles']
 
-task :install do
-items = get_files_to_link
-items.each do |item|
-  source = item
-  destination = "#{Dir.home()}/.#{File.basename(item)}"
-  if !File.directory?(source)
-    if File.exist?(destination)
-      print "overwrite #{File.basename(destination.sub('.erb', ''))}? [yn] "
-      case $stdin.gets.chomp
-      when 'y'
-        remove_item(destination)
-        link_item(source, destination)
-      end
-    else
-      link_item(source, destination)
-    end
+task :dot_files do
+  items = find_dot_files
+  puts items
+  items.each do |item|
+    link_file(item)
   end
 end
 
-  copy_vimfiles()
+task :vim_bundles do
+  Dir.chdir('src')
+  items = Dir['.vim/**/*'].reject { |item| File.directory?(item) }
+  puts items
+  items.each do |item|
+    destination = "#{Dir.home()}/#{item}"
+    FileUtils.mkdir_p File.dirname(destination)
+    system %Q{cmd /C mklink /H "#{destination}" "#{item}"}
+  end
+  #system "ruby ~/.vim/update_bundles.rb"
 end
 
-def copy_vimfiles()
-  system %Q{cp -R Home/vimfiles #{Dir.home()}}
-  Dir.chdir(Dir.home() + '/vimfiles')
-  system "ruby ./update_bundles.rb"
+def find_dot_files
+  Dir['src/*'].reject { |item| File.directory?(item) || File.extname(item) == '.erb' }
 end
 
-def get_files_to_link
-  Dir['Home/*'].reject {|item| File.extname(item) == '.erb' }
+def link_file(item)
+  source = File.expand_path(item)
+  puts "source #{source}"
+  destination = "#{Dir.home()}/#{item}"
+  puts "dest #{destination}"
+  if File.directory?(source)
+    return
+  end
+
+  if File.exist?(destination)
+    print "overwrite #{File.basename(destination)}? [yn] "
+    if $stdin.gets.chomp == 'n'
+      return
+    end
+  end
+
+  link_item(source, destination)
 end
 
 def link_item(source, destination)
+    if File.exists?(destination)
+      remove_item(destination)
+    end
     system %Q{cmd /C mklink /H "#{destination}" "#{source}"}
 end
 
