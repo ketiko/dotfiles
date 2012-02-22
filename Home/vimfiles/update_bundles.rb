@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require 'open-uri'
 
 git_bundles = [ 
   "git://github.com/ervandew/supertab.git",
@@ -12,22 +13,24 @@ git_bundles = [
   "git://github.com/altercation/vim-colors-solarized.git",
 ]
 
-require 'fileutils'
-require 'open-uri'
-
 bundles_dir = File.join(File.dirname(__FILE__), "bundle")
 
-Dir.mkdir(bundles_dir)
+if !Dir.exists?(bundles_dir)
+  Dir.mkdir(bundles_dir)
+end 
 
-FileUtils.cd(bundles_dir)
+Dir.chdir(bundles_dir)
 
-puts "trashing everything (lookout!)"
-Dir["*"].each {|d| FileUtils.rm_rf d }
+puts 'Installing vim bundles'
 
 git_bundles.each do |url|
   dir = url.split('/').last.sub(/\.git$/, '')
-  puts "unpacking #{url} into #{dir}"
-  `git clone #{url} #{dir}`
-  FileUtils.rm_rf(File.join(dir, ".git"))
+  if !Dir.exists?(dir)
+    `git clone #{url} #{dir}`
+  else
+    Dir.chdir(dir)
+    `git clean -fdx`
+    `git pull`
+  end
 end
 
