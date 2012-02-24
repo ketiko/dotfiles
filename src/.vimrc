@@ -76,7 +76,7 @@ set ruler               " Display position in the file
 "
 " Tabs / indentation
 "
-"set tabstop=4           " Use 4 spaces for <tab>
+set tabstop=2           " Use 2 spaces for <tab>
 set shiftwidth=2        " Indent level is 2 spaces wide
 set softtabstop=2       " <BS> over an autoindent deletes shiftwidth worth of spaces
 set smarttab            " Insert blanks properly at beginning of a line
@@ -98,7 +98,6 @@ set noautowriteall      " Seriously.
 set modeline            " Let vim options be embedded in files;
 set modelines=5         " when in first or last 5 lines
 set ffs=unix,dos,mac    " Try and recognize line endings in that order
-
 "
 " Backup / Swap files
 "
