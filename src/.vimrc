@@ -28,10 +28,7 @@ vnoremap << <gv
 vnoremap >> >gv
 nmap ,gf magg<S-v>G=`a
 
-set nobackup
-set nowritebackup
-set noswapfile
-
+"
 " Search / Replace
 "
 set incsearch           " Show best match while typing a search
@@ -40,7 +37,7 @@ set smartcase           " Unless uppercase used in search expr.
 set gdefault            " Default to /g global replace
 set hlsearch            " Highlight searches and search results
 " clear highlighted search using the space bar
-:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 "
 " Display
@@ -101,9 +98,13 @@ set noautowriteall      " Seriously.
 set modeline            " Let vim options be embedded in files;
 set modelines=5         " when in first or last 5 lines
 set ffs=unix,dos,mac    " Try and recognize line endings in that order
+
 "
 " Backup / Swap files
 "
+set nobackup
+set nowritebackup
+set noswapfile
 
 "
 " Command Line
