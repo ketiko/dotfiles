@@ -36,8 +36,9 @@ set ignorecase          " Case insensitive search
 set smartcase           " Unless uppercase used in search expr.
 set gdefault            " Default to /g global replace
 set hlsearch            " Highlight searches and search results
+
 " clear highlighted search using the space bar
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+map <Space> :noh<Cr>
 
 "
 " Display
