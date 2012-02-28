@@ -89,7 +89,8 @@ set smartindent
 
 " Some file type really do require explicit tabs
 autocmd FileType make       set noexpandtab
-au BufEnter * silent! lcd %:p:h
+" Set vim working dir to the files current directory
+autocmd BufEnter * silent! lcd %:p:h
 
 "
 " Reading/Writing
