@@ -78,5 +78,5 @@ alias os='start src/*.sln'
 alias bake='bundle exec rake'
 
 function vim(){
-gvim --remote-tab-silent "$@" & :
+  gvim --remote-tab-silent "$@" & :
 }

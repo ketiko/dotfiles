@@ -162,3 +162,5 @@ let mapleader = ","
 " NERD Tree Settings
 map <F4> :NERDTreeFind<CR>
 map <F3> :NERDTreeToggle<CR>
+
+let g:vimsyn_folding='af'
