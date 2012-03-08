@@ -40,16 +40,6 @@ set hlsearch            " Highlight searches and search results
 " clear highlighted search using the space bar
 nnoremap <silent> <Space> :nohlsearch<Cr>
 
-"
-" Display
-"
-"set guifont=DejaVu_Sans_Mono:h10:cANSI
-if has("gui_win32")
-  set background=dark
-  colorscheme solarized
-  set guifont=Anonymous\ Pro:h11,DejaVu\ Sans\ Mono:h11,Consolas:h11
-endif
-
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
 "set textwidth=110       " Sets the max width text can be before vim inserts a linebreak
