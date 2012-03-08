@@ -38,7 +38,7 @@ set gdefault            " Default to /g global replace
 set hlsearch            " Highlight searches and search results
 
 " clear highlighted search using the space bar
-map <Space> :noh<Cr>
+nnoremap <silent> <Space> :nohlsearch<Cr>
 
 "
 " Display
