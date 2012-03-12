@@ -1,0 +1,23 @@
+<UserSettings>
+	<ApplicationIdentity version="10.0"/>
+	<ToolsOptions>
+		<ToolsOptionsCategory name="Environment" RegisteredName="Environment"/>
+	</ToolsOptions>
+	<Category name="Environment_Group" RegisteredName="Environment_Group">
+		<Category name="Environment_FontsAndColors" Category="{1EDA5DD4-927A-43a7-810E-7FD247D0DA1D}" Package="{DA9FB551-C724-11d0-AE1F-00A0C90FFFC3}" RegisteredName="Environment_FontsAndColors" PackageName="Visual Studio Environment Package">
+			<PropertyValue name="Version">2</PropertyValue>
+			<FontsAndColors Version="2.0">
+				<Categories>
+					<Category GUID="{A27B4E24-A735-4D1D-B8E7-9716E1E3D8E0}" FontName="Consolas" FontSize="12" CharSet="0" FontIsDefault="No">
+						<Items>
+							<Item Name="Plain Text" Foreground="0x02000000" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Definition Window Background" Foreground="0x01000002" Background="0x00D2D2D2" BoldFont="No"/>
+							<Item Name="MarkerFormatDefinition/HighlightedReference" Foreground="0x02000000" Background="0x00D2D2D2" BoldFont="No"/>
+							<Item Name="ReSharper Current Line Highlight" Foreground="0x02000000" Background="0x00D2D2D2" BoldFont="No"/>
+						</Items>
+					</Category>
+				</Categories>
+			</FontsAndColors>
+		</Category>
+	</Category>
+</UserSettings>
