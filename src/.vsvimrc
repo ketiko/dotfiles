@@ -1,0 +1,2 @@
+" clear highlighted search using the space bar
+nmap <silent> <Space> :nohl<Cr>

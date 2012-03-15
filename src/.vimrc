@@ -20,9 +20,6 @@ set clipboard=unnamed  " Makes using clipboard easier
 set ai                  " Auto indent
 set si                  " Smart indent
 
-" When vimrc is edited, reload it
-autocmd! bufwritepost vimrc source ~/.vim_runtime/vimrc
-
 " Stay in visual mode after >>
 vnoremap << <gv
 vnoremap >> >gv
@@ -152,5 +149,3 @@ let mapleader = ","
 " NERD Tree Settings
 map <F4> :NERDTreeFind<CR>
 map <F3> :NERDTreeToggle<CR>
-
-let g:vimsyn_folding='af'
