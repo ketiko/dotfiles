@@ -29,10 +29,10 @@ if [ -f ~/.git-completion ]; then
 fi
 
 # see environ manfile
-export EDITOR=vim	# Default Editor
-export VISUAL=$EDITOR	# Visual not really used differently from EDITOR anymore
-export LESS='-iMR'	# Case insensitive search, verbose prompting and raw output
-export PAGER=LESS	# Used to display text / man files
+export EDITOR=vim # Default Editor
+export VISUAL=$EDITOR # Visual not really used differently from EDITOR anymore
+export LESS='-iMR' # Case insensitive search, verbose prompting and raw output
+export PAGER=LESS # Used to display text / man files
 
 # Git PS1
 export GIT_PS1_SHOWDIRTYSTATE=true
@@ -47,13 +47,12 @@ HISTSIZE=50000 # For a huge history
 HISTFILESIZE=2000
 
 shopt -s histappend # Append to the history file, not overwrite
-# PROMPT_COMMAND='history -a ; history -n'	# Keep history sync'd between bash sessions (Can slow bash down)
+PROMPT_COMMAND='history -a ; history -n' # Keep history sync'd between bash sessions (Can slow bash down)
 
 # Bash behavior
-shopt -s checkwinsize	# Checks window size to get proper line wrapping
-shopt -s cdspell	# Corrects minor spelling errors when cd-ing
-set -o vi		# Set prompt to vi mode
-set -o notify		# Report status of terminated background jobs immediately
+shopt -s cdspell # Corrects minor spelling errors when cd-ing
+set -o vi # Set prompt to vi mode
+set -o notify # Report status of terminated background jobs immediately
 
 #Aliases
 alias ls='ls --color=auto'
@@ -73,5 +72,5 @@ alias os='start src/*.sln'
 alias bake='bundle exec rake'
 
 function vim(){
-gvim --remote-tab-silent "$@" & :
+  gvim --remote-tab-silent "$@" & :
 }
