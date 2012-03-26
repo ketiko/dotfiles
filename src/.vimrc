@@ -15,8 +15,8 @@ set backspace=2         " makes backspace work normally
 set showmatch           " Show matched paren when balanced
 set matchtime=2         " for .2 seconds
 set linebreak           " Don't wrap text in the middle of a word
-set mouse=a             " Always enable mouse
-set clipboard=unnamed  " Makes using clipboard easier
+set mouse+=a             " Always enable mouse
+set clipboard+=unnamed  " Makes using clipboard easier
 set ai                  " Auto indent
 set si                  " Smart indent
 
@@ -35,7 +35,7 @@ set gdefault            " Default to /g global replace
 set hlsearch            " Highlight searches and search results
 
 " clear highlighted search using the space bar
-map <Space> :nohlsearch<CR>
+map <Space> :nohl<CR>
 
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
