@@ -70,7 +70,7 @@ alias vdir='vdir --color=auto'
 # some more ls aliases
 alias ll='ls -alF --color=auto'
 alias la='ls -A --color=auto'
-alias l='ls -CF --color=auto'
+#alias l='ls -CF --color=auto'
 
 alias os='start src/*.sln'
 alias bake='bundle exec rake'
