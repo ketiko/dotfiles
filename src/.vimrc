@@ -79,6 +79,8 @@ autocmd FileType make       set noexpandtab
 " Set vim working dir to the files current directory
 autocmd BufEnter * silent! lcd %:p:h
 
+autocmd BufRead *.rst silent! set textwidth=80
+
 "
 " Reading/Writing
 "
