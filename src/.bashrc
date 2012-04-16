@@ -28,6 +28,10 @@ if [ -f ~/.git-completion ]; then
   source ~/.git-completion
 fi
 
+if [ -f ~/.bashmarks.sh ]; then
+  source ~/.bashmarks.sh
+fi
+
 # see environ manfile
 export EDITOR=vim # Default Editor
 export VISUAL=$EDITOR # Visual not really used differently from EDITOR anymore
