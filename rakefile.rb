@@ -2,7 +2,7 @@ require 'rake'
 require 'erb'
 require 'fileutils'
 
-task :default => ['link_files', 'update_bundles']#, 'run_templates']
+task :default => ['link_files', 'link_bin', 'update_bundles']#, 'run_templates']
 
 task :link_files do
   Dir.chdir('src')
@@ -10,6 +10,11 @@ task :link_files do
   items.each do |item|
     link_file(item)
   end
+end
+
+task :link_bin do
+  bin = Dir['**/bin'].reject { |item| File.file?(item) }.first
+  link_dir(bin)
 end
 
 task :run_templates do
@@ -59,6 +64,27 @@ def link_item(source, destination)
     remove_item(destination)
   end
   system %Q{cmd /C mklink /H "#{destination}" "#{source}"}
+end
+
+def link_dir(item)
+  source = File.expand_path(item)
+  destination = "#{Dir.home()}/#{File.basename(item)}"
+
+  if Dir.exist?(destination)
+    print "overwrite #{File.basename(destination)}? [yn] "
+    if $stdin.gets.chomp == 'n'
+      return
+    end
+  end
+
+  link_dir_item(source, destination)
+end
+
+def link_dir_item(source, destination)
+  if Dir.exists?(destination)
+    FileUtils.rm_rf(destination)
+  end
+  system %Q{cmd /C mklink /J "#{destination}" "#{source}"}
 end
 
 def remove_item(destination)

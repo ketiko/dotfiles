@@ -35,7 +35,7 @@ set gdefault            " Default to /g global replace
 set hlsearch            " Highlight searches and search results
 
 " clear highlighted search using the space bar
-map <Space> :nohl<CR>
+map <Space> :nohlsearch<CR>
 
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible

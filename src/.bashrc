@@ -9,6 +9,10 @@
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+if [ -d "${HOME}/bin" ] ; then
+    PATH=${HOME}/bin:${PATH}
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
