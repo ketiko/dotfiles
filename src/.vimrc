@@ -3,11 +3,11 @@ set shell=bash\ --login
 set runtimepath+=$HOME/.vim
 set viminfo+=n$HOME/.viminfo
 
-" search first in current directory then file directory for tag file
-:set tags=./tags;
-
 call pathogen#infect()
 call pathogen#helptags()
+
+" search first in current directory then file directory for tag file
+:set tags+=./tags;
 
 "
 " Moving around / editing
