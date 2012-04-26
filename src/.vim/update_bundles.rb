@@ -11,7 +11,7 @@ git_bundles = [
   "git://github.com/scrooloose/nerdcommenter.git",
   "git://github.com/altercation/vim-colors-solarized.git",
   "git://github.com/sukima/xmledit.git",
-  "git://github.com/xandox/vim-csharp.git",
+  "git://github.com/vim-scripts/taglist.vim.git",
 ]
 
 bundles_dir = File.join(File.dirname(__FILE__), "bundle")
