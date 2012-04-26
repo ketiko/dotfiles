@@ -78,6 +78,7 @@ alias la='ls -A --color=auto'
 
 alias os='start src/*.sln'
 alias bake='bundle exec rake'
+alias ct='ctags -R .'
 
 function vim(){
   gvim --remote-tab-silent "$@" & :

@@ -2,15 +2,16 @@
 require 'open-uri'
 
 git_bundles = [
+  "git://github.com/altercation/vim-colors-solarized.git",
   "git://github.com/msanders/snipmate.vim.git",
   "git://github.com/pangloss/vim-javascript.git",
+  "git://github.com/scrooloose/nerdcommenter.git",
   "git://github.com/scrooloose/nerdtree.git",
+  "git://github.com/sukima/xmledit.git",
   "git://github.com/tpope/vim-surround.git",
   "git://github.com/tsaleh/vim-matchit.git",
   "git://github.com/vim-ruby/vim-ruby.git",
-  "git://github.com/scrooloose/nerdcommenter.git",
-  "git://github.com/altercation/vim-colors-solarized.git",
-  "git://github.com/sukima/xmledit.git",
+  "git://github.com/vim-scripts/csharp.vim.git",
   "git://github.com/vim-scripts/taglist.vim.git",
 ]
 
