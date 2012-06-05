@@ -153,4 +153,4 @@ map <F7> :setlocal spell! spell?<CR>
 
 " NERD Tree Settings
 map <F4> :NERDTreeFind<CR>
-map <F3> :NERDTreeToggle<CR>
+map <F3> :NERDTreeToggle %:p:h<CR>
