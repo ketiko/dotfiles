@@ -9,7 +9,7 @@
   autocrlf = true
   whitespace = cr-at-eol
   editor = gvim -f
-  excludesfile = <%= ENV['HOME'] %>/.gitignore
+  excludesfile = ~/.gitignore
 [color]
   pager = true
   status = auto
@@ -18,25 +18,29 @@
   interactive = auto
 [push]
   default = tracking
+[gc]
+  auto = 1000
 [alias]
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --date=relative
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --date=relative --decorate
   st = status
+  sh = stash -u
   ci = commit
   br = branch
   co = checkout
   df = diff
   dt = difftool
   da = diffall
+  dc = diff --cached
+  amend = commit --amend
+  aa = add --all
   mg = merge
   mt = mergetool
   rb = rebase
   ft = fetch
+  fa = fetch --all
+  ff = merge --ff-only
   ps = push
   pl = pull
-[gui]
-  spellingdictionary = en_US
-  pruneduringfetch = true
-  matchtrackingbranch = true
 [diff]
   tool = beyondcompare
   guitool = beyondcompare

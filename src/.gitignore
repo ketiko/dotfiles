@@ -5,6 +5,7 @@
 *.
 *.cache
 *.dotCover
+*.DotSettings
 *.esent
 *.log
 *.orig
@@ -35,9 +36,9 @@ deploy
 drop
 merged
 nuget
-packages
+[Pp]ackages
 ~$*
 fubu-content
 tempIIS.config
-*.ncrunchsolution
+*.ncrunch*
 tags
