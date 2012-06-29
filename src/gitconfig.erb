@@ -2,9 +2,6 @@
   name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
   email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
   editor = gvim
-[github]
-  user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
-  token = <%= print("GitHub API Token: "); STDOUT.flush; STDIN.gets.chomp %>
 [core]
   autocrlf = true
   whitespace = cr-at-eol
@@ -17,9 +14,23 @@
   diff = auto
   interactive = auto
 [push]
-  default = tracking
-[gc]
-  auto = 1000
+  default = upstream
+[pull]
+  rebase = true
+[branch]
+  autosetuprebase = local
+[clean]
+  requireForce = false
+[fetch]
+  fsckObjects = true
+[receive]
+  autogc = true
+  fsckObjects = true
+[help]
+  autocorrect =.1
+[log]
+  abbrevCommit = true
+  date = relative
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --date=relative --decorate
   st = status
@@ -46,16 +57,18 @@
 [diff]
   tool = beyondcompare
   guitool = beyondcompare
+  renames = copies
 [difftool]
   prompt = false
+  keepBackup = false
 [merge]
   tool = beyondcompare
 [mergetool]
   prompt = false
   keepBackup = false
 [difftool "beyondcompare"]
-  cmd = \"c:/program files (x86)/beyond compare 3/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" -nobackups -title1=\"Old Version\" -title2=\"New Version\"
+  path = \"c:/program files (x86)/beyond compare 3/bcomp.exe\"
   trustExitCode = true
 [mergetool "beyondcompare"]
-  cmd =  \"c:/program files (x86)/beyond compare 3/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\" -nobackups -title1=\"Local Changes\" -title2=\"Remote Changes\" -title3=\"Committed\"
+  path = \"c:/program files (x86)/beyond compare 3/bcomp.exe\"
   trustExitCode = true
