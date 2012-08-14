@@ -1,6 +1,6 @@
 [user]
-  name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
-  email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+  name = Ryan Hansen
+  email = ketiko@gmail.com
   editor = gvim
 [core]
   autocrlf = true
@@ -32,9 +32,13 @@
   abbrevCommit = true
   date = relative
 [alias]
+  cl = !git clone --template=/c/Tools/Git/eh-git/
+  int = !git init --template=/c/Tools/Git/eh-git/ && git config user.name 'Ryan Hansen' && git config user.email 'Ryan.Hansen@ExtendHealth.com'
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --date=relative --decorate
   st = status
-  sh = stash save -u
+  sh = stash
+  shs = stash save -u
+  shp = stash pop
   ci = commit
   br = branch
   ba = branch -a
@@ -43,17 +47,24 @@
   df = diff
   dt = difftool
   da = diffall
+  di = diff --staged
+  ds = diff --stat
   dc = diff --cached
+  dtc = difftool --cached
   ca = commit --amend
   aa = add --all
   mg = merge
   mt = mergetool
   rb = rebase
-  ft = fetch
-  fa = fetch --all
+  rbc = rebase --continue
+  rba = rebase --abort
+  ft = fetch --prune
+  fa = fetch --prune --all
   ff = merge --ff-only
   ps = push
-  pl = pull
+  pl = pull --rebase
+  pull = pull --rebase
+  new = log master.. --reverse
 [diff]
   tool = beyondcompare
   guitool = beyondcompare
