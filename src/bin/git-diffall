@@ -47,9 +47,9 @@ cd "$cdup" || {
 
 # set up temp dir
 tmp=$(perl -e 'use File::Temp qw(tempdir);
-	$t=tempdir("/tmp/git-diffall.XXXXX") or exit(1);
-	print $t') || exit 1
-trap 'rm -rf "$tmp"' EXIT
+	#$t=tempdir("/tmp/git-diffall.XXXXX") or exit(1);
+	#print $t') || exit 1
+#trap 'rm -rf "$tmp"' EXIT
 
 left=
 right=

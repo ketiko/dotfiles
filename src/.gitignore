@@ -40,5 +40,6 @@ nuget
 ~$*
 fubu-content
 tempIIS.config
-*.ncrunch*
+*.[Nn][Cc]runch*
+*_[Nn][Cc]runch*
 tags

@@ -27,7 +27,7 @@
   autogc = true
   fsckObjects = true
 [help]
-  autocorrect =.1
+  autocorrect = 1
 [log]
   abbrevCommit = true
   date = relative
@@ -67,8 +67,8 @@
   prompt = false
   keepBackup = false
 [difftool "beyondcompare"]
-  path = \"c:/program files (x86)/beyond compare 3/bcomp.exe\"
+  cmd = \"c:/program files (x86)/beyond compare 3/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" -nobackups -title1=\"Old Version\" -title2=\"New Version\"
   trustExitCode = true
 [mergetool "beyondcompare"]
-  path = \"c:/program files (x86)/beyond compare 3/bcomp.exe\"
+  cmd =  \"c:/program files (x86)/beyond compare 3/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\" -nobackups -title1=\"Local Changes\" -title2=\"Remote Changes\" -title3=\"Committed\"
   trustExitCode = true
