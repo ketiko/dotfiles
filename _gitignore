@@ -19,7 +19,6 @@
 *.vsp*
 *.zip
 *~
-.bundle
 .sass-cache
 Build
 Publish
@@ -29,7 +28,6 @@ TestResults
 [lL]ogs
 _ReSharper.*
 build
-bundle
 **/**/**/content/styles
 coverage*
 deploy

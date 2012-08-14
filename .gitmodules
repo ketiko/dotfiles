@@ -1,0 +1,30 @@
+[submodule "_vim/bundle/vim-colors-solarized"]
+	path = _vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "_vim/bundle/snipmate.vim"]
+	path = _vim/bundle/snipmate.vim
+	url = git://github.com/msanders/snipmate.vim.git
+[submodule "_vim/bundle/nerdcommenter"]
+	path = _vim/bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "_vim/bundle/nerdtree"]
+	path = _vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "_vim/bundle/xmledit"]
+	path = _vim/bundle/xmledit
+	url = git://github.com/sukima/xmledit.git
+[submodule "_vim/bundle/vim-surround"]
+	path = _vim/bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "_vim/bundle/vim-matchit"]
+	path = _vim/bundle/vim-matchit
+	url = git://github.com/tsaleh/vim-matchit.git
+[submodule "_vim/bundle/vim-ruby"]
+	path = _vim/bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "_vim/autoload/pathogen.vim"]
+	path = _vim/autoload/pathogen.vim
+	url = git://github.com/tpope/vim-pathogen.git
+[submodule "_vim/bundle/vim-javascript"]
+	path = _vim/bundle/vim-javascript
+	url = git://github.com/pangloss/vim-javascript.git

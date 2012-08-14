@@ -166,7 +166,7 @@ let s:done_bundles = ''
 function! pathogen#helptags() " {{{1
   let sep = pathogen#separator()
   for dir in pathogen#split(&rtp)
-    if (dir.sep)[0 : strlen($VIMRUNTIME)] !=# $VIMRUNTIME.sep && filewritable(dir.sep.'doc') == 2 && !empty(glob(dir.sep.'doc'.sep.'*')) && (!filereadable(dir.sep.'doc'.sep.'tags') || filewritable(dir.sep.'doc'.sep.'tags'))
+    if (dir.sep)[0 : strlen($VIMRUNTIME)] !=# $VIMRUNTIME.sep && filewritable(dir.sep.'doc') == 2 && !empty(filter(split(glob(dir.sep.'doc'.sep.'*'),"\n>"),'!isdirectory(v:val)')) && (!filereadable(dir.sep.'doc'.sep.'tags') || filewritable(dir.sep.'doc'.sep.'tags'))
       helptags `=dir.'/doc'`
     endif
   endfor
@@ -177,7 +177,12 @@ command! -bar Helptags :call pathogen#helptags()
 " Like findfile(), but hardcoded to use the runtimepath.
 function! pathogen#runtime_findfile(file,count) "{{{1
   let rtp = pathogen#join(1,pathogen#split(&rtp))
-  return fnamemodify(findfile(a:file,rtp,a:count),':p')
+  let file = findfile(a:file,rtp,a:count)
+  if file ==# ''
+    return ''
+  else
+    return fnamemodify(file,':p')
+  endif
 endfunction " }}}1
 
 " Backport of fnameescape().
@@ -219,7 +224,7 @@ function! s:Findcomplete(A,L,P) " {{{1
   else
     let request = a:A
   endif
-  let pattern = substitute(request,'\'.sep,'*'.sep,'g').'*'
+  let pattern = substitute(request,'/\|\'.sep,'*'.sep,'g').'*'
   let found = {}
   for path in pathogen#split(&runtimepath)
     let path = expand(path, ':p')

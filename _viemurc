@@ -1,0 +1,6 @@
+map <C-w> :clo<Cr>
+" Stay in visual mode after >>
+vnoremap << <gv
+vnoremap >> >gv
+" clear highlighted search using the space bar
+map <Space> :nohl<Cr>
