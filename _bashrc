@@ -28,12 +28,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
-if [ -f ~/.git-completion ]; then
-  source ~/.git-completion
+if [ -f ~/.bin/git-completion.sh ]; then
+  source ~/.bin/git-completion.sh
 fi
 
-if [ -f ~/.bashmarks.sh ]; then
-  source ~/.bashmarks.sh
+if [ -f ~/.bin/bashmarks.sh ]; then
+  source ~/.bin/bashmarks.sh
 fi
 
 # see environ manfile
