@@ -37,10 +37,10 @@ if [ -f ~/.bin/bashmarks.sh ]; then
 fi
 
 # see environ manfile
-export EDITOR=vim # Default Editor
+export EDITOR=gvim # Default Editor
 export VISUAL=$EDITOR # Visual not really used differently from EDITOR anymore
 export LESS='-iMR' # Case insensitive search, verbose prompting and raw output
-export PAGER=LESS # Used to display text / man files
+export PAGER=less # Used to display text / man files
 
 # Git PS1
 export GIT_PS1_SHOWDIRTYSTATE=true

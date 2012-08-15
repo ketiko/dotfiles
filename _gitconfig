@@ -1,11 +1,12 @@
 [user]
   name = Ryan Hansen
   email = ketiko@gmail.com
-  editor = gvim
+[help]
+  autocorrect = -1
 [core]
   autocrlf = true
   whitespace = cr-at-eol
-  editor = gvim -f
+  editor = gvim
   excludesfile = ~/.gitignore
 [color]
   pager = true
