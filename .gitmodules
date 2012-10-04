@@ -61,3 +61,6 @@
 [submodule "_vim/bundle/ctrlp.vim"]
 	path = _vim/bundle/ctrlp.vim
 	url = git://github.com/kien/ctrlp.vim.git
+[submodule "_vim/bundle/rubycomplete.vim"]
+	path = _vim/bundle/rubycomplete.vim
+	url = git://github.com/vim-scripts/rubycomplete.vim.git
