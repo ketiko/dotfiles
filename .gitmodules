@@ -64,3 +64,12 @@
 [submodule "_vim/bundle/rubycomplete.vim"]
 	path = _vim/bundle/rubycomplete.vim
 	url = git://github.com/vim-scripts/rubycomplete.vim.git
+[submodule "_vim/bundle/matchit"]
+	path = _vim/bundle/matchit
+	url = git://github.com/vim-scripts/matchit.zip.git
+[submodule "_vim/bundle/ruby-matchit"]
+	path = _vim/bundle/ruby-matchit
+	url = git://github.com/vim-scripts/ruby-matchit.git
+[submodule "_vim/bundle/vim-ruby-refactoring"]
+	path = _vim/bundle/vim-ruby-refactoring
+	url = git://github.com/ecomba/vim-ruby-refactoring.git
