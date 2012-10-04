@@ -58,3 +58,6 @@
 [submodule "_vim/bundle/L9"]
 	path = _vim/bundle/L9
 	url = git://github.com/vim-scripts/L9.git
+[submodule "_vim/bundle/ctrlp.vim"]
+	path = _vim/bundle/ctrlp.vim
+	url = git://github.com/kien/ctrlp.vim.git
