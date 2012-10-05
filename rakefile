@@ -33,6 +33,18 @@ task :install => :git_submodules do
       FileUtils.rm_rf(target) if overwrite || overwrite_all
       `mv "$HOME/.#{file}" "$HOME/.#{file}.backup"` if backup || backup_all
     end
+
+      #if [[ "$uname" = MINGW* || "$uname" = CYGWIN* ]]; then
+        #sourcestep=${source:2}
+        #source=${sourcestep//\//\\}
+        #targetstep=${target:2}
+        #target=${targetstep//\//\\}
+
+        #$COMSPEC \/c link.bat\ ${HOMEDRIVE}$source\ ${HOMEDRIVE}$target
+        #return
+      #else
+        #ln -sfv ${source} ${target}
+      #fi
     `ln -s "$PWD/#{linkable}" "#{target}"`
   end
 
