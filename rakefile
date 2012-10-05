@@ -1,7 +1,10 @@
 require 'rake'
+require 'fileutils'
+
+task :default => :install
 
 desc "Install the dotfiles into the user's home directory"
-task :install do
+task :install => :git_submodules do
   linkables = Dir.glob('*/**{.symlink}')
 
   skip_all = false
@@ -32,7 +35,27 @@ task :install do
     end
     `ln -s "$PWD/#{linkable}" "#{target}"`
   end
+
+  Rake::Task["vimupdate"].execute
 end
+
+desc "Pull git submodules"
+task :git_submodules do
+    puts "Initializing submodules..."
+    sh "git submodule init && git submodule update"
+end
+
+desc "VIM/Vundle"
+task :vimupdate => :git_submodules do
+    puts "Updating vundle..."
+    sh "git submodule update"
+
+    puts "Installing/Updating vundles..."
+    sh "vim +BundleInstall! +BundleClean +qa"
+
+    puts "Done!"
+end
+
 
 desc "Remove the dotfiles from the user's home directory"
 task :uninstall do
@@ -55,4 +78,12 @@ task :uninstall do
   end
 end
 
-task :default => 'install'
+def replace_file(file)
+  system %Q{rm "$HOME/.#{file}"}
+  link_file(file)
+end
+
+def link_file(file)
+  puts "linking ~/.#{file}"
+  system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
+end
