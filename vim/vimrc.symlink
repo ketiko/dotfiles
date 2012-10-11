@@ -1,5 +1,6 @@
 set nocompatible
 
+call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 
 filetype plugin indent on
@@ -82,7 +83,7 @@ set undoreload=10000
 
 nmap ,r :R<CR>
 
-let gyntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list=1
 set wildmenu
 set wildmode=list:longest
 set wildignore+=tmp/**
