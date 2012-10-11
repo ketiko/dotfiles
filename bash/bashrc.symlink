@@ -102,6 +102,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+if [ -f ~/.bin/bashmarks.sh ]; then
+  source ~/.bin/bashmarks.sh
+fi
+
 # Git PS1
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true

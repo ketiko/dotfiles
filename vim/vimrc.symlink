@@ -1,7 +1,6 @@
 set nocompatible
 
-call pathogen#infect()
-call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
 
 filetype plugin indent on
 
@@ -103,6 +102,25 @@ vnoremap <silent> ,s <C-C>:update<CR>
 " <C-O> will keep in insert mode
 inoremap <silent> ,s <C-C>:update<CR>
 
+"
+" Key Mappings
+"
+
+" Stay in visual mode after >>
+vnoremap << <gv
+vnoremap >> >gv
+nmap ,gf magg<S-v>G=`a
+
+map th :tabfirst<CR>
+map tk :tabnext<CR>
+map <C-Tab> :tabnext<CR>
+map <S-Tab> :tabprev<CR>
+map tj :tabprev<CR>
+map tl :tablast<CR>
+map tt :tabedit<Space>
+map tn :tabnext<Space>
+map tm :tabm<Space>
+
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -112,3 +130,8 @@ map <A-j> <C-w>-
 map <A-l> <C-w>>
 map <A-h> <C-w><
 
+map <F7> :setlocal spell! spell?<CR>
+
+" NERD Tree Settings
+map <F4> :NERDTreeFind<CR>
+map <F3> :NERDTreeToggle %:p:h<CR>
