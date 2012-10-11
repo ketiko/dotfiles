@@ -2,11 +2,9 @@
   name = Ryan Hansen
   email = ketiko@gmail.com
 [help]
-  autocorrect = -1
+  autocorrect = 1
 [core]
-  autocrlf = true
-  whitespace = cr-at-eol
-  editor = gvim
+  editor = vim
   excludesfile = ~/.gitignore
 [color]
   pager = true
@@ -27,14 +25,10 @@
 [receive]
   autogc = true
   fsckObjects = true
-[help]
-  autocorrect = 1
 [log]
   abbrevCommit = true
   date = relative
 [alias]
-  cl = !git clone --template=/c/Tools/Git/eh-git/
-  int = !git init --template=/c/Tools/Git/eh-git/ && git config user.name 'Ryan Hansen' && git config user.email 'Ryan.Hansen@ExtendHealth.com'
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --date=relative --decorate
   st = status
   sh = stash
@@ -67,20 +61,11 @@
   pull = pull --rebase
   new = log master.. --reverse
 [diff]
-  tool = beyondcompare
-  guitool = beyondcompare
   renames = copies
+	tool = meld
 [difftool]
   prompt = false
   keepBackup = false
-[merge]
-  tool = beyondcompare
 [mergetool]
   prompt = false
   keepBackup = false
-[difftool "beyondcompare"]
-  cmd = \"c:/program files (x86)/beyond compare 3/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" -nobackups -title1=\"Old Version\" -title2=\"New Version\"
-  trustExitCode = true
-[mergetool "beyondcompare"]
-  cmd =  \"c:/program files (x86)/beyond compare 3/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\" -nobackups -title1=\"Local Changes\" -title2=\"Remote Changes\" -title3=\"Committed\"
-  trustExitCode = true
