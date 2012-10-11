@@ -58,28 +58,6 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
-nnoremap <F4> :call RepeatCommand()<CR>
-inoremap <F4> <C-O>:call RepeatCommand()<CR>
-func! RepeatCommand()
-  exec "w"
-  exec "!auto-go"
-endfunc
-
-
-nnoremap <F5> :call ScriptRun()<CR>
-inoremap <F5> <C-O>:call ScriptRun()<CR>
-func! ScriptRun()
-  exec "w"
-  exec "!chmod +x % && ./%"
-endfunc
-
-nnoremap <F6> :call MakeRun()<CR>
-inoremap <F6> <C-O>:call MakeRun()<CR>
-func! MakeRun()
-  exec "w"
-  exec "make"
-endfunc
-
 set undofile
 set undodir=~/.vim/undo
 set undolevels=1000
@@ -109,6 +87,15 @@ inoremap <silent> ,s <C-C>:update<CR>
 
 "
 " Key Mappings
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+
+set timeout ttimeoutlen=50
+
 " clear highlighted search using the space bar
 nnoremap <Space> :nohlsearch<CR>
 
@@ -119,8 +106,6 @@ nmap ,gf magg<S-v>G=`a
 
 map th :tabfirst<CR>
 map tk :tabnext<CR>
-map <C-Tab> :tabnext<CR>
-map <S-Tab> :tabprev<CR>
 map tj :tabprev<CR>
 map tl :tablast<CR>
 map tt :tabedit<Space>
@@ -131,10 +116,10 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-map <A-k> <C-w>+
-map <A-j> <C-w>-
-map <A-l> <C-w>>
-map <A-h> <C-w><
+map <m-k> <C-w>+
+map <m-j> <C-w>-
+map <m-l> <C-w>>
+map <m-h> <C-w><
 
 map <F7> :setlocal spell! spell?<CR>
 
