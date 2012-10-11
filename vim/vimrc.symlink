@@ -19,6 +19,7 @@ set history=100
 set showcmd
 set incsearch
 set hlsearch
+set number              " Show line numbers
 
 let g:solarized_termcolors=256
 colorscheme solarized
@@ -26,6 +27,9 @@ set t_Co=256
 set background=dark
 
 set viminfo='10000,<5000,s1000,h
+
+" Set vim working dir to the files current directory
+autocmd BufEnter * silent! lcd %:p:h
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
@@ -105,7 +109,8 @@ inoremap <silent> ,s <C-C>:update<CR>
 
 "
 " Key Mappings
-"
+" clear highlighted search using the space bar
+nnoremap <Space> :nohlsearch<CR>
 
 " Stay in visual mode after >>
 vnoremap << <gv
