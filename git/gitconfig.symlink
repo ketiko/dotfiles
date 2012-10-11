@@ -41,7 +41,7 @@
   cb = checkout -b
   df = diff
   dt = difftool
-  da = diffall
+  da = !~/.bin/git-diffall.sh
   di = diff --staged
   ds = diff --stat
   dc = diff --cached
@@ -60,9 +60,10 @@
   pl = pull --rebase
   pull = pull --rebase
   new = log master.. --reverse
+  meld = !~/.bin/git-meld.pl
 [diff]
   renames = copies
-	tool = meld
+  tool = meld
 [difftool]
   prompt = false
   keepBackup = false
