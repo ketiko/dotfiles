@@ -80,10 +80,10 @@ exit
 puts
 puts
 
-activity_totals.keys.sort.each do |activity|
-  total = activity_totals[activity]
-  name = $db.get_first_value( "
-    SELECT name FROM activities WHERE id = ?
-    ", activity )
-  out name, total, name == 'tukios' ? 5.5 * 3 : 5.5, true
-end
+#activity_totals.keys.sort.each do |activity|
+  #total = activity_totals[activity]
+  #name = $db.get_first_value( "
+    #SELECT name FROM activities WHERE id = ?
+    #", activity )
+  #out name, total, name == 'tukios' ? 5.5 * 3 : 5.5, true
+#end
