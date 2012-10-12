@@ -75,7 +75,8 @@ set wildignore+=log/**
 
 let g:easytags_auto_highlight = 0
 
-set tag=~/.vimtags
+" search first in current directory then file directory for tag file
+:set tags+=./tags;
 
 "
 " Key Mappings
