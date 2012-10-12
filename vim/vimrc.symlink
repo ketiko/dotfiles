@@ -3,6 +3,7 @@ set nocompatible
 call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 
+syntax on
 filetype plugin indent on
 
 set ai
@@ -20,6 +21,13 @@ set showcmd
 set incsearch
 set hlsearch
 set number              " Show line numbers
+" make searches case-sensitive only if they contain upper-case characters
+set ignorecase smartcase
+" Prevent Vim from clobbering the scrollback buffer. See
+" http://www.shallowsky.com/linux/noaltscreen.html
+set t_ti= t_te=
+" change <leader> from \ to ,
+let mapleader = ","
 
 let g:solarized_termcolors=256
 colorscheme solarized
@@ -32,10 +40,6 @@ set viminfo='10000,<5000,s1000,h
 autocmd BufEnter * silent! lcd %:p:h
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-syntax on
-
-set incsearch
 
 hi LineTooLong ctermbg=DarkBlue
 
@@ -63,27 +67,15 @@ set undodir=~/.vim/undo
 set undolevels=1000
 set undoreload=10000
 
-nmap ,r :R<CR>
-
 let g:syntastic_auto_loc_list=1
 set wildmenu
 set wildmode=list:longest
 set wildignore+=tmp/**
 set wildignore+=log/**
 
-nmap ,F :FufFileWithCurrentBufferDir<CR>
-nmap ,f :FufFile **/<CR>
-nmap ,t :FufTag<CR>
-noremap <silent> <C-]> :FufTagWithCursorWord!<CR>
-
 let g:easytags_auto_highlight = 0
 
 set tag=~/.vimtags
-
-noremap <silent> ,s :update<CR>
-vnoremap <silent> ,s <C-C>:update<CR>
-" <C-O> will keep in insert mode
-inoremap <silent> ,s <C-C>:update<CR>
 
 "
 " Key Mappings

@@ -35,6 +35,7 @@
   shs = stash save -u
   shp = stash pop
   ci = commit
+  cm = commit -m
   br = branch
   ba = branch -a
   co = checkout

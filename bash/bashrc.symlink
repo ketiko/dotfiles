@@ -12,6 +12,10 @@ HISTCONTROL=ignoredups:ignorespace
 # append to the history file, don't overwrite it
 shopt -s histappend
 
+# Bash behavior
+shopt -s cdspell # Corrects minor spelling errors when cd-ing
+set -o vi # Set prompt to vi mode
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=100000
 HISTFILESIZE=200000

@@ -52,7 +52,7 @@ def out label, hours, total=nil, show_remaining=false
   puts
 end
 
-hours_per_week = 32.0
+hours_per_week = 40.0
 
 day_totals.keys.sort.each do |day|
   total = day_totals[day]
