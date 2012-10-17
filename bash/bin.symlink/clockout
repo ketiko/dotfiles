@@ -1,6 +1,10 @@
 #!/bin/bash
 
-#totem --pause
 hamster-cli stop
-#purple-remote 'setstatus?status=offline'
+notify-send "Off the clock"
+sleep 5
 gnome-screensaver-command -l
+
+zenity --info --text "Click OK to clock in"
+hamster-cli start tukios
+notify-send "On the clock"
