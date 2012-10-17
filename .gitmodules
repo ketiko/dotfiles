@@ -28,3 +28,6 @@
 [submodule "vim/vim.symlink/bundle/ctrlp.vim"]
 	path = vim/vim.symlink/bundle/ctrlp.vim
 	url = git://github.com/kien/ctrlp.vim.git
+[submodule "vim/vim.symlink/bundle/vim-easytags"]
+	path = vim/vim.symlink/bundle/vim-easytags
+	url = git://github.com/xolox/vim-easytags.git
