@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec ssh production -t bash --login -c update-bragfire "$@"

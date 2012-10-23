@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DISPLAY=:0
+export DISPLAY=:0 xterm
 if [ "$1" == "on" ]
 then
   exec hamster-cli start tukios

@@ -13,3 +13,4 @@ alias la='ls -A --color=auto'
 #alias l='ls -CF --color=auto'
 
 alias ack=ack-grep
+alias tmux="tmux -2"

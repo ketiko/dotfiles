@@ -34,7 +34,7 @@ set gdefault            " Default to /g global replace
 set ignorecase smartcase
 " highlight current line
 set cursorline
-set cmdheight=2         " Cmd bar 2 rows high
+"set cmdheight=2         " Cmd bar 2 rows high
 set switchbuf=useopen
 set numberwidth=5
 set showtabline=2
@@ -63,7 +63,7 @@ set wildmenu            " Menu completion in command mode on <Tab>
 " change <leader> from \ to ,
 let mapleader = ","
 " search first in current directory then file directory for tag file
-:set tags+=./tags;
+:set tags+=./tags,tags
 set nostartofline       " Avoid moving cursor to BOL when moving
 set matchtime=2         " for .2 seconds
 set linebreak           " Don't wrap text in the middle of a word
@@ -141,7 +141,9 @@ set wildmode=list:longest
 set wildignore+=tmp/**
 set wildignore+=log/**
 
-let g:easytags_auto_highlight = 0
+let g:easytags_auto_highlight = 1
+let g:easytags_dynamic_files = 1
+let g:easytags_python_enabled = 1
 
 "
 " Per-Filetype Scripts
