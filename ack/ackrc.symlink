@@ -1,0 +1,6 @@
+--pager=less -FSRX
+--type-set=haml=.haml,.hamlc
+--type-set=sass=.sass
+--type-set=coffee=.coffee
+--ignore-dir=tmp
+--ignore-dir=log

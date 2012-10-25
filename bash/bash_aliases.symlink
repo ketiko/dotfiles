@@ -14,3 +14,6 @@ alias la='ls -A --color=auto'
 
 alias ack=ack-grep
 alias tmux="tmux -2"
+alias ct="ctags -R ."
+
+alias lws="grep AddNull *.lws | cat -n"
