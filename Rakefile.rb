@@ -34,18 +34,19 @@ task :install => :git_submodules do
       `mv "$HOME/.#{file}" "$HOME/.#{file}.backup"` if backup || backup_all
     end
 
-      #if [[ "$uname" = MINGW* || "$uname" = CYGWIN* ]]; then
-        #sourcestep=${source:2}
-        #source=${sourcestep//\//\\}
-        #targetstep=${target:2}
-        #target=${targetstep//\//\\}
+    #if [[ "$uname" = MINGW* || "$uname" = CYGWIN* ]]; then
+    #sourcestep=${source:2}
+    #source=${sourcestep//\//\\}
+    #targetstep=${target:2}
+    #target=${targetstep//\//\\}
 
-        #$COMSPEC \/c link.bat\ ${HOMEDRIVE}$source\ ${HOMEDRIVE}$target
-        #return
-      #else
-        #ln -sfv ${source} ${target}
-      #fi
-    `ln -s "$PWD/#{linkable}" "#{target}"`
+    #$COMSPEC \/c link.bat\ ${HOMEDRIVE}$source\ ${HOMEDRIVE}$target
+    #return
+    #else
+    #ln -sfv ${source} ${target}
+    #fi
+
+    `ln -ns "$PWD/#{linkable}" "#{target}"` unless File.symlink?(target)
   end
 
   Rake::Task["vimupdate"].execute
@@ -53,19 +54,14 @@ end
 
 desc "Pull git submodules"
 task :git_submodules do
-    puts "Initializing submodules..."
-    sh "git submodule init && git submodule update"
+  puts "Initializing submodules..."
+  sh "git submodule init && git submodule update"
 end
 
-desc "VIM/Vundle"
+desc "VIM"
 task :vimupdate => :git_submodules do
-    puts "Updating vundle..."
-    sh "git submodule update"
-
-    #puts "Installing/Updating vundles..."
-    #sh "vim +BundleInstall! +BundleClean +qa"
-
-    puts "Done!"
+  sh "git submodule update"
+  puts "Done!"
 end
 
 
