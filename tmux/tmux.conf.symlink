@@ -28,6 +28,7 @@ bind v split-window -h
 
 # Start numbering at 1
 set -g base-index 1
+set -g pane-base-index 1
 
 # Allows for faster key repetition
 set-option -sg escape-time 0
@@ -38,7 +39,7 @@ set-option -sg escape-time 0
 setw -g aggressive-resize on
 
 # Automatically set window title
-setw -g automatic-rename
+setw -g automatic-rename on
 set -g set-titles on
 
 # use mouse # More on mouse support http://floriancrouzat.net/2010/07/run-tmux-with-mouse-support-in-mac-os-x-terminal-app/
@@ -49,7 +50,9 @@ set -g mouse-select-pane on
 
 # monitor activity
 setw -g monitor-activity on
-set -g visual-activity off
+set -g visual-activity on
 
-bind m setw monitor-activity off
-bind M setw monitor-activity on
+set -g history-limit 1000000
+
+# bind r to reloading the config file
+bind r source-file ~/.tmux.conf \; display "Reloaded tmux config file."

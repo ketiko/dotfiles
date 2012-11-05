@@ -114,7 +114,7 @@ autocmd BufRead hg-editor-* setl tw=80
 autocmd BufRead *.ru setl ft=ruby
 " autocmd BufWritePost *.rb !checkruby %
 " autocmd BufWritePost *.xml !xmllint %
-autocmd BufRead,BufNewFile *.fsh,*.vsh,*.glsl setf glsl
+autocmd BufRead,BufNewFile *.fsh,*.vsh,*.glsl setl glsl
 autocmd BufRead,BufNewFile *.fsh,*.vsh,*.glsl setl nospell
 
 set spell spelllang=en_us
