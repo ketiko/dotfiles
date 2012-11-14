@@ -2,6 +2,7 @@ set nocompatible " vim > vi mode.
 set shell=bash\ --login
 set runtimepath+=$HOME/.vim
 set viminfo+=n$HOME/.viminfo
+set tags=~/.vimtags
 
 call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
@@ -62,8 +63,6 @@ set wildmode=list:longest,full
 set wildmenu            " Menu completion in command mode on <Tab>
 " change <leader> from \ to ,
 let mapleader = ","
-" search first in current directory then file directory for tag file
-:set tags+=./tags,tags
 set nostartofline       " Avoid moving cursor to BOL when moving
 set matchtime=2         " for .2 seconds
 set linebreak           " Don't wrap text in the middle of a word
@@ -131,6 +130,8 @@ set undofile
 set undodir=~/.vim/undo
 set undolevels=1000
 set undoreload=10000
+set nobackup
+set nowritebackup
 
 let g:syntastic_auto_loc_list=1
 " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
@@ -142,8 +143,10 @@ set wildignore+=tmp/**
 set wildignore+=log/**
 
 let g:easytags_auto_highlight = 1
+let g:easytags_auto_update = 1
 let g:easytags_dynamic_files = 1
 let g:easytags_python_enabled = 1
+let g:easytags_auto_autorecurse = 1
 
 "
 " Per-Filetype Scripts
