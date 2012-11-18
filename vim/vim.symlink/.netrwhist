@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/ketiko/.thunderbird/6wrena9a.default'
-let g:netrw_dirhist_2='/usr/local/bin'
-let g:netrw_dirhist_3='/home/ketiko/work/bragfire/test'
-let g:netrw_dirhist_4='/home/ketiko/work/lace/lib'
