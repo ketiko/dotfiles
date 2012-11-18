@@ -55,7 +55,12 @@ end
 desc "Pull git submodules"
 task :git_submodules do
   puts "Initializing submodules..."
-  sh "git submodule init && git submodule update"
+  sh "git submodule sync"
+  sh "git submodule init"
+  sh "git submodule update"
+  sh "git submodule foreach git pull origin master"
+  sh "git submodule foreach git submodule init"
+  sh "git submodule foreach git submodule update"
 end
 
 desc "VIM"
