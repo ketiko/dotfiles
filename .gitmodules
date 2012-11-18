@@ -19,9 +19,6 @@
 [submodule "vim/vim.symlink/bundle/syntastic"]
   path = vim/vim.symlink/bundle/syntastic
   url = git://github.com/scrooloose/syntastic.git
-[submodule "vim/vim.symlink/bundle/vim-coffee-script"]
-  path = vim/vim.symlink/bundle/vim-coffee-script
-  url = git://github.com/vim-scripts/vim-coffee-script.git
 [submodule "vim/vim.symlink/bundle/vim-matchit"]
   path = vim/vim.symlink/bundle/vim-matchit
   url = git://github.com/tsaleh/vim-matchit.git
