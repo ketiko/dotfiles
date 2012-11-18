@@ -24,7 +24,7 @@
   url = git://github.com/tsaleh/vim-matchit.git
 [submodule "vim/vim.symlink/bundle/ctrlp.vim"]
   path = vim/vim.symlink/bundle/ctrlp.vim
-  url = git://github.com/kien/ctrlp.vim.git
+  url = git://github.com/vim-scripts/ctrlp.vim.git
 [submodule "vim/vim.symlink/bundle/vim-easytags"]
   path = vim/vim.symlink/bundle/vim-easytags
   url = git://github.com/xolox/vim-easytags.git
@@ -32,8 +32,8 @@
   path = vim/vim.symlink/bundle/tagbar
   url = git://github.com/majutsushi/tagbar
 [submodule "vim/vim.symlink/bundle/vim-coffee-script"]
-	path = vim/vim.symlink/bundle/vim-coffee-script
-	url = git://github.com/vim-scripts/vim-coffee-script.git
+  path = vim/vim.symlink/bundle/vim-coffee-script
+  url = git://github.com/vim-scripts/vim-coffee-script.git
 [submodule "vim/vim.symlink/bundle/SuperTab"]
-	path = vim/vim.symlink/bundle/SuperTab
-	url = git://github.com/vim-scripts/SuperTab.git
+  path = vim/vim.symlink/bundle/SuperTab
+  url = git://github.com/vim-scripts/SuperTab.git
