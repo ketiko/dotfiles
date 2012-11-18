@@ -20,11 +20,6 @@
   autosetuprebase = local
 [clean]
   requireForce = false
-[fetch]
-  fsckObjects = true
-[receive]
-  autogc = true
-  fsckObjects = true
 [log]
   abbrevCommit = true
   date = relative
