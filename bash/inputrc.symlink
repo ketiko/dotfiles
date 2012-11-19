@@ -9,3 +9,4 @@ $if mode=vi
   "\C-l": clear-screen
   "\e.": insert-last-argument
 $endif
+set completion-ignore-case On
