@@ -13,7 +13,7 @@ alias la='ls -A --color=auto'
 #alias l='ls -CF --color=auto'
 
 alias ack='ack-grep'
-alias tmux="tmux -2"
+alias tmuxd="tmux -2"
 alias ct="ctags -RVf ~/.vimtags *"
 
 alias lws="grep AddNull *.lws | cat -n"

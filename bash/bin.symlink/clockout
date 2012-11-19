@@ -9,4 +9,4 @@ gnome-screensaver-command -l
 zenity --info --text "Click OK to clock in"
 hamster-cli start tukios
 notify-send "On the clock"
-purple-remote 'setstatus?status=online'
+purple-remote 'setstatus?status=available'
