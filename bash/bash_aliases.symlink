@@ -12,8 +12,7 @@ alias ll='ls -alF --color=auto'
 alias la='ls -A --color=auto'
 #alias l='ls -CF --color=auto'
 
-alias =clear
-alias ack=ack-grep
+alias ack='ack-grep'
 alias tmux="tmux -2"
 alias ct="ctags -RVf ~/.vimtags *"
 
