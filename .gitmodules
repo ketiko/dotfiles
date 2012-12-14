@@ -41,35 +41,29 @@
   path = vim/vim.symlink/bundle/vim-puppet
   url = git://github.com/rodjek/vim-puppet.git
 [submodule "vim/vim.symlink/bundle/vim-ruby"]
-	path = vim/vim.symlink/bundle/vim-ruby
-	url = git://github.com/vim-ruby/vim-ruby.git
+  path = vim/vim.symlink/bundle/vim-ruby
+  url = git://github.com/vim-ruby/vim-ruby.git
 [submodule "vim/vim.symlink/bundle/FuzzyFinder"]
-	path = vim/vim.symlink/bundle/FuzzyFinder
-	url = git://github.com/vim-scripts/FuzzyFinder.git
+  path = vim/vim.symlink/bundle/FuzzyFinder
+  url = git://github.com/vim-scripts/FuzzyFinder.git
 [submodule "vim/vim.symlink/bundle/Command-T"]
-	path = vim/vim.symlink/bundle/Command-T
-	url = git://github.com/wincent/Command-T.git
+  path = vim/vim.symlink/bundle/Command-T
+  url = git://github.com/wincent/Command-T.git
 [submodule "vim/vim.symlink/bundle/L9"]
-	path = vim/vim.symlink/bundle/L9
-	url = git://github.com/vim-scripts/L9.git
+  path = vim/vim.symlink/bundle/L9
+  url = git://github.com/vim-scripts/L9.git
 [submodule "vim/vim.symlink/bundle/vim-endwise"]
-	path = vim/vim.symlink/bundle/vim-endwise
-	url = git://github.com/tpope/vim-endwise.git
-[submodule "vim/vim.symlink/bundle/vim-snipmate"]
-	path = vim/vim.symlink/bundle/vim-snipmate
-	url = git://github.com/garbas/vim-snipmate.git
-[submodule "vim/vim.symlink/bundle/snipmate-snippets"]
-	path = vim/vim.symlink/bundle/snipmate-snippets
-	url = git://github.com/honza/snipmate-snippets.git
+  path = vim/vim.symlink/bundle/vim-endwise
+  url = git://github.com/tpope/vim-endwise.git
 [submodule "vim/vim.symlink/bundle/vim-bundler"]
-	path = vim/vim.symlink/bundle/vim-bundler
-	url = git://github.com/tpope/vim-bundler.git
+  path = vim/vim.symlink/bundle/vim-bundler
+  url = git://github.com/tpope/vim-bundler.git
 [submodule "vim/vim.symlink/bundle/vim-rvm"]
-	path = vim/vim.symlink/bundle/vim-rvm
-	url = git://github.com/tpope/vim-rvm.git
+  path = vim/vim.symlink/bundle/vim-rvm
+  url = git://github.com/tpope/vim-rvm.git
 [submodule "vim/vim.symlink/bundle/vim-rake"]
-	path = vim/vim.symlink/bundle/vim-rake
-	url = git://github.com/tpope/vim-rake.git
+  path = vim/vim.symlink/bundle/vim-rake
+  url = git://github.com/tpope/vim-rake.git
 [submodule "vim/vim.symlink/bundle/taglist.vim"]
-	path = vim/vim.symlink/bundle/taglist.vim
-	url = git://github.com/vim-scripts/taglist.vim.git
+  path = vim/vim.symlink/bundle/taglist.vim
+  url = git://github.com/vim-scripts/taglist.vim.git
