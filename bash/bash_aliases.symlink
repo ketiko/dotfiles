@@ -14,8 +14,6 @@ alias la='ls -A --color=auto'
 
 alias ack='ack-grep'
 alias tmux="tmux -2"
-alias ct="ctags -RVf ~/tags ."
 
-alias lws="grep AddNull *.lws | cat -n"
 alias bake="bundle exec rake"
 alias go="gnome-open"
