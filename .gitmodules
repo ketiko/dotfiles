@@ -55,3 +55,18 @@
 [submodule "vim/vim.symlink/bundle/vim-endwise"]
 	path = vim/vim.symlink/bundle/vim-endwise
 	url = git://github.com/tpope/vim-endwise.git
+[submodule "vim/vim.symlink/bundle/vim-snipmate"]
+	path = vim/vim.symlink/bundle/vim-snipmate
+	url = git://github.com/garbas/vim-snipmate.git
+[submodule "vim/vim.symlink/bundle/snipmate-snippets"]
+	path = vim/vim.symlink/bundle/snipmate-snippets
+	url = git://github.com/honza/snipmate-snippets.git
+[submodule "vim/vim.symlink/bundle/vim-bundler"]
+	path = vim/vim.symlink/bundle/vim-bundler
+	url = git://github.com/tpope/vim-bundler.git
+[submodule "vim/vim.symlink/bundle/vim-rvm"]
+	path = vim/vim.symlink/bundle/vim-rvm
+	url = git://github.com/tpope/vim-rvm.git
+[submodule "vim/vim.symlink/bundle/vim-rake"]
+	path = vim/vim.symlink/bundle/vim-rake
+	url = git://github.com/tpope/vim-rake.git
