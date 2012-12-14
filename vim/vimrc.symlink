@@ -2,7 +2,7 @@ set nocompatible " vim > vi mode.
 set shell=bash\ --login
 set runtimepath+=$HOME/.vim
 set viminfo+=n$HOME/.viminfo
-set tags=./tags
+set tags=./tags,~/tags
 
 call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
