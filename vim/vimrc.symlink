@@ -5,6 +5,7 @@ set viminfo+=n$HOME/.viminfo
 set tags=./tags,~/tags
 
 call pathogen#infect()
+call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
 syntax on
@@ -61,6 +62,7 @@ filetype plugin indent on
 set wildmode=list:longest,full
 " make tab completion for files/buffers act like bash
 set wildmenu            " Menu completion in command mode on <Tab>
+set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip,*/log/*
 " change <leader> from \ to ,
 let mapleader = ","
 set nostartofline       " Avoid moving cursor to BOL when moving
@@ -103,8 +105,6 @@ set viminfo='10000,<5000,s1000,h
 autocmd BufEnter * silent! lcd %:p:h
 autocmd BufRead *.rst silent! set textwidth=80
 
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
 hi LineTooLong ctermbg=DarkBlue
 
 autocmd BufWinEnter,Syntax * exe "match LineTooLong /\%>80v.\+/"
@@ -142,20 +142,11 @@ set nobackup
 set nowritebackup
 
 let g:syntastic_auto_loc_list=1
-" First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
-set wildmode=list:longest,full
-" make tab completion for files/buffers act like bash
-set wildmenu            " Menu completion in command mode on <Tab>
-set wildmode=list:longest
-set wildignore+=tmp/**
-set wildignore+=log/**
-
 let g:easytags_auto_highlight = 1
 let g:easytags_auto_update = 1
 let g:easytags_dynamic_files = 1
 let g:easytags_python_enabled = 1
 let g:easytags_auto_autorecurse = 1
-
 "
 " Per-Filetype Scripts
 "
@@ -193,14 +184,6 @@ vnoremap << <gv
 vnoremap >> >gv
 nmap ,gf magg<S-v>G=`a
 
-map th :tabfirst<CR>
-map tk :tabnext<CR>
-map tj :tabprev<CR>
-map tl :tablast<CR>
-map tt :tabedit<Space>
-map tn :tabnext<Space>
-map tm :tabm<Space>
-
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -215,3 +198,15 @@ map <F7> :setlocal spell! spell?<CR>
 " NERD Tree Settings
 map <F4> :NERDTreeFind<CR>
 map <F3> :NERDTreeToggle %:p:h<CR>
+
+" CTRLP Settings
+let g:ctrlp_open_new_file = 'v'
+
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :edit $MYVIMRC<CR>
+nmap <silent> <leader>sv :source $MYVIMRC<CR>
+
+set foldmethod=syntax
+
+autocmd BufRead * normal zR
+autocmd BufRead *.hamlc set ft=haml
