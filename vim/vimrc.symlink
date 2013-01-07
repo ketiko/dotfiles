@@ -8,7 +8,6 @@ call pathogen#infect()
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
-syntax on
 filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -142,6 +141,7 @@ set nobackup
 set nowritebackup
 
 let g:syntastic_auto_loc_list=1
+let g:syntastic_ruby_exec='ruby19'
 let g:easytags_auto_highlight = 1
 let g:easytags_auto_update = 1
 let g:easytags_dynamic_files = 1
