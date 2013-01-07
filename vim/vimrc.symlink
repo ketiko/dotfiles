@@ -141,7 +141,6 @@ set nobackup
 set nowritebackup
 
 let g:syntastic_auto_loc_list=1
-let g:syntastic_ruby_exec='ruby19'
 let g:easytags_auto_highlight = 1
 let g:easytags_auto_update = 1
 let g:easytags_dynamic_files = 1
