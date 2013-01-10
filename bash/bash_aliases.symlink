@@ -17,4 +17,4 @@ alias tmux="tmux -2"
 
 alias bake="bundle exec rake"
 alias go="gnome-open"
-alias ct="ctags -R ."
+alias ct="ctags -R --sort=yes -V ."

@@ -145,7 +145,6 @@ let g:easytags_auto_highlight = 1
 let g:easytags_auto_update = 1
 let g:easytags_dynamic_files = 1
 let g:easytags_python_enabled = 1
-let g:easytags_auto_autorecurse = 1
 "
 " Per-Filetype Scripts
 "
@@ -204,8 +203,6 @@ let g:ctrlp_open_new_file = 'v'
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :edit $MYVIMRC<CR>
 nmap <silent> <leader>sv :source $MYVIMRC<CR>
-
-set foldmethod=syntax
 
 autocmd BufRead * normal zR
 autocmd BufRead *.hamlc set ft=haml
