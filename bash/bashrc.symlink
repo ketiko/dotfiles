@@ -71,6 +71,9 @@ case "$TERM" in
     ;;
 esac
 
+# for tmux: export 256color
+[ -n "$TMUX" ] && export TERM=screen-256color
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -120,9 +123,3 @@ export GIT_PS1_SHOWSTASHSTATE=true
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-if [ ! $DISPLAY ] ; then
-  if [ "$SSH_CLIENT" ] ; then
-    export DISPLAY=`echo $SSH_CLIENT|cut -f1 -d\ `:0.0
-  fi
-fi

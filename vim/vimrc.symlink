@@ -35,7 +35,7 @@ set gdefault            " Default to /g global replace
 set ignorecase smartcase
 " highlight current line
 set cursorline
-"set cmdheight=2         " Cmd bar 2 rows high
+" set cmdheight=2         " Cmd bar 2 rows high
 set switchbuf=useopen
 set numberwidth=5
 set showtabline=2
@@ -81,7 +81,8 @@ set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
 "set textwidth=110       " Sets the max width text can be before vim inserts a linebreak
 " Highlights text after going over the max text width
-set nowrap  " Line wrapping off
+" set nowrap  " Line wrapping off
+set wrap
 set guioptions+=c       " Use console dialogs instead of popup dialogs for simple choices
 set guioptions-=T       " Remove toolbar
 set guioptions-=r       " Remove right-hand scroll bar
@@ -110,8 +111,6 @@ autocmd BufWinEnter,Syntax * exe "match LineTooLong /\%>80v.\+/"
 
 autocmd BufRead hg-editor-* setl tw=80
 autocmd BufRead *.ru setl ft=ruby
-" autocmd BufWritePost *.rb !checkruby %
-" autocmd BufWritePost *.xml !xmllint %
 autocmd BufRead,BufNewFile *.fsh,*.vsh,*.glsl setl glsl
 autocmd BufRead,BufNewFile *.fsh,*.vsh,*.glsl setl nospell
 
@@ -140,11 +139,12 @@ set undoreload=10000
 set nobackup
 set nowritebackup
 
-let g:syntastic_auto_loc_list=1
-let g:easytags_auto_highlight = 1
-let g:easytags_auto_update = 1
-let g:easytags_dynamic_files = 1
-let g:easytags_python_enabled = 1
+"let g:syntastic_auto_loc_list=1
+"let g:easytags_auto_highlight = 1
+"let g:easytags_auto_update = 1
+"let g:easytags_dynamic_files = 1
+"let g:easytags_python_enabled = 1
+
 "
 " Per-Filetype Scripts
 "
