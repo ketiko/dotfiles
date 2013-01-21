@@ -1,9 +1,5 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-
-Bundler.require
-
 task :default => :install
 
 desc "Install the dotfiles into the user's home directory"

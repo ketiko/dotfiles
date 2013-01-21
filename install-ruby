@@ -8,4 +8,6 @@ sudo apt-get install build-essential openssl libreadline6 libreadline6-dev curl 
 
 curl -L https://get.rvm.io | bash -s stable --ruby
 
-gem install bundler
+rvm all do gem install bundler
+
+rvm all do bundle install
