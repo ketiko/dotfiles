@@ -1,0 +1,60 @@
+#!/bin/bash
+
+SCRIPTPATH=`pwd -P`
+echo "Changing directory to $SCRIPTPATH"
+cd $SCRIPTPATH
+
+# Install/Update submodules if any
+echo "Initializing submodules..."
+
+git submodule sync
+git submodule init
+git submodule update
+git submodule foreach git checkout master
+git submodule foreach git reset --hard
+git submodule foreach git clean -fdx
+git submodule foreach git pull origin master
+git submodule foreach git submodule init
+git submodule foreach git submodule update
+
+skip_all=false
+overwrite_all=false
+backup_all=false
+
+for linkable in `find $SCRIPTPATH -name "*.symlink"`
+do
+  overwrite=false
+  backup=false
+
+  file=$(basename "$linkable" .symlink)
+  target="$HOME/.$file"
+
+  if [ -e $target ] || [ -L $target ]; then
+    if ! $skip_all && ! $overwrite_all && ! $backup_all; then
+
+      echo "File already exists: $target, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all"
+      read response
+      case "$response" in
+        o) overwrite=true ;;
+        b) backup=true ;;
+        O) overwrite_all=true ;;
+        B) backup_all=true ;;
+        S) skip_all=true ;;
+        s) continue ;;
+      esac
+    fi
+
+    if $overwrite || $overwrite_all; then
+      rm -rf "$target"
+    fi
+
+    if $backup || $backup_all; then
+      mv "$HOME/.$file" "$HOME/.$file.backup"
+    fi
+  fi
+
+  if [ ! -L $target ]; then
+    ln -ns "$linkable" "$target"
+  fi
+
+done

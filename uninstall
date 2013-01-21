@@ -1,0 +1,24 @@
+#!/bin/bash
+
+SCRIPTPATH=`pwd -P`
+echo "Changing directory to $SCRIPTPATH"
+cd $SCRIPTPATH
+
+for linkable in `find $SCRIPTPATH -name "*.symlink"`
+do
+  file=$(basename "$linkable" .symlink)
+  target="$HOME/.$file"
+
+  # Remove all symlinks created during installation
+  if [ -L $target ]; then
+    echo "Removing symlink $target"
+    rm "$target"
+  fi
+
+  # Replace any backups made during installation
+  if [ -e "$HOME/.$file.backup" ]; then
+    echo "moving $HOME/.$file.backup to $file"
+    mv "$HOME/.$file.backup" "$HOME/.$file"
+  fi
+
+done
