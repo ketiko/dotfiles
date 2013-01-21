@@ -34,7 +34,7 @@ task :install => :git_submodules do
         end
       end
       FileUtils.rm_rf(target) if overwrite || overwrite_all
-      `mv "$HOME/.#{file}" "$HOME/.#{file}.backup"` if backup || backup_all
+      `mv -v "$HOME/.#{file}" "$HOME/.#{file}.backup"` if backup || backup_all
     end
 
     #if [[ "$uname" = MINGW* || "$uname" = CYGWIN* ]]; then
@@ -49,7 +49,7 @@ task :install => :git_submodules do
     #ln -sfv ${source} ${target}
     #fi
 
-    `ln -ns "$PWD/#{linkable}" "#{target}"` unless File.symlink?(target)
+    `ln -vns "$PWD/#{linkable}" "#{target}"` unless File.symlink?(target)
   end
 
   Rake::Task["vimupdate"].execute
@@ -60,6 +60,7 @@ task :git_submodules do
   puts "Initializing submodules..."
   sh "git submodule sync"
   sh "git submodule init"
+  sh "git submodule update"
 end
 
 desc "VIM"

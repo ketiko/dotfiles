@@ -39,16 +39,16 @@ do
     fi
 
     if $overwrite || $overwrite_all; then
-      rm -rf "$target"
+      rm -vrf "$target"
     fi
 
     if $backup || $backup_all; then
-      mv "$HOME/.$file" "$HOME/.$file.backup"
+      mv -v "$HOME/.$file" "$HOME/.$file.backup"
     fi
   fi
 
   if [ ! -L $target ]; then
-    ln -ns "$linkable" "$target"
+    ln -vns "$linkable" "$target"
   fi
 
 done
