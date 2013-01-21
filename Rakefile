@@ -33,7 +33,7 @@ task :install => :git_submodules do
         when 's' then next
         end
       end
-      `rm -vrf $target` if overwrite || overwrite_all
+      `rm -vrf #{$target}` if overwrite || overwrite_all
       `mv -v "$HOME/.#{file}" "$HOME/.#{file}.backup"` if backup || backup_all
     end
 
@@ -70,7 +70,7 @@ task :uninstall do
 
     # Remove all symlinks created during installation
     if File.symlink?(target)
-      `rm -rf $target`
+      `rm -rf #{target}`
     end
 
     # Replace any backups made during installation
