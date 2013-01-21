@@ -60,18 +60,15 @@ task :git_submodules do
   puts "Initializing submodules..."
   sh "git submodule sync"
   sh "git submodule init"
-  sh "git submodule update"
-  sh "git submodule foreach git checkout master"
-  sh "git submodule foreach git reset --hard"
-  sh "git submodule foreach git clean -fdx"
-  sh "git submodule foreach git pull origin master"
-  sh "git submodule foreach git submodule init"
-  sh "git submodule foreach git submodule update"
 end
 
 desc "VIM"
 task :vimupdate => :git_submodules do
   sh "git submodule update"
+  sh "git submodule foreach git checkout master"
+  sh "git submodule foreach git reset --hard"
+  sh "git submodule foreach git clean -fdx"
+  sh "git submodule foreach git pull origin master"
   puts "Done!"
 end
 

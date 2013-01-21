@@ -1,0 +1,18 @@
+#!/bin/bash
+
+SCRIPTPATH=`pwd -P`
+echo "Changing directory to $SCRIPTPATH"
+cd $SCRIPTPATH
+
+# Install/Update submodules if any
+echo "Initializing submodules..."
+
+git submodule sync
+git submodule init
+git submodule update
+git submodule foreach git checkout master
+git submodule foreach git reset --hard
+git submodule foreach git clean -fdx
+git submodule foreach git pull origin master
+git submodule foreach git submodule init
+git submodule foreach git submodule update
