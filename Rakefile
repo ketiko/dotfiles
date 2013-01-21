@@ -4,6 +4,8 @@ require "bundler/setup"
 require 'rake'
 require 'fileutils'
 
+Bundler.require
+
 task :default => :install
 
 desc "Install the dotfiles into the user's home directory"
@@ -37,22 +39,8 @@ task :install => :git_submodules do
       `mv -v "$HOME/.#{file}" "$HOME/.#{file}.backup"` if backup || backup_all
     end
 
-    #if [[ "$uname" = MINGW* || "$uname" = CYGWIN* ]]; then
-    #sourcestep=${source:2}
-    #source=${sourcestep//\//\\}
-    #targetstep=${target:2}
-    #target=${targetstep//\//\\}
-
-    #$COMSPEC \/c link.bat\ ${HOMEDRIVE}$source\ ${HOMEDRIVE}$target
-    #return
-    #else
-    #ln -sfv ${source} ${target}
-    #fi
-
     `ln -vns "$PWD/#{linkable}" "#{target}"` unless File.symlink?(target)
   end
-
-  Rake::Task["vimupdate"].execute
 end
 
 desc "Pull git submodules"
@@ -63,7 +51,7 @@ task :git_submodules do
   sh "git submodule update"
 end
 
-desc "VIM"
+desc "Update VIM bundles"
 task :vimupdate => :git_submodules do
   sh "git submodule update"
   sh "git submodule foreach git checkout master"
@@ -93,14 +81,4 @@ task :uninstall do
     end
 
   end
-end
-
-def replace_file(file)
-  system %Q{rm "$HOME/.#{file}"}
-  link_file(file)
-end
-
-def link_file(file)
-  puts "linking ~/.#{file}"
-  system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
 end
