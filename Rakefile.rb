@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 task :default => :install
 
 desc "Install the dotfiles into the user's home directory"
