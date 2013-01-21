@@ -22,6 +22,12 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
+# Resizing 
+bind-key C-h resize-pane -L
+bind-key C-j resize-pane -D
+bind-key C-k resize-pane -U
+bind-key C-l resize-pane -R
+
 # VI for splitting
 bind s split-window -v
 bind v split-window -h
@@ -44,9 +50,9 @@ set -g set-titles on
 
 # use mouse # More on mouse support http://floriancrouzat.net/2010/07/run-tmux-with-mouse-support-in-mac-os-x-terminal-app/
 setw -g mode-mouse on
-setw -g mouse-resize-pane off
-set -g mouse-select-window off
-set -g mouse-select-pane off
+setw -g mouse-resize-pane on
+set -g mouse-select-window on
+set -g mouse-select-pane on
 
 # monitor activity
 setw -g monitor-activity on
