@@ -15,7 +15,7 @@ skip_all=false
 overwrite_all=false
 backup_all=false
 
-for linkable in `find $SCRIPTPATH -name "*.symlink"`
+for linkable in `find $SCRIPTPATH -name "*.symlink" -print -o -name .git -type d -prune`
 do
   overwrite=false
   backup=false
