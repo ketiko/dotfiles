@@ -1,0 +1,78 @@
+#!/usr/bin/perl
+# Share a single window with another person.
+#
+# You will need to have the following programs installed in order for this to
+# work:
+# * xwininfo
+# * zenity
+# * curl
+# * x11vnc
+# * libnotify-bin
+
+use strict;
+use warnings;
+
+if( $ENV{RFB_MODE} ) {
+  my $port = $ENV{RFB_SERVER_PORT};
+  $port -= 5900;
+  my $state = "Unknown";
+  if( $ENV{RFB_MODE} eq 'gone' ) {
+    $state = "Shared window disconnection from";
+  }
+  elsif( $ENV{RFB_MODE} eq 'accept' ) {
+    $state = "Shared Window connection to";
+  }
+  system( "notify-send", "$state $port from $ENV{RFB_CLIENT_IP}" );
+  exit 0;
+}
+
+sub error {
+  system( "zenity", "--error", "--text", shift );
+  exit -1;
+}
+
+my $res = `xwininfo`;
+
+$res =~ m/Window id: (0x\w+)/
+  or error "xwininfo problem: $res";
+
+my $window_id = $1;
+
+
+use File::Temp;
+
+my $file = mktemp( "share-window.XXXXXXXX" );
+
+use POSIX qw(setsid);
+setsid;
+
+my $pid = $$;
+
+my $child = fork;
+
+if( !$child ) {
+  setsid;
+
+  system( "x11vnc", "-nopw", "-shared", "-flag", $file, "-viewonly", "-timeout", "600", "-id", $window_id, "-accept", $0, "-gone", $0 );
+  kill "TERM", -$pid;
+}
+while( !-e $file ) {
+  sleep 1;
+}
+
+use File::Slurp;
+my $port = read_file( $file );
+$port =~ m/PORT=(\d+)/
+  or error( "Weird flag file: $file" );
+$port = $1;
+unlink $file;
+
+$port -= 5900;
+
+my $ip = `curl -sL http://nffs.com/ip.cgi`;
+chomp $ip;
+my $url = "vnc://$ip:$port";
+
+system( "zenity", "--info", "--text", "$url" );
+system( "zenity", "--notification", "--text", "Sharing window on port $port" );
+kill "TERM", -$child;
