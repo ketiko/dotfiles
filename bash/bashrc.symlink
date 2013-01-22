@@ -72,7 +72,7 @@ case "$TERM" in
 esac
 
 # for tmux/screen: export 256color
-export TERM=xterm-256color
+export TERM=screen-256color
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
