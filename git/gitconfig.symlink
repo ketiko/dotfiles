@@ -37,7 +37,7 @@
   cb = checkout -b
   df = diff
   dt = difftool
-  da = !~/.bin/git-diffall.sh
+  da = !~/.bin/git-diffall
   di = diff --staged
   ds = diff --stat
   dc = diff --cached

@@ -111,8 +111,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
-if [ -f ~/.bin/bashmarks.sh ]; then
-  source ~/.bin/bashmarks.sh
+if [ -f ~/.bin/bashmarks ]; then
+  source ~/.bin/bashmarks
 fi
 
 # Git PS1
