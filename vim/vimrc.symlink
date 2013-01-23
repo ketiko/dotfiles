@@ -199,6 +199,7 @@ map <F3> :NERDTreeToggle %:p:h<CR>
 
 " CTRLP Settings
 let g:ctrlp_open_new_file = 'v'
+let g:ctrlp_match_window_reversed = 0
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :edit $MYVIMRC<CR>
