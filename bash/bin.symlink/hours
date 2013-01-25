@@ -64,7 +64,7 @@ end
 puts '                ------------------'
 
 print bold
-out 'Tot', grand_total, hours_per_week
+out 'Total', grand_total, hours_per_week
 print reset
 
 puts

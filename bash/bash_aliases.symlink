@@ -17,6 +17,5 @@ alias ack='ack-grep'
 alias bake="bundle exec rake"
 alias go="gnome-open"
 alias ct="ctags -R --sort=yes -V ."
-alias tmux="tmux -2"
-alias ta="tmux -2 attach"
-alias tm="tmux -2"
+alias tm="tmux "
+alias ta="tmux attach"

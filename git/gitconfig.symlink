@@ -44,6 +44,7 @@
   dtc = difftool --cached
   ca = commit --amend
   aa = add --all
+  au = add -u
   mg = merge
   mt = mergetool
   rb = rebase
