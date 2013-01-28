@@ -71,6 +71,13 @@ case "$TERM" in
     ;;
 esac
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.bin" ] ; then
+  PATH="$HOME/.bin:$PATH"
+fi
+
+export GEM_HOME=/home/ketiko/.gem
+
 # for tmux: export 256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 
