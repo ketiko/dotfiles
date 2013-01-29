@@ -58,7 +58,7 @@ syntax on
 " Also load indent files, to automatically do language-dependent indenting.
 filetype plugin indent on
 " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
-set wildmode=list:longest,full
+set wildmode=longest,list,full
 " make tab completion for files/buffers act like bash
 set wildmenu            " Menu completion in command mode on <Tab>
 set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip,*/log/*
