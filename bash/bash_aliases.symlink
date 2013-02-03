@@ -15,6 +15,7 @@ alias la='ls -A --color=auto'
 alias ack='ack-grep'
 
 alias bake="bundle exec rake"
+alias bexec="bundle exec"
 alias go="gnome-open"
 alias ct="ctags -R --sort=yes -V ."
 alias tmux="tmux -2"
