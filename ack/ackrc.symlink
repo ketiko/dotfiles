@@ -1,3 +1,6 @@
+--sort-files
+--color
+--ignore-case
 --pager=less -FSRX
 --type-set=haml=.haml,.hamlc
 --type-set=sass=.sass
