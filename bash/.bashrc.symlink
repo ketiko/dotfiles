@@ -72,8 +72,8 @@ case "$TERM" in
 esac
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.bin" ] ; then
-  PATH="$HOME/.bin:$PATH"
+if [ -d "$HOME/bin" ] ; then
+  PATH="$HOME/bin:$PATH"
 fi
 
 export GEM_HOME=/home/ketiko/.gem
@@ -119,8 +119,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
-if [ -f ~/.bin/bashmarks ]; then
-  source ~/.bin/bashmarks
+if [ -f ~/bin/bashmarks ]; then
+  source ~/bin/bashmarks
 fi
 
 # Git PS1
