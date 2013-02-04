@@ -7,7 +7,7 @@ cd $SCRIPTPATH
 for linkable in `find $SCRIPTPATH -name "*.symlink"`
 do
   file=$(basename "$linkable" .symlink)
-  target="$HOME/$file"
+  target="$HOME/.$file"
 
   # Remove all symlinks created during installation
   if [ -L $target ]; then

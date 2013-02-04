@@ -4,6 +4,7 @@ task :default => :install
 desc "Install the dotfiles into the user's home directory"
 task :install => :git_submodules do
   `mkdir -p ~/.vimundo`
+
   linkables = Dir.glob('*/**{.symlink}')
 
   skip_all = false
@@ -15,7 +16,7 @@ task :install => :git_submodules do
     backup = false
 
     file = linkable.split('/').last.split('.symlink').last
-    target = "#{ENV["HOME"]}/#{file}"
+    target = "#{ENV["HOME"]}/.#{file}"
 
     if File.exists?(target) || File.symlink?(target)
       unless skip_all || overwrite_all || backup_all
@@ -62,7 +63,7 @@ task :uninstall do
   Dir.glob('**/*.symlink').each do |linkable|
 
     file = linkable.split('/').last.split('.symlink').last
-    target = "#{ENV["HOME"]}/#{file}"
+    target = "#{ENV["HOME"]}/.#{file}"
 
     # Remove all symlinks created during installation
     if File.symlink?(target)
