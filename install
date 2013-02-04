@@ -21,7 +21,7 @@ do
   backup=false
 
   file=$(basename "$linkable" .symlink)
-  target="$HOME/.$file"
+  target="$HOME/$file"
 
   if [ -e $target ] || [ -L $target ]; then
     if ! $skip_all && ! $overwrite_all && ! $backup_all; then
@@ -43,7 +43,7 @@ do
     fi
 
     if $backup || $backup_all; then
-      mv -v "$HOME/.$file" "$HOME/.$file.backup"
+      mv -v "$target" "$target.backup"
     fi
   fi
 

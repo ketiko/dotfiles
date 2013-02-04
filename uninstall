@@ -7,7 +7,7 @@ cd $SCRIPTPATH
 for linkable in `find $SCRIPTPATH -name "*.symlink"`
 do
   file=$(basename "$linkable" .symlink)
-  target="$HOME/.$file"
+  target="$HOME/$file"
 
   # Remove all symlinks created during installation
   if [ -L $target ]; then
@@ -15,9 +15,9 @@ do
   fi
 
   # Replace any backups made during installation
-  if [ -e "$HOME/.$file.backup" ]; then
-    echo "moving $HOME/.$file.backup to $file"
-    mv -v "$HOME/.$file.backup" "$HOME/.$file"
+  if [ -e "$target.backup" ]; then
+    echo "moving $target.backup to $file"
+    mv -v "$target.backup" "$target"
   fi
 
 done

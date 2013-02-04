@@ -14,7 +14,7 @@ task :install => :git_submodules do
     backup = false
 
     file = linkable.split('/').last.split('.symlink').last
-    target = "#{ENV["HOME"]}/.#{file}"
+    target = "#{ENV["HOME"]}/#{file}"
 
     if File.exists?(target) || File.symlink?(target)
       unless skip_all || overwrite_all || backup_all
@@ -29,7 +29,7 @@ task :install => :git_submodules do
         end
       end
       `rm -vrf #{$target}` if overwrite || overwrite_all
-      `mv -v "$HOME/.#{file}" "$HOME/.#{file}.backup"` if backup || backup_all
+      `mv -v "#{target}" "#{target}.backup"` if backup || backup_all
     end
 
     `ln -vns "$PWD/#{linkable}" "#{target}"` unless File.symlink?(target)
@@ -61,7 +61,7 @@ task :uninstall do
   Dir.glob('**/*.symlink').each do |linkable|
 
     file = linkable.split('/').last.split('.symlink').last
-    target = "#{ENV["HOME"]}/.#{file}"
+    target = "#{ENV["HOME"]}/#{file}"
 
     # Remove all symlinks created during installation
     if File.symlink?(target)
@@ -69,8 +69,8 @@ task :uninstall do
     end
 
     # Replace any backups made during installation
-    if File.exists?("#{ENV["HOME"]}/.#{file}.backup")
-      `mv "$HOME/.#{file}.backup" "$HOME/.#{file}"` 
+    if File.exists?("#{target}.backup")
+      `mv "#{target}.backup" "#{target}"`
     end
 
   end
