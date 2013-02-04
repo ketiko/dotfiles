@@ -1,9 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'json'
-
-contents = File.binread ARGV.shift
-data = JSON.parse contents
-data["layers"].each do |layer|
-  puts "#{layer['id']}: #{layer['name']}"
-end

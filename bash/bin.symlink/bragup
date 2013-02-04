@@ -1,3 +1,0 @@
-#!/bin/bash
-
-exec ssh stable -t bash --login -c update-bragfire "$@"
