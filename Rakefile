@@ -3,6 +3,7 @@ task :default => :install
 
 desc "Install the dotfiles into the user's home directory"
 task :install => :git_submodules do
+  `mkdir -p ~/.vimundo`
   linkables = Dir.glob('*/**{.symlink}')
 
   skip_all = false
