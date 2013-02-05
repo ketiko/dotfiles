@@ -1,9 +1,9 @@
 --sort-files
 --color
---ignore-case
+--smart-case
 --pager=less -FSRX
 --type-set=haml=.haml,.hamlc
---type-set=sass=.sass
+--type-set=sass=.sass,.scss
 --type-set=coffee=.coffee
 --ignore-dir=tmp
 --ignore-dir=log
