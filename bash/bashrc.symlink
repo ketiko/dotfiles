@@ -20,7 +20,9 @@ set -o vi # Set prompt to vi mode
 HISTSIZE=100000
 HISTFILESIZE=200000
 
-export PAGER=less
+export PAGER="less"
+export EDITOR="vim"
+export VISUAL="vim"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
