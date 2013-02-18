@@ -59,11 +59,16 @@
   new = log master.. --reverse
   meld = !git-meld.pl
 [diff]
-  renames = copies
-  tool = meld
+  tool = bc3
 [difftool]
   prompt = false
-  keepBackup = false
+[difftool "bc3"]
+  cmd = bcompare $LOCAL $REMOTE -lefttitle='Old' -righttitle='New'
+  trustExitCode = true
+[merge]
+  tool = bc3
 [mergetool]
   prompt = false
-  keepBackup = false
+[mergetool "bc3"]
+  cmd = bcompare $LOCAL $REMOTE $BASE $MERGED -lefttitle='Local Changes' -righttitle='Remote Changes' -centertitle='Committed'
+  trustExitCode = true
