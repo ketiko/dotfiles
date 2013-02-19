@@ -6,6 +6,7 @@
 [core]
   editor = vim
   excludesfile = ~/.gitignore
+  autocrlf = false
 [color]
   pager = true
   status = auto
