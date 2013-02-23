@@ -3,7 +3,6 @@
 --tag-relative=yes
 --exclude=.git
 --exclude=.svn
---verbose=yes
 
 --langdef=coffee
 --langmap=coffee:.coffee
