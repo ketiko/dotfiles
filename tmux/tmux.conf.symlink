@@ -28,10 +28,10 @@ bind s split-window -v
 bind v split-window -h
 
 # VI for resizing
-bind-key -r J resize-pan -D 10
-bind-key -r K resize-pan -U 10
-bind-key -r H resize-pan -L 10
-bind-key -r L resize-pan -R 10
+bind-key -r J resize-pan -D 5
+bind-key -r K resize-pan -U 5
+bind-key -r H resize-pan -L 5
+bind-key -r L resize-pan -R 5
 
 # Start numbering at 1
 set -g base-index 1
