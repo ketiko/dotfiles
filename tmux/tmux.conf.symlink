@@ -24,14 +24,14 @@ bind k select-pane -U
 bind l select-pane -R
 
 # VI for splitting
-bind s split-window -v
-bind v split-window -h
+bind v split-window -v
+bind s split-window -h
 
 # VI for resizing
-bind-key -r J resize-pan -D 5
-bind-key -r K resize-pan -U 5
-bind-key -r H resize-pan -L 5
-bind-key -r L resize-pan -R 5
+bind-key -r M-h resize-pane -L 5
+bind-key -r M-j resize-pane -D 5
+bind-key -r M-k resize-pane -U 5
+bind-key -r M-l resize-pane -R 5
 
 # Start numbering at 1
 set -g base-index 1
@@ -39,9 +39,10 @@ set -g pane-base-index 1
 
 # Allows for faster key repetition
 set-option -sg escape-time 0
+set-option -g repeat-time 500
 
-# Rather than constraining window size to the maximum size of any client 
-# connected to the *session*, constrain window size to the maximum size of any 
+# Rather than constraining window size to the maximum size of any client.
+# connected to the *session*, constrain window size to the maximum size of any.
 # client connected to *that window*. Much more reasonable.
 setw -g aggressive-resize on
 
