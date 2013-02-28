@@ -27,6 +27,12 @@ bind l select-pane -R
 bind s split-window -v
 bind v split-window -h
 
+# VI for resizing
+bind-key -r J resize-pan -U 20
+bind-key -r K resize-pan -D 20
+bind-key -r H resize-pan -L 20
+bind-key -r L resize-pan -R 20
+
 # Start numbering at 1
 set -g base-index 1
 set -g pane-base-index 1
