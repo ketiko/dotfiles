@@ -124,10 +124,10 @@ autocmd BufRead,BufNewFile *.fsh,*.vsh,*.glsl setl nospell
 set omnifunc=rubycomplete#Complete
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby let g:rubycomplete_buffer_loading=1
-autocmd FileType ruby let g:rubycomplete_classes_in_global=1
-autocmd FileType ruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 set spell spelllang=en_us
 highlight clear SpellBad
