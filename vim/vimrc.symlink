@@ -169,6 +169,8 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType sql set omnifunc=sqlcomplete#CompleteSQL
 autocmd BufRead *.spark set filetype=html
 
+let g:SuperTabDefaultCompletionType = "context"
+
 "
 " Key Mappings
 "
