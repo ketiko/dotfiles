@@ -21,5 +21,7 @@ if [ -d "$HOME/bin" ] ; then
   PATH="$HOME/bin:$PATH"
 fi
 
-export GEM_HOME=/home/ketiko/.gem
-PATH="$HOME/.gem/bin:$PATH"
+export GEM_HOME=$HOME/.gem
+if [ -d "$HOME/.gem/bin"] ; then
+  PATH="$HOME/.gem/bin:$PATH"
+fi
