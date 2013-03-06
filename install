@@ -48,13 +48,9 @@ do
       mv -v "$target" "$target.backup"
     fi
 
-    if [ ! -L $target ]; then
-      rm -vrf "$target"
-      ln -vns "$linkable" "$target"
-    fi
+    rm -vrf "$target"
+    ln -vns "$linkable" "$target"
   else
-    if [ ! -L $target ]; then
-      ln -vns "$linkable" "$target"
-    fi
+    ln -vns "$linkable" "$target"
   fi
 done
