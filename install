@@ -25,7 +25,7 @@ do
   file=$(basename "$linkable" .symlink)
   target="$HOME/.$file"
 
-  if [ -e $target ] || [ -L $target ]; then
+  if [ -e $target ]; then
     if ! $skip_all && ! $overwrite_all && ! $backup_all; then
 
       echo "File already exists: $target, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all"
@@ -35,22 +35,26 @@ do
         b) backup=true ;;
         O) overwrite_all=true ;;
         B) backup_all=true ;;
-        S) skip_all=true ;;
+        S) skip_all=true;;
         s) continue ;;
       esac
     fi
 
-    if $overwrite || $overwrite_all; then
-      rm -vrf "$target"
+    if $skip_all; then
+      continue
     fi
 
     if $backup || $backup_all; then
       mv -v "$target" "$target.backup"
     fi
-  fi
 
-  if [ ! -L $target ]; then
-    ln -vns "$linkable" "$target"
+    if [ ! -L $target ]; then
+      rm -vrf "$target"
+      ln -vns "$linkable" "$target"
+    fi
+  else
+    if [ ! -L $target ]; then
+      ln -vns "$linkable" "$target"
+    fi
   fi
-
 done
