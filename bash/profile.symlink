@@ -9,19 +9,19 @@
 #umask 022
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
+if [ -d "$HOME/bin" ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
 # default gems to install into home
 export GEM_HOME=$HOME/.gem
 
-if [ -d "$HOME/.gem/bin"] ; then
+if [ -d "$HOME/.gem/bin" ]; then
   export PATH="$HOME/.gem/bin:$PATH"
 fi
 
 # for tmux: export 256color
-if [ -n "$TMUX" ] ; then
+if [ -n "$TMUX" ]; then
   export TERM=screen-256color
 fi
 
