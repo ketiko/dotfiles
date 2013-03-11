@@ -181,6 +181,25 @@ while c <= 'z'
   let c = nr2char(1+char2nr(c))
 endw
 
+" PHP options
+let php_noShortTags = 1
+let php_sql_query = 1
+let php_htmlInStrings = 1
+
+" Folding
+set foldmethod=syntax
+set foldlevelstart=1
+let javaScript_fold=1
+let perl_fold=1
+let php_folding=1
+let r_syntax_folding=1
+let ruby_fold=1
+let sh_fold_enabled=1
+let vimsyn_folding='af'
+let xml_syntax_folding=1
+"autocmd Syntax * normal zR
+
+
 set timeout ttimeoutlen=50
 
 " clear highlighted search using the space bar
@@ -210,9 +229,11 @@ map <F3> :NERDTreeToggle %:p:h<CR>
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_working_path_mode = 'ra'
 
+" TagBar Settings
+nmap <F8> :TagbarToggle<CR>
+
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :edit $MYVIMRC<CR>
 nmap <silent> <leader>sv :source $MYVIMRC<CR>
 
-autocmd BufRead * normal zR
 autocmd BufRead *.hamlc set ft=haml
