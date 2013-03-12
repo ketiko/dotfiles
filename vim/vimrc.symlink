@@ -188,7 +188,7 @@ let php_htmlInStrings = 1
 
 " Folding
 set foldmethod=syntax
-set foldlevelstart=1
+set foldlevelstart=2
 let javaScript_fold=1
 let perl_fold=1
 let php_folding=1
@@ -231,6 +231,9 @@ let g:ctrlp_working_path_mode = 'ra'
 
 " TagBar Settings
 nmap <F8> :TagbarToggle<CR>
+nmap <leader>t :TagbarToggle<CR>
+let g:tagbar_compact=1
+let g:tagbar_foldlevel=2
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :edit $MYVIMRC<CR>
