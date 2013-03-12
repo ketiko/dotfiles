@@ -146,7 +146,7 @@ set undoreload=10000
 set nobackup
 set nowritebackup
 
-"let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list=1
 "let g:easytags_auto_highlight = 1
 "let g:easytags_auto_update = 1
 "let g:easytags_dynamic_files = 1
@@ -234,6 +234,10 @@ nmap <F8> :TagbarToggle<CR>
 nmap <leader>t :TagbarToggle<CR>
 let g:tagbar_compact=1
 let g:tagbar_foldlevel=2
+
+" Session Settings
+let g:session_directory='~/.vimsessions'
+let g:session_command_aliases=1
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :edit $MYVIMRC<CR>
