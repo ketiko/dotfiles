@@ -81,8 +81,8 @@ set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
 "set textwidth=110       " Sets the max width text can be before vim inserts a linebreak
 " Highlights text after going over the max text width
-" set nowrap  " Line wrapping off
-set wrap
+ set nowrap  " Line wrapping off
+"set wrap
 set guioptions+=c       " Use console dialogs instead of popup dialogs for simple choices
 set guioptions-=T       " Remove toolbar
 set guioptions-=r       " Remove right-hand scroll bar
@@ -147,10 +147,14 @@ set nobackup
 set nowritebackup
 
 let g:syntastic_auto_loc_list=1
-"let g:easytags_auto_highlight = 1
-"let g:easytags_auto_update = 1
-"let g:easytags_dynamic_files = 1
-"let g:easytags_python_enabled = 1
+let g:syntastic_loc_list_height=3
+
+let g:easytags_always_enabled = 0
+let g:easytags_on_cursorhold = 1
+let g:easytags_auto_highlight = 0
+let g:easytags_auto_update = 0
+let g:easytags_dynamic_files = 1
+let g:easytags_python_enabled = 1
 
 "
 " Per-Filetype Scripts
@@ -188,7 +192,7 @@ let php_htmlInStrings = 1
 
 " Folding
 set foldmethod=syntax
-set foldlevelstart=2
+set foldlevelstart=99
 let javaScript_fold=1
 let perl_fold=1
 let php_folding=1
