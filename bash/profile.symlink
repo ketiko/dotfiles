@@ -13,12 +13,18 @@ if [ -d "$HOME/bin" ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
+if [ -d "$HOME/.rbenv" ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
+
 # default gems to install into home
 export GEM_HOME=$HOME/.gem
 
 if [ -d "$HOME/.gem/bin" ]; then
   export PATH="$HOME/.gem/bin:$PATH"
 fi
+
 
 # for tmux: export 256color
 if [ -n "$TMUX" ]; then
