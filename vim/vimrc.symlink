@@ -4,9 +4,36 @@ set runtimepath+=$HOME/.vim
 set viminfo+=n$HOME/.viminfo
 set tags=./tags;
 
-call pathogen#infect()
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+set runtimepath+=$HOME/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+Bundle 'mileszs/ack.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'altercation/vim-colors-solarized.git'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'msanders/snipmate.vim'
+Bundle 'ervandew/supertab'
+Bundle 'majutsushi/tagbar'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-haml'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'xolox/vim-easytags'
+Bundle 'xolox/vim-session'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'tsaleh/vim-supertab'
+Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'vim-ruby/vim-ruby'
 
 filetype plugin indent on
 
