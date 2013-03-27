@@ -9,7 +9,6 @@ overwrite_all=false
 backup_all=false
 
 mkdir -p ~/.vimundo
-mkdir -p ~/.vim/bundle
 
 for linkable in `find $SCRIPTPATH -name "*.symlink" -print -o -name .git -type d -prune`
 do
@@ -49,9 +48,14 @@ do
   fi
 done
 
+source ~/.profile
+
+echo "Installing packages"
+sudo apt-get install exuberant-ctags vim
 
 if [ ! -d ~/.vim/bundle/vundle ]; then
   echo "Installing Vundle"
+  mkdir -p ~/.vim/bundle
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 fi
 
@@ -61,6 +65,7 @@ vim +BundleInstall +qall
 if [ ! -d ~/.rbenv ]; then
   echo "Installing rbenv"
   git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+  source ~/.profile
   exec $SHELL -l
 fi
 
@@ -73,15 +78,13 @@ fi
 echo "Installing ruby 1.9.3"
 rbenv install 1.9.3-p327
 rbenv rehash
-rbenv local 1.9.3-p327
+rbenv global 1.9.3-p327
 
 if [ ! -d ~/.rbenv/plugins/rbenv-ctags ]; then
   echo "Installing rbenv-ctags"
   git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags
   rbenv ctags
 fi
-
-cd ~
 
 gem install bundler
 bundle install
