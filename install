@@ -6,28 +6,21 @@ cd $SCRIPTPATH
 
 skip_all=false
 overwrite_all=false
-backup_all=false
 
 mkdir -p ~/.vimundo
 
 for linkable in `find $SCRIPTPATH -name "*.symlink" -print -o -name .git -type d -prune`
 do
-  overwrite=false
-  backup=false
-
   file=$(basename "$linkable" .symlink)
   target="$HOME/.$file"
 
   if [ -e $target ]; then
-    if ! $skip_all && ! $overwrite_all && ! $backup_all; then
+    if ! $skip_all && ! $overwrite_all; then
 
-      echo "File already exists: $target, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all"
+      echo "File already exists: $target, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all"
       read response
       case "$response" in
-        o) overwrite=true ;;
-        b) backup=true ;;
         O) overwrite_all=true ;;
-        B) backup_all=true ;;
         S) skip_all=true;;
         s) continue ;;
       esac
@@ -37,7 +30,7 @@ do
       continue
     fi
 
-    if $backup || $backup_all; then
+    if [ ! -L $target ]; then
       mv -v "$target" "$target.backup"
     fi
 
@@ -50,9 +43,6 @@ done
 
 source ~/.profile
 
-echo "Installing packages"
-sudo apt-get install exuberant-ctags vim
-
 if [ ! -d ~/.vim/bundle/vundle ]; then
   echo "Installing Vundle"
   mkdir -p ~/.vim/bundle
@@ -61,31 +51,3 @@ fi
 
 echo "Installing Vim Bundles"
 vim +BundleInstall +qall
-
-if [ ! -d ~/.rbenv ]; then
-  echo "Installing rbenv"
-  git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
-  source ~/.profile
-  exec $SHELL -l
-fi
-
-mkdir -p ~/.rbenv/plugins
-if [ ! -d ~/.rbenv/plugins/ruby-build ]; then
-  echo "Installing ruby-build"
-  git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-fi
-
-echo "Installing ruby 1.9.3"
-rbenv install 1.9.3-p327
-rbenv rehash
-rbenv global 1.9.3-p327
-
-if [ ! -d ~/.rbenv/plugins/rbenv-ctags ]; then
-  echo "Installing rbenv-ctags"
-  git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags
-  rbenv ctags
-fi
-
-gem install bundler
-bundle install
-gem ctags
