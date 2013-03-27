@@ -2,7 +2,7 @@ set nocompatible " vim > vi mode.
 set shell=bash\ --login
 set runtimepath+=$HOME/.vim
 set viminfo+=n$HOME/.vim/info
-set tags=./tags;
+set tags=./tags,~/.vim/tags;
 
 set runtimepath+=$HOME/.vim/bundle/vundle/
 call vundle#rc()
@@ -176,6 +176,7 @@ set nowritebackup
 let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=3
 
+let g:easytags_file = '~/.vim/tags'
 let g:easytags_always_enabled = 0
 let g:easytags_on_cursorhold = 1
 let g:easytags_auto_highlight = 0
