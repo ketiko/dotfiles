@@ -7,6 +7,8 @@ set tags=./tags,~/.vim/tags;
 set runtimepath+=$HOME/.vim/bundle/vundle/
 call vundle#rc()
 
+filetype off
+
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
@@ -35,6 +37,12 @@ Bundle 'tsaleh/vim-supertab'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'vim-ruby/vim-ruby'
 
+" Enable highlighting for syntax
+syntax on
+" Enable file type detection.
+" Use the default filetype settings, so that mail gets 'tw' set to 72,
+" 'cindent' is on in C files, etc.
+" Also load indent files, to automatically do language-dependent indenting.
 filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -77,13 +85,6 @@ set scrolloff=5         " Keep 5 lines (top/bottom) for scope
 set backspace=2         " makes backspace work normally
 " display incomplete commands
 set showcmd             " Show partial command in the last line of the screen
-" Enable highlighting for syntax
-syntax on
-" Enable file type detection.
-" Use the default filetype settings, so that mail gets 'tw' set to 72,
-" 'cindent' is on in C files, etc.
-" Also load indent files, to automatically do language-dependent indenting.
-filetype plugin indent on
 " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
 set wildmode=longest:list,full
 " make tab completion for files/buffers act like bash
