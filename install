@@ -4,18 +4,12 @@ SCRIPTPATH=`pwd -P`
 echo "Changing directory to $SCRIPTPATH"
 cd $SCRIPTPATH
 
-# Install/Update submodules if any
-echo "Initializing submodules..."
-
-git submodule sync
-git submodule init
-git submodule update
-
 skip_all=false
 overwrite_all=false
 backup_all=false
 
 mkdir -p ~/.vimundo
+mkdir -p ~/.vim/bundle
 
 for linkable in `find $SCRIPTPATH -name "*.symlink" -print -o -name .git -type d -prune`
 do
@@ -54,3 +48,41 @@ do
     ln -vns "$linkable" "$target"
   fi
 done
+
+
+if [ ! -d ~/.vim/bundle/vundle ]; then
+  echo "Installing Vundle"
+  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+fi
+
+echo "Installing Vim Bundles"
+vim +BundleInstall +qall
+
+if [ ! -d ~/.rbenv ]; then
+  echo "Installing rbenv"
+  git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+  exec $SHELL -l
+fi
+
+mkdir -p ~/.rbenv/plugins
+if [ ! -d ~/.rbenv/plugins/ruby-build ]; then
+  echo "Installing ruby-build"
+  git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+fi
+
+echo "Installing ruby 1.9.3"
+rbenv install 1.9.3-p327
+rbenv rehash
+rbenv local 1.9.3-p327
+
+if [ ! -d ~/.rbenv/plugins/rbenv-ctags ]; then
+  echo "Installing rbenv-ctags"
+  git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags
+  rbenv ctags
+fi
+
+cd ~
+
+gem install bundler
+bundle install
+gem ctags
