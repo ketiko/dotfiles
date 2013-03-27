@@ -1,7 +1,7 @@
 set nocompatible " vim > vi mode.
 set shell=bash\ --login
 set runtimepath+=$HOME/.vim
-set viminfo+=n$HOME/.viminfo
+set viminfo+=n$HOME/.vim/info
 set tags=./tags;
 
 set runtimepath+=$HOME/.vim/bundle/vundle/
@@ -167,7 +167,7 @@ highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
 set undofile
-set undodir=~/.vimundo
+set undodir=~/.vim/undo
 set undolevels=1000
 set undoreload=10000
 set nobackup
@@ -267,7 +267,7 @@ let g:tagbar_compact=1
 let g:tagbar_foldlevel=2
 
 " Session Settings
-let g:session_directory='~/.vimsessions'
+let g:session_directory='~/.vim/sessions'
 let g:session_command_aliases=1
 
 " Quickly edit/reload the vimrc file

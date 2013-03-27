@@ -7,7 +7,7 @@ cd $SCRIPTPATH
 skip_all=false
 overwrite_all=false
 
-mkdir -p ~/.vimundo
+mkdir -p ~/.vim/undo
 
 for linkable in `find $SCRIPTPATH -name "*.symlink" -print -o -name .git -type d -prune`
 do
