@@ -54,6 +54,9 @@ set -g visual-activity on
 setw -g automatic-rename on
 set -g set-titles on
 
+# Make it easier to tell which is the current window
+set-window-option -g window-status-current-bg white
+
 set -g history-limit 100000
 
 # bind r to reloading the config file

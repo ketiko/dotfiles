@@ -25,6 +25,9 @@ if [ -d "$HOME/.gem/bin" ]; then
   export PATH="$HOME/.gem/bin:$PATH"
 fi
 
+if [ -f "$HOME/.profile_local" ]; then
+  source "$HOME/.profile_local"
+fi
 
 # for tmux: export 256color
 if [ -n "$TMUX" ]; then
