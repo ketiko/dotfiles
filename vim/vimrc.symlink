@@ -122,9 +122,15 @@ set report=0            " : commands always print changed line count
 set shortmess+=a        " Use [+]/[RO]/[w] for modified/readonly/written
 set ruler               " Display position in the file
 
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
+"colorscheme solarized
+"set t_Co=256
+"set background=dark
+
+let g:solarized_termtrans=1
+let g:solarized_termcolors=16
 colorscheme solarized
-set t_Co=256
+set t_Co=16
 set background=dark
 
 set viminfo='10000,<5000,s1000,h

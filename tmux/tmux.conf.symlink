@@ -36,10 +36,11 @@ bind-key -r M-l resize-pane -R 5
 # Start numbering at 1
 set -g base-index 1
 set -g pane-base-index 1
+set -g renumber-windows on
 
 # Allows for faster key repetition
-set-option -sg escape-time 0
-set-option -g repeat-time 500
+set -sg escape-time 0
+set -g repeat-time 500
 
 # Rather than constraining window size to the maximum size of any client.
 # connected to the *session*, constrain window size to the maximum size of any.
@@ -55,7 +56,14 @@ setw -g automatic-rename on
 set -g set-titles on
 
 # Make it easier to tell which is the current window
-set-window-option -g window-status-current-bg white
+setw -g window-status-current-bg colour1
+
+# Sessions
+bind-key M-s choose-session
+bind-key M-r command-prompt 'rename-session %%'
+set -g lock-server on
+set -g lock-command vlock
+bind-key x lock-server
 
 set -g history-limit 100000
 
