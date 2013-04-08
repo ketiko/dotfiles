@@ -5,4 +5,4 @@ if [ ! -d ~/.solarized ]; then
 fi
 
 cd ~/.solarized
-./.solarize
+./solarize
