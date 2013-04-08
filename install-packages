@@ -1,3 +1,4 @@
 #!/bin/bash
 
 sudo apt-get install -y build-essential git-core vim-nox tmux exuberant-ctags libssl-dev zlib1g-dev libreadline-dev
+sudo -k
