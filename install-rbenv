@@ -13,20 +13,20 @@ if [ ! -d ~/.rbenv/plugins/ruby-build ]; then
   git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
-echo "Installing ruby 1.9.3"
-rbenv install 1.9.3-p327
-rbenv rehash
-rbenv global 1.9.3-p327
-
 if [ ! -d ~/.rbenv/plugins/rbenv-ctags ]; then
   echo "Installing rbenv-ctags"
   git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags
-  rbenv ctags
 fi
 
 if [ ! -d ~/.rbenv/plugins/rbenv-gem-rehash ]; then
   echo "Installing rbenv-gem-rehash"
   git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
+fi
+
+if [ ! -d ~/.rbenv/versions/1.9.3-p327 ]; then
+  echo "Installing ruby 1.9.3"
+  rbenv install 1.9.3-p327
+  rbenv global 1.9.3-p327
 fi
 
 gem install bundler
