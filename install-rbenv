@@ -4,7 +4,7 @@ if [ ! -d ~/.rbenv ]; then
   echo "Installing rbenv"
   git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
   . ~/.profile
-  exec $SHELL -l
+  exec $SHELL -l -c "$0"
 fi
 
 mkdir -p ~/.rbenv/plugins
