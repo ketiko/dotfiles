@@ -13,13 +13,16 @@ if [ -d "$HOME/bin" ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
+# handle binstubs ex: bundler
+export PATH="./bin:$PATH"
+
 if [ -d "$HOME/.rbenv" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
 
 if [ -f "$HOME/.profile_local" ]; then
-  source "$HOME/.profile_local"
+  . "$HOME/.profile_local"
 fi
 
 # for tmux: export 256color
@@ -40,6 +43,6 @@ export GIT_PS1_SHOWSTASHSTATE=true
 if [ -n "$BASH_VERSION" ]; then
   # include .bashrc if it exists
   if [ -f "$HOME/.bashrc" ]; then
-    source "$HOME/.bashrc"
+    . "$HOME/.bashrc"
   fi
 fi

@@ -23,6 +23,13 @@ if [ ! -d ~/.rbenv/plugins/rbenv-gem-rehash ]; then
   git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
 fi
 
+if [ ! -d ~/.rbenv/plugins/rbenv-default-gems ]; then
+  echo "Installing rbenv-default-gems"
+  git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems
+fi
+
+echo -e "bundler\ngem-ctags\nrake\nrb-readline\nawesome_print\nbond\nwirble\ngem-ctags\nterm-ansicolor" > ~/.rbenv/default-gems
+
 if [ ! -d ~/.rbenv/versions/1.9.3-p392 ]; then
   echo "Installing ruby 1.9.3"
   rbenv install 1.9.3-p392
@@ -30,7 +37,6 @@ if [ ! -d ~/.rbenv/versions/1.9.3-p392 ]; then
   rbenv global 1.9.3-p392
 fi
 
-gem install bundler
-bundle install
+rbenv rehash
+rbenv ctags
 gem ctags
-. ~/.profile
