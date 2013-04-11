@@ -23,13 +23,14 @@ if [ ! -d ~/.rbenv/plugins/rbenv-gem-rehash ]; then
   git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
 fi
 
-if [ ! -d ~/.rbenv/versions/1.9.3-p327 ]; then
+if [ ! -d ~/.rbenv/versions/1.9.3-p392 ]; then
   echo "Installing ruby 1.9.3"
-  rbenv install 1.9.3-p327
+  rbenv install 1.9.3-p392
   rbenv rehash
-  rbenv global 1.9.3-p327
+  rbenv global 1.9.3-p392
 fi
 
 gem install bundler
 bundle install
 gem ctags
+. ~/.profile

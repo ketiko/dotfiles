@@ -17,7 +17,8 @@ fi
 
 alias ack='ack-grep'
 alias bake="bundle exec rake"
-alias bunk="bundle exec"
+alias b="bundle exec"
+alias rb='rbenv'
 alias go="gnome-open"
 alias ct="ctags -R --sort=yes -V ."
 alias tmux="tmux -2"
