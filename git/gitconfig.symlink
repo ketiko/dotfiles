@@ -62,16 +62,16 @@
   new = log master.. --reverse
   meld = !git-meld.pl
 [diff]
-  tool = bc3
+  tool = beyondcompare
 [difftool]
   prompt = false
-[difftool "bc3"]
+[difftool "beyondcompare"]
   cmd = bcompare $LOCAL $REMOTE -lefttitle='Old' -righttitle='New'
   trustExitCode = true
 [merge]
-  tool = bc3
+  tool = beyondcompare
 [mergetool]
   prompt = false
-[mergetool "bc3"]
-  cmd = bcompare $LOCAL $REMOTE $BASE $MERGED -lefttitle='Local Changes' -righttitle='Remote Changes' -centertitle='Committed'
+[mergetool "beyondcompare"]
+  cmd = bcompare -automerge -iu -reviewconflicts -lefttitle='Local Changes' -righttitle='Remote Changes' -centertitle='Committed' $LOCAL $REMOTE $BASE $MERGED
   trustExitCode = true
