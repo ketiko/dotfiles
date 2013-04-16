@@ -129,7 +129,9 @@ set ruler               " Display position in the file
 
 let g:solarized_termtrans=1
 let g:solarized_termcolors=16
-colorscheme solarized
+if filereadable("~/.vim/bundle/vim-colors-solarized/colors")
+  colorscheme solarized
+endif
 set t_Co=16
 set background=dark
 
