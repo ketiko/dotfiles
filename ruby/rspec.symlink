@@ -1,5 +1,4 @@
 --color
 --format nested
---profile
---order random
 --backtrace
+--order random
