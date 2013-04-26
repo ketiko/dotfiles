@@ -1,4 +1,4 @@
 tags
 .sass-cache
-*.swp
+*.sw[o-z]
 *~

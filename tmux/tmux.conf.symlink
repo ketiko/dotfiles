@@ -57,6 +57,12 @@ set -g set-titles on
 # Make it easier to tell which is the current window
 setw -g window-status-current-bg colour1
 
+# Mouse
+#set -g mode-mouse on
+#set -g mouse-resize-pane on
+#set -g mouse-select-pane on
+#set -g mouse-select-window on
+
 # Sessions
 bind-key M-s choose-session
 bind-key M-r command-prompt 'rename-session %%'

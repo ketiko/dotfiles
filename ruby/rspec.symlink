@@ -1,4 +1,5 @@
 --color
 --format nested
---backtrace
---order random
+/*--backtrace*/
+/*--order random*/
+/*--tag ~js*/

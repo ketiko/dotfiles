@@ -36,6 +36,7 @@ Bundle 'tsaleh/vim-matchit'
 Bundle 'tsaleh/vim-supertab'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-scripts/openssl.vim'
 
 " Enable highlighting for syntax
 syntax on
@@ -209,7 +210,7 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType sql set omnifunc=sqlcomplete#CompleteSQL
 autocmd BufRead *.spark set filetype=html
 
-let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "context"
 
 "
 " Key Mappings

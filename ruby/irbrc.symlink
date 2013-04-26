@@ -3,6 +3,7 @@ require 'irb/ext/save-history'
 require 'ap'
 require 'wirble'
 require 'bond'
+require 'bond/completion'
 ARGV.concat ["--readline", "--prompt-mode", "simple" ]
 
 Wirble.init
