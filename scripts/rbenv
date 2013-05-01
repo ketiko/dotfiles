@@ -13,14 +13,14 @@ if [ ! -d ~/.rbenv/plugins/ruby-build ]; then
   git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
-if [ ! -d ~/.rbenv/plugins/rbenv-ctags ]; then
-  echo "Installing rbenv-ctags"
-  git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags
-fi
-
 if [ ! -d ~/.rbenv/plugins/rbenv-gem-rehash ]; then
   echo "Installing rbenv-gem-rehash"
   git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
+fi
+
+if [ ! -d ~/.rbenv/plugins/rbenv-ctags ]; then
+  echo "Installing rbenv-ctags"
+  git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags
 fi
 
 if [ ! -d ~/.rbenv/plugins/rbenv-default-gems ]; then
@@ -29,6 +29,11 @@ if [ ! -d ~/.rbenv/plugins/rbenv-default-gems ]; then
 fi
 
 echo -e "bundler\ngem-ctags\nrake\nrb-readline\nawesome_print\nbond\nwirble\ngem-ctags\nterm-ansicolor" > ~/.rbenv/default-gems
+
+if [ ! -d ~/.rbenv/plugins/rbenv-binstubs ]; then
+  echo "Installing rbenv-binstubs"
+  git clone https://github.com/ianheggie/rbenv-binstubs.git ~/.rbenv/plugins/rbenv-binstubs
+fi
 
 if [ ! -d ~/.rbenv/versions/1.9.3-p392 ]; then
   echo "Installing ruby 1.9.3"

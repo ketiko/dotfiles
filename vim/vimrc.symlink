@@ -38,6 +38,7 @@ Bundle 'tsaleh/vim-supertab'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/openssl.vim'
+Bundle 'thoughtbot/vim-rspec'
 
 " Enable highlighting for syntax
 syntax on
@@ -277,12 +278,16 @@ nmap <leader>t :TagbarToggle<CR>
 let g:tagbar_compact=1
 let g:tagbar_foldlevel=2
 
+" Rspec Settings
+map <leader>ra :call RunCurrentSpecFile()<CR>
+map <leader>rc :call RunNearestSpec()<CR>
+
 " Session Settings
 let g:session_directory='~/.vim/sessions'
 let g:session_command_aliases=1
 
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :edit $MYVIMRC<CR>
+nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
 nmap <silent> <leader>sv :source $MYVIMRC<CR>
 
 autocmd BufRead *.hamlc set ft=haml
