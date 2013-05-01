@@ -27,9 +27,6 @@ if [ -n "$TMUX" ]; then
   export TERM=screen-256color
 fi
 
-# enable bundler binstubs
-export PATH="./bin:$PATH"
-
 export PAGER="less"
 export EDITOR="vim"
 export VISUAL="vim"
