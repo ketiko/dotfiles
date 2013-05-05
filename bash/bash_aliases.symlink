@@ -3,7 +3,8 @@ if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
   alias ls='ls --color=auto'
-  alias ll='ls -alF --color=auto'
+  alias ll='ls -l --color=auto'
+  alias lsl='ls -Al --color=auto'
   alias la='ls -A --color=auto'
 
   alias dir='dir --color=auto'
@@ -27,3 +28,12 @@ alias tms="tmux new -s"
 alias tsa="tm attach-session -t"
 alias ta="tm attach"
 alias ss='bundle exec script/server'
+alias rm='rm -Iv --preserve-root'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias ln='ln -iv'
+alias mkdir='mkdir -pv'
+alias chown='chown -c --preserve-root'
+alias chmod='chmod -c --preserve-root'
+alias chgrp='chgrp -c --preserve-root'
+alias ..='cd ..'
