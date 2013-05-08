@@ -39,6 +39,7 @@ Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/openssl.vim'
 Bundle 'thoughtbot/vim-rspec'
+Bundle 'wincent/Command-T'
 
 " Enable highlighting for syntax
 syntax on
@@ -141,7 +142,7 @@ set background=dark
 
 " Set vim working dir to the files current directory
 "autocmd BufEnter * silent! lcd %:p:h
-autocmd BufRead *.rst silent! set textwidth=80
+"autocmd BufRead *.rst silent! set textwidth=80
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -150,9 +151,9 @@ if has("autocmd")
         \| exe "normal g'\"" | endif
 endif
 
-hi LineTooLong ctermbg=DarkBlue ctermfg=white
-highlight OverLength ctermbg=DarkBlue ctermfg=white
-match OverLength /\%81v.\+/
+"hi LineTooLong ctermbg=DarkBlue ctermfg=white
+"highlight OverLength ctermbg=DarkBlue ctermfg=white
+"match OverLength /\%81v.\+/
 
 autocmd BufRead hg-editor-* setl tw=80
 autocmd BufRead *.ru setl ft=ruby
@@ -274,9 +275,11 @@ let g:ctrlp_working_path_mode = 'ra'
 
 " TagBar Settings
 nmap <F8> :TagbarToggle<CR>
-nmap <leader>t :TagbarToggle<CR>
 let g:tagbar_compact=1
 let g:tagbar_foldlevel=2
+
+" Command-T Settings
+let g:CommandTCancelMap='<esc>'
 
 " Rspec Settings
 map <leader>ra :call RunCurrentSpecFile()<CR>
