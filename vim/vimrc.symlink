@@ -99,8 +99,8 @@ let mapleader = ","
 set nostartofline       " Avoid moving cursor to BOL when moving
 set matchtime=2         " for .2 seconds
 set linebreak           " Don't wrap text in the middle of a word
-"set mouse+=a             " Always enable mouse
-set clipboard+=unnamed  " Makes using clipboard easier
+"set mouse=a             " Always enable mouse
+set clipboard=unnamed  " Makes using clipboard easier
 set ai                  " Auto indent
 set si                  " Smart indent
 " Stay in visual mode after >>
@@ -272,6 +272,8 @@ map <F3> :NERDTreeToggle %:p:h<CR>
 " CTRLP Settings
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = 'db/*'
+let g:ctrlp_lazy_update = 0
 
 " TagBar Settings
 nmap <F8> :TagbarToggle<CR>
