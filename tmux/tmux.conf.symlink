@@ -7,6 +7,9 @@ bind-key C-a last-window
 # Display proper colors in vim
 set -g default-terminal "screen-256color"
 
+setw -g utf8 on
+set -g status-utf8 on
+
 # term fixes
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'
 setw -g xterm-keys on

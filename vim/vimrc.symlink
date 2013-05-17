@@ -290,6 +290,8 @@ map <leader>rc :call RunNearestSpec()<CR>
 " Session Settings
 let g:session_directory='~/.vim/sessions'
 let g:session_command_aliases=1
+let g:session_autosave=0
+let g:session_autoload=0
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
