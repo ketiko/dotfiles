@@ -14,10 +14,8 @@ Bundle 'gmarik/vundle'
 " -------------------
 
 Bundle 'altercation/vim-colors-solarized.git'
-Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
-Bundle 'majutsushi/tagbar'
 Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/nerdcommenter'
@@ -25,17 +23,13 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-surround'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'tsaleh/vim-supertab'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/openssl.vim'
-Bundle 'wincent/Command-T'
 
 syntax on
 
@@ -93,7 +87,7 @@ let mapleader = ","     " change <leader> from \ to ,
 " Per-Filetype Scripts
 filetype on             " File type detection on
 filetype indent on      " Use filetype-specific indenting when available
-filetype plugin on      " Load filetype plugins
+"filetype plugin on      " Load filetype plugins
 
 set ofu=syntaxcomplete#Complete
 set omnifunc=rubycomplete#Complete
@@ -143,34 +137,16 @@ map <m-l> <C-w>>
 map <m-h> <C-w><
 
 " Have Vim jump to the last position when reopening a file
-"if has("autocmd")
-  "au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-        "\| exe "normal g'\"" | endif
-"endif
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+        \| exe "normal g'\"" | endif
+endif
 
 " Set vim working dir to the files current directory
 "autocmd BufEnter * silent! lcd %:p:h
 "autocmd BufRead *.rst silent! set textwidth=80
 
-" PHP options
-let php_noShortTags = 1
-let php_sql_query = 1
-let php_htmlInStrings = 1
-
-"" Folding
-set foldmethod=syntax
-set foldlevelstart=99
-let javaScript_fold=1
-let perl_fold=1
-let php_folding=1
-let r_syntax_folding=1
-let ruby_fold=1
-let sh_fold_enabled=1
-let vimsyn_folding='af'
-let xml_syntax_folding=1
-""autocmd Syntax * normal zR
-
-"" Spelling
+" Spelling
 map <F7> :setlocal spell! spell?<CR>
 set spell spelllang=en_us
 highlight clear SpellBad
@@ -202,15 +178,6 @@ let g:ctrlp_show_hidden=1
 " NERD Tree Settings
 map <F4> :NERDTreeFind<CR>
 map <F3> :NERDTreeToggle %:p:h<CR>
-
-" TagBar Settings
-nmap <leader>tb :TagbarToggle<CR>
-let g:tagbar_compact=0
-let g:tagbar_foldlevel=2
-let g:tagbar_sort=1
-
-"" Command-T Settings
-let g:CommandTCancelMap='<esc>'
 
 "" Rspec Settings
 map <leader>ra :call RunCurrentSpecFile()<CR>
