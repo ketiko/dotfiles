@@ -9,7 +9,9 @@ set tags=./tags,~/.vim/tags;
 set runtimepath+=$HOME/.vim/bundle/vundle/
 call vundle#rc()
 filetype off
-Bundle 'gmarik/vundle' " let Vundle manage Vundle required!
+" let Vundle manage Vundle required!
+Bundle 'gmarik/vundle'
+" -------------------
 
 Bundle 'FredKSchott/CoVim'
 Bundle 'altercation/vim-colors-solarized.git'
