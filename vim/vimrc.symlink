@@ -13,7 +13,6 @@ filetype off
 Bundle 'gmarik/vundle'
 " -------------------
 
-Bundle 'FredKSchott/CoVim'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'kchmck/vim-coffee-script'
@@ -23,7 +22,6 @@ Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-eunuch'
@@ -38,8 +36,6 @@ Bundle 'tsaleh/vim-supertab'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/openssl.vim'
 Bundle 'wincent/Command-T'
-Bundle 'xolox/vim-easytags'
-Bundle 'xolox/vim-session'
 
 syntax on
 
@@ -147,10 +143,10 @@ map <m-l> <C-w>>
 map <m-h> <C-w><
 
 " Have Vim jump to the last position when reopening a file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-        \| exe "normal g'\"" | endif
-endif
+"if has("autocmd")
+  "au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+        "\| exe "normal g'\"" | endif
+"endif
 
 " Set vim working dir to the files current directory
 "autocmd BufEnter * silent! lcd %:p:h
@@ -161,7 +157,7 @@ let php_noShortTags = 1
 let php_sql_query = 1
 let php_htmlInStrings = 1
 
-" Folding
+"" Folding
 set foldmethod=syntax
 set foldlevelstart=99
 let javaScript_fold=1
@@ -172,9 +168,9 @@ let ruby_fold=1
 let sh_fold_enabled=1
 let vimsyn_folding='af'
 let xml_syntax_folding=1
-"autocmd Syntax * normal zR
+""autocmd Syntax * normal zR
 
-" Spelling
+"" Spelling
 map <F7> :setlocal spell! spell?<CR>
 set spell spelllang=en_us
 highlight clear SpellBad
@@ -213,32 +209,12 @@ let g:tagbar_compact=0
 let g:tagbar_foldlevel=2
 let g:tagbar_sort=1
 
-" Command-T Settings
+"" Command-T Settings
 let g:CommandTCancelMap='<esc>'
 
-" Rspec Settings
+"" Rspec Settings
 map <leader>ra :call RunCurrentSpecFile()<CR>
 map <leader>rc :call RunNearestSpec()<CR>
-
-" Session Settings
-let g:session_directory='~/.vim/sessions'
-let g:session_command_aliases=1
-let g:session_autosave=0
-let g:session_autoload=0
-
-" Syntastic Settings
-let g:syntastic_auto_loc_list=1
-let g:syntastic_loc_list_height=3
-
-" EasyTags Settings
-let g:easytags_file = '~/.vim/tags'
-let g:easytags_always_enabled = 0
-let g:easytags_on_cursorhold = 1
-let g:easytags_auto_highlight = 0
-let g:easytags_auto_update = 0
-let g:easytags_dynamic_files = 1
-let g:easytags_python_enabled = 1
-let g:easytags_updatetime_min=10000
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
