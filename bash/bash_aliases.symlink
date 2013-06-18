@@ -28,7 +28,6 @@ alias tm="tmux"
 alias tms="tmux new -s"
 alias tsa="tm attach-session -t"
 alias ta="tm attach"
-alias ss='bundle exec script/server'
 alias rm='rm -Iv --preserve-root'
 alias cp='cp -iv'
 alias mv='mv -iv'
