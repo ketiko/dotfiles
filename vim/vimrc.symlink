@@ -33,6 +33,7 @@ Bundle 'tsaleh/vim-matchit'
 Bundle 'tsaleh/vim-supertab'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/openssl.vim'
+Bundle 'avakhov/vim-yaml'
 
 syntax on
 
