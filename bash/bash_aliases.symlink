@@ -24,10 +24,10 @@ alias rb='rbenv'
 alias go="gnome-open"
 alias ct="ctags -R --sort=yes -V ."
 alias tmux="tmux -2"
-alias tm="tmux"
-alias tms="tmux new -s"
-alias tsa="tm attach-session -t"
-alias ta="tm attach"
+alias tm="tmux -2"
+alias tms="tmux -2 new -s"
+alias tmsa="tmux -2 attach-session -t"
+alias tma="tmux -2 attach"
 alias rm='rm -Iv --preserve-root'
 alias cp='cp -iv'
 alias mv='mv -iv'
