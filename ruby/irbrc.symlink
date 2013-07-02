@@ -1,15 +1,33 @@
 require 'irb/completion'
 require 'irb/ext/save-history'
-require 'ap'
-require 'wirble'
-require 'bond'
-ARGV.concat ["--readline", "--prompt-mode", "simple" ]
-
-Wirble.init
-Wirble.colorize
-
-Bond.start
 
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
 IRB.conf[:AUTO_INDENT] = true
+IRB.conf[:INSPECT_MODE] = true
+IRB.conf[:ECHO] = false
+IRB.conf[:USE_READLINE] = true
+IRB.conf[:PROMPT_MODE] = :SIMPLE
+
+require 'rubygems'
+
+def require_safe(gem_name)
+  begin
+    require gem_name
+    yield if block_given?
+  rescue LoadError
+  end
+end
+
+require_safe('ap')
+
+require_safe('wirble') do
+  Wirble.init
+  Wirble.colorize
+end
+
+require_safe('bond') do
+  Bond.start
+end
+
+

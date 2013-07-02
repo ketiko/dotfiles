@@ -28,7 +28,7 @@ if [ ! -d ~/.rbenv/plugins/rbenv-default-gems ]; then
   git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems
 fi
 
-echo -e "bundler\ngem-ctags\nrake\nrb-readline\nawesome_print\nbond\nwirble\ngem-ctags\nterm-ansicolor" > ~/.rbenv/default-gems
+echo -e "bundler\ngem-ctags\nrake\nrb-readline\nawesome_print\nbond\nwirble\nterm-ansicolor" > ~/.rbenv/default-gems
 
 if [ ! -d ~/.rbenv/plugins/rbenv-binstubs ]; then
   echo "Installing rbenv-binstubs"
