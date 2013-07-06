@@ -21,7 +21,7 @@ alias ack='ack-grep'
 alias bake="bundle exec rake"
 alias b="bundle exec"
 alias rb='rbenv'
-alias go="gnome-open"
+alias go="xdg-open"
 alias ct="ctags -R --sort=yes -V ."
 alias tmux="tmux -2"
 alias tm="tmux -2"
@@ -44,3 +44,4 @@ alias atop='sudo atop'
 alias reboot='sudo reboot'
 alias shutdown='sudo shutdown'
 alias hibernate='sudo hibernate'
+alias suspend='sudo suspend'
