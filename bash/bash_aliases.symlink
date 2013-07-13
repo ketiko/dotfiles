@@ -18,8 +18,10 @@ fi
 
 alias less='less -FSRX'
 alias ack='ack-grep'
-alias bake="bundle exec rake"
+alias rake="bundle exec rake"
 alias b="bundle exec"
+alias guard="bundle exec guard"
+alias rspec="bundle exec rspec"
 alias rb='rbenv'
 alias go="xdg-open"
 alias ct="ctags -R --sort=yes -V ."
