@@ -1,9 +1,12 @@
---sort-files
 --color
---smart-case
+--color-filename=blue
+--color-match=green
+--group
+--ignore-dir=log
+--ignore-dir=tmp
 --pager=less -FSRX
+--smart-case
+--sort-files
+--type-set=coffee=.coffee
 --type-set=haml=.haml,.hamlc
 --type-set=sass=.sass,.scss
---type-set=coffee=.coffee
---ignore-dir=tmp
---ignore-dir=log
