@@ -1,6 +1,6 @@
 --color
---color-filename=blue
---color-match=green
+--color-filename=magenta
+--color-match=bright_red
 --group
 --ignore-dir=log
 --ignore-dir=tmp
