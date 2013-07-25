@@ -19,7 +19,9 @@ def require_safe(gem_name)
   end
 end
 
-require_safe('ap')
+require_safe('ap') do
+  AwesomePrint.irb!
+end
 
 require_safe('wirble') do
   Wirble.init
