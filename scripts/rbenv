@@ -4,7 +4,7 @@ curl https://raw.github.com/rbenv/installer/master/bin/rbenv-installer | bash
 
 . ~/.profile
 
-echo -e "bundler\ngem-ctags\nrake\nrb-readline\nawesome_print\nbond\nwirble\nterm-ansicolor" > ~/.rbenv/default-gems
+echo -e "gem-ctags\nbundler\nrake\nrb-readline\nawesome_print\nbond\nwirble\nterm-ansicolor" > ~/.rbenv/default-gems
 
 if [ ! -d ~/.rbenv/plugins/rbenv-ctags ]; then
   echo "Installing rbenv-ctags"

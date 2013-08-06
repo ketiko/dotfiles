@@ -3,7 +3,7 @@ set shell=bash\ --login
 set runtimepath+=$HOME/.vim
 set viminfo='10000,<5000,s1000,h
 set viminfo+=n$HOME/.vim/info
-set tags=./tags,~/.vim/tags;
+set tags+=./tags,~/.vim/tags;
 
 " Vundle Settings
 set runtimepath+=$HOME/.vim/bundle/vundle/
@@ -13,27 +13,31 @@ filetype off
 Bundle 'gmarik/vundle'
 " -------------------
 
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'altercation/vim-colors-solarized.git'
+Bundle 'avakhov/vim-yaml'
+Bundle 'corntrace/bufexplorer'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
+Bundle 'majutsushi/tagbar'
 Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-rbenv'
 Bundle 'tpope/vim-surround'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'tsaleh/vim-supertab'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/openssl.vim'
-Bundle 'avakhov/vim-yaml'
 
 syntax on
 
@@ -186,6 +190,13 @@ map <F3> :NERDTreeToggle %:p:h<CR>
 "" Rspec Settings
 map <leader>ra :call RunCurrentSpecFile()<CR>
 map <leader>rc :call RunNearestSpec()<CR>
+
+"" Tabgar Settings
+map <leader>tb :TagbarToggle<CR>
+let g:tagbar_autofocus=1
+
+"" EasyMotion Settings
+let g:EasyMotion_leader_key='<leader>'
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
