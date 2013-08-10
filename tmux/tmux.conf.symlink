@@ -16,6 +16,8 @@ setw -g xterm-keys on
 
 # Enable Vim mode
 setw -g mode-keys vi
+bind-key -t vi-copy v begin-selection
+bind-key -t vi-copy y copy-selection
 
 # Load env variables for new shells
 set -g update-environment -r
