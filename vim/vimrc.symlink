@@ -24,11 +24,12 @@ Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
+Bundle 'sjl/gundo.vim'
 Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
@@ -178,7 +179,6 @@ endif
 " CTRLP Settings
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_working_path_mode='ra'
-let g:ctrlp_custom_ignore='db/*'
 let g:ctrlp_lazy_update=1
 let g:ctrlp_clear_cache_on_exit=0
 let g:ctrlp_show_hidden=1
