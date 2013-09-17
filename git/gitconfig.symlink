@@ -30,6 +30,7 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --date=relative --decorate
   st = status
   sh = stash
+  shc = stash clear
   shs = stash save -u
   shp = stash pop
   ci = commit
@@ -38,6 +39,7 @@
   ba = branch -a
   co = checkout
   cb = checkout -b
+  chp = cherry-pick
   df = diff
   dt = difftool
   da = !git-diffall
