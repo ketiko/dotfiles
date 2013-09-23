@@ -35,11 +35,14 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-rbenv'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-markdown'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'tsaleh/vim-supertab'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/openssl.vim'
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'waylan/vim-markdown-extra-preview'
+Bundle 'ecomba/vim-ruby-refactoring'
 
 syntax on
 
