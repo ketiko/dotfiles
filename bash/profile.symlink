@@ -8,9 +8,9 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# set PATH so it includes user's private .bin if it exists
-if [ -d "$HOME/.bin" ]; then
-  export PATH="$HOME/.bin:$PATH"
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ]; then
+  export PATH="$HOME/bin:$PATH"
 fi
 
 if [ -d "$HOME/.rbenv" ]; then
@@ -18,8 +18,8 @@ if [ -d "$HOME/.rbenv" ]; then
   eval "$(rbenv init -)"
 fi
 
-if [ -f "$HOME/.profile_local" ]; then
-  . "$HOME/.profile_local"
+if [ -f "$HOME/.profile.local" ]; then
+  . "$HOME/.profile.local"
 fi
 
 # for tmux: export 256color

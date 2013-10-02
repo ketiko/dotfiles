@@ -1,12 +1,20 @@
-set editing-mode vi
-$if mode=vi
-  set keymap vi-command
-  # these are for vi-command mode
-  "\C-l": clear-screen
-  "\e.": insert-last-argument
-  set keymap vi-insert
-  # these are for vi-insert mode
-  "\C-l": clear-screen
-  "\e.": insert-last-argument
-$endif
 set completion-ignore-case On
+set show-all-if-ambiguous on
+set editing-mode vi
+set keymap vi
+set convert-meta on
+$if mode=vi
+  # these are for vi-command mode
+  set keymap vi-command
+  "\C-l": clear-screen
+  "\e.": insert-last-argument
+  "\e[A": history-search-backward # arrow up
+  "\e[B": history-search-forward # arrow down
+
+  # these are for vi-insert mode
+  set keymap vi-insert
+  "\C-l": clear-screen
+  "\e.": insert-last-argument
+  "\e[A": history-search-backward # arrow up
+  "\e[B": history-search-forward # arrow down
+$endif
