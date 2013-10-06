@@ -119,6 +119,8 @@ if [ -f $HOME/.bashmarks ]; then
   . $HOME/.bashmarks
 fi
 
-if [ -f $HOME/.Xmodmap ]; then
-   /usr/bin/xmodmap $HOME/.Xmodmap
+if [ -n "$DISPLAY" ]; then
+  if [ -f $HOME/.Xmodmap ]; then
+     /usr/bin/xmodmap $HOME/.Xmodmap
+  fi
 fi
