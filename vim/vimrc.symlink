@@ -101,7 +101,7 @@ let mapleader = ","     " change <leader> from \ to ,
 " Per-Filetype Scripts
 filetype on             " File type detection on
 filetype indent on      " Use filetype-specific indenting when available
-"filetype plugin on      " Load filetype plugins
+filetype plugin on      " Load filetype plugins
 
 set ofu=syntaxcomplete#Complete
 set omnifunc=rubycomplete#Complete

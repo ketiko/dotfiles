@@ -118,9 +118,3 @@ fi
 if [ -f $HOME/.bashmarks ]; then
   . $HOME/.bashmarks
 fi
-
-if [ -n "$DISPLAY" ]; then
-  if [ -f $HOME/.Xmodmap ]; then
-     /usr/bin/xmodmap $HOME/.Xmodmap
-  fi
-fi
