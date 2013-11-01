@@ -4,6 +4,8 @@ skip_all=false
 overwrite_all=false
 
 mkdir -p ~/.vim/undo
+mkdir -p ~/.vim/swap
+mkdir -p ~/.vim/backup
 
 for linkable in `find $SCRIPTPATH -name "*.symlink" -print -o -name .git -type d -prune`
 do
