@@ -67,12 +67,12 @@ set linebreak           " Don't wrap text in the middle of a word
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set matchtime=2         " for .2 seconds
-set nobackup
+set backup
 set noerrorbells        " No noise
 set nostartofline       " Avoid moving cursor to BOL when moving
 set novisualbell        " No blinking
 set nowrap              " Line wrapping off
-set nowritebackup
+set writebackup
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
 set report=0            " : commands always print changed line count
