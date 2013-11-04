@@ -4,6 +4,7 @@
 --group
 --ignore-dir=log
 --ignore-dir=tmp
+--ignore-file=is:tags
 --pager=less -FSRX
 --smart-case
 --sort-files
