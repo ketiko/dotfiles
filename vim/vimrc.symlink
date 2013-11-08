@@ -46,6 +46,9 @@ Bundle 'tsaleh/vim-matchit'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/openssl.vim'
 Bundle 'waylan/vim-markdown-extra-preview'
+Bundle 'rking/ag.vim'
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-session'
 
 syntax on
 
@@ -97,6 +100,8 @@ set vb t_vb=            " No bells. Period.
 set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip,*/log/*
 set wildmenu                    " make tab completion for files/buffers act like bash
 set wildmode=longest:list,full  " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
+set splitbelow
+set splitright
 
 let mapleader = ","     " change <leader> from \ to ,
 
@@ -186,23 +191,27 @@ endif
 " CTRLP Settings
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_working_path_mode='ra'
-let g:ctrlp_clear_cache_on_exit=0
 let g:ctrlp_show_hidden=1
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_cmd = 'CtrlPMixed'
 
 " NERD Tree Settings
 map <F4> :NERDTreeFind<CR>
 map <F3> :NERDTreeToggle %:p:h<CR>
 
-"" Rspec Settings
+" Rspec Settings
 map <leader>ra :call RunCurrentSpecFile()<CR>
 map <leader>rc :call RunNearestSpec()<CR>
 
-"" Tabgar Settings
+" Tabgar Settings
 map <leader>tb :TagbarToggle<CR>
 let g:tagbar_autofocus=1
 
-"" EasyMotion Settings
+" EasyMotion Settings
 let g:EasyMotion_leader_key='<leader>'
+
+" Session Settings
+let g:session_autosave = 'no'
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>

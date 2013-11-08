@@ -32,4 +32,8 @@ require_safe('bond') do
   Bond.start
 end
 
+require_safe('hirb') do
+  Hirb.enable
+end
+
 
