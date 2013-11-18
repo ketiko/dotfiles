@@ -20,7 +20,6 @@ alias less='less -FSRX'
 alias ack='ack-grep'
 alias b="bundle exec"
 alias rb='rbenv'
-alias go="xdg-open"
 alias ct="ctags -R --sort=yes -V ."
 alias tmux="tmux -2"
 alias tm="tmux -2"
