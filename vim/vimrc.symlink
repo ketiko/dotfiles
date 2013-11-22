@@ -49,6 +49,7 @@ Bundle 'waylan/vim-markdown-extra-preview'
 Bundle 'rking/ag.vim'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
+Bundle 'evanmiller/nginx-vim-syntax'
 
 syntax on
 
