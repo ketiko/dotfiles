@@ -49,6 +49,7 @@ Bundle 'waylan/vim-markdown-extra-preview'
 Bundle 'rking/ag.vim'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
+Bundle 'xolox/vim-easytags'
 Bundle 'evanmiller/nginx-vim-syntax'
 
 syntax on
@@ -212,6 +213,11 @@ let g:EasyMotion_leader_key='<leader>'
 
 " Session Settings
 let g:session_autosave = 'no'
+
+" EasyTags Settings
+let g:easytags_dynamic_files = 1
+let g:easytags_python_enabled = 1
+let g:easytags_file = '~/.vim/tags'
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
