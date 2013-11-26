@@ -2,6 +2,6 @@
 
 setxkbmap -option ctrl:nocaps
 
-if which xcape >/dev/null; then
+if which xcape > /dev/null; then
   xcape &
 fi

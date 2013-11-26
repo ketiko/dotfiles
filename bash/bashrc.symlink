@@ -115,6 +115,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if which keychain > /dev/null; then
+  keychain id_rsa id_dsa &> /dev/null
+fi
+if [ -f "$HOME/.keychain/`uname -n`-sh" ]; then
+  . "$HOME/.keychain/`uname -n`-sh"
+fi
+
 if [ -f $HOME/.bashmarks ]; then
   . $HOME/.bashmarks
 fi
