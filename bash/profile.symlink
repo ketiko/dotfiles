@@ -27,6 +27,11 @@ if [ -n "$TMUX" ]; then
   export TERM=screen-256color
 fi
 
+keychain id_rsa &> /dev/null
+if [ -f "$HOME/.keychain/`uname -n`-sh" ]; then
+  . "$HOME/.keychain/`uname -n`-sh"
+fi
+
 export PAGER="less"
 export EDITOR="vim"
 export VISUAL="vim"
