@@ -60,8 +60,11 @@ syntax on
 " BASIC EDITING CONFIGURATION
 set autoindent          " Copy indent from current line when starting a new line
 set backspace=2         " makes backspace work normally
+set backup
 set clipboard=unnamedplus   " Makes using clipboard easier
 set cmdheight=1         " Cmd bar 2 rows high
+set complete-=i
+set completeopt=longest,menu,preview
 set cursorline            " highlight current line
 set expandtab           " Use spaces not tabs
 set gdefault              " Default to /g global replace
@@ -75,15 +78,14 @@ set linebreak           " Don't wrap text in the middle of a word
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set matchtime=2         " for .2 seconds
-set backup
 set noerrorbells        " No noise
 set nostartofline       " Avoid moving cursor to BOL when moving
 set novisualbell        " No blinking
 set nowrap              " Line wrapping off
-set writebackup
 set number              " Show line numbers
-set relativenumber      " Show relative line numbers
 set numberwidth=1       " Try to use only 1 col when possible
+set pastetoggle=<F2>
+set relativenumber      " Show relative line numbers
 set report=0            " : commands always print changed line count
 set ruler               " Display position in the file
 set scrolloff=5         " Keep 5 lines (top/bottom) for scope
@@ -95,9 +97,12 @@ set showtabline=2
 set smartindent
 set smarttab            " Insert blanks properly at beginning of a line
 set softtabstop=2       " <BS> over an autoindent deletes shiftwidth worth of spaces
+set splitbelow
+set splitright
 set switchbuf=useopen
 set t_ti= t_te=         " Prevent Vim from clobbering the scrollback buffer
 set tabstop=2           " Use 2 spaces for <tab>
+set ttyfast
 set undodir=~/.vim/undo
 set undofile
 set undolevels=1000
@@ -106,10 +111,7 @@ set vb t_vb=            " No bells. Period.
 set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip,*/log/*
 set wildmenu                    " make tab completion for files/buffers act like bash
 set wildmode=longest:list,full  " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
-set splitbelow
-set splitright
-set pastetoggle=<F2>
-set completeopt=longest,menu,preview
+set writebackup
 
 let mapleader = ","     " change <leader> from \ to ,
 
