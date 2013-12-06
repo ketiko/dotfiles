@@ -20,23 +20,28 @@ Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'corntrace/bufexplorer'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'evanmiller/nginx-vim-syntax'
 Bundle 'ingydotnet/yaml-vim'
 Bundle 'ivalkeen/nerdtree-execute'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
+Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
+Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
 Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-rbenv'
@@ -44,13 +49,11 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-scripts/dbext.vim'
 Bundle 'vim-scripts/openssl.vim'
 Bundle 'waylan/vim-markdown-extra-preview'
-Bundle 'rking/ag.vim'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
-Bundle 'xolox/vim-easytags'
-Bundle 'evanmiller/nginx-vim-syntax'
 
 syntax on
 
@@ -79,6 +82,7 @@ set novisualbell        " No blinking
 set nowrap              " Line wrapping off
 set writebackup
 set number              " Show line numbers
+set relativenumber      " Show relative line numbers
 set numberwidth=1       " Try to use only 1 col when possible
 set report=0            " : commands always print changed line count
 set ruler               " Display position in the file
@@ -104,6 +108,8 @@ set wildmenu                    " make tab completion for files/buffers act like
 set wildmode=longest:list,full  " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
 set splitbelow
 set splitright
+set pastetoggle=<F2>
+set completeopt=longest,menu,preview
 
 let mapleader = ","     " change <leader> from \ to ,
 
@@ -125,12 +131,12 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType sql set omnifunc=sqlcomplete#CompleteSQL
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 
-" Ruby completion enhancements
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+" vim-ruby settings
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
+let g:rubycomplete_use_bundler = 1
+let g:ruby_operators = 1
 
 " clear highlighted search using the space bar
 nnoremap <Space> :nohlsearch<CR>
@@ -160,10 +166,10 @@ map <m-l> <C-w>>
 map <m-h> <C-w><
 
 " Have Vim jump to the last position when reopening a file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-        \| exe "normal g'\"" | endif
-endif
+"if has("autocmd")
+  "au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+        "\| exe "normal g'\"" | endif
+"endif
 
 " Set vim working dir to the files current directory
 "autocmd BufEnter * silent! lcd %:p:h
@@ -190,11 +196,18 @@ if isdirectory(glob("`find ~/.vim/bundle -name vim-colors-solarized -type d -pri
   set background=dark
 endif
 
+" Ack Settings
+nnoremap <leader>a :Ack
+
 " CTRLP Settings
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_show_hidden=1
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+nmap <leader>pf :CtrlP<CR>
+nmap <leader>pb :CtrlPBuffer<CR>
+nmap <leader>pm :CtrlPMRUFiles<CR>
+nmap <leader>pa :CtrlPMixed<CR>
 
 " NERD Tree Settings
 map <F4> :NERDTreeFind<CR>
