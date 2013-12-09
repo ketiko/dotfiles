@@ -1,6 +1,5 @@
-[user]
-  name = Ryan Hansen
-  email = ketiko@gmail.com
+[include]
+  path = ~/.gitconfig.local
 [help]
   autocorrect = 1
 [core]
