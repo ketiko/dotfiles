@@ -210,7 +210,6 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_show_hidden=1
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_regexp = 1
 nmap <leader>pf :CtrlP<CR>
 nmap <leader>pb :CtrlPBuffer<CR>
 nmap <leader>pm :CtrlPMRUFiles<CR>
@@ -243,7 +242,7 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
 " utlisnips settings
-let g:UltiSnipsExpandTrigger = "<CR>"
+let g:UltiSnipsExpandTrigger = "<F6>"
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
