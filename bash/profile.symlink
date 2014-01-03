@@ -10,12 +10,16 @@
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then
-  export PATH="$HOME/bin:$PATH"
+  if [[ ":$PATH:" != *":$HOME/bin:"* ]]; then
+    export PATH="$HOME/bin:$PATH"
+  fi
 fi
 
 if [ -d "$HOME/.rbenv" ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
+  if [[ ":$PATH:" != *":$HOME/.rbenv/bin:"* ]]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+  fi
 fi
 
 if [ -f "$HOME/.profile.local" ]; then
