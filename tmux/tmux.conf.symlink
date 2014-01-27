@@ -60,6 +60,9 @@ set -g visual-activity on
 setw -g automatic-rename on
 set -g set-titles on
 
+# 12 hour clock
+set-window-option -g clock-mode-style 12
+
 # Make it easier to tell which is the current window
 setw -g window-status-current-bg colour1
 

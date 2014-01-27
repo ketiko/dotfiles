@@ -122,10 +122,8 @@ if [ -f "$HOME/.keychain/`uname -n`-sh" ]; then
   . "$HOME/.keychain/`uname -n`-sh"
 fi
 
-if [ -f $HOME/.bashmarks ]; then
-  . $HOME/.bashmarks
-fi
-
 if [ -f $HOME/.tmuxinator.bash ]; then
   . $HOME/.tmuxinator.bash
 fi
+
+eval "$(fasd --init auto)"

@@ -16,6 +16,8 @@ Bundle 'gmarik/vundle'
 " -------------------
 
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'SirVer/ultisnips'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'corntrace/bufexplorer'
 Bundle 'ecomba/vim-ruby-refactoring'
@@ -29,11 +31,13 @@ Bundle 'majutsushi/tagbar'
 Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
+Bundle 'stefanoverna/vim-i18n'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-bundler'
@@ -55,9 +59,6 @@ Bundle 'vim-scripts/openssl.vim'
 Bundle 'waylan/vim-markdown-extra-preview'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'SirVer/ultisnips'
 
 syntax on
 
@@ -69,7 +70,8 @@ set clipboard=unnamedplus   " Makes using clipboard easier
 set cmdheight=1         " Cmd bar 2 rows high
 set complete-=i
 set completeopt=longest,menu,preview
-set cursorline            " highlight current line
+"set cursorline            " highlight current line
+set lazyredraw
 set expandtab           " Use spaces not tabs
 set gdefault              " Default to /g global replace
 set hidden              " allow unsaved background buffers and remember marks/undo for them
@@ -89,7 +91,7 @@ set nowrap              " Line wrapping off
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
 set pastetoggle=<F2>
-set relativenumber      " Show relative line numbers
+"set relativenumber      " Show relative line numbers
 set report=0            " : commands always print changed line count
 set ruler               " Display position in the file
 set scrolloff=5         " Keep 5 lines (top/bottom) for scope
@@ -171,15 +173,13 @@ map <m-j> <C-w>-
 map <m-l> <C-w>>
 map <m-h> <C-w><
 
-" Have Vim jump to the last position when reopening a file
-"if has("autocmd")
-  "au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-        "\| exe "normal g'\"" | endif
-"endif
-
-" Set vim working dir to the files current directory
-"autocmd BufEnter * silent! lcd %:p:h
-"autocmd BufRead *.rst silent! set textwidth=80
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+"   " (happens when dropping a file on gvim).
+autocmd BufReadPost *
+\ if line("'\"") > 0 && line("'\"") <= line("$") |
+\   exe "normal g`\"" |
+\ endif
 
 " Spelling
 map <F7> :setlocal spell! spell?<CR>
@@ -202,18 +202,11 @@ if isdirectory(glob("`find ~/.vim/bundle -name vim-colors-solarized -type d -pri
   set background=dark
 endif
 
-" Ack Settings
-nnoremap <leader>a :Ack
-
 " CTRLP Settings
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_show_hidden=1
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-nmap <leader>pf :CtrlP<CR>
-nmap <leader>pb :CtrlPBuffer<CR>
-nmap <leader>pm :CtrlPMRUFiles<CR>
-nmap <leader>pa :CtrlPMixed<CR>
 
 " NERD Tree Settings
 map <F4> :NERDTreeFind<CR>
@@ -243,6 +236,9 @@ let g:indent_guides_guide_size = 1
 
 " utlisnips settings
 let g:UltiSnipsExpandTrigger = "<F6>"
+
+" i18n
+vmap <Leader>z :call I18nTranslateString()<CR>
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>

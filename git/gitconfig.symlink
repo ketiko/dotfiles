@@ -25,7 +25,7 @@
   sslVerify = false
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --date=relative --decorate
-  st = status
+  st = status -sb
   sh = stash
   shc = stash clear
   shs = stash save -u
