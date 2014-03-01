@@ -231,8 +231,11 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 
 " indent-guides settings
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
+"let g:indent_guides_start_level = 2
+"let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=Yellow
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=Black
 
 " utlisnips settings
 let g:UltiSnipsExpandTrigger = "<F6>"
