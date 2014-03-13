@@ -1,7 +1,5 @@
 #!/bin/bash
 
-setxkbmap -option ctrl:nocaps -option terminate:ctrl_alt_bksp -option numpad:pc
-
 if which xcape > /dev/null; then
   xcape &
 fi
