@@ -11,6 +11,17 @@
 
 set $mod Mod4
 
+
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nm-applet
+
+# set background
+exec --no-startup-id xsetroot -solid "#2e3436"
+
+# set automatic locking
+exec xautolock -detectsleep -locker 'i3lock -c2e3436'
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -24,10 +35,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec rxvt-unicode
-
-# set background
-exec --no-startup-id xsetroot -solid "#2e3436"
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill

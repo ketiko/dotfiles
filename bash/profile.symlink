@@ -30,11 +30,8 @@ if [ -f "$HOME/.profile.local" ]; then
   . "$HOME/.profile.local"
 fi
 
-# for tmux: export 256color
-if [ -n "$TMUX" ]; then
-  export TERM=screen-256color
-fi
-
+export TERM=screen-256color
+export TERMINAL="urxvt"
 export PAGER="less"
 export EDITOR="vim"
 export VISUAL="vim"
