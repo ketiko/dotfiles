@@ -33,6 +33,8 @@ Xft*rgba: rgb
 Xft*hinting: true
 Xft*hintstyle: hintslight
 
+URxvt*iso14755: false
+URxvt*iso14755_52: false
 URxvt*scrollBar: false
 URxvt*font: xft:Ubuntu Mono:size=12
 URxvt*boldFont: xft:Ubuntu Mono:bold:size=12
