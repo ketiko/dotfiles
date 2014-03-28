@@ -12,9 +12,11 @@
 set $mod Mod4
 
 
+#exec --no-startup-id /usr/bin/gnome-panel
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nm-applet
+exec --no-startup-id /usr/bin/nm-applet
+exec --no-startup-id /usr/bin/gnome-sound-applet
 
 # set background
 exec --no-startup-id xsetroot -solid "#2e3436"
@@ -55,11 +57,9 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# move workspace to new monitor
+bindsym $mod+Left exec i3-msg move workspace to output left
+bindsym $mod+Right exec i3-msg move workspace to output right
 
 # move focused window
 bindsym $mod+Shift+h move left

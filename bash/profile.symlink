@@ -22,8 +22,11 @@ if [ -d "$HOME/.rbenv" ]; then
   eval "$(rbenv init -)"
 fi
 
-if which keychain > /dev/null; then
-  eval $(keychain --quiet --eval id_rsa)
+if [ -n "$DESKTOP_SESSION" ];then
+  if [ -n "$GNOME_KEYRING_PID" ]; then
+    eval $(gnome-keyring-daemon --start)
+    export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
+  fi
 fi
 
 if [ -f "$HOME/.profile.local" ]; then
