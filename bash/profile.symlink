@@ -22,8 +22,10 @@ if [ -d "$HOME/.rbenv" ]; then
   eval "$(rbenv init -)"
 fi
 
-if which keychain > /dev/null; then
-  eval $(keychain --quiet --eval id_rsa)
+if [ -f "$HOME/.ssh/id_rsa" ]; then
+  if which keychain > /dev/null; then
+    eval $(keychain --quiet --eval id_rsa)
+  fi
 fi
 
 if [ -f "$HOME/.profile.local" ]; then

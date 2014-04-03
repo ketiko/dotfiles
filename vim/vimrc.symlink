@@ -23,12 +23,14 @@ Bundle 'corntrace/bufexplorer'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'evanmiller/nginx-vim-syntax'
+Bundle 'godlygeek/tabular'
 Bundle 'ingydotnet/yaml-vim'
 Bundle 'ivalkeen/nerdtree-execute'
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
-Bundle 'maxbrunsfeld/vim-yankstack'
+Bundle 'marijnh/tern_for_vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -54,6 +56,8 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-scripts/JavaScript-Indent'
+Bundle 'vim-scripts/YankRing.vim'
 Bundle 'vim-scripts/dbext.vim'
 Bundle 'vim-scripts/openssl.vim'
 Bundle 'waylan/vim-markdown-extra-preview'
@@ -157,9 +161,11 @@ nmap ,gf magg<S-v>G=`a
 " Make alt key work in terminal
 let c='a'
 while c <= 'z'
-  exec "set <A-".c.">=\e".c
-  exec "imap \e".c." <A-".c.">"
-  let c = nr2char(1+char2nr(c))
+  if c != 'n' || c != 'p'
+    exec "set <A-".c.">=\e".c
+    exec "imap \e".c." <A-".c.">"
+    let c = nr2char(1+char2nr(c))
+  endif
 endw
 set timeout ttimeoutlen=50
 
@@ -177,9 +183,9 @@ map <m-h> <C-w><
 " Don't do it when the position is invalid or when inside an event handler
 "   " (happens when dropping a file on gvim).
 autocmd BufReadPost *
-\ if line("'\"") > 0 && line("'\"") <= line("$") |
-\   exe "normal g`\"" |
-\ endif
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
 
 " Spelling
 map <F7> :setlocal spell! spell?<CR>
@@ -208,6 +214,10 @@ let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_files=0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+" YankRing
+let g:yankring_replace_n_pkey = '<A-p>'
+let g:yankring_replace_n_nkey = '<A-n>'
 
 " NERD Tree Settings
 map <F4> :NERDTreeFind<CR>
