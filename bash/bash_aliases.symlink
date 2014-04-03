@@ -45,5 +45,7 @@ alias hibernate='sudo hibernate'
 alias suspend='sudo suspend'
 alias xo='xdg-open'
 
-alias v='fasd -f -e vim'      # quick opening files with vim
-alias o='fasd -a -e xdg-open' # quick opening files with xdg-open
+if which fasd > /dev/null; then
+  alias v='fasd -f -e vim'      # quick opening files with vim
+  alias o='fasd -a -e xdg-open' # quick opening files with xdg-open
+fi

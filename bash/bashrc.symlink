@@ -119,4 +119,6 @@ if [ -f $HOME/.tmuxinator.bash ]; then
   . $HOME/.tmuxinator.bash
 fi
 
-eval "$(fasd --init auto)"
+if which fasd >> /dev/null; then
+  eval "$(fasd --init auto)"
+fi
