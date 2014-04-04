@@ -54,12 +54,11 @@ Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-rbenv'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
-Bundle 'tsaleh/vim-matchit'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/JavaScript-Indent'
-Bundle 'vim-scripts/YankRing.vim'
 Bundle 'vim-scripts/dbext.vim'
 Bundle 'vim-scripts/openssl.vim'
+Bundle 'vim-scripts/matchit.zip'
 Bundle 'waylan/vim-markdown-extra-preview'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
@@ -232,7 +231,10 @@ map <leader>tb :TagbarToggle<CR>
 let g:tagbar_autofocus=1
 
 " EasyMotion Settings
-let g:EasyMotion_leader_key='<leader>'
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+let g:EasyMotion_use_smartsign_us = 1
+let g:EasyMotion_use_upper = 1
 
 " Session Settings
 let g:session_autosave = 'no'
