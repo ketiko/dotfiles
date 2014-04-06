@@ -218,6 +218,7 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 " YankRing
 let g:yankring_replace_n_pkey = '<A-p>'
 let g:yankring_replace_n_nkey = '<A-n>'
+let g:yankring_history_dir = '$HOME/.vim'
 
 " NERD Tree Settings
 map <F4> :NERDTreeFind<CR>
