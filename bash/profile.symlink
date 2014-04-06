@@ -32,8 +32,6 @@ if [ -f "$HOME/.profile.local" ]; then
   . "$HOME/.profile.local"
 fi
 
-export TERM=screen-256color
-export TERMINAL="urxvt"
 export PAGER="less"
 export EDITOR="vim"
 export VISUAL="vim"
