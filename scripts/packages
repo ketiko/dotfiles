@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sudo apt-get install -y build-essential bash-completion curl git-core vim-nox tmux exuberant-ctags libssl-dev zlib1g-dev libreadline-dev keychain
+sudo apt-get install -y build-essential bash-completion curl git vim-nox tmux exuberant-ctags keychain
 sudo -k
