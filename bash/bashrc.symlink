@@ -17,6 +17,7 @@ shopt -s histappend
 
 # Bash behavior
 shopt -s cdspell # Corrects minor spelling errors when cd-ing
+shopt -s autocd # Automatically cd if path is given
 set -o vi # Set prompt to vi mode
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
