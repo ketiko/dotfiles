@@ -15,6 +15,7 @@ filetype off
 Bundle 'gmarik/vundle'
 " -------------------
 
+Bundle 'JazzCore/ctrlp-cmatcher'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'SirVer/ultisnips'
 Bundle 'Valloric/YouCompleteMe'
@@ -58,8 +59,8 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/JavaScript-Indent'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'vim-scripts/dbext.vim'
-Bundle 'vim-scripts/openssl.vim'
 Bundle 'vim-scripts/matchit.zip'
+Bundle 'vim-scripts/openssl.vim'
 Bundle 'waylan/vim-markdown-extra-preview'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
@@ -214,6 +215,7 @@ let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_files=0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 " YankRing
 let g:yankring_replace_n_pkey = '<A-p>'
