@@ -11,18 +11,17 @@
 
 set $mod Mod4
 
-
-#exec --no-startup-id /usr/bin/gnome-panel
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id /usr/bin/nm-applet
+#exec --no-startup-id /usr/bin/nm-applet
 exec --no-startup-id /usr/bin/gnome-sound-applet
+#exec --no-startup-id /usr/bin/davmail
 
 # set background
-exec --no-startup-id xsetroot -solid "#2e3436"
+exec --no-startup-id /usr/bin/nitrogen --restore
 
 # set automatic locking
-exec xautolock -detectsleep -locker 'i3lock -c2e3436'
+#exec --no-startup-id xautolock -detectsleep -locker 'i3lock -c2e3436'
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -49,7 +48,7 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-bindsym Control+Mod1+l exec i3lock -c2e3436
+bindsym Control+Mod1+l exec gnome-screensaver-command -l
 
 # change focus
 bindsym $mod+h focus left
@@ -128,7 +127,8 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec gnome-session-quit --power-off
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
