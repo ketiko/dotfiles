@@ -36,13 +36,6 @@ alias chgrp='chgrp -c --preserve-root'
 alias ..='cd ..'
 alias rsync-achimvxzPS--stats='rsync -achimvxzPS --stats'
 alias _='sudo'
-alias apt-get='sudo apt-get'
-alias aptitude='sudo aptitude'
-alias atop='sudo atop'
-alias reboot='sudo reboot'
-alias shutdown='sudo shutdown'
-alias hibernate='sudo hibernate'
-alias suspend='sudo suspend'
 alias xo='xdg-open'
 
 if which fasd > /dev/null; then
