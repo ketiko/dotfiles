@@ -15,6 +15,7 @@ filetype off
 Bundle 'gmarik/vundle'
 " -------------------
 
+Bundle 'jamessan/vim-gnupg'
 Bundle 'JazzCore/ctrlp-cmatcher'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'SirVer/ultisnips'
