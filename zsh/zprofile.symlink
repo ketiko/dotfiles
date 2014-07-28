@@ -1,0 +1,39 @@
+# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.
+# see /usr/share/doc/bash/examples/startup-files for examples.
+# the files are located in the bash-doc package.
+
+# the default umask is set in /etc/profile; for setting the umask
+# for ssh logins, install and configure the libpam-umask package.
+#umask 022
+
+export PATH="/usr/local/bin:$PATH"
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ]; then
+  export PATH="$HOME/bin:$PATH"
+fi
+
+#if [ -d "$HOME/.rbenv" ]; then
+  ##if [ ":$PATH:" != *":$HOME/.rbenv/bin:"* ]; then
+    #export PATH="$HOME/.rbenv/bin:$PATH"
+  ##fi
+  #eval "$(rbenv init -)"
+#fi
+
+if [ -f "$HOME/.zprofile.local" ]; then
+  . "$HOME/.zprofile.local"
+fi
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+export PAGER="less"
+export EDITOR="vim"
+export VISUAL="vim"
+
+# Git PS1
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+export GIT_PS1_SHOWSTASHSTATE=true

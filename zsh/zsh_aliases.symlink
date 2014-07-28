@@ -1,0 +1,44 @@
+alias ls='ls -G'
+alias ll='ls -alFG'
+alias la='ls -AG'
+alias l='ls -CFG'
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+
+  alias ls='ls --color=auto'
+  alias ll='ls -alF --color=auto'
+  alias la='ls -A --color=auto'
+  alias l='ls -CF --color=auto'
+
+  alias dir='dir --color=auto'
+  alias vdir='vdir --color=auto'
+
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+
+fi
+
+alias less='less -FSRX'
+alias b="bundle"
+alias be="bundle exec"
+alias rb='rbenv'
+alias r='rake'
+alias g='git'
+alias ct="ctags -R --sort=yes -V ."
+alias tmux="tmux -2"
+alias tm="tmux -2"
+alias tms="tmux -2 new -s"
+alias tmsa="tmux -2 attach-session -t"
+alias tma="tmux -2 attach"
+alias mkdir='mkdir -pv'
+#alias chown='chown -c --preserve-root'
+#alias chmod='chmod -c --preserve-root'
+#alias chgrp='chgrp -c --preserve-root'
+alias ..='cd ..'
+alias rsync-achimvxzPS--stats='rsync -achimvxzPS --stats'
+alias _='sudo'
+
+alias v='fasd -f -t -e vim -b viminfo'      # quick opening files with vim
