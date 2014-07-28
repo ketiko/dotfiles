@@ -134,3 +134,6 @@ fi
 if which brew >> /dev/null; then
   source `brew --repository`/Library/Contributions/brew_bash_completion.sh
 fi
+
+# added by travis gem
+[ -f /Users/ketiko/.travis/travis.sh ] && source /Users/ketiko/.travis/travis.sh

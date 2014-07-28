@@ -92,3 +92,6 @@ eval "$(rbenv init -)"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# added by travis gem
+[ -f /Users/ketiko/.travis/travis.sh ] && source /Users/ketiko/.travis/travis.sh
