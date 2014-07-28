@@ -1,11 +1,12 @@
-# Exact Solarized color theme for the color GNU ls utility.
+# Exact Solarized Dark color theme for the color GNU ls utility.
 # Designed for dircolors (GNU coreutils) 5.97
 #
 # This simple theme was simultaneously designed for these terminal color schemes:
 # - Solarized dark  (best)
-# - Solarized light (best)
+# - Solarized light
 # - default dark
 # - default light
+# with a slight optimization for Solarized Dark.
 #
 # How the colors were selected:
 # - Terminal emulators often have an option typically enabled by default that makes
@@ -32,7 +33,7 @@
 # - See table below to see the assignments.
 
 
-# Insatllation instructions:
+# Installation instructions:
 # This file goes in the /etc directory, and must be world readable.
 # You can copy this file to .dir_colors in your $HOME directory to override
 # the system defaults.
@@ -62,10 +63,12 @@ TERM cygwin
 TERM dtterm
 TERM Eterm
 TERM eterm-color
+TERM fbterm
 TERM gnome
 TERM gnome-256color
 TERM jfbterm
 TERM konsole
+TERM konsole-256color
 TERM kterm
 TERM linux
 TERM linux-c
@@ -73,6 +76,7 @@ TERM mach-color
 TERM mlterm
 TERM nxterm
 TERM putty
+TERM putty-256color
 TERM rxvt
 TERM rxvt-256color
 TERM rxvt-cygwin
@@ -81,13 +85,22 @@ TERM rxvt-unicode
 TERM rxvt-unicode256
 TERM rxvt-unicode-256color
 TERM screen
+TERM screen-16color
+TERM screen-16color-bce
+TERM screen-16color-s
+TERM screen-16color-bce-s
 TERM screen-256color
 TERM screen-256color-bce
 TERM screen-256color-s
+TERM screen-256color-bce-s
 TERM screen-bce
 TERM screen-w
 TERM screen.linux
 TERM screen.xterm-new
+TERM st
+TERM st-meta
+TERM st-256color
+TERM st-meta-256color
 TERM vt100
 TERM xterm
 TERM xterm-new
@@ -96,6 +109,7 @@ TERM xterm-256color
 TERM xterm-88color
 TERM xterm-color
 TERM xterm-debian
+TERM xterm-termite
 
 # EIGHTBIT, followed by '1' for on, '0' for off. (8-bit output)
 EIGHTBIT 1
@@ -104,7 +118,7 @@ EIGHTBIT 1
 # Below are the color init strings for the basic file types. A color init
 # string consists of one or more of the following numeric codes:
 #
-# Attribute codes: 
+# Attribute codes:
 #   00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
 # Text color codes:
 #   30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
@@ -117,8 +131,8 @@ EIGHTBIT 1
 #   ANSI Color code       Solarized  Notes                Universal             SolDark              SolLight
 #   ~~~~~~~~~~~~~~~       ~~~~~~~~~  ~~~~~                ~~~~~~~~~             ~~~~~~~              ~~~~~~~~
 #   00    none                                            NORMAL, FILE          <SAME>               <SAME>
-#   30    black           base02                                                
-#   01;30 bright black    base03     bg of SolDark                                                                         
+#   30    black           base02
+#   01;30 bright black    base03     bg of SolDark
 #   31    red             red                             docs & mm src         <SAME>               <SAME>
 #   01;31 bright red      orange                          EXEC                  <SAME>               <SAME>
 #   32    green           green                           editable text         <SAME>               <SAME>
@@ -131,8 +145,8 @@ EIGHTBIT 1
 #   01;35 bright magenta  violet                          archive/compressed    <SAME>               <SAME>
 #   36    cyan            cyan                            DIR                   <SAME>               <SAME>
 #   01;36 bright cyan     base1                           unimportant non-text                       <SAME>
-#   37    white           base2                                                                      
-#   01;37 bright white    base3      bg in SolLight                                                                        
+#   37    white           base2
+#   01;37 bright white    base3      bg in SolLight
 #   05;37;41                         unclear in Putty dark
 
 
@@ -143,7 +157,9 @@ NORMAL 00
 # normal file
 FILE 00
 # directory
-DIR 36
+DIR 34
+# 777 directory
+OTHER_WRITABLE 34;40
 # symbolic link
 LINK 35
 
@@ -211,10 +227,16 @@ EXEC 01;31  # Unix
 .htm 32
 .html 32
 .shtml 32
+.erb 32
+.haml 32
 .xml 32
 .rdf 32
 .css 32
+.sass 32
+.scss 32
+.less 32
 .js 32
+.coffee 32
 .man 32
 .0 32
 .1 32
@@ -388,34 +410,34 @@ EXEC 01;31  # Unix
 # Unimportant non-text files
 # For universal scheme, use brightcyan 01;36
 # For optimal on dark bg (but too prominent on light bg), change to 01;33
-.bak 01;36
-.BAK 01;36
-.old 01;36
-.OLD 01;36
-.org_archive 01;36
-.off 01;36
-.OFF 01;36
-.dist 01;36
-.DIST 01;36
-.orig 01;36
-.ORIG 01;36
-.swp 01;36
-.swo 01;36
-*,v 01;36
-#.bak 01;33
-#.BAK 01;33
-#.old 01;33
-#.OLD 01;33
-#.org_archive 01;33
-#.off 01;33
-#.OFF 01;33
-#.dist 01;33
-#.DIST 01;33
-#.orig 01;33
-#.ORIG 01;33
-#.swp 01;33
-#.swo 01;33
-#*,v 01;33
+#.bak 01;36
+#.BAK 01;36
+#.old 01;36
+#.OLD 01;36
+#.org_archive 01;36
+#.off 01;36
+#.OFF 01;36
+#.dist 01;36
+#.DIST 01;36
+#.orig 01;36
+#.ORIG 01;36
+#.swp 01;36
+#.swo 01;36
+#*,v 01;36
+.bak 01;33
+.BAK 01;33
+.old 01;33
+.OLD 01;33
+.org_archive 01;33
+.off 01;33
+.OFF 01;33
+.dist 01;33
+.DIST 01;33
+.orig 01;33
+.ORIG 01;33
+.swp 01;33
+.swo 01;33
+*,v 01;33
 
 # The brightmagenta (Solarized: purple) color is free for you to use for your
 # custom file type

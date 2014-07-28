@@ -6,7 +6,7 @@ if [ ! -d ~/.rbenv ]; then
 fi
 
 linkable="`pwd -P`/rbenv/default-gems"
-target=`readlink -f ~/.rbenv/default-gems`
+target=`~/.rbenv/default-gems`
 
 ln -vsf "$linkable" "$target"
 

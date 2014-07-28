@@ -2,7 +2,7 @@
   autocorrect = 1
 [core]
   editor = vim
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/ketiko/.gitignore
   autocrlf = false
 [color]
   pager = true
@@ -11,7 +11,7 @@
   diff = auto
   interactive = auto
 [push]
-  default = upstream
+  default = simple
 [pull]
   rebase = true
 [branch]
@@ -43,7 +43,7 @@
   chp = cherry-pick
   df = diff --word-diff
   dt = difftool
-  da = !git-diffall
+  da = !~/bin/git-diffall
   di = diff --staged
   ds = diff --stat
   dc = diff --cached
@@ -51,6 +51,7 @@
   ca = commit --amend
   aa = add --all
   au = add -u
+  aiw = !git diff -w --no-color | git apply --cached --ignore-whitespace
   mg = merge
   mt = mergetool
   rb = rebase
@@ -70,14 +71,16 @@
 [difftool]
   prompt = false
 [difftool "beyondcompare"]
-  cmd = bcompare $LOCAL $REMOTE -lefttitle='Old' -righttitle='New'
+  cmd = bcomp $LOCAL $REMOTE -lefttitle='Old' -righttitle='New'
   trustExitCode = true
 [merge]
   tool = beyondcompare
 [mergetool]
   prompt = false
 [mergetool "beyondcompare"]
-  cmd = bcompare -automerge -iu -reviewconflicts -lefttitle='Local Changes' -righttitle='Remote Changes' -centertitle='Committed' $LOCAL $REMOTE $BASE $MERGED
+  cmd = bcomp -automerge -iu -reviewconflicts -lefttitle='Local Changes' -righttitle='Remote Changes' -centertitle='Committed' $LOCAL $REMOTE $BASE $MERGED
   trustExitCode = true
 [include]
   path = ~/.gitconfig.local
+[init]
+	templatedir = ~/.git_template
