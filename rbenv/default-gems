@@ -2,10 +2,4 @@ gem-ctags
 gem-browse
 bundler
 rake
-rb-readline
 awesome_print
-bond
-wirble
-term-ansicolor
-tmuxinator
-hirb

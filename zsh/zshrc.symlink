@@ -45,7 +45,7 @@ ZSH_THEME="pygmalion"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew fasd cap git-extras osx vagrant web-search vi-mode gem go pip rails vundle)
+plugins=(git brew fasd cap git-extras osx vagrant web-search vi-mode gem go pip rails vundle systemadmin)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh_aliases
@@ -83,6 +83,9 @@ eval "$(rbenv init -)"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+
+export _FASD_VIMINFO="~/.vim/info"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

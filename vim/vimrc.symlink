@@ -2,7 +2,7 @@ set nocompatible " vim > vi mode.
 "set shell=bash\ --login
 set runtimepath+=$HOME/.vim
 set viminfo='10000,<5000,s1000,h
-"set viminfo+=n$HOME/.vim/info
+set viminfo+=n$HOME/.vim/info
 set tags+=./tags,~/.vim/tags;
 set directory=~/.vim/swap//
 set backupdir=~/.vim/backup//
@@ -160,6 +160,9 @@ let g:ruby_operators = 1
 " clear highlighted search using the space bar
 nnoremap <Space> :nohlsearch<CR>
 
+" make ctrl i increment numbers instead of ctrl a
+noremap <C-I> <C-A>
+
 " Stay in visual mode after >>
 vnoremap << <gv
 vnoremap >> >gv
@@ -218,11 +221,9 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_files=0
-let g:ctrlp_regexp=1
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
-                          \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
-let g:ctrlp_cmd = 'CtrlPMixed'
+"let g:ctrlp_regexp=1
+"let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+let g:ctrlp_extensions = ['tag']
 
 " YankRing
 let g:yankring_replace_n_pkey = '<A-p>'

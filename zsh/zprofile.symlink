@@ -31,9 +31,10 @@ export PATH=$PATH:$GOPATH/bin
 
 export PAGER="less"
 export EDITOR="vim"
-export VISUAL="vim"
 
 # Git PS1
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWSTASHSTATE=true
+
+export JAVA_OPTS="-Xms64m -Xmx1024m -XX:MaxPermSize=256m"
