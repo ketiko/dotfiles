@@ -123,10 +123,12 @@ set switchbuf=useopen
 set t_ti= t_te=         " Prevent Vim from clobbering the scrollback buffer
 set tabstop=2           " Use 2 spaces for <tab>
 set ttyfast
-set undodir=~/.vim/undo
-set undofile
+if v:version > 702
+  set undodir=~/.vim/undo
+  set undofile
+  set undoreload=10000
+endif
 set undolevels=1000
-set undoreload=10000
 set vb t_vb=            " No bells. Period.
 set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip,*/log/*
 set wildmenu                    " make tab completion for files/buffers act like bash
