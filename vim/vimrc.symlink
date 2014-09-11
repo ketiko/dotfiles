@@ -10,7 +10,7 @@ set backupdir=~/.vim/backup//
 " Vundle Settings
 filetype off
 
-if isdirectory("~.vim/bundle/vundle")
+if isdirectory(expand("~/.vim/bundle/vundle"))
   set runtimepath+=$HOME/.vim/bundle/vundle/
   call vundle#begin()
   " let Vundle manage Vundle required!
@@ -215,7 +215,7 @@ highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
 " Solarized Settings
-if isdirectory("~/.vim/bundle/vim-colors-solarized")
+if isdirectory(expand("~/.vim/bundle/vim-colors-solarized"))
   let g:solarized_termtrans=1
   let g:solarized_termcolors=16
   colorscheme solarized
