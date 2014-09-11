@@ -19,7 +19,9 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
 
   Plugin 'JazzCore/ctrlp-cmatcher'
   Plugin 'Lokaltog/vim-easymotion'
-  Plugin 'SirVer/ultisnips'
+  if (v:version > 700)
+    Plugin 'SirVer/ultisnips'
+  end
   if (v:version > 702)
     if v:version >= 703 || has("patch584")
       Plugin 'Valloric/YouCompleteMe'
@@ -40,7 +42,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
     Plugin 'jamessan/vim-gnupg'
   endif
   Plugin 'jelera/vim-javascript-syntax'
-  if has('python')
+  if (v:version > 701)
     Plugin 'joonty/vdebug'
   endif
   Plugin 'jstemmer/gotags'
