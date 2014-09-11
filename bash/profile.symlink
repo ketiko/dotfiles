@@ -54,4 +54,4 @@ if [ -n "$BASH_VERSION" ]; then
   fi
 fi
 
-export JAVA_OPTS="-Xms64m -Xmx1024m -XX:MaxPermSize=256m"
+export JAVA_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Djruby.compile.mode=OFF -Djruby.compile.invokedynamic=false -Xmx1024M -Xms64m -XX:MaxPermSize=256m"
