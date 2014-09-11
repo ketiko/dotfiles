@@ -36,13 +36,17 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'godlygeek/tabular'
   Plugin 'ingydotnet/yaml-vim'
   Plugin 'ivalkeen/nerdtree-execute'
-  Plugin 'jamessan/vim-gnupg'
+  if (v:version >= 702)
+    Plugin 'jamessan/vim-gnupg'
+  endif
   Plugin 'jelera/vim-javascript-syntax'
   Plugin 'joonty/vdebug'
   Plugin 'jstemmer/gotags'
   Plugin 'kchmck/vim-coffee-script'
   Plugin 'kien/ctrlp.vim'
-  Plugin 'majutsushi/tagbar'
+  if (v:version > 701)
+    Plugin 'majutsushi/tagbar'
+  end
   Plugin 'marijnh/tern_for_vim'
   Plugin 'mileszs/ack.vim'
   Plugin 'msanders/snipmate.vim'
