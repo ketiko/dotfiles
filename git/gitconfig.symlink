@@ -2,7 +2,7 @@
   autocorrect = 1
 [core]
   editor = vim
-  excludesfile = /Users/ketiko/.gitignore
+  excludesfile = ~/.gitignore
   autocrlf = false
 [color]
   pager = true
@@ -11,7 +11,7 @@
   diff = auto
   interactive = auto
 [push]
-  default = simple
+  default = matching
 [pull]
   rebase = true
 [branch]
