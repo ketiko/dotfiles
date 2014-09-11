@@ -40,7 +40,9 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
     Plugin 'jamessan/vim-gnupg'
   endif
   Plugin 'jelera/vim-javascript-syntax'
-  Plugin 'joonty/vdebug'
+  if has('python')
+    Plugin 'joonty/vdebug'
+  endif
   Plugin 'jstemmer/gotags'
   Plugin 'kchmck/vim-coffee-script'
   Plugin 'kien/ctrlp.vim'
