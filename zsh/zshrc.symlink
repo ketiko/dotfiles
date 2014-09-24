@@ -97,4 +97,6 @@ export _FASD_VIMINFO="~/.vim/info"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # added by travis gem
-[ -f /Users/ketiko/.travis/travis.sh ] && source /Users/ketiko/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
+[ -f $HOME/.tmuxinator.zsh ] && source $HOME/.tmuxinator.zsh
