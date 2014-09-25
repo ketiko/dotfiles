@@ -65,7 +65,12 @@ export KEYTIMEOUT=1
 
 # User configuration
 
-eval "$(rbenv init -)"
+if [ -d "$HOME/.rbenv" ]; then
+  #if [ ":$PATH:" != *":$HOME/.rbenv/bin:"* ]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+  #fi
+  eval "$(rbenv init -)"
+fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
