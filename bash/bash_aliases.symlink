@@ -1,7 +1,9 @@
-alias ls='ls -G'
-alias ll='ls -alFG'
-alias la='ls -AG'
-alias l='ls -CFG'
+#!/bin/env bash
+
+alias ls='ls'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -45,4 +47,8 @@ alias xo='xdg-open'
 if type fasd &> /dev/null; then
   alias v='fasd -f -e vim'      # quick opening files with vim
   alias o='fasd -a -e xdg-open' # quick opening files with xdg-open
+fi
+
+if [[ $(uname) == Darwin ]]; then
+  source ~/.bash_aliases_osx
 fi

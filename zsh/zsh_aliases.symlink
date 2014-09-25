@@ -1,7 +1,9 @@
-alias ls='ls -G'
-alias ll='ls -alFG'
-alias la='ls -AG'
-alias l='ls -CFG'
+#!/bin/env zsh
+
+alias ls='ls'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -41,4 +43,10 @@ alias ..='cd ..'
 alias rsync-achimvxzPS--stats='rsync -achimvxzPS --stats'
 alias _='sudo'
 
-alias v='fasd -f -t -e vim -b viminfo'      # quick opening files with vim
+if type fasd &> /dev/null; then
+  alias v='fasd -f -t -e vim -b viminfo'      # quick opening files with vim
+fi
+
+if [[ $(uname) == Darwin ]]; then
+  source ~/.zsh_aliases_osx
+fi

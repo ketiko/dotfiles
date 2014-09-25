@@ -1,0 +1,19 @@
+#!/bin/env zsh
+
+alias ls='gls'
+alias ll='gls -alF'
+alias la='gls -A'
+alias l='gls -CF'
+
+# enable color support of ls and also add handy aliases
+if type gdircolors &> /dev/null; then
+  test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+
+  alias ls='gls --color=auto'
+  alias ll='gls -alF --color=auto'
+  alias la='gls -A --color=auto'
+  alias l='gls -CF --color=auto'
+
+  alias dir='gdir --color=auto'
+  alias vdir='gvdir --color=auto'
+fi

@@ -143,9 +143,5 @@ fi
 
 # added by travis gem
 if [ -f ~/.travis/travis.sh ]; then
-  source ~.travis/travis.sh
-fi
-
-if [[ $(uname) == Darwin ]]; then
-  export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+  source ~/.travis/travis.sh
 fi
