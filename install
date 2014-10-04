@@ -5,17 +5,19 @@ SCRIPTPATH=$(pwd)
 cd $SCRIPTPATH
 
 ACTION=$1
+DOTFILES=$2
 
 if [ -z $ACTION ]; then
   ACTION="dotfiles"
 fi
 
 if [ $ACTION != "all" ]; then
-  . "$SCRIPTPATH/scripts/$ACTION"
+  . "$SCRIPTPATH/scripts/$ACTION" $DOTFILES
 else
   . "$SCRIPTPATH/scripts/packages"
-  . "$SCRIPTPATH/scripts/dotfiles"
+  . "$SCRIPTPATH/scripts/dotfiles" $DOTFILES
   . "$SCRIPTPATH/scripts/vim"
   . "$SCRIPTPATH/scripts/solarized"
   . "$SCRIPTPATH/scripts/rbenv"
+  . "$SCRIPTPATH/scripts/zsh"
 fi

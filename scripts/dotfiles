@@ -3,6 +3,11 @@
 skip_all=false
 overwrite_all=false
 
+case "$1" in
+  O) overwrite_all=true ;;
+  S) skip_all=true;;
+esac
+
 mkdir -p ~/.vim/undo
 mkdir -p ~/.vim/swap
 mkdir -p ~/.vim/backup
