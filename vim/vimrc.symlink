@@ -7,86 +7,7 @@ set tags+=./tags,~/.vim/tags;
 set directory=~/.vim/swap//
 set backupdir=~/.vim/backup//
 
-" Vundle Settings
-filetype off
-
-if isdirectory(expand("~/.vim/bundle/vundle"))
-  set runtimepath+=$HOME/.vim/bundle/vundle/
-  call vundle#begin()
-  " let Vundle manage Vundle required!
-  Plugin 'gmarik/vundle'
-  " -------------------
-
-  Plugin 'JazzCore/ctrlp-cmatcher'
-  Plugin 'Lokaltog/vim-easymotion'
-  if (v:version > 700)
-    Plugin 'SirVer/ultisnips'
-  end
-  if (v:version > 702)
-    if v:version >= 703 || has("patch584")
-      Plugin 'Valloric/YouCompleteMe'
-    endif
-  endif
-  Plugin 'altercation/vim-colors-solarized.git'
-  Plugin 'corntrace/bufexplorer'
-  Plugin 'ecomba/vim-ruby-refactoring'
-  Plugin 'editorconfig/editorconfig-vim'
-  Plugin 'evanmiller/nginx-vim-syntax'
-  if isdirectory(expand("~/go"))
-    Plugin 'fatih/vim-go'
-  endif
-  Plugin 'godlygeek/tabular'
-  Plugin 'ingydotnet/yaml-vim'
-  Plugin 'ivalkeen/nerdtree-execute'
-  if (v:version >= 702)
-    Plugin 'jamessan/vim-gnupg'
-  endif
-  Plugin 'jelera/vim-javascript-syntax'
-  if (v:version > 701)
-    Plugin 'joonty/vdebug'
-  endif
-  Plugin 'jstemmer/gotags'
-  Plugin 'kchmck/vim-coffee-script'
-  Plugin 'kien/ctrlp.vim'
-  if (v:version > 701)
-    Plugin 'majutsushi/tagbar'
-  end
-  Plugin 'marijnh/tern_for_vim'
-  Plugin 'mileszs/ack.vim'
-  Plugin 'msanders/snipmate.vim'
-  Plugin 'nathanaelkane/vim-indent-guides'
-  Plugin 'rking/ag.vim'
-  Plugin 'scrooloose/nerdcommenter'
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'scrooloose/syntastic'
-  Plugin 'sjl/gundo.vim'
-  Plugin 'stefanoverna/vim-i18n'
-  Plugin 'thoughtbot/vim-rspec'
-  Plugin 'tpope/vim-abolish'
-  Plugin 'tpope/vim-bundler'
-  Plugin 'tpope/vim-endwise'
-  Plugin 'tpope/vim-eunuch'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'tpope/vim-haml'
-  Plugin 'tpope/vim-markdown'
-  Plugin 'tpope/vim-obsession'
-  Plugin 'tpope/vim-rails'
-  Plugin 'tpope/vim-rake'
-  Plugin 'tpope/vim-rbenv'
-  Plugin 'tpope/vim-repeat'
-  Plugin 'tpope/vim-surround'
-  Plugin 'vim-ruby/vim-ruby'
-  Plugin 'vim-scripts/JavaScript-Indent'
-  Plugin 'vim-scripts/YankRing.vim'
-  Plugin 'vim-scripts/dbext.vim'
-  Plugin 'vim-scripts/matchit.zip'
-  Plugin 'vim-scripts/openssl.vim'
-  Plugin 'waylan/vim-markdown-extra-preview'
-  Plugin 'xolox/vim-misc'
-  Plugin 'xolox/vim-session'
-
-  call vundle#end()
-endif
+source $HOME/.vimrc.bundles
 
 syntax on
 
@@ -290,9 +211,10 @@ let g:UltiSnipsExpandTrigger = "<F6>"
 " i18n
 vmap <Leader>z :call I18nTranslateString()<CR>
 
-" PHP
-"set foldmethod=syntax
-"let php_folding=1
+" Folding
+set foldmethod=syntax
+let php_folding=1
+set foldlevelstart=20
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
