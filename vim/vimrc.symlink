@@ -119,6 +119,12 @@ while c <= 'z'
 endw
 set timeout ttimeoutlen=50
 
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  match ErrorMsg '\%>80v.\+'
+end
+
 " Navigate panes vim style
 map <C-h> <C-w>h
 map <C-j> <C-w>j
