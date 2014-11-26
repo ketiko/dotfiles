@@ -11,7 +11,6 @@ esac
 mkdir -p ~/.vim/undo
 mkdir -p ~/.vim/swap
 mkdir -p ~/.vim/backup
-mkdir -p ~/.rbenv
 
 for linkable in `find $SCRIPTPATH -name "*.symlink" -print -o -name .git -type d -prune`
 do
@@ -44,5 +43,12 @@ do
     ln -vns "$linkable" "$target"
   fi
 done
+
+mkdir -p ~/.rbenv
+
+if [ ! -e $target ]; then
+  $default_gems=`find $SCRIPTPATH -name "default-gems" -print -o -name .git -type d -prune`
+  ln -vns "$default_gems" "~/.rbenv/default-gems"
+fi
 
 . ~/.profile
