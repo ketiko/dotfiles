@@ -11,6 +11,7 @@ esac
 mkdir -p ~/.vim/undo
 mkdir -p ~/.vim/swap
 mkdir -p ~/.vim/backup
+mkdir -p ~/.rbenv
 
 for linkable in `find $SCRIPTPATH -name "*.symlink" -print -o -name .git -type d -prune`
 do

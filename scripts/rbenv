@@ -1,13 +1,9 @@
 #!/bin/bash
 
-if [ ! -d ~/.rbenv/shims ]; then
+if [ ! -d ~/.rbenv/src ]; then
+  echo "Installing rbenv"
   git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 fi
-
-linkable="`pwd -P`/rbenv/default-gems"
-target=`~/.rbenv/default-gems`
-
-ln -vsf "$linkable" "$target"
 
 if [ ! -d ~/.rbenv/plugins/rbenv-ctags ]; then
   echo "Installing rbenv-ctags"
