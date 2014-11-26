@@ -46,9 +46,8 @@ done
 
 mkdir -p ~/.rbenv
 
-if [ ! -e $target ]; then
-  $default_gems=`find $SCRIPTPATH -name "default-gems" -print -o -name .git -type d -prune`
-  ln -vns "$default_gems" "~/.rbenv/default-gems"
+if [ ! -e "$HOME/.rbenv/default-gems" ]; then
+  ln -vns "../rbenv/default-gems" "$HOME/.rbenv/default-gems"
 fi
 
 . ~/.profile
