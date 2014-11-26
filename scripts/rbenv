@@ -1,8 +1,7 @@
 #!/bin/bash
 
 if [ ! -d ~/.rbenv/shims ]; then
-  curl https://raw.github.com/rbenv/installer/master/bin/rbenv-installer | bash
-  . ~/.profile
+  git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 fi
 
 linkable="`pwd -P`/rbenv/default-gems"
