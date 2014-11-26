@@ -47,7 +47,7 @@ done
 mkdir -p ~/.rbenv
 
 if [ ! -e "$HOME/.rbenv/default-gems" ]; then
-  ln -vns "../rbenv/default-gems" "$HOME/.rbenv/default-gems"
+  ln -vns "$SCRIPTPATH/rbenv/default-gems" "$HOME/.rbenv/default-gems"
 fi
 
 . ~/.profile

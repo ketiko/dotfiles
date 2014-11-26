@@ -1,6 +1,5 @@
 #!/bin/bash
 
-CURRENTDIR=$(pwd)
 SCRIPTPATH=$(pwd)
 cd $SCRIPTPATH
 
