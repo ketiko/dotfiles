@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -d ~/.rbenv ]; then
+if [ ! -d ~/.rbenv/shims ]; then
   curl https://raw.github.com/rbenv/installer/master/bin/rbenv-installer | bash
   . ~/.profile
 fi
