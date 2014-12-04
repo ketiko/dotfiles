@@ -33,6 +33,8 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
     Plugin 'jamessan/vim-gnupg'
   endif
   Plugin 'pangloss/vim-javascript'
+  Plugin 'burnettk/vim-angular'
+  Plugin 'othree/javascript-libraries-syntax.vim'
   Plugin 'mxw/vim-jsx'
   if (v:version > 701)
     Plugin 'joonty/vdebug'
@@ -44,7 +46,6 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
     Plugin 'majutsushi/tagbar'
   end
   Plugin 'derekwyatt/vim-scala'
-  Plugin 'marijnh/tern_for_vim'
   Plugin 'mileszs/ack.vim'
   Plugin 'msanders/snipmate.vim'
   Plugin 'nathanaelkane/vim-indent-guides'
