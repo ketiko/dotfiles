@@ -12,6 +12,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'Lokaltog/vim-easymotion'
   if (v:version > 700)
     Plugin 'SirVer/ultisnips'
+    Plugin 'honza/vim-snippets'
   end
   if (v:version > 702)
     if v:version >= 703 || has("patch584")
@@ -47,7 +48,6 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   end
   Plugin 'derekwyatt/vim-scala'
   Plugin 'mileszs/ack.vim'
-  Plugin 'msanders/snipmate.vim'
   Plugin 'nathanaelkane/vim-indent-guides'
   Plugin 'rking/ag.vim'
   Plugin 'scrooloose/nerdcommenter'
