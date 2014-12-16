@@ -10,45 +10,26 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
 
   Plugin 'JazzCore/ctrlp-cmatcher'
   Plugin 'Lokaltog/vim-easymotion'
-  if (v:version > 700)
-    Plugin 'SirVer/ultisnips'
-    Plugin 'honza/vim-snippets'
-  end
-  if (v:version > 702)
-    if v:version >= 703 || has("patch584")
-      Plugin 'Valloric/YouCompleteMe'
-    endif
-  endif
   Plugin 'altercation/vim-colors-solarized.git'
+  Plugin 'burnettk/vim-angular'
   Plugin 'corntrace/bufexplorer'
+  Plugin 'derekwyatt/vim-scala'
   Plugin 'ecomba/vim-ruby-refactoring'
   Plugin 'editorconfig/editorconfig-vim'
   Plugin 'evanmiller/nginx-vim-syntax'
-  if isdirectory(expand("~/go"))
-    Plugin 'fatih/vim-go'
-  endif
   Plugin 'godlygeek/tabular'
   Plugin 'ingydotnet/yaml-vim'
   Plugin 'ivalkeen/nerdtree-execute'
-  if (v:version >= 702)
-    Plugin 'jamessan/vim-gnupg'
-  endif
-  Plugin 'pangloss/vim-javascript'
-  Plugin 'burnettk/vim-angular'
-  Plugin 'othree/javascript-libraries-syntax.vim'
-  Plugin 'mxw/vim-jsx'
-  if (v:version > 701)
-    Plugin 'joonty/vdebug'
-  endif
   Plugin 'jstemmer/gotags'
+  Plugin 'kana/vim-textobj-user'
   Plugin 'kchmck/vim-coffee-script'
   Plugin 'kien/ctrlp.vim'
-  if (v:version > 701)
-    Plugin 'majutsushi/tagbar'
-  end
-  Plugin 'derekwyatt/vim-scala'
   Plugin 'mileszs/ack.vim'
+  Plugin 'mxw/vim-jsx'
   Plugin 'nathanaelkane/vim-indent-guides'
+  Plugin 'nelstrom/vim-textobj-rubyblock'
+  Plugin 'othree/javascript-libraries-syntax.vim'
+  Plugin 'pangloss/vim-javascript'
   Plugin 'rking/ag.vim'
   Plugin 'scrooloose/nerdcommenter'
   Plugin 'scrooloose/nerdtree'
@@ -78,6 +59,23 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'waylan/vim-markdown-extra-preview'
   Plugin 'xolox/vim-misc'
   Plugin 'xolox/vim-session'
+
+  if (v:version > 700)
+    Plugin 'SirVer/ultisnips'
+    Plugin 'honza/vim-snippets'
+  end
+  if (v:version >= 702)
+    Plugin 'joonty/vdebug'
+    Plugin 'majutsushi/tagbar'
+    Plugin 'jamessan/vim-gnupg'
+  endif
+  if v:version >= 703 || has("patch584")
+    Plugin 'Valloric/YouCompleteMe'
+  endif
+
+  if isdirectory(expand("~/go"))
+    Plugin 'fatih/vim-go'
+  endif
 
   call vundle#end()
 endif
