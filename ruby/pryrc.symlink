@@ -7,7 +7,7 @@ def require_safe(gem_name)
 end
 
 require_safe('ap') do
-  Pry.config.print = proc { |output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output) }
+  #Pry.config.print = proc { |output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output) }
 end
 
 require_safe('wirble') do
@@ -39,9 +39,9 @@ require_safe('hirb') do
   Hirb.enable
 end
 
-if defined? PryDebugger
-  Pry.commands.alias_command 'c', 'continue'
-  Pry.commands.alias_command 's', 'step'
-  Pry.commands.alias_command 'n', 'next'
-  Pry.commands.alias_command 'f', 'finish'
-end
+#if defined? PryDebugger
+  #Pry.commands.alias_command 'c', 'continue'
+  #Pry.commands.alias_command 's', 'step'
+  #Pry.commands.alias_command 'n', 'next'
+  #Pry.commands.alias_command 'f', 'finish'
+#end
