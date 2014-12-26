@@ -33,10 +33,6 @@ if [ -f "$HOME/.ssh/id_rsa" ]; then
   fi
 fi
 
-if [ -f "$HOME/.profile.local" ]; then
-  . "$HOME/.profile.local"
-fi
-
 if type go &> /dev/null; then
   if [ -d "$HOME/go" ]; then
     export GOPATH=$HOME/go
@@ -62,3 +58,7 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 export JAVA_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Djruby.compile.mode=OFF -Djruby.compile.invokedynamic=false -Xmx512M -Xms512m"
+
+if [ -f "$HOME/.profile.local" ]; then
+  . "$HOME/.profile.local"
+fi

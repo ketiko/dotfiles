@@ -22,8 +22,10 @@ fi
 #eval "$(rbenv init -)"
 #fi
 
-if [ -f "$HOME/.zprofile.local" ]; then
-  . "$HOME/.zprofile.local"
+if [ -f "$HOME/.ssh/id_rsa" ]; then
+  if which keychain > /dev/null; then
+    eval $(keychain --quiet --eval id_rsa)
+  fi
 fi
 
 if type go &> /dev/null; then
@@ -43,3 +45,7 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWSTASHSTATE=true
 
 export JAVA_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Djruby.compile.mode=OFF -Djruby.compile.invokedynamic=false -Xmx512M -Xms512m"
+
+if [ -f "$HOME/.zprofile.local" ]; then
+  . "$HOME/.zprofile.local"
+fi

@@ -5,6 +5,7 @@ alias ll='gls -alF'
 alias la='gls -A'
 alias l='gls -CF'
 alias dir='gdir'
+alias zcat='gzcat'
 
 # enable color support of ls and also add handy aliases
 if type gdircolors &> /dev/null; then

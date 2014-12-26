@@ -19,6 +19,7 @@ set nowritebackup
 set noswapfile
 set clipboard=unnamed   " Makes using clipboard easier
 set cmdheight=1         " Cmd bar 2 rows high
+set complete+=kspell
 set completeopt=menu,preview
 "set cursorline            " highlight current line
 set lazyredraw
@@ -40,7 +41,7 @@ set novisualbell        " No blinking
 set nowrap              " Line wrapping off
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
-set nopaste
+set paste
 "set relativenumber      " Show relative line numbers
 set report=0            " : commands always print changed line count
 set ruler               " Display position in the file
@@ -228,7 +229,7 @@ let g:session_autosave = 'no'
 " YCM Settings
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_auto_trigger = 1
+"let g:ycm_auto_trigger = 0
 
 " UltiSnip Settings
 let g:UltiSnipsExpandTrigger = '<C-l>'
