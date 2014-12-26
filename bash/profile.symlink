@@ -29,7 +29,7 @@ fi
 
 if [ -f "$HOME/.ssh/id_rsa" ]; then
   if which keychain > /dev/null; then
-    eval $(keychain --quiet --eval id_rsa)
+    eval $(keychain --quiet --quick)
   fi
 fi
 
