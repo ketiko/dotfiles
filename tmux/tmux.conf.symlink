@@ -2,7 +2,6 @@
 set -g prefix C-a
 unbind-key C-b
 bind C-a send-prefix
-bind-key C-a last-window
 
 if-shell 'test "$(uname)" = "Darwin"' 'source ~/.tmux-osx.conf'
 
