@@ -8,12 +8,10 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'gmarik/vundle'
   " -------------------
 
-  Plugin 'JazzCore/ctrlp-cmatcher'
   Plugin 'Lokaltog/vim-easymotion'
   Plugin 'altercation/vim-colors-solarized.git'
   Plugin 'burnettk/vim-angular'
   Plugin 'corntrace/bufexplorer'
-  Plugin 'derekwyatt/vim-scala'
   Plugin 'ecomba/vim-ruby-refactoring'
   Plugin 'editorconfig/editorconfig-vim'
   Plugin 'evanmiller/nginx-vim-syntax'
@@ -35,7 +33,6 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'scrooloose/nerdtree'
   Plugin 'scrooloose/syntastic'
   Plugin 'sjl/gundo.vim'
-  Plugin 'stefanoverna/vim-i18n'
   Plugin 'thoughtbot/vim-rspec'
   Plugin 'tpope/vim-abolish'
   Plugin 'tpope/vim-bundler'
@@ -53,21 +50,17 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'vim-ruby/vim-ruby'
   Plugin 'vim-scripts/JavaScript-Indent'
   Plugin 'vim-scripts/YankRing.vim'
-  Plugin 'vim-scripts/dbext.vim'
   Plugin 'vim-scripts/matchit.zip'
-  Plugin 'vim-scripts/openssl.vim'
-  Plugin 'waylan/vim-markdown-extra-preview'
   Plugin 'xolox/vim-misc'
   Plugin 'xolox/vim-session'
+  Plugin 'junegunn/vim-easy-align'
 
   if (v:version > 700)
     Plugin 'SirVer/ultisnips'
     Plugin 'honza/vim-snippets'
   end
   if (v:version >= 702)
-    Plugin 'joonty/vdebug'
     Plugin 'majutsushi/tagbar'
-    Plugin 'jamessan/vim-gnupg'
   endif
   if v:version >= 703 || has("patch584")
     Plugin 'Valloric/YouCompleteMe'
