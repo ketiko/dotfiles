@@ -245,12 +245,12 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=Yellow
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=Black
 
 " i18n
-vmap <Leader>z :call I18nTranslateString()<CR>
+"vmap <Leader>z :call I18nTranslateString()<CR>
 
 " Folding
-set foldmethod=syntax
-let php_folding=1
-set foldlevelstart=20
+"set foldmethod=syntax
+"let php_folding=1
+"set foldlevelstart=20
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
