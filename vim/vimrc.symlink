@@ -41,7 +41,7 @@ set novisualbell        " No blinking
 set nowrap              " Line wrapping off
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
-set paste
+set nopaste
 "set relativenumber      " Show relative line numbers
 set report=0            " : commands always print changed line count
 set ruler               " Display position in the file
@@ -217,6 +217,12 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 nmap <Leader>a> :Tabularize /=><CR>
 vmap <Leader>a> :Tabularize /=><CR>
 
+" Easy Align settings
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+ nmap ga <Plug>(EasyAlign)
+
 " EasyMotion Settings
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
@@ -229,7 +235,7 @@ let g:session_autosave = 'no'
 " YCM Settings
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
-"let g:ycm_auto_trigger = 0
+let g:ycm_auto_trigger = 0
 
 " UltiSnip Settings
 let g:UltiSnipsExpandTrigger = '<C-l>'
