@@ -4,10 +4,16 @@
 --exclude=.git
 --exclude=.svn
 
---langdef=coffee
---langmap=coffee:.coffee
---regex-coffee=/^[ \t]*class[ \t]+([A-Za-z.@]+)/\1/,class/
---regex-coffee=/^[ \t]*([A-Za-z.]+)[ \t]*\:.*(->|=>).*$/\1/,method/
---regex-coffee=/^[ \t]*(@[A-Za-z.]+)[ \t]*\:.*(->|=>).*$/\1/,staticmethod/
---regex-coffee=/^[ \t]*([A-Za-z.]+)[ \t]*=.*(->|=>).*$/\1/,function/
---regex-coffee=/^[ \t]*([A-Z0-9_]+)[ \t]*=.*$/\1/,constant/
+--langdef=Coffee
+--langmap=Coffee:.coffee
+--regex-Coffee=/^[ \t]*class[ \t]+([A-Za-z.@]+)/\1/,class/
+--regex-Coffee=/^[ \t]*([A-Za-z.]+)[ \t]*\:.*(->|=>).*$/\1/,method/
+--regex-Coffee=/^[ \t]*(@[A-Za-z.]+)[ \t]*\:.*(->|=>).*$/\1/,staticmethod/
+--regex-Coffee=/^[ \t]*([A-Za-z.]+)[ \t]*=.*(->|=>).*$/\1/,function/
+--regex-Coffee=/^[ \t]*([A-Z0-9_]+)[ \t]*=.*$/\1/,constant/
+
+--langdef=Go
+--langmap=Go:.go
+--regex-Go=/func([ \t]+\([^)]+\))?[ \t]+([a-zA-Z0-9_]+)/\2/f,func/
+--regex-Go=/var[ \t]+([a-zA-Z_][a-zA-Z0-9_]+)/\1/v,var/
+--regex-Go=/type[ \t]+([a-zA-Z_][a-zA-Z0-9_]+)/\1/t,type/

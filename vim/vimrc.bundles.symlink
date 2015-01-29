@@ -49,11 +49,14 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'tpope/vim-surround'
   Plugin 'vim-ruby/vim-ruby'
   Plugin 'vim-scripts/JavaScript-Indent'
-  Plugin 'vim-scripts/YankRing.vim'
+  "Plugin 'vim-scripts/YankRing.vim'
   Plugin 'vim-scripts/matchit.zip'
   Plugin 'xolox/vim-misc'
   Plugin 'xolox/vim-session'
   Plugin 'junegunn/vim-easy-align'
+  Plugin 'zhaocai/GoldenView.Vim'
+  Plugin 'itchyny/lightline.vim'
+  Plugin 'edkolev/tmuxline.vim'
 
   if (v:version > 700)
     Plugin 'SirVer/ultisnips'

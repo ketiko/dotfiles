@@ -20,8 +20,8 @@ set noswapfile
 set clipboard=unnamed   " Makes using clipboard easier
 set cmdheight=1         " Cmd bar 2 rows high
 set complete+=kspell
-set completeopt=menu,preview
-"set cursorline            " highlight current line
+set completeopt=menu
+set cursorline            " highlight current line
 set lazyredraw
 set expandtab           " Use spaces not tabs
 set gdefault              " Default to /g global replace
@@ -38,7 +38,7 @@ set matchtime=2         " for .2 seconds
 set noerrorbells        " No noise
 set nostartofline       " Avoid moving cursor to BOL when moving
 set novisualbell        " No blinking
-set nowrap              " Line wrapping off
+set wrap              " Line wrapping off
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
 set nopaste
@@ -91,8 +91,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType sql set omnifunc=sqlcomplete#CompleteSQL
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 
-
-" vim-ruby settings
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
@@ -111,15 +109,21 @@ vnoremap >> >gv
 nmap ,gf magg<S-v>G=`a
 
 " Make alt key work in terminal
-let c='a'
-while c <= 'z'
-  if c != 'n' || c != 'p'
-    exec "set <A-".c.">=\e".c
-    exec "imap \e".c." <A-".c.">"
-    let c = nr2char(1+char2nr(c))
-  endif
-endw
-set timeout ttimeoutlen=50
+"for i in range(65,90) + range(97,122)
+"let c = nr2char(i)
+"exec "map! \e".c." <M-".c.">"
+"exec "map \e".c." <M-".c.">"
+"endfor
+
+" fix meta-keys which generate <Esc>a .. <Esc>z
+" let c='a'
+" while c <= 'z'
+"   exec "set <M-".toupper(c).">=\e".c
+"     exec "imap \e".c." <M-".toupper(c).">"
+"       let c = nr2char(1+char2nr(c))
+"       end
+
+"set timeout timeoutlen=500
 
 if exists('+colorcolumn')
   set colorcolumn=80
@@ -136,6 +140,21 @@ map <m-k> <C-w>+
 map <m-j> <C-w>-
 map <m-l> <C-w>>
 map <m-h> <C-w><
+
+" Quickly move lines
+nnoremap <Down> :m +1<CR>==
+nnoremap <Up> :m -2<CR>==
+inoremap <Down> <Esc>:m +1<CR>==gi
+inoremap <Up> <Esc>:m -2<CR>==gi
+vnoremap <Down> :m '>+1<CR>gv=gv
+vnoremap <Up> :m '<-2<CR>gv=gv
+
+nnoremap <M-j> :m +1<CR>==
+nnoremap <M-k> :m -2<CR>==
+inoremap <M-j> <Esc>:m +1<CR>==gi
+inoremap <M-k> <Esc>:m -2<CR>==gi
+vnoremap <M-j> :m '>+1<CR>gv=gv
+vnoremap <M-k> :m '<-2<CR>gv=gv
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -206,7 +225,7 @@ map <leader>rc :call RunNearestSpec()<CR>
 
 " Tabgar Settings
 map <leader>tb :TagbarToggle<CR>
-map <leader>mn :TagbarCurrentTag s<CR>
+map <leader>tc :TagbarCurrentTag s<CR>
 let g:tagbar_autofocus=1
 
 " Tabularize Settings
@@ -221,7 +240,7 @@ vmap <Leader>a> :Tabularize /=><CR>
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
- nmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " EasyMotion Settings
 let g:EasyMotion_smartcase = 1
@@ -235,7 +254,10 @@ let g:session_autosave = 'no'
 " YCM Settings
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_auto_trigger = 0
+let g:ycm_auto_trigger = 1
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " UltiSnip Settings
 let g:UltiSnipsExpandTrigger = '<C-l>'
@@ -257,6 +279,27 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=Black
 "set foldmethod=syntax
 "let php_folding=1
 "set foldlevelstart=20
+
+" Goldenview
+let g:goldenview__enable_default_mapping = 0
+
+" lightline
+let g:lightline = { 'colorscheme': 'solarized' }
+
+let g:tmuxline_powerline_separators = 0
+
+" vim-go
+let g:go_fmt_command = "goimports"
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_auto_type_info = 0
+au FileType go set nolist
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>e <Plug>(go-rename)
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>

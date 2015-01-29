@@ -3,3 +3,4 @@ tags
 *.sw[a-zA-Z]
 *~
 .DS_Store
+Godeps

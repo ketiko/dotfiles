@@ -1,8 +1,11 @@
 set completion-ignore-case On
-set show-all-if-ambiguous on
-set editing-mode vi
-set keymap vi
 set convert-meta on
+set editing-mode vi
+set input-meta on
+set keymap vi
+set meta-flag on
+set output-meta on
+set show-all-if-ambiguous on
 $if mode=vi
   # these are for vi-command mode
   set keymap vi-command

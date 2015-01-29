@@ -30,6 +30,7 @@ alias rb='rbenv'
 alias r='rake'
 alias g='git'
 alias ct="ctags -R --sort=yes -V ."
+alias gt="gotags -R -sort=true -f='tags' ."
 alias tmux="tmux -2"
 alias tm="tmux -2"
 alias tms="tmux -2 new -s"

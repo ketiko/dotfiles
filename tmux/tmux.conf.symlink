@@ -4,6 +4,7 @@ unbind-key C-b
 bind C-a send-prefix
 
 if-shell 'test "$(uname)" = "Darwin"' 'source ~/.tmux-osx.conf'
+if-shell "test -f ~/.tmux-lightline.conf" "source ~/.tmux-lightline.conf"
 
 # Display proper colors in vim
 #
