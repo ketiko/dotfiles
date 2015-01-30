@@ -45,7 +45,8 @@ alias rsync-achimvxzPS--stats='rsync -achimvxzPS --stats'
 alias _='sudo'
 
 if type fasd &> /dev/null; then
-  #alias v='fasd -f -t -e vim -b viminfo'      # quick opening files with vim
+  alias o='a -e open'
+  alias v='f -e vim -B viminfo'      # quick opening files with vim
 fi
 
 if [[ $(uname) == Darwin ]]; then

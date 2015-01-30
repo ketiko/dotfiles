@@ -34,6 +34,7 @@ bind l select-pane -R
 # VI for splitting
 bind s split-window -v -c "#{pane_current_path}"
 bind v split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
 
 # VI for resizing
 bind-key -r M-h resize-pane -L 5

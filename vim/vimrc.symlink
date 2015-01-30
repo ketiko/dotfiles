@@ -101,7 +101,7 @@ let g:ruby_operators = 1
 nnoremap <Space> :nohlsearch<CR>
 
 " make ctrl i increment numbers instead of ctrl a
-noremap <C-I> <C-A>
+noremap <C-i> <C-a>
 
 " Stay in visual mode after >>
 vnoremap << <gv
@@ -116,14 +116,14 @@ nmap ,gf magg<S-v>G=`a
 "endfor
 
 " fix meta-keys which generate <Esc>a .. <Esc>z
-" let c='a'
-" while c <= 'z'
-"   exec "set <M-".toupper(c).">=\e".c
-"     exec "imap \e".c." <M-".toupper(c).">"
-"       let c = nr2char(1+char2nr(c))
-"       end
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
 
-"set timeout timeoutlen=500
+set timeout ttimeoutlen=50
 
 if exists('+colorcolumn')
   set colorcolumn=80
@@ -136,19 +136,12 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-map <m-k> <C-w>+
-map <m-j> <C-w>-
-map <m-l> <C-w>>
-map <m-h> <C-w><
+map <M-k> <C-w>+
+map <M-j> <C-w>-
+map <M-l> <C-w>>
+map <M-h> <C-w><
 
 " Quickly move lines
-nnoremap <Down> :m +1<CR>==
-nnoremap <Up> :m -2<CR>==
-inoremap <Down> <Esc>:m +1<CR>==gi
-inoremap <Up> <Esc>:m -2<CR>==gi
-vnoremap <Down> :m '>+1<CR>gv=gv
-vnoremap <Up> :m '<-2<CR>gv=gv
-
 nnoremap <M-j> :m +1<CR>==
 nnoremap <M-k> :m -2<CR>==
 inoremap <M-j> <Esc>:m +1<CR>==gi
@@ -211,8 +204,8 @@ let g:agprg='ag --column --smart-case
       \ '
 
 " YankRing
-let g:yankring_replace_n_pkey = '<A-p>'
-let g:yankring_replace_n_nkey = '<A-n>'
+let g:yankring_replace_n_pkey = '<M-p>'
+let g:yankring_replace_n_nkey = '<M-n>'
 let g:yankring_history_dir = '$HOME/.vim'
 
 " NERD Tree Settings
@@ -286,9 +279,9 @@ let g:goldenview__enable_default_mapping = 0
 " lightline
 let g:lightline = { 'colorscheme': 'solarized' }
 let g:lightline.enable = {
-        \ 'statusline': 1,
-        \ 'tabline': 0
-        \ }
+      \ 'statusline': 1,
+      \ 'tabline': 0
+      \ }
 
 let g:tmuxline_powerline_separators = 0
 
@@ -299,11 +292,12 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_auto_type_info = 0
-au FileType go set nolist
-au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>e <Plug>(go-rename)
+autocmd FileType go setlocal nolist ts=4 sw=4 sts=4
+autocmd BufNewFile,BufRead *.go setlocal nolist ts=4 sw=4 sts=4
+autocmd FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
+autocmd FileType go nmap <Leader>e <Plug>(go-rename)
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>

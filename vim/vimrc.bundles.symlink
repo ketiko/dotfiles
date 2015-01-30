@@ -49,7 +49,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'tpope/vim-surround'
   Plugin 'vim-ruby/vim-ruby'
   Plugin 'vim-scripts/JavaScript-Indent'
-  "Plugin 'vim-scripts/YankRing.vim'
+  Plugin 'vim-scripts/YankRing.vim'
   Plugin 'vim-scripts/matchit.zip'
   Plugin 'xolox/vim-misc'
   Plugin 'xolox/vim-session'
