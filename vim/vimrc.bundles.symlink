@@ -57,6 +57,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'zhaocai/GoldenView.Vim'
   Plugin 'itchyny/lightline.vim'
   Plugin 'edkolev/tmuxline.vim'
+  Plugin 'tejr/vim-tmux'
 
   if (v:version > 700)
     Plugin 'SirVer/ultisnips'
