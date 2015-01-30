@@ -285,6 +285,10 @@ let g:goldenview__enable_default_mapping = 0
 
 " lightline
 let g:lightline = { 'colorscheme': 'solarized' }
+let g:lightline.enable = {
+        \ 'statusline': 1,
+        \ 'tabline': 0
+        \ }
 
 let g:tmuxline_powerline_separators = 0
 
