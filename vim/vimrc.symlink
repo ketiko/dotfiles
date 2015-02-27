@@ -6,6 +6,7 @@ set viminfo+=n$HOME/.vim/info
 set tags+=./tags,~/.vim/tags;
 set directory=~/.vim/swap//
 set backupdir=~/.vim/backup//
+set term=ansi
 
 source $HOME/.vimrc.bundles
 
@@ -38,7 +39,7 @@ set matchtime=2         " for .2 seconds
 set noerrorbells        " No noise
 set nostartofline       " Avoid moving cursor to BOL when moving
 set novisualbell        " No blinking
-set wrap              " Line wrapping off
+set nowrap              " Line wrapping off
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
 set nopaste
@@ -59,7 +60,7 @@ set splitright
 set switchbuf=useopen
 set t_ti= t_te=         " Prevent Vim from clobbering the scrollback buffer
 set tabstop=2           " Use 2 spaces for <tab>
-set ttyfast
+"set ttyfast
 if v:version > 702
   set undodir=~/.vim/undo
   set undofile

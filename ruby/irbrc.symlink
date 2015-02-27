@@ -10,30 +10,3 @@ IRB.conf[:ECHO] = true
 IRB.conf[:USE_READLINE] = true
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 IRB.conf[:HISTORY_NO_DUPS] = true
-
-def require_safe(gem_name)
-  begin
-    require gem_name
-    yield if block_given?
-  rescue LoadError
-  end
-end
-
-require_safe('ap') do
-  AwesomePrint.irb!
-end
-
-require_safe('wirble') do
-  Wirble.init
-  Wirble.colorize
-end
-
-require_safe('bond') do
-  Bond.start
-end
-
-require_safe('hirb') do
-  Hirb.enable
-end
-
-

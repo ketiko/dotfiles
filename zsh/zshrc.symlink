@@ -100,6 +100,10 @@ export KEYTIMEOUT=1
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+if [ -f "$HOME/.zshrc.local" ]; then
+  . "$HOME/.zshrc.local"
+fi
+
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
