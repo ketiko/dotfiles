@@ -1,10 +1,10 @@
-#def require_safe(gem_name)
-  #begin
-    #require gem_name
-    #yield if block_given?
-  #rescue LoadError
-  #end
-#end
+def require_safe(gem_name)
+  begin
+    require gem_name
+    yield if block_given?
+  rescue LoadError
+  end
+end
 
 #require_safe('ap') do
   ##Pry.config.print = proc { |output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output) }
@@ -15,9 +15,9 @@
   #Wirble.colorize
 #end
 
-#require_safe('bond') do
-  #Bond.start
-#end
+require_safe('bond') do
+  Bond.start
+end
 
 #require_safe('hirb') do
   ## Slightly dirty hack to fully support in-session Hirb.disable/enable toggling
