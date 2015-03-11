@@ -24,6 +24,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias less='less -FSRX'
+alias ag='ag --color --ignore-case --numbers --pager less --color-match="91" --color-path="35"'
 alias b="bundle"
 alias be="bundle exec"
 alias rb='rbenv'
