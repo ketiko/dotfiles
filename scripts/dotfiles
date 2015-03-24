@@ -38,9 +38,9 @@ do
     fi
 
     rm -vrf "$target"
-    ln -vns "$linkable" "$target"
+    ln -vnsf "$linkable" "$target"
   else
-    ln -vns "$linkable" "$target"
+    ln -vnsf "$linkable" "$target"
   fi
 done
 
