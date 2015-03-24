@@ -1,3 +1,5 @@
+#!/bin/env sh
+
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -12,19 +14,14 @@ export PATH="/usr/local/bin:$PATH"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then
-  export PATH="$HOME/bin:$PATH"
+  #if [ ":$PATH:" != *":$HOME/bin:"* ]; then
+    export PATH="$HOME/bin:$PATH"
+  #fi
 fi
 
 if [ -d "/usr/local/opt/go/libexec/bin" ]; then
   export PATH=$PATH:/usr/local/opt/go/libexec/bin
 fi
-
-#if [ -d "$HOME/.rbenv" ]; then
-##if [ ":$PATH:" != *":$HOME/.rbenv/bin:"* ]; then
-#export PATH="$HOME/.rbenv/bin:$PATH"
-##fi
-#eval "$(rbenv init -)"
-#fi
 
 if [ -f "$HOME/.ssh/id_rsa" ]; then
   if which keychain > /dev/null; then
@@ -48,8 +45,16 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWSTASHSTATE=true
 
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+  # include .bashrc if it exists
+  if [ -f "$HOME/.bashrc" ]; then
+    source "$HOME/.bashrc"
+  fi
+fi
+
 export JAVA_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Djruby.compile.mode=OFF -Djruby.compile.invokedynamic=false -Xmx512M -Xms512m"
 
-if [ -f "$HOME/.zprofile.local" ]; then
-  . "$HOME/.zprofile.local"
+if [ -f "$HOME/.profile.local" ]; then
+  . "$HOME/.profile.local"
 fi

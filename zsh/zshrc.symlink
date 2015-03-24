@@ -1,6 +1,5 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export _FASD_VIMINFO="$HOME/.vim/info"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,7 +48,7 @@ ZSH_THEME="pygmalion"
 plugins=(git brew brew-cask fasd cap hub git-extras osx vagrant web-search vi-mode gem go pip rails vundle systemadmin scp)
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.zsh_aliases
+source $HOME/.aliases
 
 #bindkey -v
 
@@ -99,6 +98,10 @@ export KEYTIMEOUT=1
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+if [ -f "$HOME/.aliases.local" ]; then
+  . "$HOME/.aliases.local"
+fi
 
 if [ -f "$HOME/.zshrc.local" ]; then
   . "$HOME/.zshrc.local"

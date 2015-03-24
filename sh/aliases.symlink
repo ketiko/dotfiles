@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/bin/env sh
 
 alias ls='ls'
 alias ll='ls -alF'
@@ -30,26 +30,30 @@ alias be="bundle exec"
 alias rb='rbenv'
 alias r='rake'
 alias g='git'
-alias ct="ctags -R --sort=yes -V ."
-alias gt="gotags -R -sort=true -f='tags' ."
+alias ct="ctags"
+alias gt="gotags -R=true -sort=true -tag-relative=true -silent=false -f='tags' ."
 alias tmux="tmux -2"
 alias tm="tmux -2"
 alias tms="tmux -2 new -s"
 alias tmsa="tmux -2 attach-session -t"
 alias tma="tmux -2 attach"
 alias mkdir='mkdir -pv'
-#alias chown='chown -c --preserve-root'
-#alias chmod='chmod -c --preserve-root'
-#alias chgrp='chgrp -c --preserve-root'
 alias ..='cd ..'
 alias rsync-achimvxzPS--stats='rsync -achimvxzPS --stats'
 alias _='sudo'
+alias xo='xdg-open'
 
 if type fasd &> /dev/null; then
-  alias o='a -e open'
-  alias v='f -e vim -B viminfo'      # quick opening files with vim
+  alias o='fasd -a -e xdg-open' # quick opening files with xdg-open
+  alias v='fasd -f -e vim -B viminfo'      # quick opening files with vim
+fi
+
+if [[ $(uname) != Darwin ]]; then
+  alias chown='chown -c --preserve-root'
+  alias chmod='chmod -c --preserve-root'
+  alias chgrp='chgrp -c --preserve-root'
 fi
 
 if [[ $(uname) == Darwin ]]; then
-  source ~/.zsh_aliases_osx
+  source ~/.aliases_osx
 fi

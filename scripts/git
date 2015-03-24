@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo "Finding git repositories..."
+DIRS=$(find $1 -type d -iname ".git")
+for DIR in ${DIRS[*]}; do
+  if [ -d "$DIR/hooks" ]; then
+    echo "Setting up $WORKING git hooks"
+    rm -rf $DIR/hooks/
+
+    WORKING=$(dirname $DIR)
+    git init --quiet $WORKING
+  fi
+done

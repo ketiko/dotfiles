@@ -1,4 +1,12 @@
 #!/bin/bash
 
-sudo apt-get install -y build-essential bash-completion curl git vim-nox tmux exuberant-ctags keychain
-sudo -k
+if [[ $(uname) != Darwin ]]; then
+  sudo apt-get install -y build-essential bash-completion curl git vim-nox tmux exuberant-ctags keychain
+  sudo -k
+fi
+
+if [[ $(uname) == Darwin ]]; then
+  if type brew &> /dev/null; then
+    brew install bash-completion bash-completion2 curl git vim tmux ctags keychain
+  fi
+fi

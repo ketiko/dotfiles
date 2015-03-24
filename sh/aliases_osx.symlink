@@ -1,11 +1,19 @@
-#!/bin/env zsh
+#!/bin/env sh
 
-alias ls='gls'
-alias ll='gls -alF'
-alias la='gls -A'
-alias l='gls -CF'
-alias dir='gdir'
-alias zcat='gzcat'
+if type gls &> /dev/null; then
+  alias ls='gls'
+  alias ll='gls -alF'
+  alias la='gls -A'
+  alias l='gls -CF'
+fi
+
+if type gdir &> /dev/null; then
+  alias dir='gdir'
+fi
+
+if type gzcat &> /dev/null; then
+  alias zcat='gzcat'
+fi
 
 # enable color support of ls and also add handy aliases
 if type gdircolors &> /dev/null; then
@@ -18,4 +26,8 @@ if type gdircolors &> /dev/null; then
 
   alias dir='gdir --color=auto'
   alias vdir='gvdir --color=auto'
+fi
+
+if type fasd &> /dev/null; then
+  alias o='fasd -a -e open'
 fi

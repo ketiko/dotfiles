@@ -1,6 +1,6 @@
 # Ryan Hansen's dotfiles
 
-These are my system configuration files.  Currently tested on ubuntu linux.
+These are my system configuration files.  Currently tested on Ubuntu Linux and OS X.
 Inspired by [Ryan Bates](https://github.com/ryanb/dotfiles) dotfiles.
 I didn't want a dependency on ruby for the installation,
 so everything is straight bash.
