@@ -181,7 +181,7 @@ let g:ctrlp_use_caching = 0
 
 " Ag Settings
 let g:aghighlight=1
-let g:agprg='ag --smart-case
+let g:agprg='ag --smart-case --column
       \ --nogroup
       \ --ignore .git
       \ --ignore .svn
