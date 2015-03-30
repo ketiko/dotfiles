@@ -73,7 +73,7 @@ set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip,*/log/*
 set wildmenu                    " make tab completion for files/buffers act like bash
 set wildmode=list,full  " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
 
-let mapleader = ","     " change <leader> from \ to ,
+let mapleader = " "     " change <leader> from \ to ,
 
 " Per-Filetype Scripts
 filetype on             " File type detection on
@@ -100,7 +100,7 @@ let g:rubycomplete_use_bundler = 1
 let g:ruby_operators = 1
 
 " clear highlighted search using the space bar
-nnoremap <Space> :nohlsearch<CR>
+nnoremap \ :nohlsearch<CR>
 
 " make ctrl i increment numbers instead of ctrl a
 noremap <C-i> <C-a>
@@ -108,15 +108,7 @@ noremap <C-i> <C-a>
 " Stay in visual mode after >>
 vnoremap << <gv
 vnoremap >> >gv
-nmap ,gf magg<S-v>G=`a
-
-" fix meta-keys which generate <Esc>a .. <Esc>z
-let c='a'
-while c <= 'z'
-  exec "set <A-".c.">=\e".c
-  exec "imap \e".c." <A-".c.">"
-  let c = nr2char(1+char2nr(c))
-endw
+nmap <leader>gf magg<S-v>G=`a
 
 set timeout ttimeoutlen=50
 
@@ -131,18 +123,18 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-map <M-k> <C-w>+
-map <M-j> <C-w>-
-map <M-l> <C-w>>
-map <M-h> <C-w><
 
-" Quickly move lines
-"nnoremap <M-j> :m +1<CR>==
-"nnoremap <M-k> :m -2<CR>==
-"inoremap <M-j> <Esc>:m +1<CR>==gi
-"inoremap <M-k> <Esc>:m -2<CR>==gi
-"vnoremap <M-j> :m '>+1<CR>gv=gv
-"vnoremap <M-k> :m '<-2<CR>gv=gv
+" fix meta-keys which generate <Esc>a .. <Esc>z
+"let c='a'
+"while c <= 'z'
+  "exec "set <A-".c.">=\e".c
+  "exec "imap \e".c." <A-".c.">"
+  "let c = nr2char(1+char2nr(c))
+"endw
+"map <M-k> <C-w>+
+"map <M-j> <C-w>-
+"map <M-l> <C-w>>
+"map <M-h> <C-w><
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -153,7 +145,6 @@ autocmd BufReadPost *
       \ endif
 
 " Spelling
-map <F7> :setlocal spell! spell?<CR>
 set spell spelllang=en_us
 highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
@@ -205,14 +196,13 @@ let g:yankring_replace_n_nkey = '<M-n>'
 let g:yankring_history_dir = '$HOME/.vim'
 
 " NERD Tree Settings
-map <leader>f :NERDTreeFind<CR>
-map <leader>n :NERDTreeToggle %:p:h<CR>
+"map <leader>f :NERDTreeFind<CR>
+"map <leader>n :NERDTreeToggle %:p:h<CR>
 
 " Rspec Settings
 let g:rspec_command = "Dispatch rspec {spec}"
-map <leader>a :Dispatch rspec<CR>
-map <leader>r :Dispatch rspec %<CR>
-map <leader>c :Dispatch rspec %:
+"map <leader>a :Dispatch rspec<CR>
+"map <leader>r :Dispatch rspec %<CR>
 
 " Tabgar Settings
 map <leader>tb :TagbarToggle<CR>
@@ -235,9 +225,14 @@ nmap ga <Plug>(EasyAlign)
 
 " EasyMotion Settings
 let g:EasyMotion_smartcase = 1
-let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 let g:EasyMotion_use_smartsign_us = 1
 let g:EasyMotion_use_upper = 1
+nmap f <Plug>(easymotion-fn)
+xmap f <Plug>(easymotion-fn)
+nmap F <Plug>(easymotion-Fn)
+xmap F <Plug>(easymotion-Fn)
+
 
 " Session Settings
 let g:session_autosave = 'no'

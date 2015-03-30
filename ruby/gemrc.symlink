@@ -1,5 +1,5 @@
-install: --no-ri --no-rdoc
-update: --no-ri --no-rdoc
+install: --no-rdoc
+update: --no-rdoc
 rdoc: --inline-source --line-numbers
 :update_sources: true
 :verbose: true

@@ -8,7 +8,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'gmarik/vundle'
   " -------------------
 
-  "Plugin 'tpope/vim-vinegar'
+  Plugin 'tpope/vim-vinegar'
   Plugin 'Lokaltog/vim-easymotion'
   Plugin 'altercation/vim-colors-solarized.git'
   Plugin 'ap/vim-css-color'
@@ -35,10 +35,10 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'nelstrom/vim-textobj-rubyblock'
   Plugin 'othree/javascript-libraries-syntax.vim'
   Plugin 'marijnh/tern_for_vim'
-  Plugin 'tpope/vim-commentary'
   Plugin 'pangloss/vim-javascript'
   Plugin 'rking/ag.vim'
   Plugin 'scrooloose/nerdcommenter'
+  Plugin 'Xuyuanp/nerdtree-git-plugin'
   Plugin 'scrooloose/nerdtree'
   Plugin 'scrooloose/syntastic'
   Plugin 'sjl/gundo.vim'
@@ -57,6 +57,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'tpope/vim-rails'
   Plugin 'tpope/vim-rake'
   Plugin 'tpope/vim-rbenv'
+  Plugin 'tpope/vim-speeddating'
   Plugin 'tpope/vim-repeat'
   Plugin 'tpope/vim-surround'
   "Plugin 'tpope/vim-unimpaired'
