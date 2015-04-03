@@ -7,6 +7,6 @@ fi
 
 if [[ $(uname) == Darwin ]]; then
   if type brew &> /dev/null; then
-    brew install bash-completion bash-completion2 curl git vim tmux ctags keychain
+    brew install bash-completion2 curl git macvim tmux ctags keychain
   fi
 fi
