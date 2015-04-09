@@ -8,6 +8,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'gmarik/vundle'
   " -------------------
 
+  Plugin 'mhinz/vim-hugefile'
   Plugin 'Lokaltog/vim-easymotion'
   Plugin 'Xuyuanp/nerdtree-git-plugin'
   Plugin 'altercation/vim-colors-solarized.git'

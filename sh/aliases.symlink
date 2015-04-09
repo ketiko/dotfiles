@@ -45,7 +45,7 @@ alias xo='xdg-open'
 
 if type fasd &> /dev/null; then
   alias o='fasd -a -e xdg-open' # quick opening files with xdg-open
-  alias v='fasd -f -e vim -B viminfo'      # quick opening files with vim
+  alias v='fasd -f -e vim -b viminfo'      # quick opening files with vim
 fi
 
 if [[ $(uname) != Darwin ]]; then

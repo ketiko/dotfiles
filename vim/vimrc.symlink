@@ -108,7 +108,7 @@ noremap <C-i> <C-a>
 " Stay in visual mode after >>
 vnoremap << <gv
 vnoremap >> >gv
-nmap <leader>gf magg<S-v>G=`a
+nmap ,gf magg<S-v>G=`a
 
 set timeout ttimeoutlen=50
 
@@ -165,8 +165,7 @@ let g:ctrlp_user_command = 'ag %s --smart-case --nogroup --nocolor --hidden
       \ --ignore tags
       \ -g ""'
 let g:ctrlp_lazy_update = 1
-let g:ctrlp_use_caching = 1
-let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_use_caching = 0
 
 " Ag Settings
 let g:aghighlight=1
@@ -180,6 +179,7 @@ let g:agprg='ag --smart-case --column
       \ '
 
 " Yankstack Settings
+let g:yankstack_map_keys = 0
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
