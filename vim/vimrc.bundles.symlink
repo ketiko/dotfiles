@@ -60,6 +60,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'tpope/vim-speeddating'
   Plugin 'tpope/vim-surround'
   Plugin 'tpope/vim-vinegar'
+  Plugin 'tpope/vim-unimpaired'
   Plugin 'vim-ruby/vim-ruby'
   Plugin 'vim-scripts/JavaScript-Indent'
   Plugin 'vim-scripts/closetag.vim'

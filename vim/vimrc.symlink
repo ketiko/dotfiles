@@ -143,6 +143,7 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
+
 " Solarized Settings
 if isdirectory(expand("~/.vim/bundle/vim-colors-solarized"))
   let g:solarized_termtrans=1
@@ -236,7 +237,7 @@ let g:session_autosave = 'no'
 " YCM Settings
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_auto_trigger = 1
+let g:ycm_auto_trigger = 0
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -258,9 +259,8 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=Black
 "vmap <Leader>z :call I18nTranslateString()<CR>
 
 " Folding
-"set foldmethod=syntax
-"let php_folding=1
-"set foldlevelstart=20
+set foldmethod=syntax
+set nofoldenable
 
 " Goldenview
 let g:goldenview__enable_default_mapping = 0
