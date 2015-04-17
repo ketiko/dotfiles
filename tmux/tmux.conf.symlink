@@ -42,6 +42,9 @@ bind-key -r M-j resize-pane -D 5
 bind-key -r M-k resize-pane -U 5
 bind-key -r M-l resize-pane -R 5
 
+bind-key > swap-window -t +1
+bind-key < swap-window -t -1
+
 # Start numbering at 1
 set -g base-index 1
 set -g pane-base-index 1
