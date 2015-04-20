@@ -9,7 +9,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   " -------------------
 
   Plugin 'Lokaltog/vim-easymotion'
-  Plugin 'Townk/vim-autoclose'
+  Plugin 'Raimondi/delimitMate'
   Plugin 'Xuyuanp/nerdtree-git-plugin'
   Plugin 'altercation/vim-colors-solarized.git'
   Plugin 'ap/vim-css-color'
