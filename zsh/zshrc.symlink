@@ -65,12 +65,6 @@ export KEYTIMEOUT=1
 
 # User configuration
 
-if [ -d "$HOME/.rbenv" ]; then
-  #if [ ":$PATH:" != *":$HOME/.rbenv/bin:"* ]; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-  #fi
-  eval "$(rbenv init -)"
-fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -86,7 +80,6 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-export KEYTIMEOUT=1
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
@@ -99,15 +92,6 @@ export KEYTIMEOUT=1
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-if [ -f "$HOME/.aliases.local" ]; then
-  . "$HOME/.aliases.local"
-fi
-
 if [ -f "$HOME/.zshrc.local" ]; then
   . "$HOME/.zshrc.local"
 fi
-
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
-[ -f $HOME/.tmuxinator.zsh ] && source $HOME/.tmuxinator.zsh

@@ -57,3 +57,7 @@ fi
 if [[ $(uname) == Darwin ]]; then
   source ~/.aliases_osx
 fi
+
+if [ -f "$HOME/.aliases.local" ]; then
+  . "$HOME/.aliases.local"
+fi

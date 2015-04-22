@@ -112,12 +112,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.aliases ]; then
-  source ~/.aliases
-fi
-
-if [ -f ~/.aliases.local ]; then
-  source ~/.aliases.local
+if [ -f $HOME/.aliases ]; then
+  source $HOME/.aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -130,21 +126,3 @@ if ! shopt -oq posix; then
     source /etc/bash_completion
   fi
 fi
-
-if [ -f $HOME/.tmuxinator.bash ]; then
-  source $HOME/.tmuxinator.bash
-fi
-
-if type fasd &> /dev/null; then
-  eval "$(fasd --init auto)"
-fi
-
-if type brew &> /dev/null; then
-  source `brew --repository`/Library/Contributions/brew_bash_completion.sh
-fi
-
-# added by travis gem
-if [ -f ~/.travis/travis.sh ]; then
-  source ~/.travis/travis.sh
-fi
-

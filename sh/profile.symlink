@@ -15,27 +15,9 @@ export PATH="/usr/local/bin:$PATH"
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then
   #if [ ":$PATH:" != *":$HOME/bin:"* ]; then
-    export PATH="$HOME/bin:$PATH"
+  export PATH="$HOME/bin:$PATH"
   #fi
 fi
-
-if [ -d "/usr/local/opt/go/libexec/bin" ]; then
-  export PATH=$PATH:/usr/local/opt/go/libexec/bin
-fi
-
-if [ -f "$HOME/.ssh/id_rsa" ]; then
-  if which keychain > /dev/null; then
-    eval $(keychain --quiet --quick)
-  fi
-fi
-
-if type go &> /dev/null; then
-  if [ -d "$HOME/go" ]; then
-    export GOPATH=$HOME/go
-    export PATH=$PATH:$GOPATH/bin
-  fi
-fi
-
 export PAGER="less"
 export EDITOR="vim"
 export VISUAL="vim"
@@ -54,6 +36,43 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 export JAVA_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Djruby.compile.mode=OFF -Djruby.compile.invokedynamic=false -Xmx512M -Xms512m"
+
+if [ -f "$HOME/.ssh/id_rsa" ]; then
+  if which keychain > /dev/null; then
+    eval $(keychain --quiet --quick)
+  fi
+fi
+
+if [ -d "/usr/local/opt/go/libexec/bin" ]; then
+  export PATH=$PATH:/usr/local/opt/go/libexec/bin
+fi
+
+if type go &> /dev/null; then
+  if [ -d "$HOME/go" ]; then
+    export GOPATH=$HOME/go
+    export PATH=$PATH:$GOPATH/bin
+  fi
+fi
+
+if [ -d "$HOME/.rbenv" ]; then
+  #if [ ":$PATH:" != *":$HOME/.rbenv/bin:"* ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  #fi
+  eval "$(rbenv init -)"
+fi
+
+if type fasd &> /dev/null; then
+  eval "$(fasd --init auto)"
+fi
+
+if type brew &> /dev/null; then
+  if [ -n "$BASH_VERSION" ]; then
+    . "`brew --repository`/Library/Contributions/brew_bash_completion.sh"
+  fi
+  # if [ -n "$ZSH_VERSION" ]; then
+  #   . "`brew --repository`/Library/Contributions/brew_zsh_completion.zsh"
+  # fi
+fi
 
 if [ -f "$HOME/.profile.local" ]; then
   . "$HOME/.profile.local"
