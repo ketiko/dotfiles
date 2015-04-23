@@ -46,16 +46,16 @@ alias xo='xdg-open'
 if type fasd &> /dev/null; then
   alias o='fasd -a -e xdg-open' # quick opening files with xdg-open
   alias v='fasd -f -e vim -b viminfo'      # quick opening files with vim
+  if [[ $(uname) == Darwin ]]; then
+    alias o='LANG=C fasd -a -e open'
+    alias v='LANG=C fasd -f -e vim -b viminfo'
+  fi
 fi
 
 if [[ $(uname) != Darwin ]]; then
   alias chown='chown -c --preserve-root'
   alias chmod='chmod -c --preserve-root'
   alias chgrp='chgrp -c --preserve-root'
-fi
-
-if [[ $(uname) == Darwin ]]; then
-  source ~/.aliases_osx
 fi
 
 if [ -f "$HOME/.aliases.local" ]; then

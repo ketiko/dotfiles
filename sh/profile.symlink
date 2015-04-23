@@ -10,7 +10,11 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+if [[ $(uname) == Darwin ]]; then
+  export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+  export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
+fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then
