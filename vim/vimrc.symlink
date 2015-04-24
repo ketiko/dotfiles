@@ -278,12 +278,12 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.jsx"
 
 " unimpaired
 " Bubble single lines
-nmap <C-k> [e
-nmap <C-j> ]e
+nmap <C-Down> [e
+nmap <C-Up> ]e
 
 " Bubble multiple lines
-vmap <C-k> [egv
-vmap <C-j> ]egv
+vmap <C-Down> [egv
+vmap <C-Up> ]egv
 
 " Quickly edit/reload the vimrc file
 nmap <silent> ,ev :e $MYVIMRC<CR>
