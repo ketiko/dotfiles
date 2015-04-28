@@ -44,7 +44,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'scrooloose/nerdtree'
   Plugin 'scrooloose/syntastic'
   Plugin 'sjl/gundo.vim'
-  Plugin 'svermeulen/vim-easyclip'
+  Plugin 'maxbrunsfeld/vim-yankstack'
   Plugin 'tejr/vim-tmux'
   Plugin 'tomtom/tcomment_vim'
   Plugin 'tpope/vim-abolish'

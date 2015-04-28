@@ -4,8 +4,8 @@ set runtimepath+=$HOME/.vim
 set viminfo='10000,<5000,s1000,h
 set viminfo+=n$HOME/.vim/info
 set tags+=./tags,~/.vim/tags;
-set directory=~/.vim/swap//
-set backupdir=~/.vim/backup//
+" set directory=$HOME/.vim/swap//
+set backupdir=$HOME/.vim/backup//
 set term=ansi
 
 source $HOME/.vimrc.bundles
@@ -17,7 +17,7 @@ set autoindent          " Copy indent from current line when starting a new line
 set backspace=2         " makes backspace work normally
 set nobackup
 set nowritebackup
-set noswapfile
+set swapfile
 set cmdheight=1         " Cmd bar 2 rows high
 set complete+=kspell
 set completeopt=menu
@@ -138,7 +138,6 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
-
 " Solarized Settings
 if isdirectory(expand("~/.vim/bundle/vim-colors-solarized"))
   let g:solarized_termtrans=1
@@ -174,11 +173,10 @@ let g:agprg='ag --smart-case --column
       \ --ignore tags
       \ '
 
-" easyclip
-nmap <leader>P <plug>EasyClipSwapPasteForward
-nmap <leader>p <plug>EasyClipSwapPasteBackwards
-let g:EasyClipUsePasteToggleDefaults = 0
-let g:EasyClipShareYanks = 1
+" yankstack
+let g:yankstack_map_keys = 0
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " NERD Tree Settings
 map <leader>f :NERDTreeFind<CR>
@@ -232,7 +230,7 @@ let g:session_autosave = 'no'
 " YCM Settings
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_auto_trigger = 1
+let g:ycm_auto_trigger = 0
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -249,9 +247,6 @@ let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=Yellow
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=Black
-
-" i18n
-"vmap <Leader>z :call I18nTranslateString()<CR>
 
 " Folding
 set foldmethod=syntax
@@ -278,12 +273,12 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.jsx"
 
 " unimpaired
 " Bubble single lines
-nmap <C-Down> [e
-nmap <C-Up> ]e
+nmap <leader>k [e
+nmap <leader>j ]e
 
+vmap <leader>k [egv
+vmap <leader>j ]egv
 " Bubble multiple lines
-vmap <C-Down> [egv
-vmap <C-Up> ]egv
 
 " Quickly edit/reload the vimrc file
 nmap <silent> ,ev :e $MYVIMRC<CR>
