@@ -30,3 +30,10 @@ if [ ! -d ~/.rbenv/plugins/rbenv-update ]; then
   echo "Installing rbenv-update"
   git clone https://github.com/rkh/rbenv-update.git ~/.rbenv/plugins/rbenv-update
 fi
+
+if [[ $(uname) == Darwin ]]; then
+  if [ ! -d ~/.rbenv/plugins/rbenv-readline ]; then
+    echo "Installing rbenv-readline for OS X"
+    git clone git://github.com/tpope/rbenv-readline.git ~/.rbenv/plugins/rbenv-readline
+  fi
+fi

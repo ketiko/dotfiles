@@ -11,7 +11,7 @@
   diff = auto
   interactive = auto
 [push]
-  default = upstream
+  default = current
 [pull]
   rebase = true
 [branch]
