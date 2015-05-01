@@ -151,16 +151,16 @@ endif
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_show_hidden=1
-let g:ctrlp_max_files=0
-let g:ctrlp_user_command = 'ag %s --smart-case --nogroup --nocolor --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore tags
-      \ -g ""'
+" let g:ctrlp_user_command = 'ag %s --smart-case --nogroup --nocolor --hidden
+"       \ --ignore .git
+"       \ --ignore .svn
+"       \ --ignore .hg
+"       \ --ignore .DS_Store
+"       \ --ignore tags
+"       \ -g ""'
 let g:ctrlp_lazy_update = 1
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 1
 
 " Ag Settings
 let g:aghighlight=1
@@ -230,7 +230,7 @@ let g:session_autosave = 'no'
 " YCM Settings
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_auto_trigger = 0
+let g:ycm_auto_trigger = 1
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -279,6 +279,9 @@ nmap <leader>j ]e
 vmap <leader>k [egv
 vmap <leader>j ]egv
 " Bubble multiple lines
+
+" javascript-libraries-syntax
+let g:used_javascript_libs = 'jquery,angularjs,react'
 
 " Quickly edit/reload the vimrc file
 nmap <silent> ,ev :e $MYVIMRC<CR>
