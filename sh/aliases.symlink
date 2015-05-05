@@ -5,7 +5,8 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
+dc=`which dircolors`
+if [ -n $dc ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
   alias ls='ls --color=auto'
@@ -15,14 +16,8 @@ if [ -x /usr/bin/dircolors ]; then
 
   alias dir='dir --color=auto'
   alias vdir='vdir --color=auto'
-
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
-
 fi
 
-alias less='less -FSRX'
 alias ag='ag --color --smart-case --pager less --color-match="92" --color-path="35"'
 alias b="bundle"
 alias be="bundle exec"
@@ -56,6 +51,8 @@ if [[ $(uname) != Darwin ]]; then
   alias chmod='chmod -c --preserve-root'
   alias chgrp='chgrp -c --preserve-root'
 fi
+
+alias whereami='curl curlmyip.com'
 
 if [ -f "$HOME/.aliases.local" ]; then
   . "$HOME/.aliases.local"
