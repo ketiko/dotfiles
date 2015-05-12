@@ -4,4 +4,4 @@ if [ ! -d ~/.solarized ]; then
   git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git ~/.solarized
 fi
 
- ~/./.solarized/solarize dark
+ ~/.solarized/set_dark.sh

@@ -23,7 +23,7 @@ if [ -d "$HOME/bin" ]; then
   #fi
 fi
 
-export LESS="iFRSXJMQ"
+export LESS="-iFRSXJMQ"
 export PAGER="less"
 export EDITOR="vim"
 export VISUAL="vim"
@@ -33,14 +33,6 @@ export GREP_OPTIONS="--color=auto"
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWSTASHSTATE=true
-
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-  # include .bashrc if it exists
-  if [ -f "$HOME/.bashrc" ]; then
-    source "$HOME/.bashrc"
-  fi
-fi
 
 export JAVA_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Djruby.compile.mode=OFF -Djruby.compile.invokedynamic=false -Xmx512M -Xms512m"
 
@@ -81,30 +73,19 @@ if type brew &> /dev/null; then
   # fi
 fi
 
-GRC=`which grc`
-if [ "$TERM" != dumb ] && [ -n "$GRC" ]
-then
-  alias colourify="$GRC -es --colour=auto"
-  alias configure='colourify ./configure'
-  alias diff='colourify diff'
-  alias make='colourify make'
-  alias gcc='colourify gcc'
-  alias g++='colourify g++'
-  alias as='colourify as'
-  alias gas='colourify gas'
-  alias ld='colourify ld'
-  alias netstat='colourify netstat'
-  alias ping='colourify ping'
-  alias traceroute='colourify /usr/sbin/traceroute'
-  alias head='colourify head'
-  alias tail='colourify tail'
-  alias dig='colourify dig'
-  alias mount='colourify mount'
-  alias ps='colourify ps'
-  alias mtr='colourify mtr'
-  alias df='colourify df'
+# only define LC_CTYPE if undefined
+if [[ -z "$LC_CTYPE" && -z "$LC_ALL" ]]; then
+  export LC_CTYPE=${LANG%%:*} # pick the first entry from LANG
 fi
 
 if [ -f "$HOME/.profile.local" ]; then
   . "$HOME/.profile.local"
+fi
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+  # include .bashrc if it exists
+  if [ -f "$HOME/.bashrc" ]; then
+    source "$HOME/.bashrc"
+  fi
 fi
