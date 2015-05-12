@@ -34,6 +34,8 @@ export GIT_PS1_SHOWSTASHSTATE=true
 
 export JAVA_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Djruby.compile.mode=OFF -Djruby.compile.invokedynamic=false -Xmx512M -Xms512m"
 
+export KEYTIMEOUT=1
+
 if [ -f "$HOME/.ssh/id_rsa" ]; then
   if which keychain > /dev/null; then
     eval $(keychain --quiet --quick)
