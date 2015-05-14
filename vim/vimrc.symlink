@@ -173,10 +173,13 @@ let g:agprg='ag --smart-case --column
       \ --ignore tags
       \ '
 
-" yankstack
-let g:yankstack_map_keys = 0
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
+" EasyClip settings
+let g:EasyClipShareYanks = 1
+let g:EasyClipUsePasteToggleDefaults = 0
+let g:EasyClipEnableBlackHoleRedirect = 0
+
+nmap <leader>p <Plug>EasyClipSwapPasteForward
+nmap <leader>P <Plug>EasyClipSwapPasteBackwards
 
 " NERD Tree Settings
 map <leader>f :NERDTreeFind<CR>
