@@ -103,7 +103,7 @@ noremap <C-i> <C-a>
 " Stay in visual mode after >>
 vnoremap << <gv
 vnoremap >> >gv
-nmap ,gf magg<S-v>G=`a
+nnoremap ,gf magg<S-v>G=`a
 
 set timeout ttimeoutlen=50
 
@@ -173,13 +173,17 @@ let g:agprg='ag --smart-case --column
       \ --ignore tags
       \ '
 
-" EasyClip settings
-let g:EasyClipShareYanks = 1
-let g:EasyClipUsePasteToggleDefaults = 0
-let g:EasyClipEnableBlackHoleRedirect = 0
+" YankStack settings
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
-nmap <leader>p <Plug>EasyClipSwapPasteForward
-nmap <leader>P <Plug>EasyClipSwapPasteBackwards
+" EasyClip settings
+" let g:EasyClipShareYanks = 1
+" let g:EasyClipUsePasteToggleDefaults = 0
+" let g:EasyClipEnableBlackHoleRedirect = 0
+"
+" nmap <leader>p <Plug>EasyClipSwapPasteForward
+" nmap <leader>P <Plug>EasyClipSwapPasteBackwards
 
 " NERD Tree Settings
 map <leader>f :NERDTreeFind<CR>
@@ -231,12 +235,13 @@ let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
 let g:session_autosave = 'no'
 
 " YCM Settings
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_auto_trigger = 1
 let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_auto_trigger = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
 
 " UltiSnip Settings
 let g:UltiSnipsExpandTrigger = '<C-l>'

@@ -23,7 +23,7 @@ bind-key -t vi-copy v begin-selection
 bind-key -t vi-copy y copy-selection
 
 # Load env variables for new shells
-set -g update-environment -r
+# set -g update-environment
 
 # Enable Vim style navigation
 bind h select-pane -L
