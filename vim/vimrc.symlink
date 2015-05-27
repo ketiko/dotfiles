@@ -4,7 +4,6 @@ set runtimepath+=$HOME/.vim
 set viminfo='10000,<5000,s1000,h
 set viminfo+=n$HOME/.vim/info
 set tags+=./tags,~/.vim/tags;
-" set directory=$HOME/.vim/swap//
 set backupdir=$HOME/.vim/backup//
 set term=ansi
 
@@ -17,6 +16,7 @@ set autoindent          " Copy indent from current line when starting a new line
 set backspace=2         " makes backspace work normally
 set nobackup
 set nowritebackup
+" set directory=$HOME/.vim/swap//
 set swapfile
 set cmdheight=1         " Cmd bar 2 rows high
 set complete+=kspell
@@ -295,3 +295,7 @@ let g:used_javascript_libs = 'jquery,angularjs,react'
 nmap <silent> ,ev :e $MYVIMRC<CR>
 nmap <silent> ,eb :e $HOME/.vimrc.bundles<CR>
 nmap <silent> ,sv :source $MYVIMRC<CR>
+
+if filereadable(expand("~/.vimrc.local"))
+  source $HOME/.vimrc.local
+endif

@@ -26,6 +26,7 @@ alias less="less -iFRSXJMQ"
 alias ag='ag --color --smart-case --pager less --color-match="92" --color-path="35"'
 alias b="bundle"
 alias be="bundle exec"
+alias bc="bundle console"
 alias rb='rbenv'
 alias r='rake'
 alias g='git'
