@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $(uname) != Darwin ]]; then
-  sudo apt-get install -y build-essential bash-completion curl git vim-nox tmux exuberant-ctags keychain nodejs npm htop ack-grep silversearcher-ag tree pv fasd watch editorconfig axel
+  sudo apt-get install -y build-essential bash-completion curl git vim-nox tmux exuberant-ctags keychain nodejs npm htop ack-grep silversearcher-ag tree pv editorconfig axel
   sudo -k
 fi
 
