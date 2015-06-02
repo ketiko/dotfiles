@@ -34,7 +34,6 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'kchmck/vim-coffee-script'
   Plugin 'kien/ctrlp.vim'
   Plugin 'marijnh/tern_for_vim'
-  " Plugin 'svermeulen/vim-easyclip'
   Plugin 'maxbrunsfeld/vim-yankstack'
   Plugin 'mhinz/vim-hugefile'
   Plugin 'michaeljsmith/vim-indent-object'
@@ -45,7 +44,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'nginx/nginx'
   Plugin 'othree/html5.vim'
   Plugin 'othree/javascript-libraries-syntax.vim'
-  Plugin 'pangloss/vim-javascript'
+  Plugin 'jelera/vim-javascript-syntax'
   Plugin 'rking/ag.vim'
   Plugin 'scrooloose/nerdtree'
   Plugin 'scrooloose/syntastic'
@@ -77,6 +76,8 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'xolox/vim-misc'
   Plugin 'xolox/vim-session'
   Plugin 'zhaocai/GoldenView.Vim'
+  Plugin 'markcornick/vim-terraform'
+  Plugin 'markcornick/vim-vagrant'
 
   if (v:version > 700)
     Plugin 'SirVer/ultisnips'

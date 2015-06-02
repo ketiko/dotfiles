@@ -1,12 +1,12 @@
 #!/bin/bash
 
 if [[ $(uname) != Darwin ]]; then
-  sudo apt-get install -y build-essential bash-completion curl git vim-nox tmux exuberant-ctags keychain
+  sudo apt-get install -y build-essential bash-completion curl git vim-nox tmux exuberant-ctags keychain nodejs npm htop ack-grep silversearcher-ag tree pv fasd watch editorconfig axel
   sudo -k
 fi
 
 if [[ $(uname) == Darwin ]]; then
   if type brew &> /dev/null; then
-    brew install bash-completion2 curl git macvim tmux ctags keychain
+    brew install bash-completion2 curl git macvim tmux ctags pv ack axel fasd keychain node tidy-html5 gpg-agent htop-osx the_silver_searcher tree reattach-to-user-namespace trash watch wrk editorconfig hub grep
   fi
 fi
