@@ -4,6 +4,7 @@
   editor = vim
   excludesfile = ~/.gitignore
   autocrlf = false
+  pager = less -iFRSXJMQ
 [color]
   pager = true
   status = auto
