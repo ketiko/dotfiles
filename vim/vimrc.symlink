@@ -119,6 +119,27 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Yank/Paste to system clipboard settings
+if has('unnamedplus')
+  vmap ,p "+p
+  vmap ,P "+P
+  vmap ,y "+y
+  vmap ,Y "+Y
+  nmap ,p "+p
+  nmap ,P "+P
+  nmap ,y "+y
+  nmap ,Y "+Y
+else
+  vmap ,p "*p
+  vmap ,P "*P
+  vmap ,y "*y
+  vmap ,Y "*Y
+  nmap ,p "*p
+  nmap ,P "*P
+  nmap ,y "*y
+  nmap ,Y "*Y
+endif
+
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 "   " (happens when dropping a file on gvim).
@@ -202,6 +223,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 map <leader>l :lopen<CR>
+
+" vim-markdown-preview
+let vim_markdown_preview_toggle=3
+let vim_markdown_preview_browser='Google Chrome'
 
 " Rspec Settings
 let g:rspec_command = "Dispatch rspec {spec}"
