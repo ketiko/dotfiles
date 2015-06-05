@@ -64,7 +64,7 @@
   pu = push -u
   pl = pull --rebase
   pull = pull --rebase
-  new = log master.. --reverse --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --relative-date --decorate
+  new = log origin/master.. --reverse --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --relative-date --decorate
   meld = !git-meld.pl
 [diff]
   tool = beyondcompare
