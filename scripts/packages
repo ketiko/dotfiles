@@ -1,12 +1,58 @@
 #!/bin/bash
 
 if [[ $(uname) != Darwin ]]; then
-  sudo apt-get install -y build-essential bash-completion curl git git-extras vim-nox tmux exuberant-ctags keychain nodejs npm htop ack-grep silversearcher-ag tree pv editorconfig axel
+  sudo apt-get install -y \
+    ack-grep \
+    axel
+    bash-completion \
+    build-essential \
+    curl \
+    editorconfig \
+    exuberant-ctags \
+    git \
+    git-extras \
+    grc \
+    htop \
+    keychain \
+    nodejs \
+    npm \
+    pv \
+    silversearcher-ag \
+    tmux \
+    tree \
+    vim-nox
+
   sudo -k
 fi
 
 if [[ $(uname) == Darwin ]]; then
   if type brew &> /dev/null; then
-    brew install bash-completion2 curl git git-extras macvim tmux ctags pv ack axel fasd keychain node tidy-html5 gpg-agent htop-osx the_silver_searcher tree reattach-to-user-namespace trash watch wrk editorconfig hub grep
+    brew install \
+      ack \
+      axel \
+      bash-completion2 \
+      ctags \
+      curl \
+      editorconfig \
+      fasd \
+      git \
+      git-extras \
+      gpg-agent \
+      grc \
+      grep \
+      htop-osx \
+      hub \
+      keychain \
+      macvim \
+      node \
+      pv \
+      reattach-to-user-namespace \
+      the_silver_searcher \
+      tidy-html5 \
+      tmux \
+      trash \
+      tree \
+      watch \
+      wrk
   fi
 fi
