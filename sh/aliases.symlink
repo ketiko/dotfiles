@@ -22,7 +22,7 @@ if [ -n $dc ]; then
   alias egrep='egrep --color=auto'
 fi
 
-alias ag='ag --color --smart-case --pager less --color-match="92" --color-path="35"'
+alias ag='ag --color --smart-case --pager less --color-match="1;31" --color-path="35"'
 alias b="bundle"
 alias be="bundle exec"
 alias bc="bundle console"
