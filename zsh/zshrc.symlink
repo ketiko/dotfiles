@@ -33,6 +33,9 @@
 # bindkey -M vicmd 'k' history-substring-search-up
 # bindkey -M vicmd 'j' history-substring-search-down
 
+# antigen bundle zsh-users/zsh-syntax-highlighting
+# antigen bundle zsh-users/zsh-completions src
+
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 autoload -U compinit && compinit
@@ -45,9 +48,8 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
 
-# Use caching so that commands like apt and dpkg complete are useable
-zstyle ':completion::complete:*' use-cache 1
-# zstyle ':completion::complete:*' cache-path $ZSH_CACHE_DIR
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
 
 # Don't complete uninteresting users
 zstyle ':completion:*:*:*:users' ignored-patterns \
