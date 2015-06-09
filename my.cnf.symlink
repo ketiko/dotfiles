@@ -1,0 +1,8 @@
+[client]
+host = localhost
+user = root
+pager = less
+
+[mysql]
+auto-rehash
+prompt = \\u@\\h[\\d]>\\_
