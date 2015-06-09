@@ -1,13 +1,21 @@
 #!/bin/bash
 
 echo "Installing Node modules for Vim Syntastic checks"
-npm install -g babel-eslint
-npm install -g csslint
-npm install -g eslint
-npm install -g eslint-plugin-react
-npm install -g js-yaml
-npm install -g jshint
-npm install -g jsonlint
-npm install -g jsxhint
-npm install -g react-tools
-npm install -g syntastic-react
+please=
+if [[ $(uname) != Darwin ]]; then
+  please=sudo
+fi
+$please npm install -g babel-eslint
+$please npm install -g csslint
+$please npm install -g eslint
+$please npm install -g eslint-plugin-react
+$please npm install -g js-yaml
+$please npm install -g jshint
+$please npm install -g jsonlint
+$please npm install -g jsxhint
+$please npm install -g react-tools
+$please npm install -g syntastic-react
+
+if [[ $(uname) != Darwin ]]; then
+  sudo -k
+fi
