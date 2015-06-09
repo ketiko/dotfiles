@@ -17,7 +17,7 @@ else
   . "$SCRIPTPATH/scripts/dotfiles" $ARGS
   . "$SCRIPTPATH/scripts/vim"
   . "$SCRIPTPATH/scripts/vim-node-modules"
-  . "$SCRIPTPATH/scripts/solarized"
   . "$SCRIPTPATH/scripts/rbenv"
   . "$SCRIPTPATH/scripts/zsh"
+  . "$SCRIPTPATH/scripts/solarized"
 fi
