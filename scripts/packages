@@ -21,8 +21,6 @@ if [[ $(uname) != Darwin ]]; then
     tmux \
     tree \
     vim-nox
-
-  sudo -k
 fi
 
 if [[ $(uname) == Darwin ]]; then

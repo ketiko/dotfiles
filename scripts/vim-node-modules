@@ -15,7 +15,3 @@ $please npm install -g jsonlint
 $please npm install -g jsxhint
 $please npm install -g react-tools
 $please npm install -g syntastic-react
-
-if [[ $(uname) != Darwin ]]; then
-  sudo -k
-fi

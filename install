@@ -21,3 +21,5 @@ else
   . "$SCRIPTPATH/scripts/zsh"
   . "$SCRIPTPATH/scripts/solarized"
 fi
+
+sudo -k
