@@ -14,7 +14,7 @@ if [ $ACTION != "all" ]; then
   . "$SCRIPTPATH/scripts/$ACTION" $ARGS
 else
   . "$SCRIPTPATH/scripts/packages"
-  . "$SCRIPTPATH/scripts/dotfiles" $ARGS
+  . "$SCRIPTPATH/scripts/dotfiles" O
   . "$SCRIPTPATH/scripts/vim"
   . "$SCRIPTPATH/scripts/vim-node-modules"
   . "$SCRIPTPATH/scripts/rbenv"
