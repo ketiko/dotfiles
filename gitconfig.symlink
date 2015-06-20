@@ -42,11 +42,13 @@
   cb = checkout -b
   chp = cherry-pick
   df = diff --word-diff
+  df = diff --color-words
   dt = difftool
-  da = !~/bin/git-diffall
-  di = diff --staged
+  da = difftool --dir-diff
+  dac = difftool --dir-diff --cached
+  di = diff --staged --color-words
   ds = diff --stat
-  dc = diff --cached
+  dc = diff --cached --color-words
   dtc = difftool --cached
   ca = commit --amend
   aa = add --all
@@ -63,7 +65,6 @@
   ps = push
   pu = push -u
   pl = pull --rebase
-  pull = pull --rebase
   new = log origin/master.. --reverse --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --relative-date --decorate
   meld = !git-meld.pl
 [diff]
