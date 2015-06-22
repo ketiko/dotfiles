@@ -115,7 +115,7 @@ setopt hist_verify
 setopt hist_reduce_blanks
 setopt share_history # share command history data
 
-setopt extended_glob
+# setopt extended_glob
 
 setopt no_beep
 setopt multios
@@ -157,24 +157,6 @@ bindkey -M vicmd 'v' edit-command-line
 # allow ctrl-p, ctrl-n for navigate history (standard behaviour)
 bindkey '^P' up-history
 bindkey '^N' down-history
-
-# bind UP and DOWN arrow keys
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-
-# bind UP and DOWN arrow keys (compatibility fallback
-# for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-# bind P and N for EMACS mode
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
-
-# bind k and j for VI mode
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
 
 source $HOME/.aliases
 

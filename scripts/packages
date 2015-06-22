@@ -20,37 +20,53 @@ if [[ $(uname) != Darwin ]]; then
     silversearcher-ag \
     tmux \
     tree \
-    vim-nox
+    vim-nox \
+    zsh
 fi
 
 if [[ $(uname) == Darwin ]]; then
   if type brew &> /dev/null; then
+    brew tap homebrew/dupes
     brew install \
       ack \
       axel \
-      bash-completion2 \
+      bar \
+      bash-completion \
+      binutils \
+      coreutils \
+      cscope \
       ctags \
       curl \
       editorconfig \
       fasd \
+      findutils --with-default-names \
       git \
       git-extras \
+      gnu-indent --with-default-names \
+      gnu-sed --with-default-names \
+      gnu-tar --with-default-names \
+      gnu-which --with-default-names \
+      gnutls --with-default-names \
       gpg-agent \
       grc \
-      grep \
       htop-osx \
       hub \
       keychain \
-      macvim \
+      macvim --with-cscope --with-lua --override-system-vim \
       node \
+      openssl \
       pv \
+      readline \
       reattach-to-user-namespace \
+      ssh-copy-id \
       the_silver_searcher \
       tidy-html5 \
       tmux \
       trash \
       tree \
       watch \
-      wrk
+      wget \
+      wrk \
+      zsh
   fi
 fi
