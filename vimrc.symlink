@@ -119,6 +119,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+map <Left> <C-w><
+map <Down> <C-w>+
+map <Up> <C-w>-
+map <Right> <C-w>>
+
 " Yank/Paste to system clipboard settings
 if has('unnamedplus')
   vmap ,p "+p
@@ -172,13 +177,14 @@ endif
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_show_hidden=1
-" let g:ctrlp_user_command = 'ag %s --smart-case --nogroup --nocolor --hidden
-"       \ --ignore .git
-"       \ --ignore .svn
-"       \ --ignore .hg
-"       \ --ignore .DS_Store
-"       \ --ignore tags
-"       \ -g ""'
+let g:ctrlp_user_command = 'ag %s --smart-case --nogroup --nocolor --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore node_modules
+      \ --ignore tags
+      \ -g ""'
 let g:ctrlp_lazy_update = 1
 let g:ctrlp_use_caching = 0
 let g:ctrlp_clear_cache_on_exit = 1
@@ -191,20 +197,13 @@ let g:agprg='ag --smart-case --column
       \ --ignore .svn
       \ --ignore .hg
       \ --ignore .DS_Store
+      \ --ignore node_modules
       \ --ignore tags
       \ '
 
 " YankStack settings
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
-
-" EasyClip settings
-" let g:EasyClipShareYanks = 1
-" let g:EasyClipUsePasteToggleDefaults = 0
-" let g:EasyClipEnableBlackHoleRedirect = 0
-"
-" nmap <leader>p <Plug>EasyClipSwapPasteForward
-" nmap <leader>P <Plug>EasyClipSwapPasteBackwards
 
 " NERD Tree Settings
 map <leader>f :NERDTreeFind<CR>
@@ -223,12 +222,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 map <leader>l :lopen<CR>
-
-" Rainbow parentheses
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
 
 " vim-markdown-preview
 let vim_markdown_preview_toggle=3
@@ -268,7 +261,7 @@ let g:session_autosave = 'no'
 
 " YCM Settings
 let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_auto_trigger = 0
+let g:ycm_auto_trigger = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
@@ -324,8 +317,8 @@ vmap <leader>j ]egv
 let g:used_javascript_libs = 'jquery,angularjs,react'
 
 " Quickly edit/reload the vimrc file
-nmap <silent> ,ev :e $MYVIMRC<CR>
-nmap <silent> ,eb :e $HOME/.vimrc.bundles<CR>
+nmap <silent> ,ev :vsplit $MYVIMRC<CR>
+nmap <silent> ,eb :vsplit $HOME/.vimrc.bundles<CR>
 nmap <silent> ,sv :source $MYVIMRC<CR>
 
 if filereadable(expand("~/.vimrc.local"))

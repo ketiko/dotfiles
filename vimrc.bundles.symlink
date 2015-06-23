@@ -34,7 +34,6 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'kana/vim-textobj-function'
   Plugin 'kana/vim-textobj-user'
   Plugin 'kchmck/vim-coffee-script'
-  Plugin 'kien/rainbow_parentheses.vim'
   Plugin 'kien/ctrlp.vim'
   Plugin 'marijnh/tern_for_vim'
   Plugin 'markcornick/vim-terraform'
