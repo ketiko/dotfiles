@@ -229,8 +229,7 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
-" vim hier
-let g:hier_enabled = 1
+
 " vim-markdown-preview
 let vim_markdown_preview_toggle=3
 let vim_markdown_preview_browser='Google Chrome'

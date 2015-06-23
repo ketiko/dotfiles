@@ -39,14 +39,15 @@ if [[ $(uname) == Darwin ]]; then
       curl \
       editorconfig \
       fasd \
-      findutils --with-default-names \
+      findutils --default-names \
       git \
       git-extras \
-      gnu-indent --with-default-names \
-      gnu-sed --with-default-names \
-      gnu-tar --with-default-names \
-      gnu-which --with-default-names \
-      gnutls --with-default-names \
+      gnu-indent --default-names \
+      gnu-sed --default-names \
+      gnu-tar --default-names \
+      gnu-getopt --default-names \
+      gnu-which --default-names \
+      gnutls --default-names \
       gpg-agent \
       grc \
       htop-osx \
