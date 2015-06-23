@@ -1,9 +1,15 @@
 #!/bin/bash
 
-if [ ! -d ~/.solarized ]; then
-  git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git ~/.solarized
+mkdir -p ~/.solarized
+
+if [ ! -d ~/.solarized/gnome-terminal ]; then
+  git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git ~/.solarized/gnome-terminal
 fi
 
 if which gnome-terminal &> /dev/null; then
-  ~/.solarized/set_dark.sh
+  ~/.solarized/gnome-terminal/set_dark.sh
+fi
+
+if [ ! -d ~/.solarized/official ]; then
+  git clone https://github.com/altercation/solarized.git ~/.solarized/official
 fi

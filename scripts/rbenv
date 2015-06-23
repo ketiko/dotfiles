@@ -36,6 +36,11 @@ if [ ! -d ~/.rbenv/plugins/rbenv-gem-rehash ]; then
   git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
 fi
 
+if [ ! -d ~/.rbenv/plugins/rbenv-each ]; then
+  echo "Installing rbenv-each"
+  git clone https://github.com/rbenv/rbenv-each ~/.rbenv/plugins/rbenv-each
+fi
+
 if [[ $(uname) == Darwin ]]; then
   if [ ! -d ~/.rbenv/plugins/rbenv-readline ]; then
     echo "Installing rbenv-readline for OS X"
