@@ -9,7 +9,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   " -------------------
 
   Plugin 'Glench/Vim-Jinja2-Syntax'
-  Plugin 'JamshedVesuna/vim-markdown-preview'
+  Plugin 'suan/vim-instant-markdown'
   Plugin 'Lokaltog/vim-easymotion'
   Plugin 'Raimondi/delimitMate'
   Plugin 'Xuyuanp/nerdtree-git-plugin'

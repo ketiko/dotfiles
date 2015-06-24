@@ -15,3 +15,4 @@ $please npm install -g jsonlint
 $please npm install -g jsxhint
 $please npm install -g react-tools
 $please npm install -g syntastic-react
+$please npm install -g instant-markdown-d
