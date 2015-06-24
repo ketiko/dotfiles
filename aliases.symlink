@@ -81,6 +81,7 @@ then
   alias ps='colourify ps'
   alias mtr='colourify mtr'
   alias df='colourify df'
+  alias cat='colourify cat'
 fi
 
 if [ -f "$HOME/.aliases.local" ]; then
