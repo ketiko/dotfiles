@@ -223,9 +223,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 map <leader>l :lopen<CR>
 
-" vim-instant-markdown
-let g:instant_markdown_slow = 1
-
 " Rspec Settings
 let g:rspec_command = "Dispatch rspec {spec}"
 "map <leader>a :Dispatch rspec<CR>
