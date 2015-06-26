@@ -260,7 +260,7 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_auto_trigger = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 
@@ -280,6 +280,9 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=Black
 " Folding
 set foldmethod=syntax
 set nofoldenable
+
+" vim-instant-markdown
+let g:instant_markdown_autostart = 0
 
 " Goldenview
 let g:goldenview__enable_default_mapping = 0
@@ -313,8 +316,8 @@ vmap <leader>j ]egv
 let g:used_javascript_libs = 'jquery,angularjs,react'
 
 " Quickly edit/reload the vimrc file
-nmap <silent> ,ev :vsplit $MYVIMRC<CR>
-nmap <silent> ,eb :vsplit $HOME/.vimrc.bundles<CR>
+nmap <silent> ,ev :e $MYVIMRC<CR>
+nmap <silent> ,eb :e $HOME/.vimrc.bundles<CR>
 nmap <silent> ,sv :source $MYVIMRC<CR>
 
 if filereadable(expand("~/.vimrc.local"))
