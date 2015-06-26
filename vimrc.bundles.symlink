@@ -51,7 +51,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'scrooloose/syntastic'
   Plugin 'sjl/gundo.vim'
   Plugin 'slim-template/vim-slim'
-  Plugin 'suan/vim-instant-markdown'
+  " Plugin 'suan/vim-instant-markdown'
   Plugin 'tejr/vim-tmux'
   Plugin 'tomtom/tcomment_vim'
   Plugin 'tpope/vim-abolish'
