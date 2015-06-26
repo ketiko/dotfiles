@@ -57,7 +57,7 @@ if [[ $(uname) != Darwin ]]; then
   alias chgrp='chgrp -c --preserve-root'
 fi
 
-alias whereami='curl ifconfig.me/ip'
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 GRC=`which grc`
 if [ "$TERM" != dumb ] && [ -n "$GRC" ]
