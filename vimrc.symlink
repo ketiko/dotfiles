@@ -3,7 +3,7 @@ set nocompatible " vim > vi mode.
 set runtimepath+=$HOME/.vim
 set viminfo='10000,<5000,s1000,h
 set viminfo+=n$HOME/.vim/info
-set tags+=./tags,~/.vim/tags;
+set tags+=./tags,./ruby-tags,./.git/tags;
 set backupdir=$HOME/.vim/backup//
 set term=ansi
 
@@ -186,7 +186,7 @@ let g:ctrlp_user_command = 'ag %s --smart-case --nogroup --nocolor --hidden
       \ --ignore tags
       \ -g ""'
 let g:ctrlp_lazy_update = 1
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 1
 
 " Ag Settings

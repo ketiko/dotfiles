@@ -3,3 +3,4 @@ gem-browse
 bundler
 rake
 awesome_print
+ripper-tags
