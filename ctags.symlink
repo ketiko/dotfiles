@@ -3,7 +3,8 @@
 --tag-relative=yes
 --exclude=.git
 --exclude=.svn
---fields=+l
+--fields=+ails
+--extra=+q
 
 --regex-JavaScript=/^var[ \t]+([a-zA-Z0-9._$]+) = \[/\1/a,array/
 --regex-JavaScript=/^var[ \t]+([a-zA-Z0-9._$]+) = \{/\1/o,object/
