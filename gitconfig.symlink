@@ -5,6 +5,7 @@
   excludesfile = ~/.gitignore
   autocrlf = false
   pager = less -iFRSXJMQ
+  attributesfile = ~/.gitattributes
 [color]
   pager = true
   status = auto
@@ -31,6 +32,7 @@
   lgc = shortlog --summary --numbered
   st = status -sb
   sh = stash
+  shl = stash list
   shc = stash clear
   shs = stash save -u
   shp = stash pop
@@ -66,10 +68,10 @@
   pu = push -u
   pl = pull --rebase
   new = log origin/master.. --reverse --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --relative-date --decorate
-  meld = !git-meld.pl
 [diff]
   tool = beyondcompare
   renames = copies
+  renameLimit = 667
 [difftool]
   prompt = false
 [difftool "beyondcompare"]
@@ -86,3 +88,12 @@
   path = ~/.gitconfig.local
 [init]
   templatedir = ~/.git_template
+[diff "image"]
+  binary = true
+  command = ~/bin/spaceman-diff
+[diff "zip"]
+  binary = true
+  textconv = unzip -c -a
+[diff "pdf"]
+  binary = true
+  command = diff-pdf $LOCAL $REMOTE

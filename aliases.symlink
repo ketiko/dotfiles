@@ -22,14 +22,15 @@ if [ -n $dc ]; then
   alias egrep='egrep --color=auto'
 fi
 
-alias ag='ag --color --smart-case --pager less --color-match="1;31" --color-path="35"'
+alias ag='ag --color --smart-case --color-match="1;31" --color-path="35"'
+alias pt='pt --color --smart-case'
 alias b="bundle"
 alias be="bundle exec"
 alias bc="bundle console"
 alias rb='rbenv'
 alias r='rake'
 alias g='git'
-alias ct="ripper-tags --tag-relative -R --verbose . && ctags -a --sort=yes --recurse=yes --tag-relative=yes --fields=+ails --extra=+q . $(bundle list --paths)"
+alias ct="ripper-tags --tag-relative -R --verbose . && ctags -a --sort=yes --recurse=yes --tag-relative=yes --fields=+ails --extra=+q ."
 alias gt="gotags -R=true -sort=true -tag-relative=true -silent=false -f='tags' ."
 alias tmux="tmux -2"
 alias tm="tmux -2"
