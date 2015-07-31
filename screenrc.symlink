@@ -1,5 +1,5 @@
 startup_message off
-term screen-256color
+term xterm-color
 vbell off
 shelltitle "$ |bash"
 altscreen on
