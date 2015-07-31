@@ -79,6 +79,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'xolox/vim-misc'
   Plugin 'xolox/vim-session'
   Plugin 'zhaocai/GoldenView.Vim'
+  " Plugin 'shougo/neocomplete'
 
   if (v:version > 700)
     Plugin 'SirVer/ultisnips'
