@@ -291,7 +291,7 @@ set foldnestmax=10
 set nofoldenable
 
 " vim-instant-markdown
-let g:instant_markdown_autostart = 0
+let g:instant_markdown_autostart = 1
 
 " Goldenview
 let g:goldenview__enable_default_mapping = 0
