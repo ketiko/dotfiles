@@ -27,6 +27,7 @@ alias pt='pt --color --smart-case'
 alias b="bundle"
 alias be="bundle exec"
 alias bc="bundle console"
+alias fs="foreman start"
 alias rb='rbenv'
 alias r='rake'
 alias g='git'
