@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # "Forbidden" regular expressions
-DEBUGGING=('console\.debug' 'console\.log' 'binding\.pry' 'binding\.remote_pry' 'save_and_open_page' 'debugger')
+DEBUGGING=('binding\.pry' 'binding\.remote_pry' 'save_and_open_page' 'debugger')
 
 # Loop over ALL errors and warnings and return ALL problems.
 # I want to report on *all* problems that exist in the commit before aborting,
