@@ -7,7 +7,6 @@
 --ignore-dir=.bundle
 --ignore-dir=Godeps
 --ignore-file=is:tags
---pager=less
 --smart-case
 --sort-files
 --type-set=coffee=.coffee
