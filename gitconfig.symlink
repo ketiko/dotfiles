@@ -14,8 +14,6 @@
   interactive = auto
 [push]
   default = current
-[pull]
-  rebase = true
 [branch]
   autosetuprebase = local
 [clean]
@@ -53,6 +51,7 @@
   dc = diff --cached --color-words
   dtc = difftool --cached
   ca = commit --amend
+  a = add
   aa = add --all
   au = add -u
   aiw = !git diff -w --no-color | git apply --cached --ignore-whitespace
@@ -97,3 +96,7 @@
 [diff "pdf"]
   binary = true
   command = diff-pdf $LOCAL $REMOTE
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
