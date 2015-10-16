@@ -54,7 +54,7 @@ if [[ $(uname) == Darwin ]]; then
       htop-osx \
       hub \
       keychain \
-      macvim --with-cscope --with-lua --override-system-vim \
+      macvim --with-cscope --with-lua --with-override-system-vim \
       node \
       openssl \
       pv \
