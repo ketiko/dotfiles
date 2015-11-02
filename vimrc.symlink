@@ -39,7 +39,7 @@ set nojoinspaces        " Use only 1 space after "." when joining lines instead 
 set nopaste
 set nostartofline       " Don't reset cursor to start of line when moving around
 set novisualbell        " No blinking
-set wrap
+set nowrap
 set nowritebackup
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
@@ -201,8 +201,8 @@ nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>m :CtrlPMRU<CR>
 
 " Ag Settings
-let g:aghighlight=1
-let g:agprg='ag --smart-case --column
+let g:ag_highlight=1
+let g:ag_prg='ag --smart-case --column
       \ --nogroup
       \ --ignore .git
       \ --ignore .svn
