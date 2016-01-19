@@ -32,7 +32,7 @@ if isdirectory(expand("~/.vim/bundle/vundle"))
   Plugin 'kana/vim-textobj-function'
   Plugin 'kana/vim-textobj-user'
   Plugin 'kchmck/vim-coffee-script'
-  Plugin 'kien/ctrlp.vim'
+  Plugin 'ctrlpvim/ctrlp.vim'
   Plugin 'marijnh/tern_for_vim'
   Plugin 'markcornick/vim-terraform'
   Plugin 'markcornick/vim-vagrant'

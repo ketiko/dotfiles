@@ -13,15 +13,13 @@
   diff = auto
   interactive = auto
 [push]
-  default = current
+  default = simple
 [branch]
   autosetuprebase = local
 [clean]
   requireForce = false
 [log]
   abbrevCommit = true
-[http]
-  sslVerify = false
 [rerere]
   enabled = true
 [alias]

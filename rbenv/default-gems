@@ -5,3 +5,7 @@ rake
 awesome_print
 ripper-tags
 overcommit
+rubocop
+reek
+brakeman
+bundler-audit

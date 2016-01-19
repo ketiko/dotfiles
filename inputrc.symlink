@@ -1,8 +1,8 @@
 set completion-ignore-case On
 set convert-meta on
+set keymap vi
 set editing-mode vi
 set input-meta on
-set keymap vi
 set meta-flag on
 set output-meta on
 set show-all-if-ambiguous on

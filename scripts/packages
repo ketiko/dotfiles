@@ -44,6 +44,7 @@ if [[ $(uname) == Darwin ]]; then
       git-extras \
       grep --with-default-names \
       gnu-indent --with-default-names \
+      gnu-time \
       gnu-sed --with-default-names \
       gnu-tar --with-default-names \
       gnu-getopt --with-default-names \

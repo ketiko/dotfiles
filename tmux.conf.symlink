@@ -74,10 +74,8 @@ set-window-option -g clock-mode-style 12
 setw -g window-status-current-bg colour1
 
 # Mouse
-set -g mode-mouse on
-set -g mouse-resize-pane on
-set -g mouse-select-pane on
-set -g mouse-select-window on
+set -g mouse on
+set -g mouse-utf8 on
 
 set -g history-limit 100000
 
