@@ -1,29 +1,25 @@
+" Vundle Settings
 filetype off
 
-if filereadable(expand("~/.vim/autoload/plug.vim"))
+" if isdirectory(expand("~/.vim/bundle/vundle"))
+  " set runtimepath+=$HOME/.vim/bundle/vundle/
   call plug#begin()
+  " call vundle#begin()
+  " " let Vundle manage Vundle required!
+  " Plug 'gmarik/vundle'
+  " -------------------
 
   Plug 'Glench/Vim-Jinja2-Syntax'
-  Plug 'Shougo/context_filetype.vim'
-  Plug 'Shougo/neoinclude.vim'
-  Plug 'Shougo/neco-syntax'
-  Plug 'Shougo/neopairs.vim'
-  Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+  Plug 'JazzCore/ctrlp-cmatcher'
   Plug 'Lokaltog/vim-easymotion'
   Plug 'Raimondi/delimitMate'
-  " Plug 'Shougo/neocomplete'
-  " Plug 'Shougo/neosnippet'
-  " Plug 'Shougo/neosnippet-snippets'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'altercation/vim-colors-solarized'
   Plug 'alvan/vim-closetag'
   Plug 'ap/vim-css-color'
-  Plug 'austintaylor/vim-indentobject'
   Plug 'bkad/CamelCaseMotion'
-  Plug 'bootleq/vim-textobj-rubysymbol'
   Plug 'burnettk/vim-angular'
   Plug 'chase/vim-ansible-yaml'
-  Plug 'coderifous/textobj-word-column.vim'
   Plug 'corntrace/bufexplorer'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'ecomba/vim-ruby-refactoring'
@@ -33,15 +29,10 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'ivalkeen/nerdtree-execute'
   Plug 'jelera/vim-javascript-syntax'
   Plug 'jstemmer/gotags'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
   Plug 'junegunn/vim-easy-align'
-  Plug 'kana/vim-textobj-datetime'
-  Plug 'kana/vim-textobj-entire'
   Plug 'kana/vim-textobj-function'
   Plug 'kana/vim-textobj-user'
   Plug 'kchmck/vim-coffee-script'
-  Plug 'lucapette/vim-textobj-underscore'
   Plug 'marijnh/tern_for_vim'
   Plug 'markcornick/vim-terraform'
   Plug 'markcornick/vim-vagrant'
@@ -51,7 +42,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'mileszs/ack.vim'
   Plug 'mxw/vim-jsx'
   Plug 'nathanaelkane/vim-indent-guides'
-  Plug 'nelstrom/vim-textobj-rubyblock'
   Plug 'nelstrom/vim-textobj-rubyblock'
   Plug 'nginx/nginx'
   Plug 'othree/html5.vim'
@@ -84,17 +74,19 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'vim-ruby/vim-ruby'
-  Plug 'vim-scripts/IndexedSearch'
   Plug 'vim-scripts/JavaScript-Indent'
   Plug 'vim-scripts/argtextobj.vim'
-  Plug 'vim-scripts/lastpos.vim'
   Plug 'vim-scripts/matchit.zip'
-  Plug 'vim-scripts/sudo.vim'
   Plug 'wellle/targets.vim'
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-notes'
   Plug 'xolox/vim-session'
   Plug 'zhaocai/GoldenView.Vim'
+  Plug 'Shougo/neocomplete'
+  Plug 'Shougo/neosnippet'
+  Plug 'Shougo/neosnippet-snippets'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
 
   if (v:version > 700)
     " Plug 'SirVer/ultisnips'
@@ -103,13 +95,16 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   if (v:version >= 702)
     Plug 'majutsushi/tagbar'
   endif
-  if v:version >= 703 || has("patch584")
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
-  endif
+  " if v:version >= 703 || has("patch584")
+  "   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
+  " endif
 
   if isdirectory(expand("~/go"))
     Plug 'fatih/vim-go'
   endif
 
+  " Add plugins to &runtimepath
   call plug#end()
-endif
+
+  " call vundle#end()
+" endif

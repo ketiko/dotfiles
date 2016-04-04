@@ -13,7 +13,7 @@
   diff = auto
   interactive = auto
 [push]
-  default = simple
+  default = current
 [branch]
   autosetuprebase = local
 [clean]
@@ -39,8 +39,8 @@
   co = checkout
   cb = checkout -b
   chp = cherry-pick
-  df = diff --word-diff
-  df = diff --color-words
+  df = diff --word-diff --color-words
+  dsf = "!git diff --color $@ | diff-so-fancy"
   dt = difftool
   da = difftool --dir-diff
   dac = difftool --dir-diff --cached
@@ -61,6 +61,7 @@
   ft = fetch --prune
   fa = fetch --prune --all
   ff = merge --ff-only
+  pr = pull-request
   ps = push
   pu = push -u
   pl = pull --rebase
@@ -95,6 +96,6 @@
   binary = true
   command = diff-pdf $LOCAL $REMOTE
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true

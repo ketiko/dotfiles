@@ -177,3 +177,15 @@ source $HOME/.aliases
 if [ -f "$HOME/.zshrc.local" ]; then
   source "$HOME/.zshrc.local"
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+unalias zz 2> /dev/null
+zz() {
+  local dir
+  dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+}
+unalias vv 2> /dev/null
+vv() {
+  local file
+  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vi "${file}" || return 1
+}

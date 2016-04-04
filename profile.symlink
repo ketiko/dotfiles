@@ -86,6 +86,8 @@ if [[ -z "$LC_CTYPE" && -z "$LC_ALL" ]]; then
   export LC_CTYPE=${LANG%%:*} # pick the first entry from LANG
 fi
 
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
 if [ -f "$HOME/.profile.local" ]; then
   . "$HOME/.profile.local"
 fi

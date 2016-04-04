@@ -1,13 +1,12 @@
 set nocompatible " vim > vi mode.
 "set shell=bash\ --login
-set runtimepath+=$HOME/.vim
 set viminfo='10000,<5000,s1000,h
-set viminfo+=n$HOME/.vim/info
 set tags+=./tags,./ruby-tags,./.git/tags;
-set backupdir=$HOME/.vim/backup//
-set term=xterm-color
 
-source $HOME/.vimrc.bundles
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+source $HOME/.config/nvim/init.bundles
 
 set runtimepath+=~/.fzf
 
@@ -15,7 +14,6 @@ syntax enable
 syntax sync fromstart
 
 " BASIC EDITING CONFIGURATION
-" set directory=$HOME/.vim/swap//
 set autoindent          " Copy indent from current line when starting a new line
 set backspace=2         " makes backspace work normally
 set cmdheight=1         " Cmd bar 2 rows high
@@ -65,10 +63,8 @@ set t_ti= t_te=         " Prevent Vim from clobbering the scrollback buffer
 set tabstop=2           " Use 2 spaces for <tab>
 set tagbsearch          " use binary searching for tags
 set ttyfast
-set ttyscroll=3
 if v:version > 702
   set undofile
-  set undodir=~/.vim/undo
   set undoreload=10000
 endif
 set undolevels=1000
@@ -124,15 +120,15 @@ else
 end
 
 " Navigate panes vim style
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
-nmap <Left> <C-w><
-nmap <Down> <C-w>+
-nmap <Up> <C-w>-
-nmap <Right> <C-w>>
+map <Left> <C-w><
+map <Down> <C-w>+
+map <Up> <C-w>-
+map <Right> <C-w>>
 
 " Yank/Paste to system clipboard settings
 if has('unnamedplus')
@@ -175,7 +171,7 @@ highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
 " Solarized Settings
-if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
+if isdirectory(expand("~/.config/nvim/plugged/vim-colors-solarized"))
   let g:solarized_termtrans=1
   let g:solarized_termcolors=16
   colorscheme solarized
@@ -184,8 +180,10 @@ if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
 endif
 
 " CTRLP Settings
+let g:ctrlp_match_window_reversed=0
 let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_show_hidden=0
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 " let g:ctrlp_user_command = 'ag %s --smart-case --nogroup --nocolor --hidden
 "       \ --ignore .git
 "       \ --ignore .svn
@@ -196,7 +194,7 @@ let g:ctrlp_show_hidden=0
 "       \ -g ""'
 let g:ctrlp_lazy_update = 1
 let g:ctrlp_use_caching = 1
-let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_mruf_relative = 1
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>m :CtrlPMRU<CR>
@@ -212,6 +210,9 @@ let g:ag_prg='ag --smart-case --column
       \ --ignore node_modules
       \ --ignore tags
       \ '
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " YankStack settings
 nmap <leader>p <Plug>yankstack_substitute_older_paste
@@ -271,6 +272,9 @@ let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
 " Session Settings
 let g:session_autosave = 'no'
 
+" let g:python_host_prog = '/usr/local/bin/python'
+" let g:python3_host_prog = '/usr/local/bin/python3'
+
 " YCM Settings
 " let g:ycm_path_to_python_interpreter="/usr/bin/python"
 " let g:ycm_add_preview_to_completeopt = 0
@@ -281,11 +285,94 @@ let g:session_autosave = 'no'
 " let g:ycm_collect_identifiers_from_tags_files = 1
 " let g:ycm_seed_identifiers_with_syntax = 1
 
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
 " UltiSnip Settings
-let g:UltiSnipsExpandTrigger = '<C-l>'
-let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-let g:UltiSnipsListSnippets = '<C-m>'
+" let g:UltiSnipsExpandTrigger = '<C-l>'
+" let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+" let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+"let g:UltiSnipsListSnippets = '<C-m>'
 
 " indent-guides settings
 "let g:indent_guides_start_level = 2
@@ -336,9 +423,9 @@ let g:used_javascript_libs = 'jquery,angularjs,react'
 
 " Quickly edit/reload the vimrc file
 nmap <silent> ,ev :e $MYVIMRC<CR>
-nmap <silent> ,eb :e $HOME/.vimrc.bundles<CR>
+nmap <silent> ,eb :e $HOME/.config/nvim/init.bundles<CR>
 nmap <silent> ,sv :source $MYVIMRC<CR>
 
-if filereadable(expand("~/.vimrc.local"))
-  source $HOME/.vimrc.local
+if filereadable(expand("~/.config/nvim/init.vim.local"))
+  source $HOME/.config/nvim/init.vim.local
 endif

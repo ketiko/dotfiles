@@ -8,3 +8,5 @@ rubocop
 reek
 brakeman
 bundler-audit
+ruby-lint
+flog
