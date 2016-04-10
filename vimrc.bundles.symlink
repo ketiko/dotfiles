@@ -4,16 +4,13 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin()
 
   Plug 'Glench/Vim-Jinja2-Syntax'
-  Plug 'Shougo/context_filetype.vim'
-  Plug 'Shougo/neoinclude.vim'
-  Plug 'Shougo/neco-syntax'
-  Plug 'Shougo/neopairs.vim'
-  Plug 'Shougo/vimproc.vim', { 'do': 'make' }
   Plug 'Lokaltog/vim-easymotion'
   Plug 'Raimondi/delimitMate'
-  " Plug 'Shougo/neocomplete'
-  " Plug 'Shougo/neosnippet'
-  " Plug 'Shougo/neosnippet-snippets'
+  Plug 'Shougo/context_filetype.vim'
+  Plug 'Shougo/neco-syntax'
+  Plug 'Shougo/neoinclude.vim'
+  Plug 'Shougo/neopairs.vim'
+  Plug 'Shougo/vimproc.vim', { 'do': 'make' }
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'altercation/vim-colors-solarized'
   Plug 'alvan/vim-closetag'
@@ -51,7 +48,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'mileszs/ack.vim'
   Plug 'mxw/vim-jsx'
   Plug 'nathanaelkane/vim-indent-guides'
-  Plug 'nelstrom/vim-textobj-rubyblock'
   Plug 'nelstrom/vim-textobj-rubyblock'
   Plug 'nginx/nginx'
   Plug 'othree/html5.vim'

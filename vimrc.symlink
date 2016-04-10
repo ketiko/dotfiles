@@ -185,7 +185,7 @@ endif
 
 " CTRLP Settings
 let g:ctrlp_working_path_mode='ra'
-let g:ctrlp_show_hidden=0
+let g:ctrlp_show_hidden=1
 " let g:ctrlp_user_command = 'ag %s --smart-case --nogroup --nocolor --hidden
 "       \ --ignore .git
 "       \ --ignore .svn
@@ -200,6 +200,8 @@ let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_mruf_relative = 1
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>m :CtrlPMRU<CR>
+nmap <leader>cc :CtrlPClearCache<CR>
+nmap <leader>ca :CtrlPClearAllCaches<CR>
 
 " Ag Settings
 let g:ag_highlight=1
@@ -218,8 +220,8 @@ nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " NERD Tree Settings
-map <leader>f :NERDTreeFind<CR>
-map <leader>n :NERDTreeToggle %:p:h<CR>
+nmap <leader>f :NERDTreeFind<CR>
+nmap <leader>n :NERDTreeToggle %:p:h<CR>
 
 " Syntastic Settings
 
@@ -227,22 +229,23 @@ let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 let g:syntastic_json_checkers=['jsonlint']
 let g:syntastic_html_tidy_exec = 'tidy5'
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek']
 
-let g:syntastic_quiet_messages = {}
+" let g:syntastic_quiet_messages = {}
 
-let g:syntastic_always_populate_loc_list = 2
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_auto_jump = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_auto_jump = 2
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 5
-map <leader>l :lopen<CR>
+let g:syntastic_mode_map = { "mode": "passive" }
+nmap <leader>l :lopen<CR>
+nmap <leader>sc :SyntasticCheck<CR>
 
-" Rspec Settings
 let g:rspec_command = "Dispatch rspec {spec}"
-"map <leader>a :Dispatch rspec<CR>
-"map <leader>r :Dispatch rspec %<CR>
+" Rspec Settings
+map <leader>ra :Dispatch rspec<CR>
+map <leader>r :Dispatch rspec %<CR>
 
 " Tabgar Settings
 map <leader>tb :TagbarToggle<CR>
