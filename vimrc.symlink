@@ -222,6 +222,9 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 nmap <leader>f :NERDTreeFind<CR>
 nmap <leader>n :NERDTreeToggle %:p:h<CR>
 
+let g:lt_location_list_toggle_map = '<leader>l'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
+
 " Syntastic Settings
 
 let g:syntastic_javascript_checkers = ['jsxhint']
@@ -238,7 +241,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { "mode": "passive" }
-nmap <leader>l :lopen<CR>
 nmap <leader>sc :SyntasticCheck<CR>
 
 let g:rspec_command = "Dispatch rspec {spec}"

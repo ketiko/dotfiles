@@ -93,6 +93,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'xolox/vim-notes'
   Plug 'xolox/vim-session'
   Plug 'zhaocai/GoldenView.Vim'
+  Plug 'Valloric/ListToggle'
 
   if (v:version > 700)
     " Plug 'SirVer/ultisnips'
