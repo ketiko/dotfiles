@@ -9,6 +9,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'Shougo/context_filetype.vim'
   Plug 'Shougo/neco-syntax'
   Plug 'Shougo/neoinclude.vim'
+  Plug 'jamessan/vim-gnupg'
   Plug 'Shougo/neopairs.vim'
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
   Plug 'Xuyuanp/nerdtree-git-plugin'
