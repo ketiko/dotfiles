@@ -1,4 +1,1 @@
-gnupg.symlink/pubring.gpg
-gnupg.symlink/random_seed
-gnupg.symlink/secring.gpg
-gnupg.symlink/trustdb.gpg
+gnupg.symlink/*
