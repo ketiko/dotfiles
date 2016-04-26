@@ -103,8 +103,8 @@ let g:rubycomplete_rails = 1
 let g:rubycomplete_use_bundler = 1
 let g:ruby_operators = 1
 
-" clear highlighted search using the space bar
-nnoremap \ :nohlsearch<CR>
+" clear highlighted search
+nmap \ :nohlsearch<CR>
 
 " make ctrl i increment numbers instead of ctrl a
 " noremap <C-i> <C-a>

@@ -10,3 +10,10 @@ IRB.conf[:ECHO] = true
 IRB.conf[:USE_READLINE] = true
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 IRB.conf[:HISTORY_NO_DUPS] = true
+
+begin
+    require 'awesome_print'
+    AwesomePrint.irb!
+rescue LoadError => err
+    puts "no awesome_print :("
+end
