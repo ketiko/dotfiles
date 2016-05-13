@@ -231,7 +231,8 @@ let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 let g:syntastic_json_checkers=['jsonlint']
 let g:syntastic_html_tidy_exec = 'tidy5'
-let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek']
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek']
 
 " let g:syntastic_quiet_messages = {}
 
@@ -328,11 +329,11 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.jsx"
 
 " unimpaired
 " Bubble single lines
-nmap <leader>k [e
-nmap <leader>j ]e
-
-vmap <leader>k [egv
-vmap <leader>j ]egv
+" nmap <leader>k [e
+" nmap <leader>j ]e
+"
+" vmap <leader>k [egv
+" vmap <leader>j ]egv
 " Bubble multiple lines
 
 " javascript-libraries-syntax

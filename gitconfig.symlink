@@ -45,7 +45,7 @@
   da = difftool --dir-diff
   dac = difftool --dir-diff --cached
   di = diff --staged --color-words
-  ds = diff --stat
+  ds = --no-pager diff --stat
   dc = diff --cached --color-words
   dtc = difftool --cached
   ca = commit --amend

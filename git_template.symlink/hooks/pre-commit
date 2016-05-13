@@ -9,13 +9,25 @@ DEBUGGING=('binding\.pry' 'binding\.remote_pry' 'save_and_open_page' 'debugger')
 ERROR=false
 
 for FILE in `git diff --cached --name-only`; do
-  for DEBUG in ${DEBUGGING[*]}; do
-    if grep -iqe $DEBUG $FILE; then
-      echo "Warning: found debug statement '$DEBUG'"
-      echo "   File: $FILE\n--------------"
-      ERROR=true
+  if [ -e $FILE ]; then
+    if [ ${FILE: -3} == '.rb' ]; then
+      for DEBUG in ${DEBUGGING[*]}; do
+        if grep -iqe $DEBUG $FILE; then
+          echo "Warning: found debug statement '$DEBUG'"
+          echo "   File: $FILE\n--------------"
+          ERROR=true
+        fi
+      done
     fi
-  done
+
+    if [ ${FILE: -8} == '_spec.rb' ]; then
+      if grep -iqe 'focus' $FILE; then
+        echo "Warning: found focus statement in specs"
+        echo "   File: $FILE\n--------------"
+        ERROR=true
+      fi
+    fi
+  fi
 done
 
 if [ $ERROR == true ]; then
