@@ -2,6 +2,8 @@ gem-ctags
 gem-browse
 bundler
 rake
+pry
+pry-doc
 awesome_print
 ripper-tags
 rubocop

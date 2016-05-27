@@ -77,6 +77,7 @@
   trustExitCode = true
 [merge]
   tool = beyondcompare
+  ff = only
 [mergetool]
   prompt = false
 [mergetool "beyondcompare"]
