@@ -18,19 +18,20 @@ for FILE in `git diff --cached --name-only`; do
           ERROR=true
         fi
       done
-    fi
 
-    if [ ${FILE: -8} == '_spec.rb' ]; then
-      if grep -iqe 'focus' $FILE; then
-        echo "Warning: found focus statement in specs"
-        echo "   File: $FILE\n--------------"
-        ERROR=true
+      spec_file=${FILE%%_spec.rb}
+      if [ ${spec_file} != ${FILE} ]; then
+        if grep -iqe 'focus' $FILE; then
+          echo "Warning: found focus statement in specs"
+          echo "   File: $FILE\n--------------"
+          ERROR=true
+        fi
       fi
     fi
   fi
 done
 
-if [ $ERROR == true ]; then
+# if [ $ERROR == true ]; then
   echo "To commit anyway, use --no-verify"
   exit 1
-fi
+# fi
