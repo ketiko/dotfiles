@@ -31,7 +31,7 @@ for FILE in `git diff --cached --name-only`; do
   fi
 done
 
-# if [ $ERROR == true ]; then
+if [ $ERROR == true ]; then
   echo "To commit anyway, use --no-verify"
   exit 1
-# fi
+fi
