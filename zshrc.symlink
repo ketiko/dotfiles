@@ -4,6 +4,10 @@ if [ -d $HOME/.zsh/bundle ]; then
     if [ -f $file ]; then
       source $file
     fi
+    file="$plugin/`basename "$plugin"`.zsh"
+    if [ -f $file ]; then
+      source $file
+    fi
   done
 fi
 
