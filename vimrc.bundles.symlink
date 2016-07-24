@@ -103,7 +103,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'majutsushi/tagbar'
   endif
   if v:version >= 703 || has("patch584")
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+    " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
   endif
 
   if isdirectory(expand("~/go"))
