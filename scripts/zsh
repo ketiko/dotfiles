@@ -15,3 +15,5 @@ if [ ! -d ~/.zsh/bundle/zsh-history-substring-search ]; then
   echo "Installing zsh-history-substring-search"
   git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/bundle/zsh-history-substring-search
 fi
+
+chsh -s $(which zsh)
