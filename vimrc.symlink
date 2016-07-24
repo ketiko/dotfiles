@@ -231,8 +231,7 @@ let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 let g:syntastic_json_checkers=['jsonlint']
 let g:syntastic_html_tidy_exec = 'tidy5'
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-" let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek']
+let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek']
 
 " let g:syntastic_quiet_messages = {}
 
@@ -242,7 +241,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { "mode": "passive" }
-nmap <leader>sc :SyntasticCheck<CR>
+nmap <leader>sc :SyntasticToggleMode<CR>
 
 let g:rspec_command = "Dispatch rspec {spec}"
 " Rspec Settings
