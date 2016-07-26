@@ -10,9 +10,6 @@ if-shell "test -f ~/.tmux-lightline.conf" "source ~/.tmux-lightline.conf"
 #
 set -g default-terminal "xterm-color"
 
-setw -g utf8 on
-set -g status-utf8 on
-
 # term fixes
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'
 setw -g xterm-keys on
@@ -75,7 +72,6 @@ setw -g window-status-current-bg colour1
 
 # Mouse
 set -g mouse on
-set -g mouse-utf8 on
 
 set -g history-limit 100000
 
