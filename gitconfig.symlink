@@ -73,14 +73,14 @@
 [difftool]
   prompt = false
 [difftool "beyondcompare"]
-  cmd = bcompare $LOCAL $REMOTE -lefttitle='Old' -righttitle='New'
+  cmd = bcomp $LOCAL $REMOTE -lefttitle='Old' -righttitle='New'
   trustExitCode = true
 [merge]
   tool = beyondcompare
 [mergetool]
   prompt = false
 [mergetool "beyondcompare"]
-  cmd = bcompare -automerge -iu -reviewconflicts -lefttitle='Local Changes' -righttitle='Remote Changes' -centertitle='Committed' $LOCAL $REMOTE $BASE $MERGED
+  cmd = bcomp -automerge -iu -reviewconflicts -lefttitle='Local Changes' -righttitle='Remote Changes' -centertitle='Committed' $LOCAL $REMOTE $BASE $MERGED
   trustExitCode = true
 [include]
   path = ~/.gitconfig.local
