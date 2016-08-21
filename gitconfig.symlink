@@ -3,7 +3,7 @@
 [core]
   editor = vim
   excludesfile = ~/.gitignore
-  autocrlf = false
+  autocrlf = input
   pager = less -iFRSXJMQ
   attributesfile = ~/.gitattributes
 [color]

@@ -29,7 +29,6 @@ alias be="bundle exec"
 alias bc="bundle console"
 alias fs="foreman start"
 alias rb='rbenv'
-alias r='rake'
 alias g='git'
 alias ct="ripper-tags --tag-relative -R --verbose . && ctags -a --sort=yes --recurse=yes --tag-relative=yes --fields=+ails --extra=+q ."
 alias gt="gotags -R=true -sort=true -tag-relative=true -silent=false -f='tags' ."
