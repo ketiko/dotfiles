@@ -6,12 +6,15 @@
   autocrlf = input
   pager = less -iFRSXJMQ
   attributesfile = ~/.gitattributes
+  ignorecase = true
 [color]
   pager = true
   status = auto
   branch = auto
   diff = auto
   interactive = auto
+[commit]
+  gpgsign = true
 [push]
   default = current
 [branch]

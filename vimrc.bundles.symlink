@@ -48,7 +48,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'jstemmer/gotags'
   Plug 'junegunn/vim-easy-align'
   Plug 'kchmck/vim-coffee-script'
-  Plug 'marijnh/tern_for_vim'
+  " Plug 'marijnh/tern_for_vim'
   Plug 'markcornick/vim-terraform'
   Plug 'markcornick/vim-vagrant'
   Plug 'maxbrunsfeld/vim-yankstack'
@@ -97,7 +97,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " Plug 'SirVer/ultisnips'
   " Plug 'honza/vim-snippets'
   Plug 'majutsushi/tagbar'
-  " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 
   if isdirectory(expand("~/go"))
     Plug 'fatih/vim-go'
