@@ -299,7 +299,8 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=Yellow
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=Black
 
 " Folding
-set foldmethod=manual "even with nofoldenable foldmethod=syntax causes slow ins-completions"
+" set foldmethod=manual "even with nofoldenable foldmethod=syntax causes slow ins-completions"
+set foldmethod=syntax
 set foldlevel=1
 set foldnestmax=10
 set nofoldenable
