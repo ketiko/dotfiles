@@ -202,17 +202,16 @@ nmap <leader>m :CtrlPMRU<CR>
 nmap <leader>cc :CtrlPClearCache<CR>
 nmap <leader>ca :CtrlPClearAllCaches<CR>
 
+" nmap <C-p> :FZF<CR>
+
 " Ag Settings
-let g:ag_highlight=1
-let g:ag_prg='ag --smart-case --column
-      \ --nogroup
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore node_modules
-      \ --ignore tags
-      \ '
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" Ack settings
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
 
 " YankStack settings
 nmap <leader>p <Plug>yankstack_substitute_older_paste

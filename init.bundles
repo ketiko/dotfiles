@@ -1,16 +1,33 @@
-" Vundle Settings
 filetype off
 
-" if isdirectory(expand("~/.vim/bundle/vundle"))
-  " set runtimepath+=$HOME/.vim/bundle/vundle/
+if filereadable(expand("~/.config/nvim/autoload/plug.vim"))
   call plug#begin()
-  " call vundle#begin()
-  " " let Vundle manage Vundle required!
-  " Plug 'gmarik/vundle'
-  " -------------------
+
+  " Plug 'Shougo/context_filetype.vim'
+  " Plug 'Shougo/neco-syntax'
+  " Plug 'Shougo/neoinclude.vim'
+  " Plug 'Shougo/neopairs.vim'
+  " Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+  " Plug 'Valloric/ListToggle'
+  " Plug 'bootleq/vim-textobj-rubysymbol'
+  " Plug 'coderifous/textobj-word-column.vim'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'ctrlpvim/ctrlp.vim'
+  " Plug 'kana/vim-textobj-datetime'
+  " Plug 'kana/vim-textobj-entire'
+  " Plug 'kana/vim-textobj-function'
+  " Plug 'kana/vim-textobj-user'
+  " Plug 'lucapette/vim-textobj-underscore'
+  " Plug 'michaeljsmith/vim-indent-object'
+  " Plug 'austintaylor/vim-indentobject'
+  " Plug 'nelstrom/vim-textobj-rubyblock'
+  " Plug 'solars/github-vim'
+  " Plug 'vim-scripts/IndexedSearch'
+  " Plug 'vim-scripts/argtextobj.vim'
+  " Plug 'wellle/targets.vim'
 
   Plug 'Glench/Vim-Jinja2-Syntax'
-  Plug 'JazzCore/ctrlp-cmatcher'
   Plug 'Lokaltog/vim-easymotion'
   Plug 'Raimondi/delimitMate'
   Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -21,39 +38,33 @@ filetype off
   Plug 'burnettk/vim-angular'
   Plug 'chase/vim-ansible-yaml'
   Plug 'corntrace/bufexplorer'
-  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'ecomba/vim-ruby-refactoring'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'godlygeek/tabular'
   Plug 'ingydotnet/yaml-vim'
   Plug 'ivalkeen/nerdtree-execute'
+  Plug 'jamessan/vim-gnupg'
   Plug 'jelera/vim-javascript-syntax'
   Plug 'jstemmer/gotags'
   Plug 'junegunn/vim-easy-align'
-  Plug 'kana/vim-textobj-function'
-  Plug 'kana/vim-textobj-user'
   Plug 'kchmck/vim-coffee-script'
-  Plug 'marijnh/tern_for_vim'
+  " Plug 'marijnh/tern_for_vim'
   Plug 'markcornick/vim-terraform'
   Plug 'markcornick/vim-vagrant'
   Plug 'maxbrunsfeld/vim-yankstack'
   Plug 'mhinz/vim-hugefile'
-  Plug 'michaeljsmith/vim-indent-object'
   Plug 'mileszs/ack.vim'
   Plug 'mxw/vim-jsx'
   Plug 'nathanaelkane/vim-indent-guides'
-  Plug 'nelstrom/vim-textobj-rubyblock'
   Plug 'nginx/nginx'
   Plug 'othree/html5.vim'
   Plug 'othree/javascript-libraries-syntax.vim'
-  Plug 'rking/ag.vim'
+  " Plug 'rking/ag.vim'
   Plug 'scrooloose/nerdtree'
   Plug 'scrooloose/syntastic'
   Plug 'sjl/gundo.vim'
   Plug 'slim-template/vim-slim'
-  Plug 'solars/github-vim'
   Plug 'suan/vim-instant-markdown'
-  Plug 'tejr/vim-tmux'
   Plug 'tomtom/tcomment_vim'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-bundler'
@@ -75,36 +86,23 @@ filetype off
   Plug 'vim-airline/vim-airline-themes'
   Plug 'vim-ruby/vim-ruby'
   Plug 'vim-scripts/JavaScript-Indent'
-  Plug 'vim-scripts/argtextobj.vim'
+  Plug 'vim-scripts/dbext.vim'
+  Plug 'vim-scripts/lastpos.vim'
   Plug 'vim-scripts/matchit.zip'
-  Plug 'wellle/targets.vim'
+  Plug 'vim-scripts/sudo.vim'
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-notes'
   Plug 'xolox/vim-session'
   Plug 'zhaocai/GoldenView.Vim'
-  Plug 'Shougo/neocomplete'
-  Plug 'Shougo/neosnippet'
-  Plug 'Shougo/neosnippet-snippets'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
-
-  if (v:version > 700)
-    " Plug 'SirVer/ultisnips'
-    " Plug 'honza/vim-snippets'
-  end
-  if (v:version >= 702)
-    Plug 'majutsushi/tagbar'
-  endif
-  " if v:version >= 703 || has("patch584")
-  "   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
-  " endif
+  " Plug 'SirVer/ultisnips'
+  " Plug 'honza/vim-snippets'
+  Plug 'majutsushi/tagbar'
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
   if isdirectory(expand("~/go"))
     Plug 'fatih/vim-go'
   endif
 
-  " Add plugins to &runtimepath
   call plug#end()
-
-  " call vundle#end()
-" endif
+endif

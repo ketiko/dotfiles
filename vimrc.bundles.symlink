@@ -11,8 +11,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " Plug 'Valloric/ListToggle'
   " Plug 'bootleq/vim-textobj-rubysymbol'
   " Plug 'coderifous/textobj-word-column.vim'
-  " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  " Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   " Plug 'kana/vim-textobj-datetime'
   " Plug 'kana/vim-textobj-entire'
   " Plug 'kana/vim-textobj-function'
@@ -59,7 +58,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'nginx/nginx'
   Plug 'othree/html5.vim'
   Plug 'othree/javascript-libraries-syntax.vim'
-  Plug 'rking/ag.vim'
   Plug 'scrooloose/nerdtree'
   Plug 'scrooloose/syntastic'
   Plug 'sjl/gundo.vim'
