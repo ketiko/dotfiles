@@ -11,7 +11,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " Plug 'Valloric/ListToggle'
   " Plug 'bootleq/vim-textobj-rubysymbol'
   " Plug 'coderifous/textobj-word-column.vim'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   " Plug 'kana/vim-textobj-datetime'
   " Plug 'kana/vim-textobj-entire'
   " Plug 'kana/vim-textobj-function'
@@ -20,7 +20,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " Plug 'michaeljsmith/vim-indent-object'
   " Plug 'austintaylor/vim-indentobject'
   " Plug 'nelstrom/vim-textobj-rubyblock'
-  " Plug 'solars/github-vim'
+  " Plug 'ruanyl/vim-gh-line'
   " Plug 'vim-scripts/IndexedSearch'
   " Plug 'vim-scripts/argtextobj.vim'
   " Plug 'wellle/targets.vim'

@@ -183,6 +183,33 @@ if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
   set background=dark
 endif
 
+" vim-rails
+let g:rails_projections = {
+      \  "app/controllers/*_controller.rb": {
+      \      "test": [
+      \        "spec/requests/{}_spec.rb",
+      \        "spec/requests/{}_controller_spec.rb",
+      \        "spec/controllers/{}_controller_spec.rb",
+      \        "test/controllers/{}_controller_test.rb"
+      \      ],
+      \      "alternate": [
+      \        "spec/requests/{}_spec.rb",
+      \        "spec/requests/{}_controller_spec.rb",
+      \        "spec/controllers/{}_controller_spec.rb",
+      \        "test/controllers/{}_controller_test.rb"
+      \      ],
+      \   },
+      \   "spec/requests/*_spec.rb": {
+      \      "command": "request",
+      \      "alternate": [
+      \        "app/controllers/{}.rb",
+      \        "app/controllers/{}_controller.rb"
+      \      ],
+      \      "template": "require 'rails_helper'\n\n" .
+      \        "RSpec.describe '{}' do\nend",
+      \   },
+      \ }
+
 " CTRLP Settings
 let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_show_hidden=1
@@ -210,8 +237,7 @@ if executable('ag')
 endif
 
 " Ack settings
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
+cnoreabbrev Ag Ack
 
 " YankStack settings
 nmap <leader>p <Plug>yankstack_substitute_older_paste
