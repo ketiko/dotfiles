@@ -182,6 +182,10 @@ if [ -f "$HOME/.zshrc.local" ]; then
   source "$HOME/.zshrc.local"
 fi
 
+if [ -f "$HOME/.fzf.zsh" ]; then
+  source "$HOME/.fzf.zsh"
+fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 unalias zz 2> /dev/null
 zz() {
