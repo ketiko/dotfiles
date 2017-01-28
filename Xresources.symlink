@@ -41,7 +41,7 @@ URxvt*font: xft:Ubuntu Mono:size=12
 URxvt*boldFont: xft:Ubuntu Mono:bold:size=12
 
 ! Nasty hack to act more like XTerm
-*URxvt*termName:    xterm-color
+*URxvt*termName:    screen-256color
 
 ! Normal
 *URxvt*keysym.Home:   \033OH

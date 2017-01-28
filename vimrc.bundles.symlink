@@ -11,7 +11,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " Plug 'Valloric/ListToggle'
   " Plug 'bootleq/vim-textobj-rubysymbol'
   " Plug 'coderifous/textobj-word-column.vim'
-  " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
   " Plug 'kana/vim-textobj-datetime'
   " Plug 'kana/vim-textobj-entire'
   " Plug 'kana/vim-textobj-function'
@@ -36,7 +37,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'burnettk/vim-angular'
   Plug 'chase/vim-ansible-yaml'
   Plug 'corntrace/bufexplorer'
-  Plug 'ctrlpvim/ctrlp.vim'
+  " Plug 'ctrlpvim/ctrlp.vim'
   Plug 'ecomba/vim-ruby-refactoring'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'godlygeek/tabular'
@@ -90,12 +91,24 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'vim-scripts/sudo.vim'
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-notes'
-  Plug 'xolox/vim-session'
+  " Plug 'xolox/vim-session'
   Plug 'zhaocai/GoldenView.Vim'
   " Plug 'SirVer/ultisnips'
   " Plug 'honza/vim-snippets'
+  Plug 'Shougo/neosnippet'
+  Plug 'Shougo/neosnippet-snippets'
   Plug 'majutsushi/tagbar'
-  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+  Plug 'Konfekt/FastFold'
+  Plug 'ludovicchabant/vim-gutentags'
+  if !has('nvim')
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+  end
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'fishbullet/deoplete-ruby'
+  end
+  Plug 'neomake/neomake'
+  Plug 'milkypostman/vim-togglelist'
 
   if isdirectory(expand("~/go"))
     Plug 'fatih/vim-go'

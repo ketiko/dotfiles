@@ -12,3 +12,4 @@ brakeman
 bundler-audit
 ruby-lint
 flog
+neovim

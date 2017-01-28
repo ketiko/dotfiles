@@ -17,6 +17,7 @@ else
   . "$SCRIPTPATH/scripts/dotfiles" O
   . "$SCRIPTPATH/scripts/vim"
   . "$SCRIPTPATH/scripts/vim-node-modules"
+  . "$SCRIPTPATH/scripts/neovim"
   . "$SCRIPTPATH/scripts/rbenv"
   . "$SCRIPTPATH/scripts/zsh"
   . "$SCRIPTPATH/scripts/solarized"

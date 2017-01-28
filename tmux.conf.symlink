@@ -8,7 +8,7 @@ if-shell "test -f ~/.tmux-lightline.conf" "source ~/.tmux-lightline.conf"
 
 # Display proper colors in vim
 #
-set -g default-terminal "xterm-color"
+set-option -g default-terminal "screen-256color"
 
 # term fixes
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'

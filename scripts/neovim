@@ -1,44 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 mkdir -p ~/.config/nvim
 
-rc=`find $SCRIPTPATH -name "init.vim" -print -o -name .git -type d -prune`
-bundle=`find $SCRIPTPATH -name "init.bundles" -print -o -name .git -type d -prune`
-
-for linkable in $rc $bundle
-do
-  file=$(basename "$linkable")
-  target="$HOME/.config/nvim/$file"
-
-  if [ -e $target ]; then
-    if ! $skip_all && ! $overwrite_all; then
-
-      echo "File already exists: $target, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all"
-      read response
-      case "$response" in
-        O) overwrite_all=true ;;
-        S) skip_all=true;;
-        s) continue ;;
-      esac
-    fi
-
-    if $skip_all; then
-      continue
-    fi
-
-    if [ ! -L $target ]; then
-      mv -v "$target" "$target.backup"
-    fi
-
-    rm -vrf "$target"
-    ln -vnsf "$linkable" "$target"
-  else
-    ln -vnsf "$linkable" "$target"
-  fi
-done
+cd ~/.config
+ln -sfv ~/.vim nvim
+ln -sfv ~/.vimrc ~/.config/nvim/init.vim
 
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "Installing Neovim Bundles"
 nvim +PlugInstall +qall
