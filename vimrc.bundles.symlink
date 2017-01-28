@@ -81,8 +81,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-vinegar'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  " Plug 'vim-airline/vim-airline'
+  " Plug 'vim-airline/vim-airline-themes'
   Plug 'vim-ruby/vim-ruby'
   Plug 'vim-scripts/JavaScript-Indent'
   Plug 'vim-scripts/dbext.vim'
@@ -101,13 +101,13 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'Konfekt/FastFold'
   Plug 'ludovicchabant/vim-gutentags'
   if !has('nvim')
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
   end
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'fishbullet/deoplete-ruby'
+    Plug 'neomake/neomake'
   end
-  Plug 'neomake/neomake'
   Plug 'milkypostman/vim-togglelist'
 
   if isdirectory(expand("~/go"))

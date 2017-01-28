@@ -71,7 +71,6 @@ set t_ti= t_te=         " Prevent Vim from clobbering the scrollback buffer
 set tabstop=2           " Use 2 spaces for <tab>
 set tagbsearch          " use binary searching for tags
 set ttyfast
-set formatoptions-=cro
 if !has('nvim')
   set ttyscroll=3
 end
@@ -95,6 +94,8 @@ filetype plugin on      " Load filetype plugins
 
 set ofu=syntaxcomplete#Complete
 set omnifunc=rubycomplete#Complete
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 autocmd FileType c setlocal omnifunc=ccomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -275,7 +276,12 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { "mode": "passive" }
-nmap <leader>sc :SyntasticToggleMode<CR>
+
+if has('nvim')
+  nmap <leader>sc :Neomake<CR>
+else
+  nmap <leader>sc :SyntasticToggleMode<CR>
+end
 
 let g:rspec_command = "Dispatch rspec {spec}"
 " Rspec Settings
@@ -316,7 +322,6 @@ let g:session_autosave = 'no'
 " deoplete
 if has('nvim')
   let g:deoplete#enable_at_startup = 1
-  let g:deoplete#enable_smart_case = 1
   inoremap <silent><expr> <TAB>
         \ pumvisible() ? "\<C-n>" :
         \ <SID>check_back_space() ? "\<TAB>" :
@@ -330,25 +335,23 @@ if has('nvim')
   function! s:my_cr_function() abort
     return deoplete#close_popup() . "\<CR>"
   endfunction
-
-  inoremap <expr><C-l>     deoplete#refresh()
 end
 
 " neomake
 let g:neomake_open_list = 2
 let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'reek']
 
-autocmd! BufWritePost * Neomake
-
 " YCM Settings
-" let g:ycm_path_to_python_interpreter="/usr/bin/python"
-" let g:ycm_add_preview_to_completeopt = 0
-" let g:ycm_auto_trigger = 1
-" let g:ycm_autoclose_preview_window_after_completion = 1
-" let g:ycm_autoclose_preview_window_after_insertion = 1
-" let g:ycm_collect_identifiers_from_comments_and_strings = 1
-" let g:ycm_collect_identifiers_from_tags_files = 1
-" let g:ycm_seed_identifiers_with_syntax = 1
+if !has('nvim')
+  let g:ycm_path_to_python_interpreter="/usr/bin/python"
+  let g:ycm_add_preview_to_completeopt = 0
+  let g:ycm_auto_trigger = 1
+  let g:ycm_autoclose_preview_window_after_completion = 1
+  let g:ycm_autoclose_preview_window_after_insertion = 1
+  let g:ycm_collect_identifiers_from_comments_and_strings = 1
+  let g:ycm_collect_identifiers_from_tags_files = 1
+  let g:ycm_seed_identifiers_with_syntax = 1
+end
 
 " UltiSnip Settings
 " let g:UltiSnipsExpandTrigger = '<C-l>'
