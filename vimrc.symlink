@@ -122,7 +122,7 @@ noremap <leader>i <C-a>
 " Stay in visual mode after >>
 vnoremap << <gv
 vnoremap >> >gv
-nnoremap <leader>gf magg<S-v>G=`a
+nnoremap ,gf magg<S-v>G=`a
 
 set notimeout ttimeout ttimeoutlen=100
 
@@ -145,23 +145,23 @@ nmap <Right> <C-w>>
 
 " Yank/Paste to system clipboard settings
 if has('unnamedplus')
-  vmap <leader>p "+p
-  vmap <leader>P "+P
-  vmap <leader>y "+y
-  vmap <leader>Y "+Y
-  nmap <leader>p "+p
-  nmap <leader>P "+P
-  nmap <leader>y "+y
-  nmap <leader>Y "+Y
+  vmap ,p "+p
+  vmap ,P "+P
+  vmap ,y "+y
+  vmap ,Y "+Y
+  nmap ,p "+p
+  nmap ,P "+P
+  nmap ,y "+y
+  nmap ,Y "+Y
 else
-  vmap <leader>p "*p
-  vmap <leader>P "*P
-  vmap <leader>y "*y
-  vmap <leader>Y "*Y
-  nmap <leader>p "*p
-  nmap <leader>P "*P
-  nmap <leader>y "*y
-  nmap <leader>Y "*Y
+  vmap ,p "*p
+  vmap ,P "*P
+  vmap ,y "*y
+  vmap ,Y "*Y
+  nmap ,p "*p
+  nmap ,P "*P
+  nmap ,y "*y
+  nmap ,Y "*Y
 endif
 
 " When editing a file, always jump to the last known cursor position.
@@ -366,7 +366,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=Black
 " Folding
 " set foldmethod=manual "even with nofoldenable foldmethod=syntax causes slow ins-completions"
 set foldmethod=syntax
-" set foldlevel=1
+set foldlevel=1
 " set foldnestmax=10
 set nofoldenable
 
@@ -413,9 +413,9 @@ set viewoptions=cursor,folds,slash,unix
 let g:used_javascript_libs = 'jquery,angularjs,react'
 
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>eb :e $HOME/.vimrc.bundles<CR>
-nmap <silent> <leader>sv :source $MYVIMRC<CR>
+nmap <silent> ,ev :e $MYVIMRC<CR>
+nmap <silent> ,eb :e $HOME/.vimrc.bundles<CR>
+nmap <silent> ,sv :source $MYVIMRC<CR>
 
 if filereadable(expand("~/.vimrc.local"))
   source $HOME/.vimrc.local
