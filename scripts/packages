@@ -54,7 +54,6 @@ if [[ $(uname) == Darwin ]]; then
       hub \
       keychain \
       macvim --with-cscope --with-lua --with-override-system-vim \
-      neovim \
       node \
       openssl \
       pv \
