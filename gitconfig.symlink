@@ -13,8 +13,6 @@
   branch = auto
   diff = auto
   interactive = auto
-[commit]
-  gpgsign = true
 [push]
   default = current
 [branch]

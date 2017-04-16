@@ -146,23 +146,23 @@ nmap <Right> <C-w>>
 
 " Yank/Paste to system clipboard settings
 if has('unnamedplus')
-  vmap ,p "+p
-  vmap ,P "+P
-  vmap ,y "+y
-  vmap ,Y "+Y
-  nmap ,p "+p
-  nmap ,P "+P
-  nmap ,y "+y
-  nmap ,Y "+Y
+vmap ,p "+p
+vmap ,P "+P
+vmap ,y "+y
+vmap ,Y "+Y
+nmap ,p "+p
+nmap ,P "+P
+nmap ,y "+y
+nmap ,Y "+Y
 else
-  vmap ,p "*p
-  vmap ,P "*P
-  vmap ,y "*y
-  vmap ,Y "*Y
-  nmap ,p "*p
-  nmap ,P "*P
-  nmap ,y "*y
-  nmap ,Y "*Y
+vmap ,p "*p
+vmap ,P "*P
+vmap ,y "*y
+vmap ,Y "*Y
+nmap ,p "*p
+nmap ,P "*P
+nmap ,y "*y
+nmap ,Y "*Y
 endif
 
 " When editing a file, always jump to the last known cursor position.
@@ -186,51 +186,51 @@ highlight SpellLocal term=underline cterm=underline
 
 " Solarized Settings
 if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
-  let g:solarized_termtrans=1
-  let g:solarized_termcolors=16
-  colorscheme solarized
-  set t_Co=256
-  set background=dark
+let g:solarized_termtrans=1
+let g:solarized_termcolors=16
+colorscheme solarized
+set t_Co=256
+set background=dark
 endif
 
 " vim-rails
 let g:rails_projections = {
-      \  "app/controllers/*_controller.rb": {
-      \      "test": [
-      \        "spec/requests/{}_spec.rb",
-      \        "spec/requests/{}_controller_spec.rb",
-      \        "spec/controllers/{}_controller_spec.rb",
-      \        "test/controllers/{}_controller_test.rb"
-      \      ],
-      \      "alternate": [
-      \        "spec/requests/{}_spec.rb",
-      \        "spec/requests/{}_controller_spec.rb",
-      \        "spec/controllers/{}_controller_spec.rb",
-      \        "test/controllers/{}_controller_test.rb"
-      \      ],
-      \   },
-      \   "spec/requests/*_spec.rb": {
-      \      "command": "request",
-      \      "alternate": [
-      \        "app/controllers/{}.rb",
-      \        "app/controllers/{}_controller.rb"
-      \      ],
-      \      "template": "require 'rails_helper'\n\n" .
-      \        "RSpec.describe '{}' do\nend",
-      \   },
-      \ }
+    \  "app/controllers/*_controller.rb": {
+    \      "test": [
+    \        "spec/requests/{}_spec.rb",
+    \        "spec/requests/{}_controller_spec.rb",
+    \        "spec/controllers/{}_controller_spec.rb",
+    \        "test/controllers/{}_controller_test.rb"
+    \      ],
+    \      "alternate": [
+    \        "spec/requests/{}_spec.rb",
+    \        "spec/requests/{}_controller_spec.rb",
+    \        "spec/controllers/{}_controller_spec.rb",
+    \        "test/controllers/{}_controller_test.rb"
+    \      ],
+    \   },
+    \   "spec/requests/*_spec.rb": {
+    \      "command": "request",
+    \      "alternate": [
+    \        "app/controllers/{}.rb",
+    \        "app/controllers/{}_controller.rb"
+    \      ],
+    \      "template": "require 'rails_helper'\n\n" .
+    \        "RSpec.describe '{}' do\nend",
+    \   },
+    \ }
 
 " CTRLP Settings
 let g:ctrlp_working_path_mode='ra'
 let g:ctrlp_show_hidden=1
-let g:ctrlp_user_command = 'ag %s --hidden --smart-case --files-with-matches --nocolor -g ""'
+let g:ctrlp_user_command = 'ag %s --smart-case --files-with-matches --nocolor -g ""'
 let g:ctrlp_lazy_update = 0
 let g:ctrlp_use_caching = 0
 let g:ctrlp_clear_cache_on_exit = 1
-nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader>m :CtrlPMRU<CR>
-nmap <leader>cc :CtrlPClearCache<CR>
-nmap <leader>ca :CtrlPClearAllCaches<CR>
+map <leader>b :CtrlPBuffer<CR>
+map <leader>m :CtrlPMRU<CR>
+map <leader>cc :CtrlPClearCache<CR>
+map <leader>ca :CtrlPClearAllCaches<CR>
 
 " nmap <C-p> :FZF<CR>
 
@@ -417,7 +417,7 @@ let g:goldenview__enable_default_mapping = 0
 let g:airline_theme='solarized'
 
 " vim-go
-let g:go_fmt_command = "goimports"
+" let g:go_fmt_command = "goimports"
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1

@@ -25,9 +25,10 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " Plug 'vim-scripts/IndexedSearch'
   Plug 'vim-scripts/argtextobj.vim'
   " Plug 'wellle/targets.vim'
-
+  Plug 'derekwyatt/vim-scala'
   Plug 'Glench/Vim-Jinja2-Syntax'
   Plug 'Lokaltog/vim-easymotion'
+  Plug 'elixir-lang/vim-elixir'
   Plug 'Raimondi/delimitMate'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'altercation/vim-colors-solarized'
