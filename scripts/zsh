@@ -1,19 +1,8 @@
 #!/bin/bash
 
-mkdir -p ~/.zsh/bundle
-
-if [ ! -d ~/.zsh/bundle/zsh-completions ]; then
-  echo "Installing zsh-completions"
-  git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/bundle/zsh-completions
-fi
-
-if [ ! -d ~/.zsh/bundle/zsh-syntax-highlighting ]; then
-  echo "Installing zsh-syntax-highlighting"
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/bundle/zsh-syntax-highlighting
-fi
-if [ ! -d ~/.zsh/bundle/zsh-history-substring-search ]; then
-  echo "Installing zsh-history-substring-search"
-  git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/bundle/zsh-history-substring-search
+if [ ! -f ~/.antigen.zsh ]; then
+  echo 'Installing antigen'
+  curl -L git.io/antigen > ~/.antigen.zsh
 fi
 
 chsh -s $(which zsh)

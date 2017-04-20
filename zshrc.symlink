@@ -1,15 +1,15 @@
-if [ -d $HOME/.zsh/bundle ]; then
-  for plugin in $HOME/.zsh/bundle/*; do
-    file="$plugin/`basename "$plugin"`.plugin.zsh"
-    if [ -f $file ]; then
-      source $file
-    fi
-    file="$plugin/`basename "$plugin"`.zsh"
-    if [ -f $file ]; then
-      source $file
-    fi
-  done
-fi
+source ~/.antigen.zsh
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle git
+antigen bundle heroku
+antigen bundle pip
+antigen bundle lein
+antigen bundle command-not-found
+
+antigen apply
 
 autoload -U compinit && compinit
 zmodload -i zsh/complist
