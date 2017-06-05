@@ -16,6 +16,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " Plug 'vim-scripts/IndexedSearch'
   " Plug 'wellle/targets.vim'
   " Plug 'xolox/vim-session'
+  Plug 'keith/swift.vim'
   Plug 'Glench/Vim-Jinja2-Syntax'
   Plug 'Konfekt/FastFold'
   Plug 'Lokaltog/vim-easymotion'

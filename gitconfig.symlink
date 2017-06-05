@@ -1,10 +1,10 @@
 [help]
   autocorrect = 1
 [core]
-  editor = nvim
+  editor = vim
   excludesfile = ~/.gitignore
   autocrlf = input
-  pager = less -iFRSXJMQ
+  pager = diff-so-fancy | less -iFRSXJMQ
   attributesfile = ~/.gitattributes
   ignorecase = true
 [color]
@@ -40,14 +40,13 @@
   co = checkout
   cb = checkout -b
   chp = cherry-pick
-  df = diff --word-diff --color-words
-  dsf = "!git diff --color $@ | diff-so-fancy"
+  df = diff
   dt = difftool
   da = difftool --dir-diff
   dac = difftool --dir-diff --cached
-  di = diff --staged --color-words
+  di = diff --staged
   ds = --no-pager diff --stat
-  dc = diff --cached --color-words
+  dc = diff --cached
   dtc = difftool --cached
   ca = commit --amend
   a = add
