@@ -4,3 +4,5 @@ tags
 *~
 .DS_Store
 .overcommit.yml
+tags.lock
+tags.temp

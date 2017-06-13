@@ -1,4 +1,4 @@
-Pry.config.editor = 'nvim'
+Pry.config.editor = 'vim'
 Pry.config.color = true
 Pry.config.theme = "solarized"
 Pry.config.history.should_save = true
