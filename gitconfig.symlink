@@ -4,7 +4,7 @@
   editor = vim
   excludesfile = ~/.gitignore
   autocrlf = input
-  pager = diff-so-fancy | less -iFRSXJMQ
+  pager = diff-so-fancy | less --tabs=4 -RFX
   attributesfile = ~/.gitattributes
   ignorecase = true
 [color]
@@ -13,6 +13,7 @@
   branch = auto
   diff = auto
   interactive = auto
+  ui = true
 [push]
   default = current
 [branch]
@@ -58,8 +59,8 @@
   rb = rebase
   rbc = rebase --continue
   rba = rebase --abort
-  ft = fetch --prune
-  fa = fetch --prune --all
+  ft = fetch --prune --tags
+  fa = fetch --prune --all --tags
   ff = merge --ff-only
   pr = pull-request
   ps = push
@@ -99,3 +100,5 @@
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
   required = true
+[diff-so-fancy]
+  first-run = false
