@@ -277,38 +277,38 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { "mode": "passive" }
 
-if has('nvim')
-  nmap <leader>sc :call NeomakeToggleMode()<CR>
-  let s:neomake_auto_on = 0
-
-  function! NeomakeToggleMode()
-    if s:neomake_auto_on
-      let s:neomake_auto_on = 0
-      autocmd! BufWritePost *
-      call setloclist(0, getloclist(0), 'r')
-      call setloclist(0, getqflist(), 'r')
-
-      highlight link NeomakeError NONE
-      highlight link NeomakeWarning NONE
-      highlight link NeomakeInfo NONE
-      highlight link NeomakeMessage NONE
-
-      sign unplace *
-      silent! lclose
-    else
-      let s:neomake_auto_on = 1
-      autocmd! BufWritePost * Neomake
-
-      highlight link NeomakeError NeomakeErrorDefault
-      highlight link NeomakeWarning NeomakeWarningDefault
-      highlight link NeomakeInfo NeomakeInfoDefault
-      highlight link NeomakeMessage NeomakeMessageDefault
-      execute 'Neomake'
-    endif
-  endfunction
-else
+" if has('nvim')
+  " nmap <leader>sc :call NeomakeToggleMode()<CR>
+  " let s:neomake_auto_on = 0
+  "
+  " function! NeomakeToggleMode()
+  "   if s:neomake_auto_on
+  "     let s:neomake_auto_on = 0
+  "     autocmd! BufWritePost *
+  "     call setloclist(0, getloclist(0), 'r')
+  "     call setloclist(0, getqflist(), 'r')
+  "
+  "     highlight link NeomakeError NONE
+  "     highlight link NeomakeWarning NONE
+  "     highlight link NeomakeInfo NONE
+  "     highlight link NeomakeMessage NONE
+  "
+  "     sign unplace *
+  "     silent! lclose
+  "   else
+  "     let s:neomake_auto_on = 1
+  "     autocmd! BufWritePost * Neomake
+  "
+  "     highlight link NeomakeError NeomakeErrorDefault
+  "     highlight link NeomakeWarning NeomakeWarningDefault
+  "     highlight link NeomakeInfo NeomakeInfoDefault
+  "     highlight link NeomakeMessage NeomakeMessageDefault
+  "     execute 'Neomake'
+  "   endif
+  " endfunction
+" else
   nmap <leader>sc :SyntasticToggleMode<CR>
-end
+" end
 
 let g:rspec_command = "Dispatch rspec {spec}"
 " Rspec Settings
@@ -346,38 +346,40 @@ let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
 " Session Settings
 let g:session_autosave = 'no'
 
-if has('nvim')
-  " deoplete
-  call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
-
-  let g:deoplete#enable_at_startup = 1
-  let g:deoplete#ignore_sources = {}
-  let g:deoplete#ignore_sources.ruby = ['omni']
-  let g:deoplete#enable_ignore_case = 1
-  let g:deoplete#enable_smart_case = 1
-  let g:deoplete#enable_camel_case = 1
-
-  inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ deoplete#mappings#manual_complete()
-  function! s:check_back_space() abort "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-  endfunction"}}}
-
-  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-  function! s:my_cr_function() abort
-    return deoplete#close_popup() . "\<CR>"
-  endfunction
-end
+" if has('nvim')
+"   " deoplete
+"   call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
+"
+"   let g:deoplete#enable_at_startup = 1
+"   let g:deoplete#ignore_sources = {}
+"   let g:deoplete#ignore_sources.ruby = ['omni']
+"   let g:deoplete#enable_ignore_case = 1
+"   let g:deoplete#enable_smart_case = 1
+"   let g:deoplete#enable_camel_case = 1
+"
+"   inoremap <silent><expr> <TAB>
+"         \ pumvisible() ? "\<C-n>" :
+"         \ <SID>check_back_space() ? "\<TAB>" :
+"         \ deoplete#mappings#manual_complete()
+"   function! s:check_back_space() abort "{{{
+"     let col = col('.') - 1
+"     return !col || getline('.')[col - 1]  =~ '\s'
+"   endfunction"}}}
+"
+"   inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"   function! s:my_cr_function() abort
+"     return deoplete#close_popup() . "\<CR>"
+"   endfunction
+" end
 
 " neomake
 let g:neomake_open_list = 2
 let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'reek']
 
 " YCM Settings
-if !has('nvim')
+" if !has('nvim')
+  let g:ycm_server_keep_logfile=1
+  let g:ycm_server_log_level='debug'
   let g:ycm_add_preview_to_completeopt = 0
   let g:ycm_auto_trigger = 1
   let g:ycm_autoclose_preview_window_after_completion = 1
@@ -385,7 +387,7 @@ if !has('nvim')
   let g:ycm_collect_identifiers_from_comments_and_strings = 1
   let g:ycm_collect_identifiers_from_tags_files = 1
   let g:ycm_seed_identifiers_with_syntax = 1
-end
+" end
 
 " UltiSnip Settings
 " let g:UltiSnipsExpandTrigger = '<C-l>'
