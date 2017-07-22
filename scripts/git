@@ -11,3 +11,9 @@ for DIR in ${DIRS[*]}; do
     git init --quiet $WORKING
   fi
 done
+
+please=
+if [[ $(uname) != Darwin ]]; then
+  please=sudo
+fi
+$please npm install -g diff-so-fancy
