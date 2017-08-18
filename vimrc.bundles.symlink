@@ -104,7 +104,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'zhaocai/GoldenView.Vim'
   if !has('nvim')
     Plug 'scrooloose/syntastic'
-    " Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
   end
   if has('nvim')
     Plug 'scrooloose/syntastic'
