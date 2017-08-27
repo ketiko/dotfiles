@@ -232,7 +232,7 @@ map <leader>m :CtrlPMRU<CR>
 map <leader>cc :CtrlPClearCache<CR>
 map <leader>ca :CtrlPClearAllCaches<CR>
 
-" nmap <C-p> :FZF<CR>
+nmap <C-f> :FZF<CR>
 
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)

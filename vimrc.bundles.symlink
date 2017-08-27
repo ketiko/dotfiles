@@ -3,6 +3,7 @@ filetype off
 if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin()
 
+
   Plug 'Glench/Vim-Jinja2-Syntax'
   Plug 'Konfekt/FastFold'
   Plug 'Lokaltog/vim-easymotion'
@@ -79,6 +80,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'tpope/vim-rake'
   Plug 'tpope/vim-rbenv'
   Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-rhubarb'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-vinegar'
@@ -94,7 +96,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-notes'
   Plug 'zhaocai/GoldenView.Vim'
-
   if isdirectory(expand("~/go"))
     Plug 'fatih/vim-go'
   endif
