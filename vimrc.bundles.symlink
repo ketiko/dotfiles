@@ -96,6 +96,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-notes'
   Plug 'zhaocai/GoldenView.Vim'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'ashisha/image.vim'
   if isdirectory(expand("~/go"))
     Plug 'fatih/vim-go'
   endif
