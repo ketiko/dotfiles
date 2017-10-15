@@ -197,3 +197,7 @@ vv() {
   local file
   file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vi "${file}" || return 1
 }
+
+if [ -d "$HOME/.asdf" ]; then
+  source $HOME/.asdf/completions/asdf.bash
+fi

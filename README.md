@@ -20,7 +20,7 @@ If you override it will create .backup files for you.
 When you uninstall it will restore these .backup files and remove the symlinks.
 
 It also includes additional scripts to install other things I typically use.
-Such as vim, git, Vundle, solarized color themes, rbenv, etc.
+Such as vim, git, Vundle, solarized color themes, asdf, etc.
 These are not required.
 
 ## Uninstall
