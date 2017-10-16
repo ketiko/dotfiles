@@ -56,6 +56,12 @@ if type go &> /dev/null; then
   fi
 fi
 
+if [ -d "$HOME/.rbenv" ]; then
+  #if [ ":$PATH:" != *":$HOME/.rbenv/bin:"* ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  #fi
+  eval "$(rbenv init -)"
+fi
 if [ -d "$HOME/.asdf" ]; then
   source $HOME/.asdf/asdf.sh
 fi

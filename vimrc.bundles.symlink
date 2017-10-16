@@ -78,6 +78,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'tpope/vim-obsession'
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-rake'
+  Plug 'tpope/vim-rbenv'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-rhubarb'
   Plug 'tpope/vim-surround'

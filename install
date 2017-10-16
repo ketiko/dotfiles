@@ -19,6 +19,7 @@ else
   . "$SCRIPTPATH/scripts/vim-node-modules"
   . "$SCRIPTPATH/scripts/neovim"
   . "$SCRIPTPATH/scripts/asdf"
+  . "$SCRIPTPATH/scripts/rbenv"
   . "$SCRIPTPATH/scripts/zsh"
   . "$SCRIPTPATH/scripts/solarized"
 fi
