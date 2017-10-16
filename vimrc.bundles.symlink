@@ -3,7 +3,6 @@ filetype off
 if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin()
 
-
   Plug 'Glench/Vim-Jinja2-Syntax'
   Plug 'Konfekt/FastFold'
   Plug 'Lokaltog/vim-easymotion'
@@ -15,6 +14,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'altercation/vim-colors-solarized'
   Plug 'alvan/vim-closetag'
   Plug 'ap/vim-css-color'
+  Plug 'ashisha/image.vim'
   Plug 'austintaylor/vim-indentobject'
   Plug 'bkad/CamelCaseMotion'
   Plug 'bootleq/vim-textobj-rubysymbol'
@@ -43,6 +43,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'kana/vim-textobj-user'
   Plug 'kchmck/vim-coffee-script'
   Plug 'keith/swift.vim'
+  Plug 'leafgarland/typescript-vim'
   Plug 'lucapette/vim-textobj-underscore'
   Plug 'ludovicchabant/vim-gutentags'
   Plug 'majutsushi/tagbar'
@@ -62,7 +63,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'scrooloose/nerdtree'
   Plug 'scrooloose/syntastic'
   Plug 'sjl/gundo.vim'
-  Plug 'slashmili/alchemist.vim'
   Plug 'slashmili/alchemist.vim'
   Plug 'slim-template/vim-slim'
   Plug 'suan/vim-instant-markdown'
@@ -95,8 +95,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-notes'
   Plug 'zhaocai/GoldenView.Vim'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'ashisha/image.vim'
   if isdirectory(expand("~/go"))
     Plug 'fatih/vim-go'
   endif
