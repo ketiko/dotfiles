@@ -6,3 +6,4 @@ tags
 .overcommit.yml
 tags.lock
 tags.temp
+.idea
