@@ -1,15 +1,11 @@
+# source ~/.zplug/init.zsh
+# zplug zsh-users/zsh-syntax-highlighting
+# zplug zsh-users/zsh-completions
+# zplug zsh-users/zsh-history-substring-search
+# zplug load
+
 source ~/.antigen/antigen.zsh
-
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle git
-antigen bundle heroku
-antigen bundle pip
-antigen bundle lein
-antigen bundle command-not-found
-
-antigen apply
+antigen init ~/.antigenrc
 
 autoload -U compinit && compinit
 zmodload -i zsh/complist
