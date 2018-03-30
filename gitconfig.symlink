@@ -1,5 +1,5 @@
 [help]
-  autocorrect = 1
+  autocorrect = 0
 [core]
   editor = vim
   excludesfile = ~/.gitignore
