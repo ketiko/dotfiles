@@ -21,7 +21,7 @@ syntax enable
 syntax sync fromstart
 
 " BASIC EDITING CONFIGURATION
-" set directory=$HOME/.vim/swap//
+set directory=$HOME/.vim/swap//
 set autoindent          " Copy indent from current line when starting a new line
 set backspace=2         " makes backspace work normally
 set cmdheight=1         " Cmd bar 2 rows high
@@ -64,7 +64,7 @@ set smarttab            " Insert blanks properly at beginning of a line
 set softtabstop=2       " <BS> over an autoindent deletes shiftwidth worth of spaces
 set splitbelow
 set splitright
-set swapfile
+set noswapfile
 set switchbuf=""        " do not move focus/cursor to where the buffer is already open
 set synmaxcol=1200      " Syntax coloring lines that are too long just slows down the world
 set t_ti= t_te=         " Prevent Vim from clobbering the scrollback buffer
@@ -128,9 +128,9 @@ nnoremap ,gf magg<S-v>G=`a
 set notimeout ttimeout ttimeoutlen=100
 
 if exists('+colorcolumn')
-  set colorcolumn=80
+  set colorcolumn=100
 else
-  match ErrorMsg '\%>80v.\+'
+  match ErrorMsg '\%>100v.\+'
 end
 
 " Navigate panes vim style
