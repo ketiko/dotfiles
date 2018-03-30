@@ -1,4 +1,4 @@
-set-option -g default-command "reattach-to-user-namespace -l zsh"
+set-option -g default-command "reattach-to-user-namespace -l $SHELL"
 
 # Setup 'v' to begin selection as in Vim
 bind-key -Tcopy-mode-vi 'v' send -X begin-selection
