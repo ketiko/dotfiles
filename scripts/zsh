@@ -1,8 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
-
-if [ ! -d ~/.antigen ]; then
-  echo 'Installing antigen'
-  git clone https://github.com/zsh-users/antigen.git ~/.antigen
+if [ ! -d ~/.zplugin ]; then
+  echo 'Installing zplugin'
+  git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
 fi
