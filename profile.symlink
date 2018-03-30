@@ -14,8 +14,6 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 if [[ $(uname) == Darwin ]]; then
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-  # man_paths=`find -L $(brew --prefix)/opt -type d -name "man" | grep "man" | tr '\n' :`
-  # export MANPATH=$man_paths:$MANPATH
 fi
 
 # set PATH so it includes user's private bin if it exists
@@ -73,15 +71,6 @@ if type fasd &> /dev/null; then
   fi
   source "$fasd_cache"
   unset fasd_cache
-fi
-
-if type brew &> /dev/null; then
-  if [ -n "$BASH_VERSION" ]; then
-    . "/usr/local/Homebrew/Library/Contributions/brew_bash_completion.sh"
-  fi
-  # if [ -n "$ZSH_VERSION" ]; then
-  #   . "`brew --repository`/Library/Contributions/brew_zsh_completion.zsh"
-  # fi
 fi
 
 # only define LC_CTYPE if undefined
