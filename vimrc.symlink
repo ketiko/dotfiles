@@ -233,6 +233,7 @@ let g:rails_projections = {
 " map <leader>ca :CtrlPClearAllCaches<CR>
 
 nmap <C-p> :FZF<CR>
+nmap <leader>b :Buffers<CR>
 let g:fzf_history_dir = '~/.fzf/history'
 
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)

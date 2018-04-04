@@ -188,3 +188,5 @@ vv() {
   local file
   file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vi "${file}" || return 1
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
