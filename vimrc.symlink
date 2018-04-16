@@ -7,7 +7,7 @@ end
 if has('nvim')
   set viminfo+=n$HOME/.config/nvim/ninfo
 end
-set tags+=./tags,./ruby-tags,./.git/tags;
+set tags+=./tags,./ruby-tags,./.git/tags,~/.rbenv/tags;
 set backupdir=$HOME/.vim/backup//
 if !has('nvim')
   set term=screen-256color
@@ -454,6 +454,7 @@ let g:ruby_path = []
 let g:ale_sign_column_always = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_enter = 0
+let g:ale_linters = {'javascript': ['eslint']}
 
 " vim-stay
 set viewoptions=cursor,folds,slash,unix
