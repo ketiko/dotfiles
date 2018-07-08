@@ -97,9 +97,9 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'zhaocai/GoldenView.Vim'
   Plug 'w0rp/ale'
   Plug 'Valloric/ListToggle'
-  " if isdirectory(expand("~/go"))
-  "   Plug 'fatih/vim-go'
-  " endif
+  if isdirectory(expand("~/go"))
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  endif
 
   call plug#end()
 endif

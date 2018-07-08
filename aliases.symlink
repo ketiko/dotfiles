@@ -69,11 +69,6 @@ elif type fasd &> /dev/null; then
   fi
 fi
 
-
-if type hub &> /dev/null; then
-  alias git=hub
-fi
-
 if [[ $(uname) != Darwin ]]; then
   alias chown='chown -c --preserve-root'
   alias chmod='chmod -c --preserve-root'

@@ -38,6 +38,8 @@
   cm = commit -m
   br = branch
   ba = branch -a
+  bd = branch -d
+  bm = branch -m
   co = checkout
   cb = checkout -b
   chp = cherry-pick
@@ -46,7 +48,7 @@
   da = difftool --dir-diff
   dac = difftool --dir-diff --cached
   di = diff --staged
-  ds = --no-pager diff --stat
+  ds = diff --stat
   dc = diff --cached
   dtc = difftool --cached
   ca = commit --amend
@@ -59,6 +61,8 @@
   rb = rebase
   rbc = rebase --continue
   rba = rebase --abort
+  rbi = rebase --interactive
+  rbs = rebase --skip
   ft = fetch --prune --tags
   fa = fetch --prune --all --tags
   ff = merge --ff-only
