@@ -25,7 +25,6 @@ fi
 
 if [[ $(uname) == Darwin ]]; then
   if type brew &> /dev/null; then
-    brew tap homebrew/dupes
     brew install \
       ack \
       axel \
@@ -70,6 +69,5 @@ if [[ $(uname) == Darwin ]]; then
       wget \
       wrk \
       zsh
-    brew linkapps
   fi
 fi
