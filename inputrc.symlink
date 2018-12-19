@@ -10,14 +10,14 @@ $if mode=vi
   # these are for vi-command mode
   set keymap vi-command
   "\C-l": clear-screen
-  "\e.": insert-last-argument
+  "\e.": yank-last-arg
   "\e[A": history-search-backward # arrow up
   "\e[B": history-search-forward # arrow down
 
   # these are for vi-insert mode
   set keymap vi-insert
   "\C-l": clear-screen
-  "\e.": insert-last-argument
+  "\e.": yank-last-arg
   "\e[A": history-search-backward # arrow up
   "\e[B": history-search-forward # arrow down
 $endif
