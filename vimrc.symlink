@@ -44,7 +44,7 @@ set matchtime=2         " for .2 seconds
 set nobackup
 set noerrorbells        " No noise
 set nojoinspaces        " Use only 1 space after "." when joining lines instead of 2
-set nopaste
+" set nopaste
 set nostartofline       " Don't reset cursor to start of line when moving around
 set novisualbell        " No blinking
 set nowrap
@@ -267,7 +267,7 @@ let g:lt_quickfix_list_toggle_map = '<leader>q'
 
 let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
-let g:syntastic_json_checkers=['jsonlint']
+" let g:syntastic_json_checkers=['jsonlint']
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek']
 
@@ -380,16 +380,18 @@ let g:neomake_open_list = 2
 let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'reek']
 
 " YCM Settings
-" if !has('nvim')
-  let g:ycm_server_keep_logfile=1
-  let g:ycm_server_log_level='debug'
   let g:ycm_add_preview_to_completeopt = 0
   let g:ycm_auto_trigger = 1
   let g:ycm_autoclose_preview_window_after_completion = 1
   let g:ycm_autoclose_preview_window_after_insertion = 1
   let g:ycm_collect_identifiers_from_comments_and_strings = 1
   let g:ycm_collect_identifiers_from_tags_files = 1
+  let g:ycm_key_invoke_completion = '<C-Space>'
+  let g:ycm_min_num_of_chars_for_completion = 2
   let g:ycm_seed_identifiers_with_syntax = 1
+  let g:ycm_server_keep_logfile = 1
+  let g:ycm_server_log_level = 'debug'
+" if !has('nvim')
 " end
 
 " UltiSnip Settings
@@ -454,7 +456,8 @@ let g:ruby_path = []
 let g:ale_sign_column_always = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_enter = 0
-let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_completion_enabled = 0
+let g:ale_linters = {'javascript': ['eslint'] }
 
 " vim-stay
 set viewoptions=cursor,folds,slash,unix

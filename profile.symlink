@@ -85,4 +85,4 @@ fi
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-export FZF_DEFAULT_COMMAND='ag --hidden --smart-case --files-with-matches --nocolor -g ""'
+export FZF_DEFAULT_COMMAND='ag --hidden --smart-case --ignore .git --files-with-matches --nocolor -g ""'
