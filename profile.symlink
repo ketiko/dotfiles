@@ -53,9 +53,16 @@ if type go &> /dev/null; then
 fi
 
 if [ -d "$HOME/.rbenv" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
+if [ -d "$HOME/.nvm" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init - --no-rehash)"
 fi
+
 
 if type fasd &> /dev/null; then
   fasd_cache="$HOME/.fasd-init-cache"

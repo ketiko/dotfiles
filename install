@@ -20,6 +20,7 @@ else
   . "$SCRIPTPATH/scripts/neovim"
   . "$SCRIPTPATH/scripts/asdf"
   . "$SCRIPTPATH/scripts/rbenv"
+  . "$SCRIPTPATH/scripts/nvm"
   . "$SCRIPTPATH/scripts/zsh"
   . "$SCRIPTPATH/scripts/solarized"
 fi
