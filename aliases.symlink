@@ -102,6 +102,8 @@ then
   alias cat='colourify cat'
 fi
 
+alias rmorg='find . -iname "*.orig" -exec rm {} \;'
+
 if [ -f "$HOME/.aliases.local" ]; then
   . "$HOME/.aliases.local"
 fi
