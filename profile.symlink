@@ -37,7 +37,7 @@ export KEYTIMEOUT=1
 
 if [ -f "$HOME/.ssh/id_rsa" ]; then
   if which keychain &> /dev/null; then
-    eval $(keychain --quiet --quick)
+    eval $(keychain --eval --quiet --quick)
   fi
 fi
 
