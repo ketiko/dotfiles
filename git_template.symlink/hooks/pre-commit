@@ -21,8 +21,8 @@ for FILE in `git diff --cached --name-only`; do
 
       spec_file=${FILE%%_spec.rb}
       if [ ${spec_file} != ${FILE} ]; then
-        if grep -iqe 'focus' $FILE; then
-          echo "Warning: found focus statement in specs"
+        if grep -iqe 'focus: true' $FILE; then
+          echo "Warning: found focus: true statement in specs"
           echo "   File: $FILE\n--------------"
           ERROR=true
         fi
