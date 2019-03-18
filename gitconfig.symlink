@@ -63,6 +63,7 @@
   rba = rebase --abort
   rbi = rebase --interactive
   rbs = rebase --skip
+  ma = merge --abort
   ft = fetch --prune --tags
   fa = fetch --prune --all --tags
   ff = merge --ff-only

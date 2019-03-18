@@ -102,6 +102,7 @@ then
   alias cat='colourify cat'
 fi
 
+alias watch='watch --color'
 alias rmorg='find . -iname "*.orig" -exec rm {} \;'
 
 if [ -f "$HOME/.aliases.local" ]; then
