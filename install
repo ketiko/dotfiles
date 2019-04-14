@@ -15,14 +15,12 @@ if [ $ACTION != "all" ]; then
 else
   . "$SCRIPTPATH/scripts/packages"
   . "$SCRIPTPATH/scripts/dotfiles" O
+  . "$SCRIPTPATH/scripts/zsh"
+  . "$SCRIPTPATH/scripts/solarized"
   . "$SCRIPTPATH/scripts/vim"
   . "$SCRIPTPATH/scripts/vim-node-modules"
   . "$SCRIPTPATH/scripts/neovim"
   . "$SCRIPTPATH/scripts/asdf"
-  . "$SCRIPTPATH/scripts/rbenv"
-  . "$SCRIPTPATH/scripts/nvm"
-  . "$SCRIPTPATH/scripts/zsh"
-  . "$SCRIPTPATH/scripts/solarized"
 fi
 
 sudo -k
