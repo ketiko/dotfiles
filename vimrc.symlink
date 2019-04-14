@@ -387,7 +387,7 @@ let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'reek']
   let g:ycm_collect_identifiers_from_comments_and_strings = 1
   let g:ycm_collect_identifiers_from_tags_files = 1
   let g:ycm_key_invoke_completion = '<C-Space>'
-  let g:ycm_min_num_of_chars_for_completion = 2
+  let g:ycm_min_num_of_chars_for_completion = 3
   let g:ycm_seed_identifiers_with_syntax = 1
   let g:ycm_server_keep_logfile = 1
   let g:ycm_server_log_level = 'debug'
@@ -464,6 +464,8 @@ set viewoptions=cursor,folds,slash,unix
 
 " javascript-libraries-syntax
 let g:used_javascript_libs = 'jquery,angularjs,react'
+
+let g:closetag_filenames = "*.html.erb,*.html,*.xhtml,*.phtml"
 
 " Quickly edit/reload the vimrc file
 nmap <silent> ,ev :e $MYVIMRC<CR>

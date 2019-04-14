@@ -21,7 +21,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --go-completer --ts-complete --clang-completer' }
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'altercation/vim-colors-solarized'
-  " Plug 'alvan/vim-closetag'
+  Plug 'alvan/vim-closetag'
   Plug 'ap/vim-css-color'
   " Plug 'ashisha/image.vim'
   Plug 'austintaylor/vim-indentobject'
