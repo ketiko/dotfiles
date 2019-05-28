@@ -103,7 +103,7 @@ then
 fi
 
 alias watch='watch --color'
-alias rmorg='find . -iname "*.orig" -exec rm {} \;'
+alias rm_org='find . -iname "*.orig" -exec rm {} \;'
 
 if [ -f "$HOME/.aliases.local" ]; then
   . "$HOME/.aliases.local"
