@@ -18,7 +18,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'Raimondi/delimitMate'
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
   Plug 'Valloric/ListToggle'
-  " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --go-completer --ts-complete --clang-completer' }
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --go-completer --ts-complete --clang-completer --java-completer' }
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'altercation/vim-colors-solarized'
   Plug 'alvan/vim-closetag'

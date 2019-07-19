@@ -104,6 +104,7 @@ fi
 
 alias watch='watch --color'
 alias rm_org='find . -iname "*.orig" -exec rm {} \;'
+alias ducks='du -cks -- * | sort -rn | head'
 
 if [ -f "$HOME/.aliases.local" ]; then
   . "$HOME/.aliases.local"
