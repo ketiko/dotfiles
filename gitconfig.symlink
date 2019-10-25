@@ -45,8 +45,8 @@
   chp = cherry-pick
   df = diff
   dt = difftool
-  da = difftool --dir-diff
-  dac = difftool --dir-diff --cached
+  da = difftool --dir-diff --no-symlinks
+  dac = difftool --dir-diff --cached --no-symlinks
   di = diff --staged
   ds = diff --stat
   dc = diff --cached

@@ -18,7 +18,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'Raimondi/delimitMate'
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
   Plug 'Valloric/ListToggle'
-  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --go-completer --ts-complete --clang-completer --java-completer' }
+  " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --go-completer --ts-complete --clang-completer --java-completer' }
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'altercation/vim-colors-solarized'
   Plug 'alvan/vim-closetag'
@@ -74,7 +74,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'sjl/gundo.vim'
   Plug 'slashmili/alchemist.vim'
   Plug 'slim-template/vim-slim'
-  Plug 'suan/vim-instant-markdown'
+  " Plug 'suan/vim-instant-markdown'
   Plug 'tomtom/tcomment_vim'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-bundler'
@@ -105,6 +105,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-notes'
   Plug 'zhaocai/GoldenView.Vim'
+  Plug '/tfnico/vim-gradle'
+  Plug 'gisphm/vim-gradle'
   if isdirectory(expand("~/go"))
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   endif
