@@ -40,8 +40,11 @@ if [[ $(uname) == Darwin ]]; then
       findutils \
       git \
       git-extras \
-      grep \
       gnu-indent \
+      gpg \
+      gpg2 \
+      grep \
+      pinentry-mac \
       gnu-time \
       gnu-sed \
       gnu-tar \
