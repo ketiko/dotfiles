@@ -85,6 +85,7 @@
   tool = beyondcompare
 [mergetool]
   prompt = false
+	keepBackup = false
 [mergetool "beyondcompare"]
   cmd = bcomp -automerge -iu -reviewconflicts -lefttitle='Local Changes' -righttitle='Remote Changes' -centertitle='Committed' $LOCAL $REMOTE $BASE $MERGED
   trustExitCode = true

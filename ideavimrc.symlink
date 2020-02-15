@@ -1,0 +1,7 @@
+source ~/.vimrc
+set easymotion
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set ideajoin

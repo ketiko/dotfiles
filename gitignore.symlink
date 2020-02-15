@@ -2,9 +2,10 @@ tags
 .sass-cache
 *.sw[a-zA-Z]
 *~
-.DS_Store
+*.DS_Store
 .overcommit.yml
 tags.lock
 tags.temp
 .idea
 .ignore
+*.orig
