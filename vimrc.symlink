@@ -238,10 +238,6 @@ nmap <C-p> :FZF<CR>
 nmap <leader>b :Buffers<CR>
 let g:fzf_history_dir = '~/.fzf/history'
 
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
 " Ag Settings
 if executable('ag')
   " Use ag over grep

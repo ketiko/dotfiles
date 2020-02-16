@@ -2,9 +2,9 @@ source ~/.vimrc
 set easymotion
 set surround
 set multiple-cursors
-set commentary
 set argtextobj
+set commentary
 set ideajoin
 nmap <C-P> :action GotoFile<CR>
+nmap <Space>f :action SelectInProjectView<CR>
 nmap <Space>n :action ActivateProjectToolWindow<CR>
-nmap <Space>f :action ActivateProjectToolWindow<CR>
