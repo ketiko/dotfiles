@@ -5,3 +5,4 @@ set multiple-cursors
 set commentary
 set argtextobj
 set ideajoin
+nmap <C-P> :action GotoFile<CR>
