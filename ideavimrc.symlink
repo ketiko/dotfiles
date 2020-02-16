@@ -6,3 +6,5 @@ set commentary
 set argtextobj
 set ideajoin
 nmap <C-P> :action GotoFile<CR>
+nmap <Space>n :action ActivateProjectToolWindow<CR>
+nmap <Space>f :action ActivateProjectToolWindow<CR>
