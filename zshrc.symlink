@@ -2,6 +2,10 @@ source ~/.zplugin/bin/zplugin.zsh
 zplugin light zsh-users/zsh-syntax-highlighting
 zplugin light zsh-users/zsh-completions
 zplugin light zsh-users/zsh-history-substring-search
+zplugin light zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+bindkey '^ ' autosuggest-accept
 
 autoload -U compinit && compinit
 zmodload -i zsh/complist

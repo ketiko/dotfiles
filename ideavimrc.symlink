@@ -8,3 +8,7 @@ set ideajoin
 nmap <C-P> :action GotoFile<CR>
 nmap <Space>f :action SelectInProjectView<CR>
 nmap <Space>n :action ActivateProjectToolWindow<CR>
+nmap <Left> <Left>
+nmap <Down> <Down>
+nmap <Up> <Up>
+nmap <Right> <Right>
