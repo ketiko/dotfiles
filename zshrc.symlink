@@ -199,3 +199,16 @@ if [ -d "$HOME/.asdf" ]; then
   source $HOME/.asdf/asdf.sh
   source $HOME/.asdf/completions/asdf.bash
 fi
+
+_fzf_complete_git() {
+  ARGS="$@"
+  if [[ $ARGS == 'git add'* ]]; then
+    local files
+    files=$(git status -u -s | awk '{print $2}')
+    _fzf_complete "--reverse --multi" "$@" < <(
+      echo $files
+    )
+  else
+    eval "zle ${fzf_default_completion:-expand-or-complete}"
+  fi
+}
