@@ -208,6 +208,29 @@ _fzf_complete_git() {
     _fzf_complete "--reverse --multi" "$@" < <(
       echo $files
     )
+  elif [[ $ARGS == 'git aa'* ]]; then
+    local files
+    files=$(git status -u -s | awk '{print $2}')
+    _fzf_complete "--reverse --multi" "$@" < <(
+      echo $files
+    )
+  elif [[ $ARGS == 'git co'* ]]; then
+    local files
+    files=$(git status -u -s | awk '{print $2}')
+    _fzf_complete "--reverse --multi" "$@" < <(
+      echo $files
+    )
+  elif [[ $ARGS == 'git checkout'* ]]; then
+    local files
+    files=$(git status -u -s | awk '{print $2}')
+    _fzf_complete "--reverse --multi" "$@" < <(
+      echo $files
+    )
+  elif [[ $ARGS == 'git co'* ]]; then local files
+    files=$(git status -u -s | awk '{print $2}')
+    _fzf_complete "--reverse --multi" "$@" < <(
+      echo $files
+    )
   else
     eval "zle ${fzf_default_completion:-expand-or-complete}"
   fi
