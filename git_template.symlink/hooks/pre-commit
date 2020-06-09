@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # "Forbidden" regular expressions
 DEBUGGING=('binding\.pry' 'binding\.remote_pry' 'save_and_open_page' 'debugger')
