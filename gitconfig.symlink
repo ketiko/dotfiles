@@ -49,6 +49,7 @@
   dac = difftool --dir-diff --cached --no-symlinks
   di = diff --staged
   ds = diff --stat
+  dsc = diff --stat --cached
   dc = diff --cached
   dtc = difftool --cached
   ca = commit --amend
