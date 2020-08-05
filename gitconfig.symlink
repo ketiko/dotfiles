@@ -82,11 +82,14 @@
 [difftool "beyondcompare"]
   cmd = bcomp $LOCAL $REMOTE -lefttitle='Old' -righttitle='New'
   trustExitCode = true
+[difftool "icdiff"]
+  cmd = icdiff $LOCAL $REMOTE
+  trustExitCode = true
 [merge]
   tool = beyondcompare
 [mergetool]
   prompt = false
-	keepBackup = false
+  keepBackup = false
 [mergetool "beyondcompare"]
   cmd = bcomp -automerge -iu -reviewconflicts -lefttitle='Local Changes' -righttitle='Remote Changes' -centertitle='Committed' $LOCAL $REMOTE $BASE $MERGED
   trustExitCode = true
@@ -105,3 +108,5 @@
   command = diff-pdf $LOCAL $REMOTE
 [diff-so-fancy]
   first-run = false
+[icdiff]
+  options = --highlight --line-numbers
