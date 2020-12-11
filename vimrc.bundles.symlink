@@ -107,6 +107,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'zhaocai/GoldenView.Vim'
   Plug '/tfnico/vim-gradle'
   Plug 'gisphm/vim-gradle'
+  Plug 'christianrondeau/vim-base64'
   if isdirectory(expand("~/go"))
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   endif
