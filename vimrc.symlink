@@ -9,9 +9,8 @@ if has('nvim')
 end
 set tags+=./tags,./ruby-tags,./.git/tags,~/.rbenv/tags;
 set backupdir=$HOME/.vim/backup//
-if !has('nvim')
-  set term=screen-256color
-end
+
+set encoding=utf8
 
 source $HOME/.vimrc.bundles
 
@@ -186,14 +185,25 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
-" Solarized Settings
-if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
-let g:solarized_termtrans=1
-let g:solarized_termcolors=16
-colorscheme solarized
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+end
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+colorscheme oceanic_material
 set t_Co=256
 set background=dark
-endif
+
+" Solarized Settings
+" if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
+"   let g:solarized_termtrans=1
+"   let g:solarized_termcolors=16
+"   colorscheme solarized
+" endif
 
 " vim-rails
 let g:rails_projections = {
@@ -245,6 +255,9 @@ if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ackprg = 'ag --vimgrep'
 endif
+
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
 
 " Ack settings
 " cnoreabbrev Ag Ack
@@ -429,7 +442,8 @@ let g:instant_markdown_autostart = 1
 let g:goldenview__enable_default_mapping = 0
 
 " Airline Settings
-let g:airline_theme='solarized'
+" let g:airline_theme='solarized'
+let g:airline_theme='oceanicnext'
 
 " vim-go
 " let g:go_fmt_command = "goimports"
