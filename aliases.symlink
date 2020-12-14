@@ -106,6 +106,12 @@ alias watch='watch --color'
 alias rm_org='find . -iname "*.orig" -exec rm {} \;'
 alias ducks='du -cks -- * | sort -rn | head'
 
+bat=`which bat`
+batcat=`which batcat`
+if [ -n $batcat ]; then
+ alias bat=$batcat
+fi
+
 if [ -f "$HOME/.aliases.local" ]; then
   . "$HOME/.aliases.local"
 fi
