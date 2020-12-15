@@ -78,5 +78,7 @@ if [[ $(uname) == Darwin ]]; then
       wget \
       wrk \
       zsh
+
+    pip3 install neovim
   fi
 fi
