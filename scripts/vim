@@ -9,3 +9,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 echo "Installing Vim Bundles"
 # vim +PluginInstall! +PluginClean! +qall
 vim +PlugInstall +qall
+
+echo "Installing NeoVim Bundles"
+# vim +PluginInstall! +PluginClean! +qall
+nvim +PlugInstall +qall

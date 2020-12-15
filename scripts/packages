@@ -67,6 +67,7 @@ if [[ $(uname) == Darwin ]]; then
       pv \
       readline \
       reattach-to-user-namespace \
+      ripgrep \
       ssh-copy-id \
       the_silver_searcher \
       tidy-html5 \
