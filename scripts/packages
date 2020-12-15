@@ -38,18 +38,19 @@ if [[ $(uname) == Darwin ]]; then
       curl \
       diff-so-fancy \
       editorconfig \
+      exa \
       fasd \
       findutils \
       git \
       git-extras \
       gnu-indent \
+      gnu-sed \
+      gnu-tar \
+      gnu-time \
       gpg \
       gpg2 \
       grep \
       pinentry-mac \
-      gnu-time \
-      gnu-sed \
-      gnu-tar \
       gnu-getopt \
       gnu-which \
       gnutls \
