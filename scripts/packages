@@ -3,11 +3,13 @@
 if [[ $(uname) != Darwin ]]; then
   sudo apt-get install -y \
     ack-grep \
+    atop \
     axel \
     bar \
     bat \
     build-essential \
     curl \
+    dstat \
     editorconfig \
     exuberant-ctags \
     fasd \
@@ -16,6 +18,8 @@ if [[ $(uname) != Darwin ]]; then
     git-extras \
     grc \
     htop \
+    ioping \
+    iotop \
     keychain \
     neovim \
     nodejs \
