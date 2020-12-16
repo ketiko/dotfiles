@@ -25,6 +25,7 @@ if [[ $(uname) != Darwin ]]; then
     nodejs \
     npm \
     pv \
+    ripgrep \
     silversearcher-ag \
     tmux \
     tree \
