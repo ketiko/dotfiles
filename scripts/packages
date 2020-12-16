@@ -17,6 +17,7 @@ if [[ $(uname) != Darwin ]]; then
     grc \
     htop \
     keychain \
+    neovim \
     nodejs \
     npm \
     pv \
