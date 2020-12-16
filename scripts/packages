@@ -4,11 +4,14 @@ if [[ $(uname) != Darwin ]]; then
   sudo apt-get install -y \
     ack-grep \
     axel \
+    bar \
     bat \
     build-essential \
     curl \
     editorconfig \
     exuberant-ctags \
+    fasd \
+    fzf \
     git \
     git-extras \
     grc \
@@ -21,6 +24,7 @@ if [[ $(uname) != Darwin ]]; then
     tmux \
     tree \
     vim-nox \
+    wget \
     zsh
 fi
 
