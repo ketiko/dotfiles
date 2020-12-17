@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 
 skip_all=false
 overwrite_all=false

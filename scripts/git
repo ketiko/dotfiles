@@ -1,4 +1,5 @@
 #!/bin/sh
+set -eo pipefail
 
 if [ "$1" == "git" ] ; then
  echo "You must supply a root directory to update with the git template."

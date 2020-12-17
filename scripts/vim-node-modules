@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 
 echo "Installing Node modules for Vim Syntastic checks"
 please=
