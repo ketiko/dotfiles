@@ -17,10 +17,12 @@ else
   . "$SCRIPTPATH/scripts/dotfiles" O
   . "$SCRIPTPATH/scripts/zsh"
   . "$SCRIPTPATH/scripts/solarized"
-  . "$SCRIPTPATH/scripts/vim"
   . "$SCRIPTPATH/scripts/vim-node-modules"
+  . "$SCRIPTPATH/scripts/vim-python-deps"
+  . "$SCRIPTPATH/scripts/vim"
   . "$SCRIPTPATH/scripts/neovim"
   . "$SCRIPTPATH/scripts/asdf"
+  . "$SCRIPTPATH/scripts/git"
 fi
 
 sudo -k
