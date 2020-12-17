@@ -185,11 +185,11 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
-if (has("termguicolors"))
-  if has('nvim')
-    set termguicolors
-  end
-end
+" if (has("termguicolors"))
+"   if has('nvim')
+"     set termguicolors
+"   end
+" end
 set t_Co=256
 
 if has('nvim')
@@ -197,15 +197,15 @@ if has('nvim')
 end
 
 " colorscheme oceanic_material
-colorscheme OceanicNext
+" colorscheme OceanicNext
 set background=dark
 
 " Solarized Settings
-" if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
-"   let g:solarized_termtrans=1
-"   let g:solarized_termcolors=16
-"   colorscheme solarized
-" endif
+if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
+  let g:solarized_termtrans=1
+  let g:solarized_termcolors=16
+  colorscheme solarized
+endif
 
 " vim-rails
 let g:rails_projections = {
@@ -403,19 +403,17 @@ let g:neomake_open_list = 2
 let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'reek']
 
 " YCM Settings
-  let g:ycm_add_preview_to_completeopt = 1
-  let g:ycm_auto_trigger = 1
-  let g:ycm_autoclose_preview_window_after_completion = 1
-  let g:ycm_autoclose_preview_window_after_insertion = 1
-  let g:ycm_collect_identifiers_from_comments_and_strings = 1
-  let g:ycm_collect_identifiers_from_tags_files = 1
-  let g:ycm_key_invoke_completion = '<C-Space>'
-  let g:ycm_min_num_of_chars_for_completion = 3
-  let g:ycm_seed_identifiers_with_syntax = 1
-  " let g:ycm_server_keep_logfile = 1
-  " let g:ycm_server_log_level = 'debug'
-" if !has('nvim')
-" end
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_auto_trigger = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_min_num_of_chars_for_completion = 3
+let g:ycm_seed_identifiers_with_syntax = 1
+" let g:ycm_server_keep_logfile = 1
+" let g:ycm_server_log_level = 'debug'
 
 " UltiSnip Settings
 " let g:UltiSnipsExpandTrigger = '<C-l>'
@@ -444,8 +442,8 @@ let g:instant_markdown_autostart = 1
 let g:goldenview__enable_default_mapping = 0
 
 " Airline Settings
-" let g:airline_theme='solarized'
-let g:airline_theme='oceanicnext'
+let g:airline_theme='solarized'
+" let g:airline_theme='oceanicnext'
 
 " vim-go
 " let g:go_fmt_command = "goimports"

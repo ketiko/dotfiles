@@ -30,9 +30,9 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'Valloric/ListToggle'
   " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --go-completer --ts-complete --clang-completer --java-completer' }
   Plug 'Xuyuanp/nerdtree-git-plugin'
-  " Plug 'altercation/vim-colors-solarized'
-  Plug 'mhartington/oceanic-next'
-  Plug 'glepnir/oceanic-material'
+  Plug 'altercation/vim-colors-solarized'
+  " Plug 'mhartington/oceanic-next'
+  " Plug 'glepnir/oceanic-material'
   Plug 'ryanoasis/vim-devicons'
   Plug 'alvan/vim-closetag'
   Plug 'ap/vim-css-color'
