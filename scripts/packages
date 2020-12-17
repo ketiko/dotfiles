@@ -95,3 +95,10 @@ if [[ $(uname) == Darwin ]]; then
     pip3 install neovim
   fi
 fi
+
+
+please=
+if [[ $(uname) != Darwin ]]; then
+  please=sudo
+fi
+$please npm install --force -g diff-so-fancy

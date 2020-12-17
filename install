@@ -22,7 +22,7 @@ else
   . "$SCRIPTPATH/scripts/vim"
   . "$SCRIPTPATH/scripts/neovim"
   . "$SCRIPTPATH/scripts/asdf"
-  . "$SCRIPTPATH/scripts/git"
+  . "$SCRIPTPATH/scripts/git" ~/src
 fi
 
 sudo -k

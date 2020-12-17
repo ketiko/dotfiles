@@ -1,6 +1,15 @@
 #!/bin/sh
 
-echo "Finding git repositories..."
+if [ "$1" == "git" ] ; then
+ echo "You must supply a root directory to update with the git template."
+ exit 1
+fi
+if [ -z "$1" ] ; then
+ echo "You must supply a root directory to update with the git template."
+ exit 1
+fi
+
+echo "Finding git repositories under $1..."
 DIRS=$(find $1 -type d -iname ".git")
 for DIR in ${DIRS[*]}; do
   if [ -d "$DIR/hooks" ]; then
@@ -11,9 +20,3 @@ for DIR in ${DIRS[*]}; do
     git init --quiet $WORKING
   fi
 done
-
-please=
-if [[ $(uname) != Darwin ]]; then
-  please=sudo
-fi
-$please npm install -g diff-so-fancy
