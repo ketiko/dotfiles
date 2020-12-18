@@ -25,6 +25,7 @@ if [[ $(uname) != Darwin ]]; then
     neovim \
     nodejs \
     npm \
+    python3-pip \
     pv \
     ripgrep \
     silversearcher-ag \
