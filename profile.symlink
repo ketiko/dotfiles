@@ -91,4 +91,5 @@ fi
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# export FZF_DEFAULT_COMMAND='ag --hidden --smart-case --ignore .git --files-with-matches --nocolor -g ""'
+export FZF_DEFAULT_COMMAND='ag --hidden --smart-case --ignore .git --ignore .node_modules --files-with-matches --nocolor -g ""'
+# export FZF_DEFAULT_COMMAND='rg -S --files -glob !node_modules --hidden'
