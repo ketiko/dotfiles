@@ -13,6 +13,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " Plug 'Shougo/neosnippet'
   " Plug 'Shougo/neosnippet-snippets'
   " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --go-completer --ts-complete --clang-completer --java-completer' }
+  " Plug 'ashisha/image.vim'
   " Plug 'ctrlpvim/ctrlp.vim'
   " Plug 'dbakker/vim-projectroot'
   " Plug 'glepnir/oceanic-material'
@@ -35,7 +36,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'altercation/vim-colors-solarized'
   Plug 'alvan/vim-closetag'
   Plug 'ap/vim-css-color'
-  Plug 'ashisha/image.vim'
   Plug 'austintaylor/vim-indentobject'
   Plug 'bkad/CamelCaseMotion'
   Plug 'bootleq/vim-textobj-rubysymbol'
