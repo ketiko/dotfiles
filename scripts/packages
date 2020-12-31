@@ -48,7 +48,6 @@ if [[ $(uname) == Darwin ]]; then
       binutils \
       coreutils \
       cscope \
-      universal-ctags \
       curl \
       diff-so-fancy \
       editorconfig \
@@ -93,6 +92,8 @@ if [[ $(uname) == Darwin ]]; then
       wget \
       wrk \
       zsh
+
+    brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
     pip3 install neovim
   fi
