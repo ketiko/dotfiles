@@ -59,6 +59,10 @@ if type fzf &> /dev/null; then
     local file
     file="$(fzf)" && vim "${file}" || return 1
   }
+  n() {
+    local file
+    file="$(fzf)" && nvim "${file}" || return 1
+  }
 elif type fasd &> /dev/null; then
   if [[ $(uname) == Darwin ]]; then
     alias o='LANG=C fasd -a -e open'
