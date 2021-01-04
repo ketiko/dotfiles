@@ -12,6 +12,7 @@ if [[ $(uname) != Darwin ]]; then
     curl \
     dstat \
     editorconfig \
+    exa \
     exuberant-ctags \
     fasd \
     fzf \
@@ -25,8 +26,8 @@ if [[ $(uname) != Darwin ]]; then
     neovim \
     nodejs \
     npm \
-    python3-pip \
     pv \
+    python3-pip \
     ripgrep \
     silversearcher-ag \
     tmux \
