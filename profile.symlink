@@ -14,6 +14,8 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 if [[ $(uname) == Darwin ]]; then
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+  export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+  export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
