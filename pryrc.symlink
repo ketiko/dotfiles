@@ -1,8 +1,6 @@
 Pry.config.editor = 'vim'
 Pry.config.color = true
 Pry.config.theme = "solarized"
-Pry.config.history.should_save = true
-Pry.config.history.should_load = true
 Pry.config.auto_indent = true
 Pry.config.correct_indent = true
 Pry.pager = false
