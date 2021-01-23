@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -eo pipefail
 
 if [ ! -d ~/.zplugin ]; then
   echo 'Installing zplugin'

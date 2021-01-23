@@ -1,5 +1,4 @@
 #!/bin/bash
-set -eo pipefail
 
 if [[ $(uname) != Darwin ]]; then
   sudo apt-get install -y \
