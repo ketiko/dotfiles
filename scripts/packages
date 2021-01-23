@@ -39,8 +39,6 @@ fi
 
 if [[ $(uname) == Darwin ]]; then
   if type brew &> /dev/null; then
-    brew tap homebrew/cask-fonts
-
     brew install \
       ack \
       axel \
@@ -51,11 +49,11 @@ if [[ $(uname) == Darwin ]]; then
       cscope \
       curl \
       diff-so-fancy \
+      dircolors \
       editorconfig \
       exa \
       fasd \
       findutils \
-      font-hack-nerd-font \
       fzf \
       git \
       git-extras \
