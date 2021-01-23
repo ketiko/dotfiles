@@ -87,7 +87,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'ruanyl/vim-sort-imports'
-  Plug 'ryanoasis/vim-devicons'
+  " Plug 'ryanoasis/vim-devicons'
   Plug 'scrooloose/nerdtree'
   Plug 'sidorares/node-vim-debugger'
   Plug 'sjl/gundo.vim'
