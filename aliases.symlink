@@ -73,6 +73,13 @@ elif type fasd &> /dev/null; then
   fi
 fi
 
+if type docker &> /dev/null; then
+  alias dk='docker'
+fi
+if type docker-compose &> /dev/null; then
+  alias dkc='docker-compose'
+fi
+
 if [[ $(uname) != Darwin ]]; then
   alias chown='chown -c --preserve-root'
   alias chmod='chmod -c --preserve-root'

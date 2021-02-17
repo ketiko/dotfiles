@@ -3,11 +3,15 @@ zplugin light zsh-users/zsh-syntax-highlighting
 zplugin light zsh-users/zsh-completions
 zplugin light zsh-users/zsh-history-substring-search
 zplugin light zsh-users/zsh-autosuggestions
+zplugin light greymd/docker-zsh-completion
+
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
+
 bindkey '^ ' autosuggest-accept
 
 autoload -U compinit && compinit
+autoload bashcompinit && bashcompinit
 zmodload -i zsh/complist
 
 zstyle ':completion:*' use-cache on
@@ -198,6 +202,11 @@ vv() {
 if [ -d "$HOME/.asdf" ]; then
   source $HOME/.asdf/asdf.sh
   # source $HOME/.asdf/completions/asdf.bash
+fi
+
+if type aws &> /dev/null; then
+  aws_completer_cmd=$(which aws_completer)
+  complete -C "$aws_completer_cmd" aws
 fi
 
 _fzf_complete_git() {
