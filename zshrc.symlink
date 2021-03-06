@@ -11,7 +11,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^ ' autosuggest-accept
 
 autoload -U compinit && compinit
-autoload bashcompinit && bashcompinit
+autoload -U +X bashcompinit && bashcompinit
 zmodload -i zsh/complist
 
 zstyle ':completion:*' use-cache on
@@ -244,3 +244,8 @@ _fzf_complete_git() {
     eval "zle ${fzf_default_completion:-expand-or-complete}"
   fi
 }
+
+tf=`which terraform`
+if [ -n $tf ]; then
+  complete -o nospace -C $tf terraform
+fi
