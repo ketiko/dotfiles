@@ -72,11 +72,14 @@ if [[ $(uname) == Darwin ]]; then
       hub \
       keychain \
       macvim \
+      ncdu \
+      neofetch \
       neovim \
       node \
       openssl \
       pinentry-mac \
       pv \
+      ranger \
       readline \
       reattach-to-user-namespace \
       ripgrep \
