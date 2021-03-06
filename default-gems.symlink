@@ -2,10 +2,12 @@ awesome_print
 bundler
 gem-browse
 gem-ctags
+json
 neovim
 pry
 pry-doc
 rake
+rest-client
 ripper-tags
 ruby-lint
 solargraph
