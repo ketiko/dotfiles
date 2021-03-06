@@ -27,7 +27,7 @@ set cmdheight=1         " Cmd bar 2 rows high
 " set complete=.,w,b,u,t,i
 set complete=.,w,b,u,t
 set completeopt=menu,preview
-" set cursorline            " highlight current line - slow
+set cursorline            " highlight current line - slow
 set expandtab           " Use spaces not tabs
 set exrc                " allow local .vimrc files per project
 set hidden              " allow unsaved background buffers and remember marks/undo for them
@@ -460,7 +460,10 @@ autocmd FileType go setlocal nolist ts=4 sw=4 sts=4
 autocmd BufNewFile,BufRead *.go setlocal nolist ts=4 sw=4 sts=4
 
 " closetag
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.jsx"
+let g:closetag_filenames = "*.html,*.html.erb,*.html,*.xhtml,*.phtml, *.jsx"
+
+let g:gutenttags_ctags_executable_by = 'ripper-tags'
+let g:gutentags_ctags_exclude = ['go']
 
 " unimpaired
 " Bubble single lines
@@ -500,14 +503,13 @@ let g:used_javascript_libs = 'jquery,angularjs,react'
 let g:javascript_plugin_jsdoc = 1
 let g:vim_jsx_pretty_highlight_close_tag = 1
 
-let g:closetag_filenames = "*.html.erb,*.html,*.xhtml,*.phtml"
 
 " camelCaseMotion
 call camelcasemotion#CreateMotionMappings('<leader>')
 
 " Quickly edit/reload the vimrc file
-nmap <silent> ,ev :e $MYVIMRC<CR>
-nmap <silent> ,eb :e $HOME/.vimrc.bundles<CR>
+nmap <silent> ,ev :vsplit $MYVIMRC<CR>
+nmap <silent> ,eb :vsplit $HOME/.vimrc.bundles<CR>
 nmap <silent> ,sv :source $MYVIMRC<CR>
 
 if filereadable(expand("~/.vimrc.local"))
