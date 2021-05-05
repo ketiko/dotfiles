@@ -76,7 +76,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'lucapette/vim-textobj-underscore'
-  Plug 'ludovicchabant/vim-gutentags'
+  " Plug 'ludovicchabant/vim-gutentags'
   Plug 'majutsushi/tagbar'
   Plug 'markcornick/vim-terraform'
   Plug 'markcornick/vim-vagrant'

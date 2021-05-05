@@ -396,8 +396,10 @@ call deoplete#custom#source('LanguageClient',
             \ 'min_pattern_length',
             \ 2)
 
+
 let g:LanguageClient_serverCommands = {
     \ 'ruby': ['solargraph', 'stdio'],
+    \ 'go': ['gopls'],
     \ }
 " note that if you are using Plug mapping you should not use `noremap` mappings.
 nmap <silent>gm <Plug>(lcn-menu)
@@ -405,6 +407,8 @@ nmap <silent>gm <Plug>(lcn-menu)
 nmap <silent>K <Plug>(lcn-hover)
 nmap <silent>gd <Plug>(lcn-definition)
 nmap <silent>gr <Plug>(lcn-rename)
+nmap <silent>gf <Plug>(lcn-references)
+nmap <silent>gt <Plug>(lcn-type-definition)
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -414,6 +418,11 @@ function! s:check_back_space() abort "{{{
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+" Run gofmt on save
+" autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 
 " neomake
 let g:neomake_open_list = 2
@@ -476,7 +485,53 @@ autocmd BufNewFile,BufRead *.go setlocal nolist ts=4 sw=4 sts=4
 let g:closetag_filenames = "*.html,*.html.erb,*.html,*.xhtml,*.phtml, *.jsx"
 
 let g:gutenttags_ctags_executable_by = 'ripper-tags'
-let g:gutentags_ctags_exclude = ['go']
+let g:gutentags_ctags_exclude = [
+      \ '*.git', '*.svg', '*.hg',
+      \ '*/tests/*',
+      \ 'build',
+      \ 'dist',
+      \ '*sites/*/files/*',
+      \ 'bin',
+      \ 'node_modules',
+      \ 'bower_components',
+      \ 'cache',
+      \ 'compiled',
+      \ 'docs',
+      \ 'example',
+      \ 'bundle',
+      \ 'vendor',
+      \ '*.md',
+      \ '*-lock.json',
+      \ '*.lock',
+      \ '*bundle*.js',
+      \ '*build*.js',
+      \ '.*rc*',
+      \ '*.json',
+      \ '*.min.*',
+      \ '*.map',
+      \ '*.bak',
+      \ '*.zip',
+      \ '*.pyc',
+      \ '*.class',
+      \ '*.sln',
+      \ '*.Master',
+      \ '*.csproj',
+      \ '*.tmp',
+      \ '*.csproj.user',
+      \ '*.cache',
+      \ '*.pdb',
+      \ 'tags*',
+      \ 'cscope.*',
+      \ '*.css',
+      \ '*.less',
+      \ '*.scss',
+      \ '*.exe', '*.dll',
+      \ '*.mp3', '*.ogg', '*.flac',
+      \ '*.swp', '*.swo',
+      \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
+      \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+      \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+      \ ]
 
 " unimpaired
 " Bubble single lines
@@ -500,7 +555,10 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_completion_enabled = 0
-let g:ale_linters = {'javascript': ['eslint'] }
+let g:ale_linters = {
+      \ 'javascript': ['eslint'],
+      \ 'go': ['gopls'],
+      \}
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
       \   'javascript': ['prettier', 'eslint'],
