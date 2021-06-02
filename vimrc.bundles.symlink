@@ -3,19 +3,24 @@ filetype off
 if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin()
 
-  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  " Plug 'neoclide/coc-solargraph'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'kevinoid/vim-jsonc'
+  Plug 'antoinemadec/coc-fzf'
+  Plug 'rakr/vim-two-firewatch'
+  Plug 'joshdick/onedark.vim'
+  Plug 'KeitaNakamura/neodark.vim'
   if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
+    " Plug 'Shougo/deoplete.nvim'
+    " Plug 'roxma/nvim-yarp'
+    " Plug 'roxma/vim-hug-neovim-rpc'
   end
-  Plug 'autozimu/LanguageClient-neovim', {
-        \ 'branch': 'next',
-        \ 'do': 'bash install.sh',
-        \ }
+  " Plug 'autozimu/LanguageClient-neovim', {
+  "       \ 'branch': 'next',
+  "       \ 'do': 'bash install.sh',
+  "       \ }
 
   " Plug 'Shougo/neosnippet'
   " Plug 'Shougo/neosnippet-snippets'
@@ -76,7 +81,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'lucapette/vim-textobj-underscore'
-  " Plug 'ludovicchabant/vim-gutentags'
+  Plug 'ludovicchabant/vim-gutentags'
   Plug 'majutsushi/tagbar'
   Plug 'markcornick/vim-terraform'
   Plug 'markcornick/vim-vagrant'

@@ -13,3 +13,6 @@ vim +PlugInstall +qall
 echo "Installing NeoVim Bundles"
 # vim +PluginInstall! +PluginClean! +qall
 nvim +PlugInstall +qall
+
+# echo "Installing Coc"
+nvim -c 'CocInstall -sync coc-css coc-json coc-html coc-solargraph coc-sources coc-tsserver coc-go coc-lists coc-markdownlint coc-python coc-sh coc-snippets coc-yaml coc-sql coc-toml|qa'

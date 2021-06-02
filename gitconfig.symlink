@@ -1,7 +1,7 @@
 [help]
   autocorrect = 0
 [core]
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore
   autocrlf = input
   pager = diff-so-fancy | less --tabs=4 -RFX
