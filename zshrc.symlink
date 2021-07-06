@@ -1,19 +1,24 @@
-source ~/.zplugin/bin/zplugin.zsh
-zplugin light zsh-users/zsh-syntax-highlighting
-zplugin light zsh-users/zsh-completions
-zplugin light zsh-users/zsh-history-substring-search
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light greymd/docker-zsh-completion
-zplugin light Aloxaf/fzf-tab
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-
-bindkey '^ ' autosuggest-accept
-
 autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 zmodload -i zsh/complist
+
+source ~/.zplugin/bin/zplugin.zsh
+# https://github.com/Aloxaf/fzf-tab#install
+# must load after compinit but before plugins like autosuggestions
+zplugin light Aloxaf/fzf-tab
+
+zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
+
+zplugin light zsh-users/zsh-syntax-highlighting
+zplugin light zsh-users/zsh-completions
+zplugin light zsh-users/zsh-history-substring-search
+
+zplugin light zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+bindkey '^ ' autosuggest-accept
+
+zplugin light greymd/docker-zsh-completion
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' accept-exact '*(N)'
