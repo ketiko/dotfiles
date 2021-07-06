@@ -81,7 +81,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'lucapette/vim-textobj-underscore'
-  Plug 'ludovicchabant/vim-gutentags'
+  " Plug 'ludovicchabant/vim-gutentags'
   Plug 'majutsushi/tagbar'
   Plug 'markcornick/vim-terraform'
   Plug 'markcornick/vim-vagrant'
@@ -138,6 +138,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-notes'
   Plug 'zhaocai/GoldenView.Vim'
+  Plug 'aklt/plantuml-syntax'
 
   if isdirectory(expand("~/go"))
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
