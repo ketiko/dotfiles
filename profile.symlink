@@ -108,6 +108,8 @@ fi
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# export FZF_DEFAULT_COMMAND='ag --hidden --smart-case --ignore .git --ignore .node_modules --files-with-matches --nocolor -g ""'
-export FZF_DEFAULT_COMMAND='rg --files-with-matches --smart-case --color --no-ignore --hidden --follow --glob "!.git/*" --glob "!.node_modules"'
+export FZF_DEFAULT_COMMAND='ag --hidden --smart-case --ignore .git --ignore .node_modules --files-with-matches --nocolor -g ""'
+# export FZF_DEFAULT_COMMAND="rg --files --smart-case --color=auto --no-ignore --hidden --follow --glob '!.git' --glob '!.node_modules' --glob '!.idea'"
+# export FZF_DEFAULT_COMMAND="rg --files"
+# export FZF_DEFAULT_OPTS="--smart-case --color=auto --no-ignore --hidden --follow --glob '!.git' --glob '!.node_modules' --glob '!.idea'"
 # export FZF_DEFAULT_COMMAND='rg -S --files -glob !node_modules --hidden'

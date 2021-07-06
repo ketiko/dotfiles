@@ -94,7 +94,7 @@ filetype indent on      " Use filetype-specific indenting when available
 filetype plugin on      " Load filetype plugins
 
 set ofu=syntaxcomplete#Complete
-set omnifunc=rubycomplete#Complete
+" set omnifunc=rubycomplete#Complete
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 

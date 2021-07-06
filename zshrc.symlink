@@ -4,6 +4,7 @@ zplugin light zsh-users/zsh-completions
 zplugin light zsh-users/zsh-history-substring-search
 zplugin light zsh-users/zsh-autosuggestions
 zplugin light greymd/docker-zsh-completion
+zplugin light Aloxaf/fzf-tab
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
