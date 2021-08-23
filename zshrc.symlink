@@ -35,7 +35,8 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 # https://github.com/Aloxaf/fzf-tab#install
 # must load after compinit but before plugins like autosuggestions
 zplugin light Aloxaf/fzf-tab
-zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
+zstyle ':fzf-tab:*' fzf-bindings 'space:accept'
+zstyle ':fzf-tab:*' accept-line enter
 
 autoload -U colors && colors
 

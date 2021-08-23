@@ -26,6 +26,7 @@
   enabled = true
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --relative-date --decorate
+  lgf = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd)%Creset %an' --abbrev-commit --decorate
   lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --relative-date --decorate --all
   lgc = shortlog --summary --numbered
   st = status -sb

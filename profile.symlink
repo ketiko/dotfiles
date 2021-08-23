@@ -60,7 +60,7 @@ if [ -d "/usr/local/opt/go/libexec/bin" ]; then
 fi
 
 if type go &> /dev/null; then
-  export GO111MODULE=off
+  export GO111MODULE=auto
   if [ -d "$HOME/go" ]; then
     if [ -z $GOPATH ]; then
       export GOPATH=$HOME/go
