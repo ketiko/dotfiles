@@ -4,3 +4,5 @@ tags
 *~
 .DS_Store
 Godeps
+node_modules
+.git

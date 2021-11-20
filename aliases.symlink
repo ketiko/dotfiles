@@ -23,6 +23,7 @@ if [ -n $dc ]; then
 fi
 
 alias ag='ag --color --smart-case --color-match="1;31" --color-path="35"'
+alias rg='rg --iglob '!.git' --iglob '!node_modules''
 alias pt='pt --color --smart-case'
 alias b="bundle"
 alias be="bundle exec"
@@ -30,7 +31,7 @@ alias bc="bundle console"
 alias fs="foreman start"
 alias rb='rbenv'
 alias g='git'
-alias ct="ripper-tags --tag-relative -R --verbose . && ctags -a --sort=yes --recurse=yes --tag-relative=yes --fields=+ails --extras=+q --exclude=.idea/* --totals=yes ."
+alias ct="ripper-tags --tag-relative -R --verbose . && ctags -a --sort=yes --recurse=yes --tag-relative=yes --fields=+ails --extras=+q --exclude=node_modules/* --exclude=.idea/* --totals=yes ."
 alias gt="gotags -R=true -sort=true -tag-relative=true -silent=false -f='tags' ."
 alias tmux="tmux -2"
 alias tm="tmux -2"

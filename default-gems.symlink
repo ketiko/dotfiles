@@ -11,3 +11,4 @@ rest-client
 ripper-tags
 ruby-lint
 solargraph
+ruby-debug-ide
