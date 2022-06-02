@@ -3,6 +3,12 @@ filetype off
 if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin()
 
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+  Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
+  Plug 'jeetsukumaran/vim-pythonsense'
+  Plug 'Vimjas/vim-python-pep8-indent'
+  Plug 'davidhalter/jedi-vim'
+  Plug 'nvie/vim-flake8'
   Plug 'sheerun/vim-polyglot'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'kevinoid/vim-jsonc'

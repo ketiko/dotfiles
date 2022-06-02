@@ -256,3 +256,6 @@ tf=`which terraform`
 if [ -n $tf ]; then
   complete -o nospace -C $tf terraform
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

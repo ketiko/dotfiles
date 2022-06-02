@@ -35,7 +35,7 @@ if [ -d "$HOME/bin" ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
-export PAGER="less"
+export PAGER="bat"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export LESS="-iFRSXJMQ"

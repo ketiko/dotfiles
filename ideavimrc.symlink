@@ -12,3 +12,7 @@ nmap <Left> <Left>
 nmap <Down> <Down>
 nmap <Up> <Up>
 nmap <Right> <Right>
+unmap gd
+unmap gy
+unmap gi
+unmap gr
