@@ -65,7 +65,7 @@
   rba = rebase --abort
   rbi = rebase --interactive
   rbs = rebase --skip
-  rbm = "!sh -c 'git shs && git co main && git pl && git co - && git rb main && git shp'"
+  rbm = "!sh -c 'git fa && git rb origin/main'"
   ma = merge --abort
   ft = fetch --prune --tags
   fa = fetch --prune --all --tags
@@ -117,3 +117,7 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+[pull]
+  rebase = true
+[rebase]
+  autoStash = true
