@@ -22,7 +22,7 @@ if [ -n $dc ]; then
   alias egrep='egrep --color=auto'
 fi
 
-alias ag='ag --color --smart-case --color-match="1;31" --color-path="35"'
+alias ag='ag --color --smart-case --hidden --color-match="1;31" --color-path="35"'
 alias rg='rg --iglob '!.git' --iglob '!node_modules''
 alias pt='pt --color --smart-case'
 alias b="bundle"

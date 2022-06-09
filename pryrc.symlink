@@ -6,10 +6,9 @@ Pry.config.correct_indent = true
 Pry.pager = false
 
 begin
-  # require 'awesome_print'
-  # AwesomePrint.pry!
+  require 'awesome_print'
+  AwesomePrint.pry!
 rescue LoadError
-  puts 'no awesome_print :('
 end
 
 begin
@@ -19,5 +18,4 @@ begin
   Pry.commands.alias_command 'n', 'next'
   Pry.commands.alias_command 'f', 'finish'
 rescue LoadError
-  puts 'no pry-byebug :('
 end

@@ -99,6 +99,7 @@
   path = ~/.gitconfig.local
 [init]
   templatedir = ~/.git_template
+  defaultBranch = main
 [diff "image"]
   binary = true
   command = ~/bin/spaceman-diff

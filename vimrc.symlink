@@ -85,6 +85,7 @@ set vb t_vb=            " No bells. Period.
 set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip,*/log/*
 set wildmenu                    " make tab completion for files/buffers act like bash
 set wildmode=longest,list,full  " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
+set autoread " If a file is changed outside of vim, automatically reload it without asking
 
 let mapleader = " "     " change <leader> from \ to <space>
 
@@ -258,7 +259,7 @@ if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --hidden --smart-case --vimgrep'
 endif
 
 command! -bang -nargs=* Agc call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
@@ -456,6 +457,9 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+let g:coc_global_extensions = ['coc-solargraph', 'coc-jedi', 'coc-go', 'coc-json']
+call coc#config('solargraph.shell', $SHELL)
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
