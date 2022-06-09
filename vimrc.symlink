@@ -87,6 +87,10 @@ set wildmenu                    " make tab completion for files/buffers act like
 set wildmode=longest,list,full  " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
 set autoread " If a file is changed outside of vim, automatically reload it without asking
 
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
 let mapleader = " "     " change <leader> from \ to <space>
 
 " Per-Filetype Scripts
@@ -440,6 +444,9 @@ endif
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -458,7 +465,31 @@ function! s:show_documentation()
   endif
 endfunction
 
-let g:coc_global_extensions = ['coc-solargraph', 'coc-jedi', 'coc-go', 'coc-json']
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+let g:coc_global_extensions = [
+      \ 'coc-css',
+      \ 'coc-dictionary',
+      \ 'coc-emoji',
+      \ 'coc-go',
+      \ 'coc-gocode',
+      \ 'coc-html',
+      \ 'coc-jedi',
+      \ 'coc-json',
+      \ 'coc-markdownlint',
+      \ 'coc-sh',
+      \ 'coc-solargraph',
+      \ 'coc-sql',
+      \ 'coc-syntax',
+      \ 'coc-tag',
+      \ 'coc-toml',
+      \ 'coc-tsserver',
+      \ 'coc-ultisnips',
+      \ 'coc-word',
+      \ 'coc-yaml',
+      \ 'cocl-lists',
+      \ ]
 call coc#config('solargraph.shell', $SHELL)
 
 " Symbol renaming.
