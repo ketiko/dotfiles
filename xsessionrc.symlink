@@ -1,5 +1,5 @@
 #!/bin/env bash
 
-if which xcape &> /dev/null; then
+if command -v xcape &> /dev/null; then
   xcape &
 fi
