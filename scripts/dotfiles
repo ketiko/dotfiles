@@ -12,16 +12,16 @@ mkdir -p ~/.vim/undo
 mkdir -p ~/.vim/swap
 mkdir -p ~/.vim/backup
 
-for linkable in `find $SCRIPTPATH -name "*.symlink" -print -o -name .git -type d -prune`
+for linkable in $(find $SCRIPTPATH -name "*.symlink" -print -o -name .git -type d -prune)
 do
   file=$(basename "$linkable" .symlink)
   target="$HOME/.$file"
 
-  if [ -e $target ]; then
+  if [ -e "$target" ]; then
     if ! $skip_all && ! $overwrite_all; then
 
       echo "File already exists: $target, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all"
-      read response
+      read -r response
       case "$response" in
         O) overwrite_all=true ;;
         S) skip_all=true;;
@@ -33,7 +33,7 @@ do
       continue
     fi
 
-    if [ ! -L $target ]; then
+    if [ ! -L "$target" ]; then
       mv -v "$target" "$target.backup"
     fi
 

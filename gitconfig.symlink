@@ -122,3 +122,5 @@
   rebase = true
 [rebase]
   autoStash = true
+[commit]
+  gpgsign = true

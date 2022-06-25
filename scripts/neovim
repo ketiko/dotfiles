@@ -2,7 +2,7 @@
 
 mkdir -p ~/.config/nvim
 
-cd ~/.config
+cd ~/.config || return
 ln -sfv ~/.vim nvim
 ln -sfv ~/.vimrc ~/.config/nvim/init.vim
 

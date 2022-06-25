@@ -1,30 +1,33 @@
 #!/bin/bash
 
 SCRIPTPATH=$(pwd)
-cd $SCRIPTPATH
+cd "$SCRIPTPATH" || return
 
 ACTION=$1
 ARGS=$2
 
-if [ -z $ACTION ]; then
+if [ -z "$ACTION" ]; then
   ACTION="dotfiles"
 fi
 
 if [ $ACTION != "all" ]; then
-  . "$SCRIPTPATH/scripts/$ACTION" $ARGS
+  . "$SCRIPTPATH"/scripts/"$ACTION" $ARGS
 else
-  . "$SCRIPTPATH/scripts/packages"
-  . "$SCRIPTPATH/scripts/dotfiles" O
-  . "$SCRIPTPATH/scripts/zsh"
-  . "$SCRIPTPATH/scripts/solarized"
-  . "$SCRIPTPATH/scripts/vim-node-modules"
-  . "$SCRIPTPATH/scripts/vim-python-deps"
-  . "$SCRIPTPATH/scripts/vim"
-  . "$SCRIPTPATH/scripts/neovim"
-  . "$SCRIPTPATH/scripts/asdf"
-  . "$SCRIPTPATH/scripts/tmux"
+  . "$SCRIPTPATH"/scripts/packages
+  . "$SCRIPTPATH"/scripts/dotfiles O
+  . "$SCRIPTPATH"/scripts/zsh
+  . "$SCRIPTPATH"/scripts/solarized
+  . "$SCRIPTPATH"/scripts/vim-node-modules
+  . "$SCRIPTPATH"/scripts/vim-python-deps
+  . "$SCRIPTPATH"/scripts/vim
+  . "$SCRIPTPATH"/scripts/neovim
+  . "$SCRIPTPATH"/scripts/asdf
+  . "$SCRIPTPATH"/scripts/tmux
   mkdir -p ~/src
-  . "$SCRIPTPATH/scripts/git" ~/src
+  . "$SCRIPTPATH"/scripts/git ~/src
 fi
 
-sudo -k
+
+if command -v sudo &> /dev/null; then
+  sudo -k
+fi

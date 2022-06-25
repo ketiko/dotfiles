@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-if [ "$1" == "git" ] ; then
+if [ "$1" = "git" ] ; then
  echo "You must supply a root directory to update with the git template."
  exit 1
 fi
@@ -10,13 +10,13 @@ if [ -z "$1" ] ; then
 fi
 
 echo "Finding git repositories under $1..."
-DIRS=$(find $1 -type d -iname ".git")
-for DIR in ${DIRS[*]}; do
+DIRS=$(find "$1" -type d -iname ".git")
+for DIR in "${DIRS[@]}"; do
   if [ -d "$DIR/hooks" ]; then
     echo "Setting up $WORKING git hooks"
-    rm -rf $DIR/hooks/
+    rm -rf "$DIR"/hooks/
 
-    WORKING=$(dirname $DIR)
-    git init --quiet $WORKING
+    WORKING=$(dirname "$DIR")
+    git init --quiet "$WORKING"
   fi
 done

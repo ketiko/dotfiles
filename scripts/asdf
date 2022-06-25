@@ -3,11 +3,11 @@
 if [ ! -d ~/.asdf ]; then
   echo "Installing adsf"
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-  cd ~/.asdf
+  cd ~/.asdf || return
   git checkout "$(git describe --abbrev=0 --tags)"
 
-  source $HOME/.asdf/asdf.sh
-  source $HOME/.asdf/completions/asdf.bash
+  . ~/.asdf/asdf.sh
+  . ~/.asdf/completions/asdf.bash
 
   asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
   asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
