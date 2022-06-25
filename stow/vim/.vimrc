@@ -1,0 +1,744 @@
+set nocompatible " vim > vi mode.
+" set shell=bash\ --login
+set runtimepath+=$HOME/.vim
+if !has('nvim')
+  set viminfo+=n$HOME/.vim/info
+end
+if has('nvim')
+  set viminfo+=n$HOME/.config/nvim/ninfo
+end
+set tags+=./tags,./ruby-tags,./.git/tags,~/.rbenv/tags;
+set backupdir=$HOME/.vim/backup//
+
+set encoding=utf8
+
+source $HOME/.vimrc.bundles
+
+set runtimepath+=~/.fzf
+
+syntax enable
+syntax sync fromstart
+
+" BASIC EDITING CONFIGURATION
+set directory=$HOME/.vim/swap//
+set autoindent          " Copy indent from current line when starting a new line
+set backspace=2         " makes backspace work normally
+set cmdheight=2         " Cmd bar 2 rows high
+" set complete=.,w,b,u,t,i
+set complete=.,w,b,u,t
+set completeopt=menu,preview
+set cursorline            " highlight current line - slow
+set expandtab           " Use spaces not tabs
+set exrc                " allow local .vimrc files per project
+set hidden              " allow unsaved background buffers and remember marks/undo for them
+set history=10000       " remember more commands and search history
+set hlsearch              " Highlight searches and search results
+set ignorecase smartcase infercase  " make searches case-sensitive only if they contain upper-case characters
+set incsearch             " Show best match while typing a search
+set laststatus=2          " Always show the status line
+set lazyredraw
+set linebreak           " Don't wrap text in the middle of a word
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set matchtime=2         " for .2 seconds
+set nobackup
+set noerrorbells        " No noise
+set nojoinspaces        " Use only 1 space after "." when joining lines instead of 2
+" set nopaste
+set nostartofline       " Don't reset cursor to start of line when moving around
+set novisualbell        " No blinking
+set wrap
+set nowritebackup
+set number              " Show line numbers
+set numberwidth=1       " Try to use only 1 col when possible
+" set path=**             " Search all nested files when finding
+set report=0            " : commands always print changed line count
+set ruler               " Display position in the file
+set scrolloff=5         " Keep 5 lines (top/bottom) for scope
+set shiftwidth=2        " Indent level is 2 spaces wide
+set shortmess=atIF       " The "Press ENTER or type command to continue" prompt is jarring and usually unnecessary.
+set showcmd             " Show partial command in the last line of the screen
+set showmatch            " Show matched paren when balanced
+set showtabline=2
+set smartindent
+set smarttab            " Insert blanks properly at beginning of a line
+set softtabstop=2       " <BS> over an autoindent deletes shiftwidth worth of spaces
+set splitbelow
+set splitright
+set noswapfile
+set switchbuf=""        " do not move focus/cursor to where the buffer is already open
+set synmaxcol=1200      " Syntax coloring lines that are too long just slows down the world
+set t_ti= t_te=         " Prevent Vim from clobbering the scrollback buffer
+set tabstop=2           " Use 2 spaces for <tab>
+set tagbsearch          " use binary searching for tags
+set ttyfast
+if !has('nvim')
+  set ttyscroll=3
+end
+if v:version > 702
+  set undofile
+  set undodir=~/.vim/undo
+  set undoreload=10000
+endif
+set undolevels=1000
+set vb t_vb=            " No bells. Period.
+set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip,*/log/*
+set wildmenu                    " make tab completion for files/buffers act like bash
+set wildmode=longest,list,full  " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
+set autoread " If a file is changed outside of vim, automatically reload it without asking
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+let mapleader = " "     " change <leader> from \ to <space>
+
+" Per-Filetype Scripts
+filetype on             " File type detection on
+filetype indent on      " Use filetype-specific indenting when available
+filetype plugin on      " Load filetype plugins
+
+set ofu=syntaxcomplete#Complete
+" set omnifunc=rubycomplete#Complete
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+autocmd FileType c setlocal omnifunc=ccomplete#Complete
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType sql setlocal omnifunc=sqlcomplete#CompleteSQL
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
+let g:rubycomplete_use_bundler = 1
+let g:ruby_operators = 1
+
+" clear highlighted search
+nmap \ :nohlsearch<CR>
+
+" make ctrl i increment numbers instead of ctrl a
+" noremap <C-i> <C-a>
+noremap <leader>i <C-a>
+
+" Stay in visual mode after >>
+vnoremap << <gv
+vnoremap >> >gv
+nnoremap ,gf magg<S-v>G=`a
+
+set notimeout ttimeout ttimeoutlen=100
+
+if exists('+colorcolumn')
+  set colorcolumn=100
+else
+  match ErrorMsg '\%>100v.\+'
+end
+
+" Navigate panes vim style
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+nmap <Left> <C-w><
+nmap <Down> <C-w>+
+nmap <Up> <C-w>-
+nmap <Right> <C-w>>
+
+" Yank/Paste to system clipboard settings
+if has('unnamedplus')
+  vmap ,p "+p
+  vmap ,P "+P
+  vmap ,y "+y
+  vmap ,Y "+Y
+  nmap ,p "+p
+  nmap ,P "+P
+  nmap ,y "+y
+  nmap ,Y "+Y
+else
+  vmap ,p "*p
+  vmap ,P "*P
+  vmap ,y "*y
+  vmap ,Y "*Y
+  nmap ,p "*p
+  nmap ,P "*P
+  nmap ,y "*y
+  nmap ,Y "*Y
+endif
+
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+"   " (happens when dropping a file on gvim).
+autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
+
+" Spelling
+set spell spelllang=en_us
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+highlight clear SpellCap
+highlight SpellCap term=underline cterm=underline
+highlight clear SpellRare
+highlight SpellRare term=underline cterm=underline
+highlight clear SpellLocal
+highlight SpellLocal term=underline cterm=underline
+
+" if (has("termguicolors"))
+"   set termguicolors
+" end
+set t_Co=256
+
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+end
+
+set background=dark
+
+" Solarized Settings
+if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
+  let g:solarized_termtrans=1
+  let g:solarized_termcolors=16
+endif
+
+" colorscheme neodark
+" colorscheme onedark
+" colorscheme two-firewatch
+" colorscheme oceanic_material
+" colorscheme OceanicNext
+colorscheme solarized
+
+
+" vim-rails
+let g:rails_projections = {
+      \  "app/controllers/*_controller.rb": {
+      \      "test": [
+      \        "spec/requests/{}_spec.rb",
+      \        "spec/requests/{}_controller_spec.rb",
+      \        "spec/controllers/{}_controller_spec.rb",
+      \        "test/controllers/{}_controller_test.rb"
+      \      ],
+      \      "alternate": [
+      \        "spec/requests/{}_spec.rb",
+      \        "spec/requests/{}_controller_spec.rb",
+      \        "spec/controllers/{}_controller_spec.rb",
+      \        "test/controllers/{}_controller_test.rb"
+      \      ],
+      \   },
+      \   "spec/requests/*_spec.rb": {
+      \      "command": "request",
+      \      "alternate": [
+      \        "app/controllers/{}.rb",
+      \        "app/controllers/{}_controller.rb"
+      \      ],
+      \      "template": "require 'rails_helper'\n\n" .
+      \        "RSpec.describe '{}' do\nend",
+      \   },
+      \ }
+
+" CTRLP Settings
+" let g:ctrlp_working_path_mode='ra'
+" let g:ctrlp_show_hidden=1
+" let g:ctrlp_user_command = 'ag %s --hidden --smart-case --files-with-matches --nocolor -g ""'
+" let g:ctrlp_lazy_update = 0
+" let g:ctrlp_use_caching = 0
+" let g:ctrlp_clear_cache_on_exit = 1
+" map <leader>b :CtrlPBuffer<CR>
+" map <leader>m :CtrlPMRU<CR>
+" map <leader>cc :CtrlPClearCache<CR>
+" map <leader>ca :CtrlPClearAllCaches<CR>
+
+nmap <C-p> :Files<CR>
+nmap <leader>b :Buffers<CR>
+let g:fzf_history_dir = '~/.fzf/history'
+
+" Ack
+" Ag Settings
+" Rg settings
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --hidden\ --nogroup\ --nocolor
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ackprg = 'ag --hidden --smart-case --vimgrep'
+elseif executable('rg')
+  " Use ag over grep
+  set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ackprg = 'rg --smart-case --vimgrep'
+endif
+
+command! -bang -nargs=* Agc call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+command! -bang -nargs=* Rgc call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-heading --color=always '
+"   \  . (len(<q-args>) > 0 ? <q-args> : '""'), 1,
+"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"   \   <bang>0)
+"
+" nnoremap \ :Rg<SPACE>
+
+
+" Ack settings
+" cnoreabbrev Ag Ack
+
+" YankStack settings
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
+
+" NERD Tree Settings
+nmap <leader>f :NERDTreeFind<CR>
+nmap <leader>n :NERDTreeToggle %:p:h<CR>
+
+" ListToggle
+let g:lt_location_list_toggle_map = '<leader>l'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
+
+" Syntastic Settings
+
+let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+" let g:syntastic_json_checkers=['jsonlint']
+let g:syntastic_html_tidy_exec = 'tidy5'
+let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek']
+
+" let g:syntastic_quiet_messages = {}
+
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_auto_jump = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { "mode": "passive" }
+
+" if has('nvim')
+" nmap <leader>sc :call NeomakeToggleMode()<CR>
+" let s:neomake_auto_on = 0
+"
+" function! NeomakeToggleMode()
+"   if s:neomake_auto_on
+"     let s:neomake_auto_on = 0
+"     autocmd! BufWritePost *
+"     call setloclist(0, getloclist(0), 'r')
+"     call setloclist(0, getqflist(), 'r')
+"
+"     highlight link NeomakeError NONE
+"     highlight link NeomakeWarning NONE
+"     highlight link NeomakeInfo NONE
+"     highlight link NeomakeMessage NONE
+"
+"     sign unplace *
+"     silent! lclose
+"   else
+"     let s:neomake_auto_on = 1
+"     autocmd! BufWritePost * Neomake
+"
+"     highlight link NeomakeError NeomakeErrorDefault
+"     highlight link NeomakeWarning NeomakeWarningDefault
+"     highlight link NeomakeInfo NeomakeInfoDefault
+"     highlight link NeomakeMessage NeomakeMessageDefault
+"     execute 'Neomake'
+"   endif
+" endfunction
+" else
+nmap <leader>sc :SyntasticToggleMode<CR>
+" end
+
+let g:rspec_command = "Dispatch rspec {spec}"
+" Rspec Settings
+map <leader>ra :Dispatch rspec<CR>
+map <leader>r :Dispatch rspec %<CR>
+
+" Tabgar Settings
+map <leader>tb :TagbarToggle<CR>
+map <leader>tc :TagbarCurrentTag s<CR>
+let g:tagbar_autofocus=1
+let g:tagbar_type_go = {
+      \ 'ctagstype' : 'go',
+      \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+        \ ],
+        \ 'sro' : '.',
+        \ 'kind2scope' : {
+          \ 't' : 'ctype',
+          \ 'n' : 'ntype'
+          \ },
+        \ 'scope2kind' : {
+          \ 'ctype' : 't',
+          \ 'ntype' : 'n'
+          \ },
+        \ 'ctagsbin'  : 'gotags',
+        \ 'ctagsargs' : '-sort -silent'
+\ }
+
+" Tabularize Settings
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+nmap <Leader>a> :Tabularize /=><CR>
+vmap <Leader>a> :Tabularize /=><CR>
+
+" Easy Align settings
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" EasyMotion Settings
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+let g:EasyMotion_use_smartsign_us = 1
+let g:EasyMotion_use_upper = 1
+let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
+
+" Session Settings
+let g:session_autosave = 'no'
+
+" if has('nvim')
+"   " deoplete
+"   call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
+"
+"   let g:deoplete#enable_at_startup = 1
+"   let g:deoplete#ignore_sources = {}
+"   let g:deoplete#ignore_sources.ruby = ['omni']
+"   let g:deoplete#enable_ignore_case = 1
+"   let g:deoplete#enable_smart_case = 1
+"   let g:deoplete#enable_camel_case = 1
+"
+"   inoremap <silent><expr> <TAB>
+"         \ pumvisible() ? "\<C-n>" :
+"         \ <SID>check_back_space() ? "\<TAB>" :
+"         \ deoplete#mappings#manual_complete()
+"   function! s:check_back_space() abort "{{{
+"     let col = col('.') - 1
+"     return !col || getline('.')[col - 1]  =~ '\s'
+"   endfunction"}}}
+"
+"   inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"   function! s:my_cr_function() abort
+"     return deoplete#close_popup() . "\<CR>"
+"   endfunction
+" end
+" let g:deoplete#enable_at_startup = 1
+" call deoplete#custom#source('LanguageClient',
+"             \ 'min_pattern_length',
+"             \ 2)
+
+
+" let g:LanguageClient_serverCommands = {
+"     \ 'ruby': ['solargraph', 'stdio'],
+"     \ 'go': ['gopls'],
+"     \ }
+" " note that if you are using Plug mapping you should not use `noremap` mappings.
+" nmap <silent>gm <Plug>(lcn-menu)
+" " Or map each action separately
+" nmap <silent>K <Plug>(lcn-hover)
+" nmap <silent>gd <Plug>(lcn-definition)
+" nmap <silent>gr <Plug>(lcn-rename)
+" nmap <silent>gf <Plug>(lcn-references)
+" nmap <silent>gt <Plug>(lcn-type-definition)
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+let g:coc_global_extensions = [
+      \ 'coc-css',
+      \ 'coc-dictionary',
+      \ 'coc-emoji',
+      \ 'coc-go',
+      \ 'coc-gocode',
+      \ 'coc-html',
+      \ 'coc-jedi',
+      \ 'coc-json',
+      \ 'coc-lists',
+      \ 'coc-markdownlint',
+      \ 'coc-omni',
+      \ 'coc-sh',
+      \ 'coc-solargraph',
+      \ 'coc-sql',
+      \ 'coc-syntax',
+      \ 'coc-tag',
+      \ 'coc-toml',
+      \ 'coc-tsserver',
+      \ 'coc-ultisnips',
+      \ 'coc-word',
+      \ 'coc-yaml',
+      \ 'coc-yank',
+      \ ]
+call coc#config('solargraph.shell', $SHELL)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+" Run gofmt on save
+" autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+
+" neomake
+let g:neomake_open_list = 2
+let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'reek']
+
+" YCM Settings
+" let g:ycm_add_preview_to_completeopt = 1
+" let g:ycm_auto_trigger = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_key_invoke_completion = '<C-Space>'
+" let g:ycm_min_num_of_chars_for_completion = 3
+" let g:ycm_seed_identifiers_with_syntax = 1
+" " let g:ycm_server_keep_logfile = 1
+" " let g:ycm_server_log_level = 'debug'
+
+" UltiSnip Settings
+" let g:UltiSnipsExpandTrigger = '<C-l>'
+" let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+" let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+" let g:UltiSnipsListSnippets = '<C-m>'
+
+" indent-guides settings
+" let g:indent_guides_start_level = 2
+" let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=Yellow
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=Black
+
+" Folding
+set foldmethod=syntax "even with nofoldenable foldmethod=syntax causes slow ins-completions"
+" set foldmethod=manual
+set foldlevel=1
+set foldlevelstart=99
+set foldnestmax=10
+set nofoldenable
+
+" vim-instant-markdown
+let g:instant_markdown_autostart = 1
+
+" Goldenview
+let g:goldenview__enable_default_mapping = 0
+let g:goldenview__enable_at_startup = 1
+" 1. split to tiled windows
+nmap <silent> <F7>  <Plug>GoldenViewSplit
+"
+" " 2. quickly switch current window with the main pane
+" " and toggle back
+nmap <silent> <F8>   <Plug>GoldenViewSwitchMain
+nmap <silent> <S-F8> <Plug>GoldenViewSwitchToggle
+
+" focus plug
+" lua require("focus").setup()
+
+" Airline Settings
+let g:airline_theme='solarized'
+" let g:airline_theme='oceanicnext'
+" let g:airline_theme='onedark'
+" let g:airline_theme='neodark'
+" let g:neodark#use_custom_terminal_theme = 1
+
+" vim-go
+let g:go_fmt_command = "goimports"
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_auto_type_info = 0
+autocmd FileType go setlocal nolist ts=4 sw=4 sts=4
+autocmd BufNewFile,BufRead *.go setlocal nolist ts=4 sw=4 sts=4
+
+" closetag
+let g:closetag_filenames = "*.html,*.html.erb,*.html,*.xhtml,*.phtml, *.jsx"
+
+let g:gutenttags_ctags_executable_by = 'ripper-tags'
+let g:gutentags_ctags_exclude = [
+      \ '*.git', '*.svg', '*.hg',
+      \ '*/tests/*',
+      \ 'build',
+      \ 'dist',
+      \ '*sites/*/files/*',
+      \ 'bin',
+      \ 'node_modules',
+      \ 'bower_components',
+      \ 'cache',
+      \ 'compiled',
+      \ 'docs',
+      \ 'example',
+      \ 'bundle',
+      \ 'vendor',
+      \ '*.md',
+      \ '*-lock.json',
+      \ '*.lock',
+      \ '*bundle*.js',
+      \ '*build*.js',
+      \ '.*rc*',
+      \ '*.json',
+      \ '*.min.*',
+      \ '*.map',
+      \ '*.bak',
+      \ '*.zip',
+      \ '*.pyc',
+      \ '*.class',
+      \ '*.sln',
+      \ '*.Master',
+      \ '*.csproj',
+      \ '*.tmp',
+      \ '*.csproj.user',
+      \ '*.cache',
+      \ '*.pdb',
+      \ 'tags*',
+      \ 'cscope.*',
+      \ '*.css',
+      \ '*.less',
+      \ '*.scss',
+      \ '*.exe', '*.dll',
+      \ '*.mp3', '*.ogg', '*.flac',
+      \ '*.swp', '*.swo',
+      \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
+      \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+      \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+      \ ]
+
+" unimpaired
+" Bubble single lines
+" nmap <leader>k [e
+" nmap <leader>j ]e
+"
+" vmap <leader>k [egv
+" vmap <leader>j ]egv
+" Bubble multiple lines
+
+" fastflod
+" let g:fastfold_savehook = 1
+" let g:fastfold_fdmhook = 1
+" let g:rubyfold_enabled = 1
+
+let g:ruby_path = []
+
+" Ale
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_completion_enabled = 0
+let g:ale_linters = {
+      \ 'javascript': ['eslint'],
+      \ 'go': ['gopls'],
+      \}
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+      \   'javascript': ['prettier', 'eslint'],
+      \   'typescript': ['prettier', 'eslint'],
+      \}
+
+" vim-stay
+set viewoptions=cursor,folds,slash,unix
+
+" javascript-libraries-syntax
+let g:used_javascript_libs = 'jquery,angularjs,react'
+
+let g:javascript_plugin_jsdoc = 1
+let g:vim_jsx_pretty_highlight_close_tag = 1
+
+
+" camelCaseMotion
+call camelcasemotion#CreateMotionMappings('<leader>')
+
+" Quickly edit/reload the vimrc file
+nmap <silent> ,ev :vsplit $MYVIMRC<CR>
+nmap <silent> ,eb :vsplit $HOME/.vimrc.bundles<CR>
+nmap <silent> ,sv :source $MYVIMRC<CR>
+
+if filereadable(expand("~/.vimrc.local"))
+  source $HOME/.vimrc.local
+endif
