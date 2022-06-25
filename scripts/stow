@@ -1,7 +1,8 @@
 #!/bin/bash
 
 stowdir="$(pwd)/stow"
-stow -v -d "$stowdir" -t ~ vim
-stow -v -d "$stowdir" -t ~ neovim
-stow -v -d "$stowdir" -t ~ i3
+stow -v -d "$stowdir" -t ~ git
 stow -v -d "$stowdir" -t ~ git_template
+stow -v -d "$stowdir" -t ~ i3
+stow -v -d "$stowdir" -t ~ neovim
+stow -v -d "$stowdir" -t ~ vim
