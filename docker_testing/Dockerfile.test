@@ -1,7 +1,7 @@
 FROM ubuntu as base
 
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+RUN DEBIAN_FRONTEND=noninteractive TZ=America/Denver apt-get install -y --no-install-recommends \
     ack-grep \
     atop \
     axel \
