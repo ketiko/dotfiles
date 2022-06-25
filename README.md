@@ -1,4 +1,4 @@
-# Ryan Hansen's dotfiles
+# Ryan Hansen's dotfiles [![CI](https://github.com/ketiko/dotfiles/actions/workflows/ci.yml/badge.svg)](https://github.com/ketiko/dotfiles/actions/workflows/ci.yml)
 
 These are my system configuration files.  Currently tested on Ubuntu Linux and OS X.
 Inspired by [Ryan Bates](https://github.com/ryanb/dotfiles) dotfiles.
