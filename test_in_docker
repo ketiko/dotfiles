@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker build -f ./docker_testing/Dockerfile.test -t ketiko-dotfiles:latest ./docker_testing
+docker run -it --mount type=bind,source="$(pwd)",target=/home/tester/.dotfiles ketiko-dotfiles:latest
