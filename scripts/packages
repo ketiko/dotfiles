@@ -37,6 +37,7 @@ if [[ $(uname) != Darwin ]]; then
     ranger \
     ripgrep \
     silversearcher-ag \
+    stow \
     tmux \
     tree \
     vim-nox \
@@ -91,6 +92,7 @@ if [[ $(uname) == Darwin ]]; then
       reattach-to-user-namespace \
       ripgrep \
       ssh-copy-id \
+      stow \
       the_silver_searcher \
       tidy-html5 \
       tmux \
