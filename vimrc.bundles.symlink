@@ -150,8 +150,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'w0rp/ale'
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-notes'
-  Plug 'zhaocai/GoldenView.Vim'
-  " Plug 'roman/golden-ratio'
+  " Plug 'zhaocai/GoldenView.Vim'
+  Plug 'roman/golden-ratio'
   Plug 'aklt/plantuml-syntax'
 
   if isdirectory(expand("~/go"))
