@@ -1,16 +1,16 @@
 #!/bin/bash
 
-SCRIPTPATH=`pwd -P`
+SCRIPTPATH=$(pwd -P)
 echo "Changing directory to $SCRIPTPATH"
-cd $SCRIPTPATH
+cd "$SCRIPTPATH" || return
 
-for linkable in `find $SCRIPTPATH -name "*.symlink"`
+for linkable in $(find "$SCRIPTPATH" -name "*.symlink")
 do
   file=$(basename "$linkable" .symlink)
   target="$HOME/.$file"
 
   # Remove all symlinks created during installation
-  if [ -L $target ]; then
+  if [ -L "$target" ]; then
     rm -v "$target"
   fi
 

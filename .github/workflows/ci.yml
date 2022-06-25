@@ -18,4 +18,8 @@ jobs:
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
         with:
-          format: tty
+          format: gcc
+          additional_files: 'aliases.symlink bash_logout.symlink bash_profile.symlink bashrc.symlink profile.symlink zprofile.symlink'
+          severity: error
+        env:
+          SHELLCHECK_OPTS: -e SC1090 -e SC1091

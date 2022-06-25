@@ -8,22 +8,22 @@ DEBUGGING=('binding\.pry' 'binding\.remote_pry' 'save_and_open_page' 'debugger')
 # so that anyone calling --no-verify has been informed of all problems first.
 ERROR=false
 
-for FILE in `git diff --cached --name-only`; do
-  if [ -e $FILE ]; then
-    if [ ${FILE: -3} == '.rb' ]; then
-      for DEBUG in ${DEBUGGING[*]}; do
-        if grep -iqe $DEBUG $FILE; then
+for FILE in $(git diff --cached --name-only); do
+  if [ -e "$FILE" ]; then
+    if [ "${FILE: -3}" == '.rb' ]; then
+      for DEBUG in "${DEBUGGING[@]}"; do
+        if grep -iqe "$DEBUG" "$FILE"; then
           echo "Warning: found debug statement '$DEBUG'"
-          echo "   File: $FILE\n--------------"
+          printf "   File: %s\n--------------" "$FILE"
           ERROR=true
         fi
       done
 
       spec_file=${FILE%%_spec.rb}
-      if [ ${spec_file} != ${FILE} ]; then
-        if grep -iqe 'focus: true' $FILE; then
+      if [ "${spec_file}" != "${FILE}" ]; then
+        if grep -iqe 'focus: true' "$FILE"; then
           echo "Warning: found focus: true statement in specs"
-          echo "   File: $FILE\n--------------"
+          printf "   File: %s\n--------------" "$FILE"
           ERROR=true
         fi
       fi
