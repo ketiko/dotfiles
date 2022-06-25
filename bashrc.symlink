@@ -134,7 +134,7 @@ if [ -d "$HOME/.asdf" ]; then
   source $HOME/.asdf/completions/asdf.bash
 fi
 
-tf=`which terraform`
-if [ -n $tf ]; then
+if command -v terraform &> /dev/null; then
+  tf=$(which terraform)
   complete -C $tf terraform
 fi

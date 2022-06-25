@@ -211,7 +211,8 @@ if [ -d "$HOME/.asdf" ]; then
   # source $HOME/.asdf/completions/asdf.bash
 fi
 
-if type aws &> /dev/null; then
+
+if command -v aws &> /dev/null; then
   aws_completer_cmd=$(which aws_completer)
   complete -C "$aws_completer_cmd" aws
 fi
@@ -252,8 +253,8 @@ _fzf_complete_git() {
   fi
 }
 
-tf=`which terraform`
-if [ -n $tf ]; then
+if command -v terraform &> /dev/null; then
+  tf=`which terraform`
   complete -o nospace -C $tf terraform
 fi
 

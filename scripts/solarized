@@ -6,7 +6,7 @@ if [ ! -d ~/.solarized/gnome-terminal ]; then
   git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git ~/.solarized/gnome-terminal
 fi
 
-if which gnome-terminal &> /dev/null; then
+if command -v gnome-terminal &> /dev/null; then
   ~/.solarized/gnome-terminal/set_dark.sh
 fi
 

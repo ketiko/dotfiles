@@ -50,7 +50,7 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export KEYTIMEOUT=1
 
 if [ -f "$HOME/.ssh/id_rsa" ]; then
-  if which keychain &> /dev/null; then
+  if command -v keychain &> /dev/null; then
     eval $(keychain --eval --quiet --quick)
   fi
 fi
@@ -59,7 +59,7 @@ if [ -d "/usr/local/opt/go/libexec/bin" ]; then
   export PATH=$PATH:/usr/local/opt/go/libexec/bin
 fi
 
-if type go &> /dev/null; then
+if command -v go &> /dev/null; then
   export GO111MODULE=auto
   if [ -d "$HOME/go" ]; then
     if [ -z $GOPATH ]; then
@@ -80,7 +80,7 @@ fi
 #   eval "$(rbenv init - --no-rehash)"
 # fi
 
-if type fasd &> /dev/null; then
+if command -v fasd &> /dev/null; then
   fasd_cache="$HOME/.fasd-init-cache"
   if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
     fasd --init auto >| "$fasd_cache"
