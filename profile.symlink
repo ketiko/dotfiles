@@ -85,6 +85,8 @@ if command -v fasd > /dev/null; then
   if [ ! -f "$fasd_cache" ]; then
     fasd --init auto >| "$fasd_cache"
   fi
+  . "$fasd_cache"
+  unset fasd_cache
 fi
 
 # only define LC_CTYPE if undefined
