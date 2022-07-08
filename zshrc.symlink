@@ -1,11 +1,11 @@
 source ~/.zplug/init.zsh
-
+#
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "greymd/docker-zsh-completion"
-# zplug "chitoku-k/fzf-zsh-completions"
+zplug "chitoku-k/fzf-zsh-completions"
 # zplug "bonnefoa/kubectl-fzf", defer:3
-# zplug "MenkeTechnologies/zsh-more-completions"
+zplug "MenkeTechnologies/zsh-more-completions"
 # zplug "plugins/git", from:oh-my-zsh
 # zplug "plugins/ag", from:oh-my-zsh
 # zplug "plugins/asdf", from:oh-my-zsh
@@ -25,24 +25,24 @@ zplug "greymd/docker-zsh-completion"
 # zplug "plugins/history", from:oh-my-zsh
 # zplug "plugins/httpie", from:oh-my-zsh
 # zplug "plugins/iterm2", from:oh-my-zsh
-# zplug "plugins/kube-ps1", from:oh-my-zsh
+zplug "plugins/kube-ps1", from:oh-my-zsh
 zplug "plugins/kubectl", from:oh-my-zsh
-# zplug "plugins/kubectx", from:oh-my-zsh
-# zplug "plugins/minikube", from:oh-my-zsh
-# zplug "plugins/npm", from:oh-my-zsh
-# zplug "plugins/pip", from:oh-my-zsh
-# zplug "plugins/pipenv", from:oh-my-zsh
-# zplug "plugins/pyenv", from:oh-my-zsh
-# zplug "plugins/pylint", from:oh-my-zsh
-# zplug "plugins/python", from:oh-my-zsh
-# zplug "plugins/rake", from:oh-my-zsh
-# zplug "plugins/ripgrep", from:oh-my-zsh
-# zplug "plugins/ruby", from:oh-my-zsh
+zplug "plugins/kubectx", from:oh-my-zsh
+# zplug "plugins/minikube", from:oh-my-zsh, defer:2
+# zplug "plugins/npm", from:oh-my-zsh, defer:2
+# zplug "plugins/pip", from:oh-my-zsh, defer:2
+# zplug "plugins/pipenv", from:oh-my-zsh, defer:2
+# zplug "plugins/pyenv", from:oh-my-zsh, defer:2
+# zplug "plugins/pylint", from:oh-my-zsh, defer:2
+# zplug "plugins/python", from:oh-my-zsh, defer:2
+# zplug "plugins/rake", from:oh-my-zsh, defer:2
+# zplug "plugins/ripgrep", from:oh-my-zsh, defer:2
+# zplug "plugins/ruby", from:oh-my-zsh, defer:2
 # https://github.com/Aloxaf/fzf-tab#install
 # must load after compinit but before plugins like autosuggestions
 zplug "Aloxaf/fzf-tab", defer:2
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-autosuggestions", defer:3
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-autosuggestions"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -53,7 +53,7 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load
+zplug load --verbose
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
