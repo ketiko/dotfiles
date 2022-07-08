@@ -4,3 +4,8 @@ if [ ! -d ~/.zplugin ]; then
   echo 'Installing zplugin'
   git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
 fi
+
+if [ ! -d ~/.zi ]; then
+  echo 'Installing zi'
+  git clone https://github.com/z-shell/zi.git ~/.zi/bin
+fi
