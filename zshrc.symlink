@@ -1,15 +1,25 @@
 source ~/.zi/bin/zi.zsh
 
+zi ice silent wait'!0'
 zi light zsh-users/zsh-syntax-highlighting
+zi ice silent wait'!0'
 zi light zsh-users/zsh-completions
+zi ice silent wait'!0'
 zi light zsh-users/zsh-history-substring-search
-#
+zi ice silent wait'!0'
+zi snippet OMZP::aws
+zi ice silent wait'!0'
+zi light greymd/docker-zsh-completion
+# https://github.com/Aloxaf/fzf-tab#install
+# must load after compinit but before plugins like autosuggestions
+zi ice silent wait'!0'
+zi light Aloxaf/fzf-tab
+zi ice silent wait'!0'
 zi light zsh-users/zsh-autosuggestions
+
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^ ' autosuggest-accept
-
-zi light greymd/docker-zsh-completion
 
 autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
@@ -32,9 +42,6 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
   rpc rpcuser rpm rtkit scard shutdown squid sshd statd svn sync tftp \
   usbmux uucp vcsa wwwrun xfs '_*'
 
-# https://github.com/Aloxaf/fzf-tab#install
-# must load after compinit but before plugins like autosuggestions
-zi light Aloxaf/fzf-tab
 zstyle ':fzf-tab:*' fzf-bindings 'space:accept'
 zstyle ':fzf-tab:*' accept-line enter
 
