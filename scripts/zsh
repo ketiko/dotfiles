@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ ! -d ~/.zplugin ]; then
-  echo 'Installing zplugin'
-  git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
+if [ ! -d ~/.zplug ]; then
+  echo 'Installing zplug'
+  git clone https://github.com/zplug/zplug ~/.zplug
 fi

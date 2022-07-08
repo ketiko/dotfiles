@@ -1,15 +1,28 @@
-source ~/.zplugin/bin/zplugin.zsh
+source ~/.zplug/init.zsh
 
-zplugin light zsh-users/zsh-syntax-highlighting
-zplugin light zsh-users/zsh-completions
-zplugin light zsh-users/zsh-history-substring-search
+zplug "zsh-users/zsh-autosuggestions", defer:3
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "greymd/docker-zsh-completion"
+# https://github.com/Aloxaf/fzf-tab#install
+# must load after compinit but before plugins like autosuggestions
+zplug "Aloxaf/fzf-tab", defer:2
 
-zplugin light zsh-users/zsh-autosuggestions
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load
+
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^ ' autosuggest-accept
-
-zplugin light greymd/docker-zsh-completion
 
 autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
@@ -32,9 +45,6 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
   rpc rpcuser rpm rtkit scard shutdown squid sshd statd svn sync tftp \
   usbmux uucp vcsa wwwrun xfs '_*'
 
-# https://github.com/Aloxaf/fzf-tab#install
-# must load after compinit but before plugins like autosuggestions
-zplugin light Aloxaf/fzf-tab
 zstyle ':fzf-tab:*' fzf-bindings 'space:accept'
 zstyle ':fzf-tab:*' accept-line enter
 
