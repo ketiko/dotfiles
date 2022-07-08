@@ -1,63 +1,15 @@
-source ~/.zplug/init.zsh
+source ~/.zi/bin/zi.zsh
+
+zi light zsh-users/zsh-syntax-highlighting
+zi light zsh-users/zsh-completions
+zi light zsh-users/zsh-history-substring-search
 #
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "greymd/docker-zsh-completion"
-zplug "chitoku-k/fzf-zsh-completions"
-# zplug "bonnefoa/kubectl-fzf", defer:3
-zplug "MenkeTechnologies/zsh-more-completions"
-# zplug "plugins/git", from:oh-my-zsh
-# zplug "plugins/ag", from:oh-my-zsh
-# zplug "plugins/asdf", from:oh-my-zsh
-# zplug "plugins/aws", from:oh-my-zsh
-# zplug "plugins/brew", from:oh-my-zsh
-# zplug "plugins/bundler", from:oh-my-zsh
-# zplug "plugins/cask", from:oh-my-zsh
-# zplug "plugins/colorize", from:oh-my-zsh
-# zplug "plugins/docker-compose", from:oh-my-zsh
-# zplug "plugins/docker", from:oh-my-zsh
-# zplug "plugins/encode64", from:oh-my-zsh
-# zplug "plugins/fasd", from:oh-my-zsh
-# zplug "plugins/fd", from:oh-my-zsh
-# zplug "plugins/fzf", from:oh-my-zsh
-# zplug "plugins/gh", from:oh-my-zsh
-# zplug "plugins/github", from:oh-my-zsh
-# zplug "plugins/history", from:oh-my-zsh
-# zplug "plugins/httpie", from:oh-my-zsh
-# zplug "plugins/iterm2", from:oh-my-zsh
-zplug "plugins/kube-ps1", from:oh-my-zsh
-zplug "plugins/kubectl", from:oh-my-zsh
-zplug "plugins/kubectx", from:oh-my-zsh
-# zplug "plugins/minikube", from:oh-my-zsh, defer:2
-# zplug "plugins/npm", from:oh-my-zsh, defer:2
-# zplug "plugins/pip", from:oh-my-zsh, defer:2
-# zplug "plugins/pipenv", from:oh-my-zsh, defer:2
-# zplug "plugins/pyenv", from:oh-my-zsh, defer:2
-# zplug "plugins/pylint", from:oh-my-zsh, defer:2
-# zplug "plugins/python", from:oh-my-zsh, defer:2
-# zplug "plugins/rake", from:oh-my-zsh, defer:2
-# zplug "plugins/ripgrep", from:oh-my-zsh, defer:2
-# zplug "plugins/ruby", from:oh-my-zsh, defer:2
-# https://github.com/Aloxaf/fzf-tab#install
-# must load after compinit but before plugins like autosuggestions
-zplug "Aloxaf/fzf-tab", defer:2
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-autosuggestions"
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-# Then, source plugins and add commands to $PATH
-zplug load --verbose
-
+zi light zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^ ' autosuggest-accept
+
+zi light greymd/docker-zsh-completion
 
 autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
@@ -80,6 +32,9 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
   rpc rpcuser rpm rtkit scard shutdown squid sshd statd svn sync tftp \
   usbmux uucp vcsa wwwrun xfs '_*'
 
+# https://github.com/Aloxaf/fzf-tab#install
+# must load after compinit but before plugins like autosuggestions
+zi light Aloxaf/fzf-tab
 zstyle ':fzf-tab:*' fzf-bindings 'space:accept'
 zstyle ':fzf-tab:*' accept-line enter
 
@@ -126,8 +81,6 @@ prompt_pygmalion_precmd(){
   if [[ $prompt_length -gt 40 ]]; then
     nl=$'\n%{\r%}';
   fi
-
-  # PROMPT="$base_prompt$(kube_ps1)|$gitinfo$nl$post_prompt"
   PROMPT="$base_prompt$gitinfo$nl$post_prompt"
 }
 
@@ -263,6 +216,38 @@ if command -v aws &> /dev/null; then
   aws_completer_cmd=$(which aws_completer)
   complete -C "$aws_completer_cmd" aws
 fi
+
+_fzf_complete_git() {
+  ARGS="$*"
+  if [[ "$ARGS" == 'git add'* ]]; then
+    files=$(git status -u -s | awk '{print $2}')
+    _fzf_complete "--reverse --multi" "$@" < <(
+      echo "$files"
+    )
+  elif [[ "$ARGS" == 'git aa'* ]]; then
+    files=$(git status -u -s | awk '{print $2}')
+    _fzf_complete "--reverse --multi" "$@" < <(
+      echo "$files"
+    )
+  elif [[ "$ARGS" == 'git co'* ]]; then
+    files=$(git status -u -s | awk '{print $2}')
+    _fzf_complete "--reverse --multi" "$@" < <(
+      echo "$files"
+    )
+  elif [[ "$ARGS" == 'git checkout'* ]]; then
+    files=$(git status -u -s | awk '{print $2}')
+    _fzf_complete "--reverse --multi" "$@" < <(
+      echo "$files"
+    )
+  elif [[ "$ARGS" == 'git co'* ]]; then local files
+    files=$(git status -u -s | awk '{print $2}')
+    _fzf_complete "--reverse --multi" "$@" < <(
+      echo "$files"
+    )
+  else
+    eval "zle ${fzf_default_completion:-expand-or-complete}"
+  fi
+}
 
 if command -v terraform &> /dev/null; then
   tf=$(which terraform)
