@@ -31,7 +31,8 @@ zi snippet OMZP::git
 # zplug "plugins/colorize", from:oh-my-zsh
 zi ice wait lucid
 zi snippet OMZP::docker-compose
-# zplug "plugins/docker", from:oh-my-zsh
+zi ice wait lucid
+zi snippet OMZP::docker
 # zplug "plugins/encode64", from:oh-my-zsh
 # zplug "plugins/fasd", from:oh-my-zsh
 # zplug "plugins/fd", from:oh-my-zsh
@@ -44,8 +45,10 @@ zi snippet OMZP::docker-compose
 # zplug "plugins/kube-ps1", from:oh-my-zsh
 zi ice wait lucid
 zi snippet OMZP::kubectl
-# zplug "plugins/kubectx", from:oh-my-zsh
-# zplug "plugins/minikube", from:oh-my-zsh, defer:2
+zi ice wait lucid
+zi snippet OMZP::kubectx
+zi ice wait lucid
+zi snippet OMZP::minikube
 # zplug "plugins/npm", from:oh-my-zsh, defer:2
 zi ice wait lucid
 zi snippet OMZP::pip
@@ -259,44 +262,6 @@ if [ -d "$HOME/.asdf" ]; then
   source "$HOME"/.asdf/asdf.sh
   # source $HOME/.asdf/completions/asdf.bash
 fi
-
-
-# if command -v aws &> /dev/null; then
-#   aws_completer_cmd=$(which aws_completer)
-#   complete -C "$aws_completer_cmd" aws
-# fi
-
-_fzf_complete_git() {
-  ARGS="$*"
-  if [[ "$ARGS" == 'git add'* ]]; then
-    files=$(git status -u -s | awk '{print $2}')
-    _fzf_complete "--reverse --multi" "$@" < <(
-    echo "$files"
-  )
-elif [[ "$ARGS" == 'git aa'* ]]; then
-  files=$(git status -u -s | awk '{print $2}')
-  _fzf_complete "--reverse --multi" "$@" < <(
-  echo "$files"
-)
-elif [[ "$ARGS" == 'git co'* ]]; then
-  files=$(git status -u -s | awk '{print $2}')
-  _fzf_complete "--reverse --multi" "$@" < <(
-  echo "$files"
-)
-elif [[ "$ARGS" == 'git checkout'* ]]; then
-  files=$(git status -u -s | awk '{print $2}')
-  _fzf_complete "--reverse --multi" "$@" < <(
-  echo "$files"
-)
-elif [[ "$ARGS" == 'git co'* ]]; then local files
-  files=$(git status -u -s | awk '{print $2}')
-  _fzf_complete "--reverse --multi" "$@" < <(
-  echo "$files"
-)
-else
-  eval "zle ${fzf_default_completion:-expand-or-complete}"
-  fi
-}
 
 if command -v terraform &> /dev/null; then
   tf=$(which terraform)
