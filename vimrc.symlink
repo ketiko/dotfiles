@@ -41,14 +41,15 @@ set linebreak           " Don't wrap text in the middle of a word
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set matchtime=2         " for .2 seconds
-set nobackup
+" set nobackup
 set noerrorbells        " No noise
 set nojoinspaces        " Use only 1 space after "." when joining lines instead of 2
 " set nopaste
 set nostartofline       " Don't reset cursor to start of line when moving around
 set novisualbell        " No blinking
 set wrap
-set nowritebackup
+" set nowritebackup
+set writebackup
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
 " set path=**             " Search all nested files when finding
@@ -65,7 +66,7 @@ set smarttab            " Insert blanks properly at beginning of a line
 set softtabstop=2       " <BS> over an autoindent deletes shiftwidth worth of spaces
 set splitbelow
 set splitright
-set noswapfile
+" set noswapfile
 set switchbuf=""        " do not move focus/cursor to where the buffer is already open
 set synmaxcol=1200      " Syntax coloring lines that are too long just slows down the world
 set t_ti= t_te=         " Prevent Vim from clobbering the scrollback buffer

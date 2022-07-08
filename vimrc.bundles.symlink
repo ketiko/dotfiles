@@ -29,7 +29,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     " Plug 'roxma/nvim-yarp'
     " Plug 'roxma/vim-hug-neovim-rpc'
   end
-  Plug 'junegunn/vim-peekaboo'
+  " Plug 'junegunn/vim-peekaboo'
   " Plug 'autozimu/LanguageClient-neovim', {
   "       \ 'branch': 'next',
   "       \ 'do': 'bash install.sh',
