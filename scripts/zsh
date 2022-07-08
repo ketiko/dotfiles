@@ -4,3 +4,5 @@ if [ ! -d ~/.zi ]; then
   echo 'Installing zi'
   git clone https://github.com/z-shell/zi.git ~/.zi/bin
 fi
+
+mkdir $ZSH_CACHE_DIR/completions
