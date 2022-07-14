@@ -43,6 +43,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " Plug 'glepnir/oceanic-material'
   " Plug 'mhartington/oceanic-next'
   " Plug 'scrooloose/syntastic'
+  Plug 'honza/vim-snippets'
   Plug '/tfnico/vim-gradle'
   Plug 'Glench/Vim-Jinja2-Syntax'
   Plug 'Konfekt/FastFold'
