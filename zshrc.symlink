@@ -7,6 +7,7 @@ zi light zsh-users/zsh-completions
 zi light zsh-users/zsh-history-substring-search
 zi ice wait lucid
 zi snippet OMZP::aws
+SHOW_AWS_PROMPT=false
 zi ice wait lucid
 zi light greymd/docker-zsh-completion
 # https://github.com/Aloxaf/fzf-tab#install
