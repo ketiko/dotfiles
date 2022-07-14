@@ -51,7 +51,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'Quramy/tsuquyomi',
   Plug 'Quramy/vim-dtsm',
   Plug 'Quramy/vim-js-pretty-template',
-  " Plug 'Raimondi/delimitMate'
+  Plug 'Raimondi/delimitMate'
   Plug 'Shougo/neco-syntax'
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
   Plug 'Valloric/ListToggle'

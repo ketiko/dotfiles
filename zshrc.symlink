@@ -270,3 +270,17 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+acps() {
+  unset AWS_DEFAULT_PROFILE
+  unset AWS_ACCESS_KEY_ID
+  unset AWS_SECRET_ACCESS_KEY
+  if [ ! -z $1 ]; then
+    export AWS_PROFILE=$1
+  else
+    export AWS_PROFILE=$(aws configure list-profiles | fzf -0 )
+  fi
+  export AWS_DEFAULT_PROFILE="$AWS_PROFILE"
+
+  aws sts get-caller-identity > /dev/null 2>&1 || aws sso login
+  echo "Switched to AWS Profile: $AWS_PROFILE"
+}
