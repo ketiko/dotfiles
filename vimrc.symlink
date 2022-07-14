@@ -543,7 +543,7 @@ let g:coc_global_extensions = [
       \ 'coc-tag',
       \ 'coc-toml',
       \ 'coc-tsserver',
-      \ 'coc-ultisnips',
+      \ 'coc-snippets',
       \ 'coc-word',
       \ 'coc-yaml',
       \ 'coc-yank',
