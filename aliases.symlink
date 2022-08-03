@@ -6,6 +6,11 @@ alias l='ls -CF'
 
 # enable color support of ls and also add handy aliases
 if command -v dircolors > /dev/null; then
+  if [ -f "$HOME/.dircolors" ]; then
+    eval "$(dircolors -b ~/.dircolors)"
+  else
+    eval "$(dircolors -b)"
+  fi
   alias ls='ls --color=auto'
   alias ll='ls -alF --color=auto'
   alias la='ls -A --color=auto'
