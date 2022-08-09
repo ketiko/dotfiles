@@ -4,15 +4,15 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin()
 
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-  Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
   Plug 'jeetsukumaran/vim-pythonsense'
   Plug 'Vimjas/vim-python-pep8-indent'
   Plug 'davidhalter/jedi-vim'
   Plug 'nvie/vim-flake8'
   Plug 'sheerun/vim-polyglot'
+  " Plug 'neoclide/coc.nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'kevinoid/vim-jsonc'
   Plug 'antoinemadec/coc-fzf'
+  Plug 'kevinoid/vim-jsonc'
   Plug 'rakr/vim-two-firewatch'
   Plug 'joshdick/onedark.vim'
   Plug 'KeitaNakamura/neodark.vim'
@@ -43,8 +43,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " Plug 'glepnir/oceanic-material'
   " Plug 'mhartington/oceanic-next'
   " Plug 'scrooloose/syntastic'
-  Plug 'SirVer/ultisnips'
-  Plug 'honza/vim-snippets'
+  " Plug 'SirVer/ultisnips'
+  " Plug 'honza/vim-snippets'
   Plug '/tfnico/vim-gradle'
   Plug 'Glench/Vim-Jinja2-Syntax'
   Plug 'Konfekt/FastFold'

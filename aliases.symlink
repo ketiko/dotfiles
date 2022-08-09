@@ -119,6 +119,14 @@ if command -v batcat > /dev/null; then
  alias bat=batcat
 fi
 
+if command -v kubectx > /dev/null; then
+ alias kc=kubectx
+fi
+
+if command -v kubens > /dev/null; then
+ alias kns=kubens
+fi
+
 if [ -f "$HOME/.aliases.local" ]; then
   . "$HOME/.aliases.local"
 fi
