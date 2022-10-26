@@ -12,6 +12,10 @@ set backupdir=$HOME/.vim/backup//
 
 set encoding=utf8
 
+" Add let g:ale_disable_lsp = 1 to your vimrc file, before plugins are loaded.
+" See https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
+let g:ale_disable_lsp = 1
+
 source $HOME/.vimrc.bundles
 
 set runtimepath+=~/.fzf
@@ -47,7 +51,7 @@ set nojoinspaces        " Use only 1 space after "." when joining lines instead 
 " set nopaste
 set nostartofline       " Don't reset cursor to start of line when moving around
 set novisualbell        " No blinking
-set wrap
+set nowrap
 set nowritebackup
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
@@ -204,19 +208,21 @@ end
 
 set background=dark
 
+" colorscheme onedark
+" let g:onedark_termcolors=256
+" let g:onedark_termcolors=16
+
+" colorscheme neodark
+" colorscheme two-firewatch
+" colorscheme oceanic_material
+" colorscheme OceanicNext
+
+colorscheme solarized
 " Solarized Settings
 if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
   let g:solarized_termtrans=1
   let g:solarized_termcolors=16
 endif
-
-" colorscheme neodark
-" colorscheme onedark
-" colorscheme two-firewatch
-" colorscheme oceanic_material
-" colorscheme OceanicNext
-colorscheme solarized
-
 
 " vim-rails
 let g:rails_projections = {
@@ -325,6 +331,7 @@ let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 " let g:syntastic_json_checkers=['jsonlint']
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek']
+let g:syntastic_yaml_checkers = ['yamllint']
 
 " let g:syntastic_quiet_messages = {}
 
@@ -840,15 +847,12 @@ let g:ruby_path = []
 " Ale
 let g:ale_sign_column_always = 1
 let g:airline#extensions#ale#enabled = 1
-let g:ale_lint_on_enter = 0
+let g:ale_lint_on_enter = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_completion_enabled = 0
-let g:ale_linters = {
-      \ 'javascript': ['eslint'],
-      \ 'go': ['gopls'],
-      \}
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
+      \   'ruby': ['rubocop'],
       \   'javascript': ['prettier', 'eslint'],
       \   'typescript': ['prettier', 'eslint'],
       \}

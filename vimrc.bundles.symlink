@@ -3,6 +3,8 @@ filetype off
 if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin()
 
+  " Plug 'joshdick/onedark.vim'
+
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
   Plug 'jeetsukumaran/vim-pythonsense'
   Plug 'Vimjas/vim-python-pep8-indent'
@@ -149,12 +151,16 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'vim-scripts/dbext.vim'
   Plug 'vim-scripts/matchit.zip'
   Plug 'vim-scripts/sudo.vim'
-  Plug 'w0rp/ale'
+  Plug 'dense-analysis/ale'
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-notes'
-  " Plug 'zhaocai/GoldenView.Vim'
-  Plug 'roman/golden-ratio'
+  Plug 'zhaocai/GoldenView.Vim'
+  " Plug 'roman/golden-ratio'
+
+  " PlantUML
   Plug 'aklt/plantuml-syntax'
+  Plug 'weirongxu/plantuml-previewer.vim'
+  Plug 'tyru/open-browser.vim'
 
   if isdirectory(expand("~/go"))
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }

@@ -5,9 +5,11 @@ zi light zsh-users/zsh-syntax-highlighting
 zi ice wait lucid
 zi light zsh-users/zsh-completions
 zi light zsh-users/zsh-history-substring-search
-zi ice wait lucid
-zi snippet OMZP::aws
+# zi ice wait lucid
 SHOW_AWS_PROMPT=false
+ZSH_THEME_AWS_PREFIX="(\uf270:"
+ZSH_THEME_AWS_SUFFIX=")"
+zi snippet OMZP::aws
 zi ice wait lucid
 zi light greymd/docker-zsh-completion
 # https://github.com/Aloxaf/fzf-tab#install
@@ -72,8 +74,6 @@ autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 zmodload -i zsh/complist
 
-source <(kubectl completion zsh)
-
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -137,7 +137,7 @@ prompt_pygmalion_precmd(){
   if [[ $prompt_length -gt 40 ]]; then
     nl=$'\n%{\r%}';
   fi
-  PROMPT="$base_prompt$gitinfo$(kube_ps1)$nl$post_prompt"
+  PROMPT="$base_prompt$gitinfo$(kube_ps1)$(aws_prompt_info)$nl$post_prompt"
 }
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}%{${fg[green]}%}"
@@ -161,8 +161,8 @@ if [ -z "$HISTFILE" ]; then
   HISTFILE=$HOME/.zsh_history
 fi
 
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 
 # Show history
 case $HIST_STAMPS in
@@ -288,4 +288,22 @@ acps() {
 
   aws sts get-caller-identity > /dev/null 2>&1 || aws sso login
   echo "Switched to AWS Profile: $AWS_PROFILE"
+}
+
+command -v kubectl >/dev/null && source <(kubectl completion zsh)
+command -v flux >/dev/null && source <(flux completion zsh)
+
+function kac() {
+    local account=$1
+    aws sso login --profile ${account}
+    export AWS_PROFILE=${account}
+    local cluster_name=${account}
+    aws eks update-kubeconfig --name ${cluster_name} --alias ${cluster_name}
+}
+
+function kinfo() {
+    echo "K8S Info"
+    echo "--------"
+    echo "Cluster: $(kubectl config current-context)"
+    echo "Namespace: $(kubens -c)"
 }
