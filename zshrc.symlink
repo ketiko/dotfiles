@@ -295,7 +295,6 @@ command -v flux >/dev/null && source <(flux completion zsh)
 
 function kac() {
     local account=$1
-    aws sso login --profile ${account}
     export AWS_PROFILE=${account}
     local cluster_name=${account}
     aws eks update-kubeconfig --name ${cluster_name} --alias ${cluster_name}

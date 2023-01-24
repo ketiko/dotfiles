@@ -154,7 +154,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'dense-analysis/ale'
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-notes'
-  Plug 'zhaocai/GoldenView.Vim'
+  " Plug 'zhaocai/GoldenView.Vim'
   " Plug 'roman/golden-ratio'
 
   " PlantUML

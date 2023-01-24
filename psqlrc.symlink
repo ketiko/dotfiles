@@ -25,7 +25,7 @@
 
 \timing
 
-\set AUTOCOMMIT off
+-- \set AUTOCOMMIT off
 
 \set ON_ERROR_ROLLBACK interactive
 

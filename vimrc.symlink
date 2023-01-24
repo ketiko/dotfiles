@@ -332,14 +332,15 @@ let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek']
 let g:syntastic_yaml_checkers = ['yamllint']
+let g:syntastic_python_checkers = ['flake8']
 
 " let g:syntastic_quiet_messages = {}
 
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_jump = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 let g:syntastic_mode_map = { "mode": "passive" }
 
 " if has('nvim')
@@ -546,6 +547,19 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Run the Code Lens action on the current line.
+nmap <leader>cl  <Plug>(coc-codelens-action)
+
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
@@ -562,7 +576,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " https://github.com/neoclide/coc.nvim/issues/3473
 " This is how you correctly patch a colorscheme from your .vimrc:
-autocmd VimEnter,ColorScheme * hi link CocFloating CocHintFloat
+autocmd VimEnter,ColorScheme * hi! link CocFloating CocHintFloat
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -849,12 +863,13 @@ let g:ale_sign_column_always = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_completion_enabled = 0
-let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_fix_on_save = 0
 let g:ale_fixers = {
       \   'ruby': ['rubocop'],
       \   'javascript': ['prettier', 'eslint'],
       \   'typescript': ['prettier', 'eslint'],
+      \   'python': ['autoflake', 'autoimport', 'flake8', 'pylint'],
       \}
 
 " vim-stay
