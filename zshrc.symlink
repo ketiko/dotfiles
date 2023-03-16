@@ -1,15 +1,74 @@
-source ~/.zplugin/bin/zplugin.zsh
+source ~/.zi/bin/zi.zsh
 
-zplugin light zsh-users/zsh-syntax-highlighting
-zplugin light zsh-users/zsh-completions
-zplugin light zsh-users/zsh-history-substring-search
+zi ice wait lucid
+zi light zsh-users/zsh-syntax-highlighting
+zi ice wait lucid
+zi light zsh-users/zsh-completions
+zi light zsh-users/zsh-history-substring-search
+# zi ice wait lucid
+SHOW_AWS_PROMPT=false
+ZSH_THEME_AWS_PREFIX="(\uf270:"
+ZSH_THEME_AWS_SUFFIX=")"
+zi snippet OMZP::aws
+zi ice wait lucid
+zi light greymd/docker-zsh-completion
+# https://github.com/Aloxaf/fzf-tab#install
+# must load after compinit but before plugins like autosuggestions
+zi ice wait lucid
+zi light Aloxaf/fzf-tab
+zi light zsh-users/zsh-autosuggestions
 
-zplugin light zsh-users/zsh-autosuggestions
+zi ice wait lucid
+zi light chitoku-k/fzf-zsh-completions
+# zplug "bonnefoa/kubectl-fzf", defer:3
+zi ice wait lucid
+zi light MenkeTechnologies/zsh-more-completions
+zi ice wait lucid
+zi snippet OMZP::git
+# zplug "plugins/ag", from:oh-my-zsh
+# zplug "plugins/asdf", from:oh-my-zsh
+# zplug "plugins/aws", from:oh-my-zsh
+# zplug "plugins/brew", from:oh-my-zsh
+# zplug "plugins/bundler", from:oh-my-zsh
+# zplug "plugins/cask", from:oh-my-zsh
+# zplug "plugins/colorize", from:oh-my-zsh
+zi ice wait lucid
+zi snippet OMZP::docker-compose
+zi ice wait lucid
+zi snippet OMZP::docker
+# zplug "plugins/encode64", from:oh-my-zsh
+# zplug "plugins/fasd", from:oh-my-zsh
+# zplug "plugins/fd", from:oh-my-zsh
+# zplug "plugins/fzf", from:oh-my-zsh
+# zplug "plugins/gh", from:oh-my-zsh
+# zplug "plugins/github", from:oh-my-zsh
+# zplug "plugins/history", from:oh-my-zsh
+# zplug "plugins/httpie", from:oh-my-zsh
+# zplug "plugins/iterm2", from:oh-my-zsh
+# zplug "plugins/kube-ps1", from:oh-my-zsh
+zi ice wait lucid
+zi snippet OMZP::kubectl
+zi ice wait lucid
+zi snippet OMZP::kubectx
+# zi ice wait lucid
+# zi snippet OMZP::minikube
+zi snippet OMZP::kube-ps1
+# zplug "plugins/npm", from:oh-my-zsh, defer:2
+zi ice wait lucid
+zi snippet OMZP::pip
+# zi ice wait lucid
+# zi snippet OMZP::pipenv
+# zplug "plugins/pyenv", from:oh-my-zsh, defer:2
+# zplug "plugins/pylint", from:oh-my-zsh, defer:2
+# zplug "plugins/python", from:oh-my-zsh, defer:2
+# zplug "plugins/rake", from:oh-my-zsh, defer:2
+# zplug "plugins/ripgrep", from:oh-my-zsh, defer:2
+# zplug "plugins/ruby", from:oh-my-zsh, defer:2
+
+
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^ ' autosuggest-accept
-
-zplugin light greymd/docker-zsh-completion
 
 autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
@@ -32,9 +91,6 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
   rpc rpcuser rpm rtkit scard shutdown squid sshd statd svn sync tftp \
   usbmux uucp vcsa wwwrun xfs '_*'
 
-# https://github.com/Aloxaf/fzf-tab#install
-# must load after compinit but before plugins like autosuggestions
-zplugin light Aloxaf/fzf-tab
 zstyle ':fzf-tab:*' fzf-bindings 'space:accept'
 zstyle ':fzf-tab:*' accept-line enter
 
@@ -42,11 +98,11 @@ autoload -U colors && colors
 
 # get the name of the branch we are on
 function git_prompt_info() {
-if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]; then
-  ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
-    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
-fi
+  if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]; then
+    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+      ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
+          echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  fi
 }
 
 # Checks if working tree is dirty
@@ -81,12 +137,12 @@ prompt_pygmalion_precmd(){
   if [[ $prompt_length -gt 40 ]]; then
     nl=$'\n%{\r%}';
   fi
-  PROMPT="$base_prompt$gitinfo$nl$post_prompt"
+  PROMPT="$base_prompt$gitinfo$(kube_ps1)$(aws_prompt_info)$nl$post_prompt"
 }
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}%{${fg[green]}%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_DIRTY="%{${fg[yellow]}%}⚡%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{${fg[yellow]}%}\U26a1%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 base_prompt="%{${fg[magenta]}%}%n%{$reset_color%}%{${fg[cyan]}%}@%{$reset_color%}%{${fg[yellow]}%}%m%{$reset_color%}%{${fg[red]}%}:%{$reset_color%}%{${fg[cyan]}%}%0~%{$reset_color%}%{${fg[red]}%}|%{$reset_color%}"
@@ -96,6 +152,7 @@ base_prompt_nocolor=$(echo "$base_prompt" | perl -pe "s/%\{[^}]+\}//g")
 post_prompt_nocolor=$(echo "$post_prompt" | perl -pe "s/%\{[^}]+\}//g")
 
 precmd_functions+=(prompt_pygmalion_precmd)
+
 # Apply theming defaults
 PS1="%n@%m:%~%# "
 
@@ -104,8 +161,8 @@ if [ -z "$HISTFILE" ]; then
   HISTFILE=$HOME/.zsh_history
 fi
 
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 
 # Show history
 case $HIST_STAMPS in
@@ -211,44 +268,6 @@ if [ -d "$HOME/.asdf" ]; then
   # source $HOME/.asdf/completions/asdf.bash
 fi
 
-
-if command -v aws &> /dev/null; then
-  aws_completer_cmd=$(which aws_completer)
-  complete -C "$aws_completer_cmd" aws
-fi
-
-_fzf_complete_git() {
-  ARGS="$*"
-  if [[ "$ARGS" == 'git add'* ]]; then
-    files=$(git status -u -s | awk '{print $2}')
-    _fzf_complete "--reverse --multi" "$@" < <(
-      echo "$files"
-    )
-  elif [[ "$ARGS" == 'git aa'* ]]; then
-    files=$(git status -u -s | awk '{print $2}')
-    _fzf_complete "--reverse --multi" "$@" < <(
-      echo "$files"
-    )
-  elif [[ "$ARGS" == 'git co'* ]]; then
-    files=$(git status -u -s | awk '{print $2}')
-    _fzf_complete "--reverse --multi" "$@" < <(
-      echo "$files"
-    )
-  elif [[ "$ARGS" == 'git checkout'* ]]; then
-    files=$(git status -u -s | awk '{print $2}')
-    _fzf_complete "--reverse --multi" "$@" < <(
-      echo "$files"
-    )
-  elif [[ "$ARGS" == 'git co'* ]]; then local files
-    files=$(git status -u -s | awk '{print $2}')
-    _fzf_complete "--reverse --multi" "$@" < <(
-      echo "$files"
-    )
-  else
-    eval "zle ${fzf_default_completion:-expand-or-complete}"
-  fi
-}
-
 if command -v terraform &> /dev/null; then
   tf=$(which terraform)
   complete -o nospace -C "$tf" terraform
@@ -256,3 +275,34 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+acps() {
+  unset AWS_DEFAULT_PROFILE
+  unset AWS_ACCESS_KEY_ID
+  unset AWS_SECRET_ACCESS_KEY
+  if [ ! -z $1 ]; then
+    export AWS_PROFILE=$1
+  else
+    export AWS_PROFILE=$(aws configure list-profiles | fzf -0 )
+  fi
+  export AWS_DEFAULT_PROFILE="$AWS_PROFILE"
+
+  aws sts get-caller-identity > /dev/null 2>&1 || aws sso login
+  echo "Switched to AWS Profile: $AWS_PROFILE"
+}
+
+command -v kubectl >/dev/null && source <(kubectl completion zsh)
+command -v flux >/dev/null && source <(flux completion zsh)
+
+function kac() {
+    local account=$1
+    export AWS_PROFILE=${account}
+    local cluster_name=${account}
+    aws eks update-kubeconfig --name ${cluster_name} --alias ${cluster_name}
+}
+
+function kinfo() {
+    echo "K8S Info"
+    echo "--------"
+    echo "Cluster: $(kubectl config current-context)"
+    echo "Namespace: $(kubens -c)"
+}

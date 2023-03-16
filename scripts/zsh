@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-if [ ! -d ~/.zplugin ]; then
-  echo 'Installing zplugin'
-  git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
+if [ ! -d ~/.zi ]; then
+  echo 'Installing zi'
+  git clone https://github.com/z-shell/zi.git ~/.zi/bin
+  mkdir ~/.cache/zi/completions
 fi
+
+mkdir $ZSH_CACHE_DIR/completions

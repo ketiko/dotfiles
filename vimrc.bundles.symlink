@@ -3,16 +3,18 @@ filetype off
 if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin()
 
+  " Plug 'joshdick/onedark.vim'
+
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-  Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
   Plug 'jeetsukumaran/vim-pythonsense'
   Plug 'Vimjas/vim-python-pep8-indent'
   Plug 'davidhalter/jedi-vim'
   Plug 'nvie/vim-flake8'
   Plug 'sheerun/vim-polyglot'
+  " Plug 'neoclide/coc.nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'kevinoid/vim-jsonc'
   Plug 'antoinemadec/coc-fzf'
+  Plug 'kevinoid/vim-jsonc'
   Plug 'rakr/vim-two-firewatch'
   Plug 'joshdick/onedark.vim'
   Plug 'KeitaNakamura/neodark.vim'
@@ -29,7 +31,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     " Plug 'roxma/nvim-yarp'
     " Plug 'roxma/vim-hug-neovim-rpc'
   end
-  Plug 'junegunn/vim-peekaboo'
+  " Plug 'junegunn/vim-peekaboo'
   " Plug 'autozimu/LanguageClient-neovim', {
   "       \ 'branch': 'next',
   "       \ 'do': 'bash install.sh',
@@ -43,6 +45,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " Plug 'glepnir/oceanic-material'
   " Plug 'mhartington/oceanic-next'
   " Plug 'scrooloose/syntastic'
+  " Plug 'SirVer/ultisnips'
+  " Plug 'honza/vim-snippets'
   Plug '/tfnico/vim-gradle'
   Plug 'Glench/Vim-Jinja2-Syntax'
   Plug 'Konfekt/FastFold'
@@ -51,7 +55,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'Quramy/tsuquyomi',
   Plug 'Quramy/vim-dtsm',
   Plug 'Quramy/vim-js-pretty-template',
-  " Plug 'Raimondi/delimitMate'
+  Plug 'Raimondi/delimitMate'
   Plug 'Shougo/neco-syntax'
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }
   Plug 'Valloric/ListToggle'
@@ -147,16 +151,28 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'vim-scripts/dbext.vim'
   Plug 'vim-scripts/matchit.zip'
   Plug 'vim-scripts/sudo.vim'
-  Plug 'w0rp/ale'
+  Plug 'dense-analysis/ale'
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-notes'
   " Plug 'zhaocai/GoldenView.Vim'
-  Plug 'roman/golden-ratio'
+  " Plug 'roman/golden-ratio'
+
+  " Images
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-media-files.nvim'
+
+  " PlantUML
   Plug 'aklt/plantuml-syntax'
+  Plug 'weirongxu/plantuml-previewer.vim'
+  Plug 'tyru/open-browser.vim'
 
   if isdirectory(expand("~/go"))
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   endif
+
+  Plug 'github/copilot.vim'
 
   call plug#end()
 endif

@@ -6,6 +6,11 @@ alias l='ls -CF'
 
 # enable color support of ls and also add handy aliases
 if command -v dircolors > /dev/null; then
+  if [ -f "$HOME/.dircolors" ]; then
+    eval "$(dircolors -b ~/.dircolors)"
+  else
+    eval "$(dircolors -b)"
+  fi
   alias ls='ls --color=auto'
   alias ll='ls -alF --color=auto'
   alias la='ls -A --color=auto'
@@ -112,6 +117,14 @@ alias ducks='du -cks -- * | sort -rn | head'
 
 if command -v batcat > /dev/null; then
  alias bat=batcat
+fi
+
+if command -v kubectx > /dev/null; then
+ alias kc=kubectx
+fi
+
+if command -v kubens > /dev/null; then
+ alias kns=kubens
 fi
 
 if [ -f "$HOME/.aliases.local" ]; then
