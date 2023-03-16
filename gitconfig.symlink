@@ -36,7 +36,9 @@
   shs = stash save -u
   shp = stash pop
   ci = commit
+  cia = commit -a
   cm = commit -m
+  cma = commit -a -m
   br = branch
   ba = branch -a
   bd = branch -d

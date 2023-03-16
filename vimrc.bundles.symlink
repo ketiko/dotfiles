@@ -157,6 +157,12 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " Plug 'zhaocai/GoldenView.Vim'
   " Plug 'roman/golden-ratio'
 
+  " Images
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-media-files.nvim'
+
   " PlantUML
   Plug 'aklt/plantuml-syntax'
   Plug 'weirongxu/plantuml-previewer.vim'
@@ -165,6 +171,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   if isdirectory(expand("~/go"))
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   endif
+
+  Plug 'github/copilot.vim'
 
   call plug#end()
 endif
