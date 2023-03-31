@@ -91,7 +91,7 @@ set wildmenu                    " make tab completion for files/buffers act like
 set wildmode=longest,list,full  " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
 set autoread " If a file is changed outside of vim, automatically reload it without asking
 set signcolumn=yes " Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved. for coc
-
+set maxmempattern=5000
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -319,6 +319,7 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 " NERD Tree Settings
 nmap <leader>f :NERDTreeFind<CR>
 nmap <leader>n :NERDTreeToggle %:p:h<CR>
+let g:NERDTreeIgnore = ['^__pycache__$[[dir]]']
 
 " ListToggle
 let g:lt_location_list_toggle_map = '<leader>l'
@@ -882,6 +883,7 @@ let g:javascript_plugin_jsdoc = 1
 let g:vim_jsx_pretty_highlight_close_tag = 1
 
 
+
 " camelCaseMotion
 call camelcasemotion#CreateMotionMappings('<leader>')
 
@@ -893,3 +895,4 @@ nmap <silent> ,sv :source $MYVIMRC<CR>
 if filereadable(expand("~/.vimrc.local"))
   source $HOME/.vimrc.local
 endif
+

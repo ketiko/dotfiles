@@ -70,7 +70,11 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^ ' autosuggest-accept
 
-autoload -U compinit && compinit
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 autoload -U +X bashcompinit && bashcompinit
 zmodload -i zsh/complist
 
@@ -161,8 +165,8 @@ if [ -z "$HISTFILE" ]; then
   HISTFILE=$HOME/.zsh_history
 fi
 
-HISTSIZE=100000
-SAVEHIST=100000
+export HISTSIZE=1000000
+export SAVEHIST=$HISTSIZE
 
 # Show history
 case $HIST_STAMPS in
@@ -172,16 +176,18 @@ case $HIST_STAMPS in
   *) alias history='fc -l 1' ;;
 esac
 
-setopt append_history
-setopt extended_history
-setopt inc_append_history
-setopt hist_expire_dups_first
-setopt hist_ignore_dups # ignore duplication command history list
-setopt hist_ignore_space
-setopt hist_find_no_dups
-setopt hist_verify
-setopt hist_reduce_blanks
-setopt share_history # share command history data
+setopt APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS # ignore duplication command history list
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_VERIFY
+setopt HIST_REDUCE_BLANKS
+setopt SHARE_HISTORY # share command history data
 
 # setopt extended_glob
 
@@ -265,7 +271,7 @@ vv() {
 
 if [ -d "$HOME/.asdf" ]; then
   source "$HOME"/.asdf/asdf.sh
-  # source $HOME/.asdf/completions/asdf.bash
+  source $HOME/.asdf/completions/asdf.bash
 fi
 
 if command -v terraform &> /dev/null; then
@@ -290,19 +296,32 @@ acps() {
   echo "Switched to AWS Profile: $AWS_PROFILE"
 }
 
-command -v kubectl >/dev/null && source <(kubectl completion zsh)
-command -v flux >/dev/null && source <(flux completion zsh)
+if command -v kubectl &>/dev/null; then
+  local completion_file="$HOME"/._completion_kubectl.zsh
+  if [[ ! -a "$completion_file" ]]; then
+    kubectl completion zsh > "$completion_file"
+  fi
+  source "$completion_file"
+fi
+
+if command -v flux &>/dev/null; then
+  local completion_file="$HOME"/._completion_flux.zsh
+  if [[ ! -a "$completion_file" ]]; then
+    flux completion zsh > "$completion_file"
+  fi
+  source "$completion_file"
+fi
 
 function kac() {
-    local account=$1
-    export AWS_PROFILE=${account}
-    local cluster_name=${account}
-    aws eks update-kubeconfig --name ${cluster_name} --alias ${cluster_name}
+  local account=$1
+  export AWS_PROFILE=${account}
+  local cluster_name=${account}
+  aws eks update-kubeconfig --name ${cluster_name} --alias ${cluster_name}
 }
 
 function kinfo() {
-    echo "K8S Info"
-    echo "--------"
-    echo "Cluster: $(kubectl config current-context)"
-    echo "Namespace: $(kubens -c)"
+  echo "K8S Info"
+  echo "--------"
+  echo "Cluster: $(kubectl config current-context)"
+  echo "Namespace: $(kubens -c)"
 }
