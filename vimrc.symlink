@@ -10,7 +10,7 @@ end
 set tags+=./tags,./ruby-tags,./.git/tags,~/.rbenv/tags;
 set backupdir=$HOME/.vim/backup//
 
-set encoding=utf8
+set encoding=UTF-8
 
 " Add let g:ale_disable_lsp = 1 to your vimrc file, before plugins are loaded.
 " See https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
@@ -197,9 +197,9 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
-" if (has("termguicolors"))
-"   set termguicolors
-" end
+if (has("termguicolors"))
+  set termguicolors
+end
 set t_Co=256
 
 if has('nvim')
@@ -217,12 +217,18 @@ set background=dark
 " colorscheme oceanic_material
 " colorscheme OceanicNext
 
-colorscheme solarized
-" Solarized Settings
-if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
-  let g:solarized_termtrans=1
-  let g:solarized_termcolors=16
-endif
+" colorscheme solarized
+" " Solarized Settings
+" if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
+"   let g:solarized_termtrans=1
+"   let g:solarized_termcolors=16
+" endif
+
+colorscheme palenight
+" Italics for my favorite color scheme
+let g:palenight_terminal_italics=1
+
+set guifont=DroidSansMono\ Nerd\ Font\ 11
 
 " vim-rails
 let g:rails_projections = {
@@ -775,7 +781,8 @@ nmap <silent> <S-F8> <Plug>GoldenViewSwitchToggle
 " lua require("focus").setup()
 
 " Airline Settings
-let g:airline_theme='solarized'
+" let g:airline_theme='solarized'
+let g:airline_theme = "palenight"
 " let g:airline_theme='oceanicnext'
 " let g:airline_theme='onedark'
 " let g:airline_theme='neodark'
@@ -886,6 +893,12 @@ let g:vim_jsx_pretty_highlight_close_tag = 1
 
 " camelCaseMotion
 call camelcasemotion#CreateMotionMappings('<leader>')
+
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
+map <leader><leader>s <Plug>Sneak_s
 
 " Quickly edit/reload the vimrc file
 nmap <silent> ,ev :vsplit $MYVIMRC<CR>

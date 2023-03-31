@@ -76,7 +76,7 @@ if command -v docker > /dev/null; then
   alias dk='docker'
 fi
 if command -v docker-compose > /dev/null; then
-  alias dkc='docker-compose'
+  alias dkc='docker compose'
 fi
 
 if [ "$(uname)" != Darwin ]; then
