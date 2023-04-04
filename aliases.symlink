@@ -130,3 +130,16 @@ fi
 if [ -f "$HOME/.aliases.local" ]; then
   . "$HOME/.aliases.local"
 fi
+
+function ksh() {
+  kc
+  kubens
+  local choice=$(kubectl get pods -o custom-columns=NAME:.metadata.name --no-headers=true | fzf)
+  kubectl exec -it $choice -- sh
+}
+
+function krestart() {
+  kc
+  kubens
+  kubectl rollout restart deployment
+}
