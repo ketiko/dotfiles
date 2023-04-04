@@ -56,7 +56,6 @@ if [[ $(uname) == Darwin ]]; then
       cscope \
       curl \
       diff-so-fancy \
-      dircolors \
       editorconfig \
       exa \
       fasd \
@@ -104,6 +103,8 @@ if [[ $(uname) == Darwin ]]; then
       zsh
 
     brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+    brew tap homebrew/cask-fonts
+    brew install --cask font-droid-sans-mono-nerd-font
 
     pip3 install neovim
   fi

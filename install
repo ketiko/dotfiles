@@ -17,11 +17,11 @@ else
   . "$SCRIPTPATH"/scripts/dotfiles O
   . "$SCRIPTPATH"/scripts/zsh
   . "$SCRIPTPATH"/scripts/solarized
+  . "$SCRIPTPATH"/scripts/asdf
   . "$SCRIPTPATH"/scripts/vim-node-modules
   . "$SCRIPTPATH"/scripts/vim-python-deps
   . "$SCRIPTPATH"/scripts/vim
   . "$SCRIPTPATH"/scripts/neovim
-  . "$SCRIPTPATH"/scripts/asdf
   . "$SCRIPTPATH"/scripts/tmux
   mkdir -p ~/src
   . "$SCRIPTPATH"/scripts/git ~/src
