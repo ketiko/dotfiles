@@ -89,13 +89,11 @@ if command -v fasd > /dev/null; then
   unset fasd_cache
 fi
 
+export COLORTERM=truecolor
+
 # only define LC_CTYPE if undefined
 if [ -z "$LC_CTYPE" ] && [ -z "$LC_ALL" ]; then
   export LC_CTYPE="${LANG%%:*}" # pick the first entry from LANG
-fi
-
-if [ -f "$HOME/.profile.local" ]; then
-  . "$HOME/.profile.local"
 fi
 
 # if running bash
@@ -104,6 +102,12 @@ if [ -n "$BASH_VERSION" ]; then
   if [ -f "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
   fi
+fi
+
+export BAT_CONFIG_PATH="$HOME/.bat"
+
+if [ -f "$HOME/.profile.local" ]; then
+  . "$HOME/.profile.local"
 fi
 
 export ERL_AFLAGS="-kernel shell_history enabled"
