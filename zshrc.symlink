@@ -347,3 +347,10 @@ function krestart() {
   kubens
   kubectl rollout restart deployment
 }
+
+function git_clone_org() {
+  curl -H "Authorization: token $1" -s "https://api.github.com/orgs/$2/repos?per_page=1000" \
+      | sed -n '/"ssh_url"/s/.*ssh_url": "\([^"]*\).*/\1/p' \
+      | sort -u \
+      | xargs -n1 git clone;
+}
