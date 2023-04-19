@@ -106,10 +106,6 @@ fi
 
 export BAT_CONFIG_PATH="$HOME/.bat"
 
-if [ -f "$HOME/.profile.local" ]; then
-  . "$HOME/.profile.local"
-fi
-
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 export FZF_DEFAULT_COMMAND='ag --hidden --smart-case --ignore .git --ignore .node_modules --files-with-matches --nocolor -g ""'
@@ -119,3 +115,8 @@ export FZF_DEFAULT_COMMAND='ag --hidden --smart-case --ignore .git --ignore .nod
 # export FZF_DEFAULT_COMMAND='rg -S --files -glob !node_modules --hidden'
 
 export GPG_TTY=$(tty)
+
+if [ -f "$HOME/.profile.local" ]; then
+  . "$HOME/.profile.local"
+fi
+

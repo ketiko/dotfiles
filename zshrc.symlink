@@ -312,6 +312,10 @@ if command -v flux &>/dev/null; then
   source "$completion_file"
 fi
 
+if command -v brew &>/dev/null; then
+  eval $(brew shellenv)
+fi
+
 function kac() {
   local account=$1
   export AWS_PROFILE=${account}
@@ -324,4 +328,22 @@ function kinfo() {
   echo "--------"
   echo "Cluster: $(kubectl config current-context)"
   echo "Namespace: $(kubens -c)"
+}
+
+function ksh() {
+  kc
+  kubens
+  local choice=$(kubectl get pods -o custom-columns=NAME:.metadata.name --no-headers=true | fzf)
+  kubectl exec -it $choice -- sh
+}
+
+function kexec() {
+  local choice=$(kubectl get pods -o custom-columns=NAME:.metadata.name --no-headers=true | fzf)
+  kubectl exec -it $choice -- sh
+}
+
+function krestart() {
+  kc
+  kubens
+  kubectl rollout restart deployment
 }
