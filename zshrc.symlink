@@ -248,10 +248,6 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 source "$HOME"/.aliases
 
-if [ -f "$HOME"/.zshrc.local ]; then
-  source "$HOME"/.zshrc.local
-fi
-
 if [ -f "$HOME/.fzf.zsh" ]; then
   source "$HOME"/.fzf.zsh
 fi
@@ -358,3 +354,8 @@ function git_clone_org() {
       | sort -u \
       | xargs -n1 git clone;
 }
+
+if [ -f "$HOME"/.zshrc.local ]; then
+  source "$HOME"/.zshrc.local
+fi
+
