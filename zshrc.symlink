@@ -312,9 +312,13 @@ if command -v flux &>/dev/null; then
   source "$completion_file"
 fi
 
-if command -v brew &>/dev/null; then
-  eval $(brew shellenv)
-fi
+# Homebrew
+brew_prefixes=(/opt/homebrew /usr/local)
+for prefix in ${brew_prefixes[@]}; do
+  if [ -f "$prefix"/bin/brew ]; then
+    eval $("$prefix"/bin/brew shellenv)
+  fi
+done
 
 function kac() {
   local account=$1
