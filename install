@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 SCRIPTPATH=$(pwd)
 cd "$SCRIPTPATH" || return

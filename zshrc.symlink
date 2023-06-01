@@ -5,7 +5,6 @@ zi light zsh-users/zsh-syntax-highlighting
 zi ice wait lucid
 zi light zsh-users/zsh-completions
 zi light zsh-users/zsh-history-substring-search
-# zi ice wait lucid
 SHOW_AWS_PROMPT=false
 ZSH_THEME_AWS_PREFIX="(\uf270:"
 ZSH_THEME_AWS_SUFFIX=")"
@@ -20,51 +19,21 @@ zi light zsh-users/zsh-autosuggestions
 
 zi ice wait lucid
 zi light chitoku-k/fzf-zsh-completions
-# zplug "bonnefoa/kubectl-fzf", defer:3
 zi ice wait lucid
 zi light MenkeTechnologies/zsh-more-completions
 zi ice wait lucid
 zi snippet OMZP::git
-# zplug "plugins/ag", from:oh-my-zsh
-# zplug "plugins/asdf", from:oh-my-zsh
-# zplug "plugins/aws", from:oh-my-zsh
-# zplug "plugins/brew", from:oh-my-zsh
-# zplug "plugins/bundler", from:oh-my-zsh
-# zplug "plugins/cask", from:oh-my-zsh
-# zplug "plugins/colorize", from:oh-my-zsh
 zi ice wait lucid
 zi snippet OMZP::docker-compose
 zi ice wait lucid
 zi snippet OMZP::docker
-# zplug "plugins/encode64", from:oh-my-zsh
-# zplug "plugins/fasd", from:oh-my-zsh
-# zplug "plugins/fd", from:oh-my-zsh
-# zplug "plugins/fzf", from:oh-my-zsh
-# zplug "plugins/gh", from:oh-my-zsh
-# zplug "plugins/github", from:oh-my-zsh
-# zplug "plugins/history", from:oh-my-zsh
-# zplug "plugins/httpie", from:oh-my-zsh
-# zplug "plugins/iterm2", from:oh-my-zsh
-# zplug "plugins/kube-ps1", from:oh-my-zsh
 zi ice wait lucid
 zi snippet OMZP::kubectl
 zi ice wait lucid
 zi snippet OMZP::kubectx
-# zi ice wait lucid
-# zi snippet OMZP::minikube
 zi snippet OMZP::kube-ps1
-# zplug "plugins/npm", from:oh-my-zsh, defer:2
 zi ice wait lucid
 zi snippet OMZP::pip
-# zi ice wait lucid
-# zi snippet OMZP::pipenv
-# zplug "plugins/pyenv", from:oh-my-zsh, defer:2
-# zplug "plugins/pylint", from:oh-my-zsh, defer:2
-# zplug "plugins/python", from:oh-my-zsh, defer:2
-# zplug "plugins/rake", from:oh-my-zsh, defer:2
-# zplug "plugins/ripgrep", from:oh-my-zsh, defer:2
-# zplug "plugins/ruby", from:oh-my-zsh, defer:2
-
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -188,8 +157,6 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_VERIFY
 setopt HIST_REDUCE_BLANKS
 setopt SHARE_HISTORY # share command history data
-
-# setopt extended_glob
 
 setopt no_beep
 setopt multios

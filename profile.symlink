@@ -69,17 +69,6 @@ if command -v go > /dev/null; then
   fi
 fi
 
-# if [ -d "$HOME/.nvm" ]; then
-#   export NVM_DIR="$HOME/.nvm"
-#   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# fi
-#
-# if [ -d "$HOME/.rbenv" ]; then
-#   export PATH="$HOME/.rbenv/bin:$PATH"
-#   eval "$(rbenv init - --no-rehash)"
-# fi
-
 if command -v fasd > /dev/null; then
   fasd_cache="$HOME/.fasd-init-cache"
   if [ ! -f "$fasd_cache" ]; then
@@ -109,10 +98,6 @@ export BAT_CONFIG_PATH="$HOME/.bat"
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 export FZF_DEFAULT_COMMAND='ag --hidden --smart-case --ignore .git --ignore .node_modules --files-with-matches --nocolor -g ""'
-# export FZF_DEFAULT_COMMAND="rg --files --smart-case --color=auto --no-ignore --hidden --follow --glob '!.git' --glob '!.node_modules' --glob '!.idea'"
-# export FZF_DEFAULT_COMMAND="rg --files"
-# export FZF_DEFAULT_OPTS="--smart-case --color=auto --no-ignore --hidden --follow --glob '!.git' --glob '!.node_modules' --glob '!.idea'"
-# export FZF_DEFAULT_COMMAND='rg -S --files -glob !node_modules --hidden'
 
 export GPG_TTY=$(tty)
 
