@@ -12,7 +12,6 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 echo "Installing Neovim Bundles"
 nvim +PlugInstall +qall
 
-# echo "Installing Coc"
-nvim -c ':CocInstall coc-css coc-json coc-html coc-solargraph coc-tsserver coc-go coc-lists'
-nvim -c ':CocInstall coc-markdownlint coc-python coc-sh coc-snippets coc-yaml coc-sql coc-word coc-emoji'
-nvim -c ':CocInstall coc-syntax coc-gocode coc-ultisnips coc-toml coc-dictionary coc-tag'
+echo "Installing Coc"
+# this install on startup
+nvim
