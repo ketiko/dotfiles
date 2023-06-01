@@ -13,5 +13,5 @@ echo "Installing Neovim Bundles"
 nvim +PlugInstall +qall
 
 echo "Installing Coc"
-# this install on startup
+# this installs on startup
 nvim

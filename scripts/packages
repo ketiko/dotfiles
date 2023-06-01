@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 please=
 if [[ $(uname) != Darwin ]]; then

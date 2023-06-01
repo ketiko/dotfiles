@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 skip_all=false
 overwrite_all=false
