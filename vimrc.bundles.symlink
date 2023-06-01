@@ -157,6 +157,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'xolox/vim-notes'
   " Plug 'zhaocai/GoldenView.Vim'
   " Plug 'roman/golden-ratio'
+  Plug 'camspiers/animate.vim'
+  Plug 'camspiers/lens.vim'
 
   " Images
   Plug 'nvim-lua/popup.nvim'

@@ -892,8 +892,6 @@ let g:used_javascript_libs = 'jquery,angularjs,react'
 let g:javascript_plugin_jsdoc = 1
 let g:vim_jsx_pretty_highlight_close_tag = 1
 
-
-
 " camelCaseMotion
 call camelcasemotion#CreateMotionMappings('<leader>')
 
