@@ -23,6 +23,7 @@ else
   . "$SCRIPTPATH"/scripts/vim
   . "$SCRIPTPATH"/scripts/neovim
   . "$SCRIPTPATH"/scripts/tmux
+  . "$SCRIPTPATH"/scripts/iterm2
   mkdir -p ~/src
   . "$SCRIPTPATH"/scripts/git ~/src
 fi

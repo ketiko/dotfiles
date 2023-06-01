@@ -36,6 +36,7 @@ if [[ $(uname) != Darwin ]]; then
     python3-pip \
     ranger \
     ripgrep \
+    shellcheck \
     silversearcher-ag \
     stow \
     tmux \
@@ -83,6 +84,7 @@ if [[ $(uname) == Darwin ]]; then
       neofetch \
       neovim \
       node \
+      npm \
       openssl \
       pinentry-mac \
       pv \
@@ -90,6 +92,7 @@ if [[ $(uname) == Darwin ]]; then
       readline \
       reattach-to-user-namespace \
       ripgrep \
+      shellcheck \
       ssh-copy-id \
       stow \
       the_silver_searcher \
