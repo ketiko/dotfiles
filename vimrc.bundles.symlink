@@ -149,5 +149,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'github/copilot.vim'
   Plug 'edkolev/tmuxline.vim'
 
+  Plug 'rhaiscript/vim-rhai'
+
   call plug#end()
 endif
