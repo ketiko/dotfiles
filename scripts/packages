@@ -7,6 +7,8 @@ if [[ $(uname) != Darwin ]]; then
   fi
 fi
 
+# TODO: replace fasd which is no longer around
+
 if [[ $(uname) != Darwin ]]; then
   $please apt-get install -y \
     ack-grep \
@@ -20,7 +22,6 @@ if [[ $(uname) != Darwin ]]; then
     editorconfig \
     exa \
     exuberant-ctags \
-    fasd \
     fzf \
     git \
     git-extras \
@@ -59,7 +60,6 @@ if [[ $(uname) == Darwin ]]; then
       diff-so-fancy \
       editorconfig \
       exa \
-      fasd \
       findutils \
       fzf \
       git \

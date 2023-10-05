@@ -25,8 +25,8 @@ zi ice wait lucid
 zi snippet OMZP::git
 zi ice wait lucid
 zi snippet OMZP::docker-compose
-zi ice wait lucid
-zi snippet OMZP::docker
+# zi ice wait lucid
+# zi snippet OMZP::docker
 zi ice wait lucid
 zi snippet OMZP::kubectl
 zi ice wait lucid
