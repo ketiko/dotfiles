@@ -150,6 +150,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'edkolev/tmuxline.vim'
 
   Plug 'rhaiscript/vim-rhai'
+  Plug 'rust-lang/rust.vim'
 
   call plug#end()
 endif
