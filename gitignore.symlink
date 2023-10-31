@@ -37,3 +37,6 @@ build/
 
 .hg
 .tool-versions
+
+.env
+.env*
