@@ -78,7 +78,7 @@ if !has('nvim')
 end
 if v:version > 702
   set undofile
-  set undodir=~/.vim/undo
+  set undodir=$HOME/.vim/undo
   set undoreload=10000
 endif
 set undolevels=1000
