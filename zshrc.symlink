@@ -281,7 +281,7 @@ done
 function kac() {
   local account=$1
   export AWS_PROFILE=${account}
-  local cluster_name=${account}
+  local cluster_name=$2
   aws eks update-kubeconfig --name ${cluster_name} --alias ${cluster_name}
 }
 
