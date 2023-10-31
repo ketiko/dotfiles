@@ -130,6 +130,7 @@ if command -v kubens > /dev/null; then
  alias kns=kubens
 fi
 
+
 if [ -f "$HOME/.aliases.local" ]; then
-  . "$HOME/.aliases.local"
+  source "$HOME/.aliases.local"
 fi
