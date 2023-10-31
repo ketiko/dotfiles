@@ -118,6 +118,10 @@ if command -v batcat > /dev/null; then
  alias bat=batcat
 fi
 
+if command -v kubecolor >/dev/null; then
+  alias kubectl="kubecolor"
+fi
+
 if command -v kubectx > /dev/null; then
  alias kc=kubectx
 fi
