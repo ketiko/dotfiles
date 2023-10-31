@@ -23,7 +23,7 @@ asdf plugin-add minikube                     https://github.com/alvarobp/asdf-mi
 asdf plugin-add nodejs                       https://github.com/asdf-vm/asdf-nodejs.git
 asdf plugin-add python                       https://github.com/asdf-community/asdf-python.git
 asdf plugin-add ruby                         https://github.com/asdf-vm/asdf-ruby.git
-asdf plugin-add sbt                          https://github.com/lerencao/asdf-sbt
+asdf plugin-add sbt                          https://github.com/bram2000/asdf-sbt.git
 asdf plugin-add scala                        https://github.com/asdf-community/asdf-scala
 asdf plugin-add terraform                    https://github.com/asdf-community/asdf-hashicorp.git
 
