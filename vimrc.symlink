@@ -112,6 +112,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType sql setlocal omnifunc=sqlcomplete#CompleteSQL
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc
@@ -121,6 +122,9 @@ let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 let g:rubycomplete_use_bundler = 1
 let g:ruby_operators = 1
+
+let g:java_highlight_functions = 1
+let g:java_highlight_all = 1
 
 " clear highlighted search
 nmap \ :nohlsearch<CR>
@@ -384,6 +388,7 @@ let g:coc_global_extensions = [
       \ 'coc-graphql',
       \ 'coc-highlight',
       \ 'coc-html',
+      \ 'coc-java',
       \ 'coc-jedi',
       \ 'coc-json',
       \ 'coc-lists',
@@ -637,6 +642,7 @@ let g:ale_sign_column_always = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_virtualtext_cursor = 'disabled'
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 0
 let g:ale_fixers = {
@@ -658,11 +664,13 @@ let g:vim_jsx_pretty_highlight_close_tag = 1
 " camelCaseMotion
 call camelcasemotion#CreateMotionMappings('<leader>')
 
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+" These break intellij ideavim
+" map <leader><leader>f <Plug>Sneak_f
+" map <leader><leader>F <Plug>Sneak_F
+" map <leader><leader>t <Plug>Sneak_t
+" map <leader><leader>T <Plug>Sneak_T
 map <leader><leader>s <Plug>Sneak_s
+let g:sneak#label = 1
 
 " Quickly edit/reload the vimrc file
 nmap <silent> ,ev :vsplit $MYVIMRC<CR>

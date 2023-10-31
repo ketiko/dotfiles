@@ -130,6 +130,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'camspiers/animate.vim'
   Plug 'camspiers/lens.vim'
 
+  Plug 'mikelue/vim-maven-plugin'
+
   " Images
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
