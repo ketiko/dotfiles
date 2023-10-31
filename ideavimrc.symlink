@@ -12,7 +12,7 @@ Plug 'kavima/vim-textobj-entire'
 Plug 'machakann/vim-highlightedyank'
 Plug 'dbakker/vim-paragraph-motion'
 Plug 'michaeljsmith/vim-indent-object'
-set quickscope
+" set quickscope
 nmap <C-P> :action GotoFile<CR>
 nmap <Space>f :action SelectInProjectView<CR>
 nmap <Space>n :action ActivateProjectToolWindow<CR>
