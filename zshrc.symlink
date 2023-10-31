@@ -232,15 +232,6 @@ vv() {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [ -d "$HOME/.asdf" ]; then
-  source "$HOME"/.asdf/asdf.sh
-  source $HOME/.asdf/completions/asdf.bash
-
-  if [ -d "$HOME/.asdf/plugins/java" ]; then
-    source $HOME/.asdf/plugins/java/set-java-home.zsh
-  fi
-fi
-
 if command -v terraform &> /dev/null; then
   tf=$(which terraform)
   complete -o nospace -C "$tf" terraform
@@ -326,7 +317,23 @@ function git_clone_org() {
       | xargs -n1 git clone;
 }
 
+if command -v vault &>/dev/null; then
+  complete -o nospace -C /opt/homebrew/bin/vault vault
+fi
+
+if [ -d "$HOME/.asdf" ]; then
+  source "$HOME"/.asdf/asdf.sh
+  source $HOME/.asdf/completions/asdf.bash
+
+  if [ -d "$HOME/.asdf/plugins/java" ]; then
+    source $HOME/.asdf/plugins/java/set-java-home.zsh
+  fi
+
+  if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
+    source $HOME/.asdf/plugins/golang/set-env.zsh
+  fi
+fi
+
 if [ -f "$HOME"/.zshrc.local ]; then
   source "$HOME"/.zshrc.local
 fi
-
