@@ -334,6 +334,10 @@ if [ -d "$HOME/.asdf" ]; then
   fi
 fi
 
+if command -v minikube &>/dev/null; then
+  source <(minikube completion zsh)
+fi
+
 if [ -f "$HOME"/.zshrc.local ]; then
   source "$HOME"/.zshrc.local
 fi
