@@ -1,4 +1,2 @@
---iglob='!.git'
---iglob='!node_modules'
 --hidden
 --smart-case
