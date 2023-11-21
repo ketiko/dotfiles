@@ -154,5 +154,9 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'rhaiscript/vim-rhai'
   Plug 'rust-lang/rust.vim'
 
+  " coc-java-dependency
+  " https://github.com/uzxmx/coc-java-dependency
+  Plug 'uzxmx/vim-widgets'
+
   call plug#end()
 endif
