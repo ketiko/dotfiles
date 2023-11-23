@@ -35,6 +35,8 @@ if [ -d "$HOME/bin" ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
+export PATH="$PATH:$HOME/.local/bin"
+
 export PAGER="bat"
 export EDITOR="nvim"
 export VISUAL="nvim"
