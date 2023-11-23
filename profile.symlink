@@ -78,6 +78,10 @@ if command -v fasd > /dev/null; then
   unset fasd_cache
 fi
 
+if [ -d "$HOME/.rd/bin" ]; then
+  export PATH="$HOME/.rd/bin:$PATH"
+fi
+
 export COLORTERM=truecolor
 
 # only define LC_CTYPE if undefined
