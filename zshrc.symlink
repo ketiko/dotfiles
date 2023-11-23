@@ -114,7 +114,7 @@ prompt_pygmalion_precmd(){
     nl=$'\n%{\r%}';
   fi
   if command -v kube_ps1 &>/dev/null; then
-    PROMPT="$base_prompt$gitinfo$(kube_ps1)$(aws_prompt_info)$nl$post_prompt"
+    PROMPT="$base_prompt$gitinfo$(kube_ps1)$"
   else
     PROMPT="$base_prompt$gitinfo"
   fi
