@@ -210,7 +210,8 @@ set background=dark
 
 " colorscheme solarized
 " " Solarized Settings
-" if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
+" if isdirectory(expand("~/.vim
+/plugged/vim-colors-solarized"))
 "   let g:solarized_termtrans=1
 "   let g:solarized_termcolors=16
 " endif

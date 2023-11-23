@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+set -e
+
+echo "Processing packages"
+
 please=
 if [[ $(uname) != Darwin ]]; then
   if command -v sudo &> /dev/null; then

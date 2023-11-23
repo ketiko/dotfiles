@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+set -e
+
+echo "Processing neovim"
+
 mkdir -p ~/.config/nvim
 
 cd ~/.config || return

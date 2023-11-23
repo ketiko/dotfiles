@@ -1,0 +1,6 @@
+services:
+  dotfiles:
+    container_name: dotfiles_ubuntu
+    build:
+      context: ../
+      dockerfile: docker_testing/Dockerfile

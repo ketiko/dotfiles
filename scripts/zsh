@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
+set -e
+
+echo "Processing zsh"
+
 if [ ! -d ~/.zi ]; then
   echo 'Installing zi'
   git clone https://github.com/z-shell/zi.git ~/.zi/bin
-  mkdir ~/.cache/zi/completions
+  mkdir -p ~/.cache/zi/completions
 fi
 
-mkdir $ZSH_CACHE_DIR/completions
+if [ ! -z "$ZSH_CACHE_DIR" ] ; then
+  mkdir -p $ZSH_CACHE_DIR/completions
+fi

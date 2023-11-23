@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+set -e
+
+echo "Processing iterm2"
+
 if [ -n "$ITERM_PROFILE" ] ; then
   echo "Downloading iterm2 color themes..."
   cd ~/Downloads || return

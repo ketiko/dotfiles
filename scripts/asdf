@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+set -e
+
+echo "Processing asdf"
+
 if [ ! -d ~/.asdf ]; then
   echo "Installing adsf"
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf

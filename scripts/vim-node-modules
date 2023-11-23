@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+set -e
+
+echo "Processing vim-node-modules"
+
 echo "Installing Node modules for Vim Syntastic checks"
 please=
 if [[ $(uname) != Darwin ]]; then

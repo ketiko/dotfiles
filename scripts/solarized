@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+set -e
+
+echo "Processing solarized"
+
 mkdir -p ~/.solarized
 
 if [ ! -d ~/.solarized/gnome-terminal ]; then

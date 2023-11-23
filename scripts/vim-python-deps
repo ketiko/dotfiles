@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 
+set -e
+
+echo "Processing vim-python-deps"
+
 echo "Installing python deps for Vim"
 pip3 install --user pynvim

@@ -1,4 +1,4 @@
-FROM ubuntu as base
+FROM ubuntu:latest as base
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive TZ=America/Denver apt-get install -y --no-install-recommends \
@@ -30,6 +30,7 @@ RUN DEBIAN_FRONTEND=noninteractive TZ=America/Denver apt-get install -y --no-ins
     ranger \
     ripgrep \
     silversearcher-ag \
+    stow \
     sudo \
     tmux \
     tree \
@@ -42,11 +43,11 @@ RUN adduser tester sudo
 
 WORKDIR /home/tester
 
-COPY docker-entrypoint.sh ./
+RUN mkdir -p /home/tester/.dotfiles
+COPY . /home/tester/.dotfiles
 
 USER tester
 
-# This script will run anytime this docker image starts
-ENTRYPOINT ["/home/tester/docker-entrypoint.sh"]
+WORKDIR /home/tester/.dotfiles
 
 CMD "/usr/bin/bash"

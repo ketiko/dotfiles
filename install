@@ -7,12 +7,6 @@ ACTION=$1
 ARGS=$2
 
 if [ -z "$ACTION" ]; then
-  ACTION="dotfiles"
-fi
-
-if [ $ACTION != "all" ]; then
-  . "$SCRIPTPATH"/scripts/"$ACTION" $ARGS
-else
   . "$SCRIPTPATH"/scripts/packages
   . "$SCRIPTPATH"/scripts/dotfiles O
   . "$SCRIPTPATH"/scripts/zsh
@@ -22,12 +16,14 @@ else
   . "$SCRIPTPATH"/scripts/vim-python-deps
   . "$SCRIPTPATH"/scripts/vim
   . "$SCRIPTPATH"/scripts/neovim
+  . "$SCRIPTPATH"/scripts/lunarvim
   . "$SCRIPTPATH"/scripts/tmux
   . "$SCRIPTPATH"/scripts/iterm2
   mkdir -p ~/src
   . "$SCRIPTPATH"/scripts/git ~/src
+else
+  . "$SCRIPTPATH"/scripts/"$ACTION" $ARGS
 fi
-
 
 if command -v sudo &> /dev/null; then
   sudo -k

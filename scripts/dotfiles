@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+set -e
+
+echo "Processing dotfiles"
+
 skip_all=false
 overwrite_all=false
 

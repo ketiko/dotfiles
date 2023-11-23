@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+set -e
+
+echo "Processing git"
+
 if [ "$1" = "git" ] ; then
  echo "You must supply a root directory to update with the git template."
  exit 1
