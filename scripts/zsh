@@ -13,3 +13,5 @@ fi
 if [ ! -z "$ZSH_CACHE_DIR" ] ; then
   mkdir -p $ZSH_CACHE_DIR/completions
 fi
+
+zsh -c "zsh --help"

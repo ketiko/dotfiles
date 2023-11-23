@@ -113,7 +113,17 @@ prompt_pygmalion_precmd(){
   if [[ $prompt_length -gt 40 ]]; then
     nl=$'\n%{\r%}';
   fi
-  PROMPT="$base_prompt$gitinfo$(kube_ps1)$(aws_prompt_info)$nl$post_prompt"
+  if command -v kube_ps1 &>/dev/null; then
+    PROMPT="$base_prompt$gitinfo$(kube_ps1)$(aws_prompt_info)$nl$post_prompt"
+  else
+    PROMPT="$base_prompt$gitinfo"
+  fi
+
+  if command -v aws_prompt_info &>/dev/null; then
+    PROMPT="$PROMPT$(aws_prompt_info)"
+  fi
+
+  PROMPT="$PROMPT$nl$post_prompt"
 }
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}%{${fg[green]}%}"
