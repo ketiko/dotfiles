@@ -29,4 +29,4 @@ asdf plugin add python                       https://github.com/asdf-community/a
 asdf plugin add ruby                         https://github.com/asdf-vm/asdf-ruby.git
 asdf plugin add sbt                          https://github.com/bram2000/asdf-sbt.git
 asdf plugin add scala                        https://github.com/asdf-community/asdf-scala
-asdf plugin add terraform                    https://gitnstahub.com/asdf-community/asdf-hashicorp.git
+asdf plugin add terraform                    https://github.com/asdf-community/asdf-hashicorp.git
