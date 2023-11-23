@@ -30,10 +30,3 @@ asdf plugin add ruby                         https://github.com/asdf-vm/asdf-rub
 asdf plugin add sbt                          https://github.com/bram2000/asdf-sbt.git
 asdf plugin add scala                        https://github.com/asdf-community/asdf-scala
 asdf plugin add terraform                    https://github.com/asdf-community/asdf-hashicorp.git
-
-for plugin in golang krew kubecolor kubectl kubectx kustomize nodejs python ruby; do
-  asdf install "$plugin" latest
-  asdf global "$plugin" latest
-done
-
-asdf reshim
