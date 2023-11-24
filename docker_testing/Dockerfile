@@ -45,9 +45,11 @@ WORKDIR /home/tester
 
 RUN mkdir -p /home/tester/.dotfiles
 COPY . /home/tester/.dotfiles
+RUN chown -R tester:tester /home/tester/.dotfiles
 
 USER tester
 
 WORKDIR /home/tester/.dotfiles
+
 
 CMD "/usr/bin/bash"
