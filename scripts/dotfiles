@@ -10,7 +10,6 @@ root_dir=$(dirname "$current_dir")
 stow_dir="$root_dir/stow"
 packages=($( ls -A  -1 $stow_dir))
 
-skip_all=false
 overwrite_all=false
 
 files=($(find -L stow -type f ))
@@ -19,19 +18,13 @@ do
   target="$HOME/$(sed 's/stow\/.*\///g' <<< "$file")"
 
   if [ -L "$target" ] || [ -f "$target" ]; then
-    if ! $skip_all && ! $overwrite_all; then
-      echo "File already exists: $target, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all"
+    if ! $overwrite_all; then
+      echo "File already exists: $target, what do you want to do? [e]xit, [o]verwrite, [O]verwrite all"
       read -r response
       case "$response" in
         O) overwrite_all=true ;;
-        S) skip_all=true;;
-        s) continue ;;
+        e) exit 1 ;;
       esac
-    fi
-
-    if $skip_all; then
-      echo "skiping $target"
-      continue
     fi
 
     if [ -L "$target" ]; then
@@ -42,6 +35,30 @@ do
     if [ -f "$target" ]; then
       echo "backing up $target"
       mv -v "$target" "$target.backup"
+    fi
+  fi
+done
+
+overwrite_all=false
+
+folders=($(find -L stow -type d ))
+for folder in "${folders[@]}"
+do
+  target="$HOME/$(sed 's/stow\/.*\///g' <<< "$folder")"
+
+  if [ -L "$target" ] || [ -f "$target" ]; then
+    if ! $overwrite_all; then
+      echo "File already exists: $target, what do you want to do? [e]xit, [o]verwrite, [O]verwrite all"
+      read -r response
+      case "$response" in
+        O) overwrite_all=true ;;
+        e) exit 1 ;;
+      esac
+    fi
+
+    if [ -L "$target" ]; then
+      echo "removing symlink $target"
+      # rm -v "$target"
     fi
   fi
 done
