@@ -4,10 +4,6 @@ set -e
 
 echo "Processing lunarvim"
 
-mkdir -p "$HOME/.config/lvim"
-
-stow -v --no-folding -d . -t "$HOME" -S lunarvim
-
 if ! command -v lvim > /dev/null; then
   bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 fi
