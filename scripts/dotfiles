@@ -15,15 +15,14 @@ overwrite_all=false
 files=($(find -L stow -type f ))
 for file in "${files[@]}"
 do
-  target="$HOME/$(sed 's/stow\/.*\///g' <<< "$file")"
-
+  target=$(echo "$file" | cut -d'/' -f 3-)
   if [ -L "$target" ] || [ -f "$target" ]; then
     if ! $overwrite_all; then
-      echo "File already exists: $target, what do you want to do? [e]xit, [o]verwrite, [O]verwrite all"
+      echo "File already exists: $target, what do you want to do? [a]bort, [o]verwrite, [O]verwrite all"
       read -r response
       case "$response" in
         O) overwrite_all=true ;;
-        e) exit 1 ;;
+        a) exit 1 ;;
       esac
     fi
 
@@ -44,15 +43,15 @@ overwrite_all=false
 folders=($(find -L stow -type d ))
 for folder in "${folders[@]}"
 do
-  target="$HOME/$(sed 's/stow\/.*\///g' <<< "$folder")"
+  target=$(echo "$folder" | cut -d'/' -f 3-)
 
   if [ -L "$target" ] || [ -f "$target" ]; then
     if ! $overwrite_all; then
-      echo "File already exists: $target, what do you want to do? [e]xit, [o]verwrite, [O]verwrite all"
+      echo "File already exists: $target, what do you want to do? [a]bort, [o]verwrite, [O]verwrite all"
       read -r response
       case "$response" in
         O) overwrite_all=true ;;
-        e) exit 1 ;;
+        a) exit 1 ;;
       esac
     fi
 
