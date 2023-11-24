@@ -11,7 +11,7 @@ stow_dir="$root_dir/stow"
 packages=($( ls -A  -1 $stow_dir))
 
 
-files=($(find stow -type f))
+files=($(find -L stow -type f ))
 for file in "${files[@]}"
 do
   target="$HOME/$(sed 's/stow\/.*\///g' <<< "$file")"
@@ -24,8 +24,15 @@ do
       s) echo "skipping $target" && continue ;;
     esac
 
-    cp -v "$target" "$target.backup"
-    rm -v "$target"
+    if [ -L "$target" ]; then
+      echo "removing symlink $target"
+      rm -v "$target"
+    fi
+
+    if [ -f "$target" ]; then
+      echo "backing up $target"
+      mv -v "$target" "$target.backup"
+    fi
   fi
 done
 
