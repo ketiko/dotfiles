@@ -8,7 +8,27 @@ current_script="${BASH_SOURCE}[0]"
 current_dir=$(dirname "$current_script")
 root_dir=$(dirname "$current_dir")
 stow_dir="$root_dir/stow"
-packages=($( dir -A  -1 $stow_dir))
+packages=($( ls -A  -1 $stow_dir))
+
+
+files=($(find stow -type f))
+for file in "${files[@]}"
+do
+  target=$(sed 's/stow\/.*\//$HOME\//g' <<< "$file")
+  if [ -L "$target" ] || [ ! -f "$target" ]; then
+    echo "File already exists: $target, what do you want to do? [s]kip, [o]verwrite, [a]bort]"
+    read -r response
+    case "$response" in
+      a) exit 1 ;;
+      s) echo "skipping $target" && continue ;;
+    esac
+
+    if [ ! -L "$target" ]; then
+      echo "Backing up $target to $target.backup"
+      mv -v "$target" "$target.backup"
+    fi
+  fi
+done
 
 for package in "${packages[@]}"
 do
