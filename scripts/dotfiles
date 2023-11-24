@@ -58,7 +58,7 @@ do
 
     if [ -L "$target" ]; then
       echo "removing symlink $target"
-      # rm -v "$target"
+      rm -rfv "$target"
     fi
   fi
 done
