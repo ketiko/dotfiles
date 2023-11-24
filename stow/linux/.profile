@@ -11,7 +11,7 @@
 # umask 022
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-if [ "$(uname)" = Darwin ]; then
+if [ "$(uname)" = "Darwin" ]; then
   export PATH="/usr/local/opt/binutils/bin:$PATH"
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/curl/bin:$PATH"
@@ -85,6 +85,7 @@ if [ -d "$HOME/.rd/bin" ]; then
 fi
 
 export COLORTERM=truecolor
+export CLICOLOR=1
 
 # only define LC_CTYPE if undefined
 if [ -z "$LC_CTYPE" ] && [ -z "$LC_ALL" ]; then

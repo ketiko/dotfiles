@@ -1,9 +1,5 @@
 #!/usr/bin/env sh
 
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # enable color support of ls and also add handy aliases
 if command -v dircolors > /dev/null; then
   if [ -f "$HOME/.dircolors" ]; then
@@ -11,18 +7,18 @@ if command -v dircolors > /dev/null; then
   else
     eval "$(dircolors -b)"
   fi
-  alias ls='ls --color=auto'
-  alias ll='ls -alF --color=auto'
-  alias la='ls -A --color=auto'
-  alias l='ls -CF --color=auto'
-
-  alias dir='dir --color=auto'
-  alias vdir='vdir --color=auto'
-
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
 fi
+alias ls='ls --color=auto'
+alias ll='ls -alF --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
+
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 alias ag='ag --color --smart-case --hidden --color-match="1;31" --color-path="35"'
 alias pt='pt --color --smart-case'
