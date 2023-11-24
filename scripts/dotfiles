@@ -4,48 +4,61 @@ set -e
 
 echo "Processing dotfiles"
 
-skip_all=false
-overwrite_all=false
+# skip_all=false
+# overwrite_all=false
+#
+# case "$1" in
+#   O) overwrite_all=true ;;
+#   S) skip_all=true;;
+# esac
+#
+# mkdir -p ~/.vim/undo
+# mkdir -p ~/.vim/swap
+# mkdir -p ~/.vim/backup
+#
+# for linkable in $(find $SCRIPTPATH -name "*.symlink" -print -o -name .git -type d -prune)
+# do
+#   file=$(basename "$linkable" .symlink)
+#   target="$HOME/.$file"
+#
+#   if [ -e "$target" ]; then
+#     if ! $skip_all && ! $overwrite_all; then
+#
+#       echo "File already exists: $target, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all"
+#       read -r response
+#       case "$response" in
+#         O) overwrite_all=true ;;
+#         S) skip_all=true;;
+#         s) continue ;;
+#       esac
+#     fi
+#
+#     if $skip_all; then
+#       continue
+#     fi
+#
+#     if [ ! -L "$target" ]; then
+#       mv -v "$target" "$target.backup"
+#     fi
+#
+#     rm -vrf "$target"
+#     ln -vnsf "$linkable" "$target"
+#   else
+#     ln -vnsf "$linkable" "$target"
+#   fi
+# done
 
-case "$1" in
-  O) overwrite_all=true ;;
-  S) skip_all=true;;
-esac
+current_script="${BASH_SOURCE}[0]"
+current_dir=$(dirname "$current_script")
+root_dir=$(dirname "$current_dir")
+stow_dir="$root_dir/stow"
+packages=($( dir -A  -1 $stow_dir))
 
-mkdir -p ~/.vim/undo
-mkdir -p ~/.vim/swap
-mkdir -p ~/.vim/backup
 
-for linkable in $(find $SCRIPTPATH -name "*.symlink" -print -o -name .git -type d -prune)
+for package in "${packages[@]}"
 do
-  file=$(basename "$linkable" .symlink)
-  target="$HOME/.$file"
-
-  if [ -e "$target" ]; then
-    if ! $skip_all && ! $overwrite_all; then
-
-      echo "File already exists: $target, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all"
-      read -r response
-      case "$response" in
-        O) overwrite_all=true ;;
-        S) skip_all=true;;
-        s) continue ;;
-      esac
-    fi
-
-    if $skip_all; then
-      continue
-    fi
-
-    if [ ! -L "$target" ]; then
-      mv -v "$target" "$target.backup"
-    fi
-
-    rm -vrf "$target"
-    ln -vnsf "$linkable" "$target"
-  else
-    ln -vnsf "$linkable" "$target"
-  fi
+  echo "stowing $package"
+  stow -R -v --no-folding -d "$stow_dir" -t "$HOME" -S "$package"
 done
 
 . ~/.profile
