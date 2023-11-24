@@ -6,7 +6,6 @@ set -e
 
 if [ -n "$ITERM_PROFILE" ] ; then
   echo "Downloading iterm2 color themes..."
-  cd ~/Downloads || return
-  wget -nc https://raw.githubusercontent.com/JonathanSpeek/palenight-iterm2/master/palenight.itermcolors
+  wget -nc0 https://raw.githubusercontent.com/JonathanSpeek/palenight-iterm2/master/palenight.itermcolors ~/Downloads/palenight.itermcolors
   echo "Open Iterm \`Settings, Profiles, Colors\` and import the color themes downloaded in ~/Downloads"
 fi
