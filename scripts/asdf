@@ -2,7 +2,7 @@
 
 set -e
 
-echo "Processing asdf"
+./scripts/banner "Processing asdf"
 
 if [ ! -d ~/.asdf ]; then
   echo "Installing adsf"

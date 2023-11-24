@@ -2,7 +2,7 @@
 
 set -e
 
-echo "Processing solarized"
+./scripts/banner "Processing solarized"
 
 mkdir -p ~/.solarized
 

@@ -6,7 +6,7 @@ cd "$SCRIPTPATH" || return
 ACTION=$1
 ARGS=$2
 
-echo "Starting"
+./scripts/banner "Starting Install"
 
 if [ -z "$ACTION" ]; then
   . "$SCRIPTPATH"/scripts/packages
@@ -31,4 +31,4 @@ if command -v sudo &> /dev/null; then
   sudo -k
 fi
 
-echo "Done"
+./scripts/banner "Install Finished"

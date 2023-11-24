@@ -2,7 +2,7 @@
 
 set -e
 
-echo "Processing dotfiles"
+./scripts/banner "Processing dotfiles"
 
 current_script="${BASH_SOURCE}[0]"
 current_dir=$(dirname "$current_script")

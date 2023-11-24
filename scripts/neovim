@@ -2,7 +2,7 @@
 
 set -e
 
-echo "Processing neovim"
+./scripts/banner "Processing neovim"
 
 mkdir -p ~/.config/nvim
 
