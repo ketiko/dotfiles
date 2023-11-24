@@ -15,7 +15,7 @@ overwrite_all=false
 files=($(find -L stow -type f ))
 for file in "${files[@]}"
 do
-  target=$(echo "$file" | cut -d'/' -f 3-)
+  target=$HOME/$(echo "$file" | cut -d'/' -f 3-)
   if [ -L "$target" ] || [ -f "$target" ]; then
     if ! $overwrite_all; then
       echo "File already exists: $target, what do you want to do? [a]bort, [o]verwrite, [O]verwrite all"
@@ -28,7 +28,7 @@ do
 
     if [ -L "$target" ]; then
       echo "removing symlink $target"
-      rm -v "$target"
+      rm -fv "$target"
     fi
 
     if [ -f "$target" ]; then
@@ -43,7 +43,7 @@ overwrite_all=false
 folders=($(find -L stow -type d ))
 for folder in "${folders[@]}"
 do
-  target=$(echo "$folder" | cut -d'/' -f 3-)
+  target=$HOME/$(echo "$folder" | cut -d'/' -f 3-)
 
   if [ -L "$target" ] || [ -f "$target" ]; then
     if ! $overwrite_all; then
