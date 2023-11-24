@@ -51,5 +51,4 @@ USER tester
 
 WORKDIR /home/tester/.dotfiles
 
-
 CMD "/usr/bin/bash"

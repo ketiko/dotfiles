@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker compose run --build dotfiles
+docker compose run --build dotfiles bash
