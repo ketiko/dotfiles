@@ -13,8 +13,10 @@ packages=($( dir -A  -1 $stow_dir))
 for package in "${packages[@]}"
 do
   echo "stowing $package"
-  stow -R -v --no-folding -d "$stow_dir" -t "$HOME" -S "$package"
+  stow -R -v --no-folding --adopt -d "$stow_dir" -t "$HOME" -S "$package"
 done
+
+git checkout $stow_dir
 
 ln -vnsf "$HOME/.profile" "$HOME/.zprofile"
 
