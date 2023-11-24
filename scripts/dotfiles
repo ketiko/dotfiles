@@ -16,7 +16,7 @@ for file in "${files[@]}"
 do
   target="$HOME/$(sed 's/stow\/.*\///g' <<< "$file")"
 
-  if [ -L "$target" ] || [ ! -f "$target" ]; then
+  if [ -L "$target" ] || [ -f "$target" ]; then
     echo "File already exists: $target, what do you want to do? [s]kip, [o]verwrite, [a]bort]"
     read -r response
     case "$response" in
@@ -24,8 +24,8 @@ do
       s) echo "skipping $target" && continue ;;
     esac
 
-    echo "Backing up $target to $target.backup"
-    mv -v "$target" "$target.backup"
+    cp -v "$target" "$target.backup"
+    rm -v "$target"
   fi
 done
 
