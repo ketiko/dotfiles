@@ -1,6 +1,7 @@
 set viminfo+=n$HOME/.config/nvim/ninfo
 set tags+=./tags,./ruby-tags,./.git/tags,~/.rbenv/tags;
 set backupdir=$HOME/.config/vim/backup//
+
 source $HOME/.config/nvim/bundles.vim
 
 " Add let g:ale_disable_lsp = 1 to your vimrc file, before plugins are loaded.
@@ -11,6 +12,8 @@ set runtimepath+=~/.fzf
 
 syntax enable
 syntax sync fromstart
+
+set backspace=2         " makes backspace work normally
 
 " BASIC EDITING CONFIGURATION
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
