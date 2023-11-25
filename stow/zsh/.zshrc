@@ -4,7 +4,6 @@
 source ~/.zi/bin/zi.zsh
 
 zi ice wait lucid
-zi light zsh-users/zsh-syntax-highlighting
 zi ice wait lucid
 zi light zsh-users/zsh-completions
 zi light zsh-users/zsh-history-substring-search
@@ -356,9 +355,13 @@ if [ -d "$HOME/.rover/env" ]; then
   source "$HOME/.rover/env"
 fi
 
+
 if [ -f "$HOME"/.zshrc.local ]; then
   source "$HOME"/.zshrc.local
 fi
+
+# Keep at the end per https://github.com/zsh-users/zsh-syntax-highlighting#why-must-zsh-syntax-highlightingzsh-be-sourced-at-the-end-of-the-zshrc-file
+zi light zsh-users/zsh-syntax-highlighting
 
 # end profile
 # zprof
