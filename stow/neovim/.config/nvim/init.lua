@@ -15,6 +15,16 @@ vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappin
 
 require("lazy").setup({
     {
+      'nvimdev/dashboard-nvim',
+      event = 'VimEnter',
+      config = function()
+        require('dashboard').setup {
+          -- config
+        }
+      end,
+      dependencies = { {'nvim-tree/nvim-web-devicons'}}
+    },
+    {
       'folke/which-key.nvim',
       event = "VeryLazy",
       init = function()
