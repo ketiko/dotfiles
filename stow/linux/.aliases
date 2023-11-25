@@ -132,6 +132,7 @@ if command -v kubens > /dev/null; then
  alias kns=kubens
 fi
 
+alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 
 if [ -f "$HOME/.aliases.local" ]; then
   source "$HOME/.aliases.local"
