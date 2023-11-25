@@ -17,6 +17,7 @@ if command -v exa > /dev/null; then
   alias es='exa --git -F --icons --color=always'
   alias el='exa -al --git --header -F --icons --color=always'
   alias ea='exa -a --git -F --icons --color=always'
+  alias et='exa -a --git --header -F --icons --color=always --tree'
 fi
 
 alias dir='dir --color=auto'
