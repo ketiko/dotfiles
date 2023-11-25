@@ -1,6 +1,6 @@
 filetype off
 
-if filereadable(expand("~/.config/nvim/autoload/plug.vim"))
+if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin()
 
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
@@ -15,11 +15,13 @@ if filereadable(expand("~/.config/nvim/autoload/plug.vim"))
   Plug 'rakr/vim-two-firewatch'
   Plug 'joshdick/onedark.vim'
   Plug 'KeitaNakamura/neodark.vim'
-  Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'neovim/nvim-lspconfig'
+  if has('nvim')
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'neovim/nvim-lspconfig'
+  end
   Plug '/tfnico/vim-gradle'
   Plug 'Glench/Vim-Jinja2-Syntax'
   Plug 'Konfekt/FastFold'

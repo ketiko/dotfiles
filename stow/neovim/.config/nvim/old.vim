@@ -1,13 +1,18 @@
 set nocompatible " vim > vi mode.
 " set shell=bash\ --login
-" set runtimepath+=$HOME/.vim
-" set viminfo+=n$HOME/.config/nvim/ninfo
+set runtimepath+=$HOME/.vim
+if !has('nvim')
+  set viminfo+=n$HOME/.vim/info
+end
+if has('nvim')
+  set viminfo+=n$HOME/.config/nvim/ninfo
+end
 set tags+=./tags,./ruby-tags,./.git/tags,~/.rbenv/tags;
-" set backupdir=$HOME/.vim/backup//
+set backupdir=$HOME/.vim/backup//
 
 set encoding=UTF-8
 
-source $HOME/.config/nvim/bundles.vim
+source $HOME/.vimrc.bundles
 
 " Add let g:ale_disable_lsp = 1 to your vimrc file, before plugins are loaded.
 " See https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
@@ -68,9 +73,14 @@ set t_ti= t_te=         " Prevent Vim from clobbering the scrollback buffer
 set tabstop=2           " Use 2 spaces for <tab>
 set tagbsearch          " use binary searching for tags
 set ttyfast
-set undofile
-"  set undodir=$HOME/.vim/undo
-set undoreload=10000
+if !has('nvim')
+  set ttyscroll=3
+end
+if v:version > 702
+  set undofile
+  set undodir=$HOME/.vim/undo
+  set undoreload=10000
+endif
 set undolevels=1000
 set vb t_vb=            " No bells. Period.
 set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip,*/log/*
@@ -192,9 +202,18 @@ if (has("termguicolors"))
 end
 set t_Co=256
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+end
 
 set background=dark
+
+" colorscheme solarized
+" " Solarized Settings
+" if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
+"   let g:solarized_termtrans=1
+"   let g:solarized_termcolors=16
+" endif
 
 colorscheme palenight
 " Italics for my favorite color scheme
@@ -273,371 +292,384 @@ nmap <leader>f :NERDTreeFind<CR>
 nmap <leader>n :NERDTreeToggle %:p:h<CR>
 let g:NERDTreeIgnore = ['^__pycache__$[[dir]]']
 
-  " ListToggle
-  let g:lt_location_list_toggle_map = '<leader>l'
-  let g:lt_quickfix_list_toggle_map = '<leader>q'
+" ListToggle
+let g:lt_location_list_toggle_map = '<leader>l'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
 
-  " Syntastic Settings
+" Syntastic Settings
 
-  let g:syntastic_javascript_checkers = ['jsxhint']
-  let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
-  " let g:syntastic_json_checkers=['jsonlint']
-  let g:syntastic_html_tidy_exec = 'tidy5'
-  let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek']
-  let g:syntastic_yaml_checkers = ['yamllint']
-  let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+" let g:syntastic_json_checkers=['jsonlint']
+let g:syntastic_html_tidy_exec = 'tidy5'
+let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek']
+let g:syntastic_yaml_checkers = ['yamllint']
+let g:syntastic_python_checkers = ['flake8']
 
-  let g:syntastic_aggregate_errors = 1
-  let g:syntastic_auto_jump = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 1
-  let g:syntastic_mode_map = { "mode": "passive" }
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_auto_jump = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_mode_map = { "mode": "passive" }
 
-  nmap <leader>sc :SyntasticToggleMode<CR>
+nmap <leader>sc :SyntasticToggleMode<CR>
 
-  " Tabgar Settings
-  map <leader>tb :TagbarToggle<CR>
-  map <leader>tc :TagbarCurrentTag s<CR>
-  let g:tagbar_autofocus=1
-  let g:tagbar_type_go = {
-  \ 'ctagstype' : 'go',
-  \ 'kinds'     : [
-  \ 'p:package',
-  \ 'i:imports:1',
-  \ 'c:constants',
-  \ 'v:variables',
-  \ 't:types',
-  \ 'n:interfaces',
-  \ 'w:fields',
-  \ 'e:embedded',
-  \ 'm:methods',
-  \ 'r:constructor',
-  \ 'f:functions'
-  \ ],
-  \ 'sro' : '.',
-  \ 'kind2scope' : {
-  \ 't' : 'ctype',
-  \ 'n' : 'ntype'
-  \ },
-  \ 'scope2kind' : {
-  \ 'ctype' : 't',
-  \ 'ntype' : 'n'
-  \ },
-  \ 'ctagsbin'  : 'gotags',
-  \ 'ctagsargs' : '-sort -silent'
-  \ }
+" Tabgar Settings
+map <leader>tb :TagbarToggle<CR>
+map <leader>tc :TagbarCurrentTag s<CR>
+let g:tagbar_autofocus=1
+let g:tagbar_type_go = {
+      \ 'ctagstype' : 'go',
+      \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+        \ ],
+        \ 'sro' : '.',
+        \ 'kind2scope' : {
+          \ 't' : 'ctype',
+          \ 'n' : 'ntype'
+          \ },
+        \ 'scope2kind' : {
+          \ 'ctype' : 't',
+          \ 'ntype' : 'n'
+          \ },
+        \ 'ctagsbin'  : 'gotags',
+        \ 'ctagsargs' : '-sort -silent'
+\ }
 
-  " Tabularize Settings
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-  nmap <Leader>a> :Tabularize /=><CR>
-  vmap <Leader>a> :Tabularize /=><CR>
+" Tabularize Settings
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+nmap <Leader>a> :Tabularize /=><CR>
+vmap <Leader>a> :Tabularize /=><CR>
 
-  " Easy Align settings
-  " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-  " Start interactive EasyAlign in visual mode (e.g. vipga)
-  xmap ga <Plug>(EasyAlign)
+" Easy Align settings
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
 
-  " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-  nmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
-  " EasyMotion Settings
-  let g:EasyMotion_smartcase = 1
-  let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
-  let g:EasyMotion_use_smartsign_us = 1
-  let g:EasyMotion_use_upper = 1
-  let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
+" EasyMotion Settings
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+let g:EasyMotion_use_smartsign_us = 1
+let g:EasyMotion_use_upper = 1
+let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
 
-  " Session Settings
-  let g:session_autosave = 'no'
+" Session Settings
+let g:session_autosave = 'no'
 
 
-  " \ 'coc-metals',
-  let g:coc_global_extensions = [
-  \ 'coc-actions',
-  \ 'coc-css',
-  \ 'coc-dictionary',
-  \ 'coc-docker',
-  \ 'coc-emoji',
-  \ 'coc-go',
-  \ 'coc-gocode',
-  \ 'coc-graphql',
-  \ 'coc-highlight',
-  \ 'coc-html',
-  \ 'coc-java',
-  \ 'coc-java-dependency',
-  \ 'coc-jedi',
-  \ 'coc-json',
-  \ 'coc-lists',
-  \ 'coc-markdownlint',
-  \ 'coc-omni',
-  \ 'coc-python',
-  \ 'coc-sh',
-  \ 'coc-snippets',
-  \ 'coc-solargraph',
-  \ 'coc-sql',
-  \ 'coc-syntax',
-  \ 'coc-tag',
-  \ 'coc-toml',
-  \ 'coc-tsserver',
-  \ 'coc-word',
-  \ 'coc-yaml',
-  \ 'coc-yank',
-  \ ]
-  call coc#config('solargraph.shell', $SHELL)
+      " \ 'coc-metals',
+let g:coc_global_extensions = [
+      \ 'coc-actions',
+      \ 'coc-css',
+      \ 'coc-dictionary',
+      \ 'coc-docker',
+      \ 'coc-emoji',
+      \ 'coc-go',
+      \ 'coc-gocode',
+      \ 'coc-graphql',
+      \ 'coc-highlight',
+      \ 'coc-html',
+      \ 'coc-java',
+      \ 'coc-java-dependency',
+      \ 'coc-jedi',
+      \ 'coc-json',
+      \ 'coc-lists',
+      \ 'coc-markdownlint',
+      \ 'coc-omni',
+      \ 'coc-python',
+      \ 'coc-sh',
+      \ 'coc-snippets',
+      \ 'coc-solargraph',
+      \ 'coc-sql',
+      \ 'coc-syntax',
+      \ 'coc-tag',
+      \ 'coc-toml',
+      \ 'coc-tsserver',
+      \ 'coc-word',
+      \ 'coc-yaml',
+      \ 'coc-yank',
+      \ ]
+call coc#config('solargraph.shell', $SHELL)
 
-  function! CheckBackspace() abort
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
-  endfunction
+endfunction
 
-  " Use tab for trigger completion with characters ahead and navigate.
-  " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-  " other plugin before putting this into your config.
-  inoremap <silent><expr> <TAB>
-  \ coc#pum#visible() ? coc#pum#next(1):
-  \ CheckBackspace() ? "\<Tab>" :
-  \ coc#refresh()
-  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-  " Make <CR> to accept selected completion item or notify coc.nvim to format
-  " <C-g>u breaks current undo, please make your own choice.
-  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-  " Use <c-space> to trigger completion.
+" Use <c-space> to trigger completion.
+if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
-  " Use `[g` and `]g` to navigate diagnostics
-  " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-  nmap <silent> [g <Plug>(coc-diagnostic-prev)
-  nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-  " GoTo code navigation.
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-  " Apply AutoFix to problem on the current line.
-  nmap <leader>qf  <Plug>(coc-fix-current)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 
-  " Applying code actions to the selected code block
-  " Example: `<leader>aap` for current paragraph
-  nmap <leader>ca  <Plug>(coc-codeaction-cursor)
-  xmap <leader>cs  <Plug>(coc-codeaction-selected)
-  nmap <leader>cs  <Plug>(coc-codeaction-selected)
+" Applying code actions to the selected code block
+" Example: `<leader>aap` for current paragraph
+nmap <leader>ca  <Plug>(coc-codeaction-cursor)
+xmap <leader>cs  <Plug>(coc-codeaction-selected)
+nmap <leader>cs  <Plug>(coc-codeaction-selected)
 
-  nmap <leader>fa  :CocFzfList actions<cr>
-  xmap <leader>fa  :CocFzfList actions<cr>
-  " Remap keys for apply code actions affect whole buffer
-  nmap <leader>as  <Plug>(coc-codeaction-source)
-  " Apply the most preferred quickfix action to fix diagnostic on the current line
-  nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>fa  :CocFzfList actions<cr>
+xmap <leader>fa  :CocFzfList actions<cr>
+" Remap keys for apply code actions affect whole buffer
+nmap <leader>as  <Plug>(coc-codeaction-source)
+" Apply the most preferred quickfix action to fix diagnostic on the current line
+nmap <leader>qf  <Plug>(coc-fix-current)
 
-  " Remap keys for applying refactor code actions
-  nmap <silent> <leader>rf <Plug>(coc-codeaction-refactor)
-  xmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
-  nmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
+" Remap keys for applying refactor code actions
+nmap <silent> <leader>rf <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
 
-  " Symbol renaming.
-  nmap <leader>rn <Plug>(coc-rename)
-
-
-  " Run the Code Lens action on the current line
-  nmap <leader>wl  <Plug>(coc-codelens-action)
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
 
-  " Use K to show documentation in preview window.
-  nnoremap <silent> K :call ShowDocumentation()<CR>
+" Run the Code Lens action on the current line
+nmap <leader>wl  <Plug>(coc-codelens-action)
 
-  function! ShowDocumentation()
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
-  call CocActionAsync('doHover')
+    call CocActionAsync('doHover')
   else
-  call feedkeys('K', 'in')
+    call feedkeys('K', 'in')
   endif
-  endfunction
+endfunction
 
-  " Highlight the symbol and its references when holding the cursor.
-  autocmd CursorHold * silent call CocActionAsync('highlight')
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-  " https://github.com/neoclide/coc.nvim/issues/3473
-  " This is how you correctly patch a colorscheme from your .vimrc:
-  autocmd VimEnter,ColorScheme * hi! link CocFloating CocHintFloat
+" https://github.com/neoclide/coc.nvim/issues/3473
+" This is how you correctly patch a colorscheme from your .vimrc:
+autocmd VimEnter,ColorScheme * hi! link CocFloating CocHintFloat
 
-  " Map function and class text objects
-  " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-  xmap if <Plug>(coc-funcobj-i)
-  omap if <Plug>(coc-funcobj-i)
-  xmap af <Plug>(coc-funcobj-a)
-  omap af <Plug>(coc-funcobj-a)
-  xmap ic <Plug>(coc-classobj-i)
-  omap ic <Plug>(coc-classobj-i)
-  xmap ac <Plug>(coc-classobj-a)
-  omap ac <Plug>(coc-classobj-a)
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
 
-  " Remap <C-f> and <C-b> for scroll float windows/popups.
-  if has('nvim-0.4.0') || has('patch-8.2.0750')
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
   inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
   inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  endif
+endif
 
-  " Use CTRL-S for selections ranges.
-  " Requires 'textDocument/selectionRange' support of language server.
-  nmap <silent> <C-s> <Plug>(coc-range-select)
-  xmap <silent> <C-s> <Plug>(coc-range-select)
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
 
-  " Add `:Format` command to format current buffer.
-  command! -nargs=0 Format :call CocActionAsync('format')
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocActionAsync('format')
 
-  " Add `:Fold` command to fold current buffer.
-  command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-  " Add `:OR` command for organize imports of the current buffer.
-  command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
-  " Mappings for CoCList
-  " Show all diagnostics.
-  nnoremap <silent><nowait> <space>ld  :<C-u>CocList diagnostics<cr>
-  " Manage extensions.
-  nnoremap <silent><nowait> <space>le  :<C-u>CocList extensions<cr>
-  " Show commands.
-  nnoremap <silent><nowait> <space>lc  :<C-u>CocList commands<cr>
-  " Find symbol of current document.
-  nnoremap <silent><nowait> <space>lo  :<C-u>CocList outline<cr>
-  " Search workspace symbols.
-  nnoremap <silent><nowait> <space>ls  :<C-u>CocList -I symbols<cr>
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>ld  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>le  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>lc  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>lo  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>ls  :<C-u>CocList -I symbols<cr>
 
-  let g:go_def_mode='gopls'
-  let g:go_info_mode='gopls'
-  " Run gofmt on save
-  " autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+" Run gofmt on save
+" autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 
-  " neomake
-  let g:neomake_open_list = 2
-  let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'reek']
+" neomake
+let g:neomake_open_list = 2
+let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'reek']
 
-  let g:indent_guides_auto_colors = 0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=Yellow
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=Black
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=Yellow
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=Black
 
-  " Folding
-  set foldmethod=syntax "even with nofoldenable foldmethod=syntax causes slow ins-completions"
-  set foldlevel=1
-  set foldlevelstart=99
-  set foldnestmax=10
-  set nofoldenable
+" Folding
+set foldmethod=syntax "even with nofoldenable foldmethod=syntax causes slow ins-completions"
+set foldlevel=1
+set foldlevelstart=99
+set foldnestmax=10
+set nofoldenable
 
-  " vim-instant-markdown
-  let g:instant_markdown_autostart = 1
+" vim-instant-markdown
+let g:instant_markdown_autostart = 1
 
-  " Airline Settings
-  " let g:airline_theme='solarized'
-  let g:airline_theme = "palenight"
+" Airline Settings
+" let g:airline_theme='solarized'
+let g:airline_theme = "palenight"
 
-  " vim-go
-  let g:go_fmt_command = "goimports"
-  let g:go_highlight_operators = 1
-  let g:go_highlight_functions = 1
-  let g:go_highlight_methods = 1
-  let g:go_highlight_structs = 1
-  let g:go_auto_type_info = 0
-  autocmd FileType go setlocal nolist ts=4 sw=4 sts=4
-  autocmd BufNewFile,BufRead *.go setlocal nolist ts=4 sw=4 sts=4
+" vim-go
+let g:go_fmt_command = "goimports"
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_auto_type_info = 0
+autocmd FileType go setlocal nolist ts=4 sw=4 sts=4
+autocmd BufNewFile,BufRead *.go setlocal nolist ts=4 sw=4 sts=4
 
-  " closetag
-  let g:closetag_filenames = "*.html,*.html.erb,*.html,*.xhtml,*.phtml, *.jsx"
+" closetag
+let g:closetag_filenames = "*.html,*.html.erb,*.html,*.xhtml,*.phtml, *.jsx"
 
-  let g:gutenttags_ctags_executable_by = 'ripper-tags'
-  let g:gutentags_ctags_exclude = [
-  \ '*.git', '*.svg', '*.hg',
-  \ '*/tests/*',
-  \ 'build',
-  \ 'dist',
-  \ '*sites/*/files/*',
-  \ 'bin',
-  \ 'node_modules',
-  \ 'bower_components',
-  \ 'cache',
-  \ 'compiled',
-  \ 'docs',
-  \ 'example',
-  \ 'bundle',
-  \ 'vendor',
-  \ '*.md',
-  \ '*-lock.json',
-  \ '*.lock',
-  \ '*bundle*.js',
-  \ '*build*.js',
-  \ '.*rc*',
-  \ '*.json',
-  \ '*.min.*',
-  \ '*.map',
-  \ '*.bak',
-  \ '*.zip',
-  \ '*.pyc',
-  \ '*.class',
-  \ '*.sln',
-  \ '*.Master',
-  \ '*.csproj',
-  \ '*.tmp',
-  \ '*.csproj.user',
-  \ '*.cache',
-  \ '*.pdb',
-  \ 'tags*',
-  \ 'cscope.*',
-  \ '*.css',
-  \ '*.less',
-  \ '*.scss',
-  \ '*.exe', '*.dll',
-  \ '*.mp3', '*.ogg', '*.flac',
-  \ '*.swp', '*.swo',
-  \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
-  \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
-  \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
-  \ ]
+let g:gutenttags_ctags_executable_by = 'ripper-tags'
+let g:gutentags_ctags_exclude = [
+      \ '*.git', '*.svg', '*.hg',
+      \ '*/tests/*',
+      \ 'build',
+      \ 'dist',
+      \ '*sites/*/files/*',
+      \ 'bin',
+      \ 'node_modules',
+      \ 'bower_components',
+      \ 'cache',
+      \ 'compiled',
+      \ 'docs',
+      \ 'example',
+      \ 'bundle',
+      \ 'vendor',
+      \ '*.md',
+      \ '*-lock.json',
+      \ '*.lock',
+      \ '*bundle*.js',
+      \ '*build*.js',
+      \ '.*rc*',
+      \ '*.json',
+      \ '*.min.*',
+      \ '*.map',
+      \ '*.bak',
+      \ '*.zip',
+      \ '*.pyc',
+      \ '*.class',
+      \ '*.sln',
+      \ '*.Master',
+      \ '*.csproj',
+      \ '*.tmp',
+      \ '*.csproj.user',
+      \ '*.cache',
+      \ '*.pdb',
+      \ 'tags*',
+      \ 'cscope.*',
+      \ '*.css',
+      \ '*.less',
+      \ '*.scss',
+      \ '*.exe', '*.dll',
+      \ '*.mp3', '*.ogg', '*.flac',
+      \ '*.swp', '*.swo',
+      \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
+      \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+      \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+      \ ]
 
-  let g:ruby_path = []
+let g:ruby_path = []
 
-  " Ale
-  let g:ale_sign_column_always = 1
-  let g:airline#extensions#ale#enabled = 1
-  let g:ale_lint_on_enter = 1
-  let g:ale_lint_on_text_changed = 'never'
-  let g:ale_virtualtext_cursor = 'disabled'
-  let g:ale_completion_enabled = 1
-  let g:ale_fix_on_save = 0
-  let g:ale_fixers = {
-  \   'ruby': ['rubocop'],
-  \   'javascript': ['prettier', 'eslint'],
-  \   'typescript': ['prettier', 'eslint'],
-  \   'python': ['autoflake', 'autoimport', 'flake8', 'pylint'],
-  \}
+" Ale
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_virtualtext_cursor = 'disabled'
+let g:ale_completion_enabled = 1
+let g:ale_fix_on_save = 0
+let g:ale_fixers = {
+      \   'ruby': ['rubocop'],
+      \   'javascript': ['prettier', 'eslint'],
+      \   'typescript': ['prettier', 'eslint'],
+      \   'python': ['autoflake', 'autoimport', 'flake8', 'pylint'],
+      \}
 
-  " vim-stay
-  set viewoptions=cursor,folds,slash,unix
+" vim-stay
+set viewoptions=cursor,folds,slash,unix
 
-  " javascript-libraries-syntax
-  let g:used_javascript_libs = 'jquery,angularjs,react'
+" javascript-libraries-syntax
+let g:used_javascript_libs = 'jquery,angularjs,react'
 
-  let g:javascript_plugin_jsdoc = 1
-  let g:vim_jsx_pretty_highlight_close_tag = 1
+let g:javascript_plugin_jsdoc = 1
+let g:vim_jsx_pretty_highlight_close_tag = 1
 
-  " camelCaseMotion
-  call camelcasemotion#CreateMotionMappings('<leader>')
+" camelCaseMotion
+call camelcasemotion#CreateMotionMappings('<leader>')
 
-  " These break intellij ideavim
-  " map <leader><leader>f <Plug>Sneak_f
-  " map <leader><leader>F <Plug>Sneak_F
-  " map <leader><leader>t <Plug>Sneak_t
-  " map <leader><leader>T <Plug>Sneak_T
-  map <leader><leader>s <Plug>Sneak_s
-  let g:sneak#label = 1
+" These break intellij ideavim
+" map <leader><leader>f <Plug>Sneak_f
+" map <leader><leader>F <Plug>Sneak_F
+" map <leader><leader>t <Plug>Sneak_t
+" map <leader><leader>T <Plug>Sneak_T
+map <leader><leader>s <Plug>Sneak_s
+let g:sneak#label = 1
+
+" Quickly edit/reload the vimrc file
+nmap <silent> ,ev :vsplit $MYVIMRC<CR>
+nmap <silent> ,eb :vsplit $HOME/.vimrc.bundles<CR>
+nmap <silent> ,sv :source $MYVIMRC<CR>
+
+if filereadable(expand("~/.vimrc.local"))
+  source $HOME/.vimrc.local
+endif
