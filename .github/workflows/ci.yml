@@ -17,5 +17,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run ShellCheck
-        run: |
-          for file in $(find stow/zsh stow/bash stow/linux scripts -type f); do shellcheck --format=gcc -e SC1090 -e SC1091 $file; done;
+        run: ./shellcheck.sh
