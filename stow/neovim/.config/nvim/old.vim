@@ -1,4 +1,4 @@
-source ~/.config/nvim/bundles.vim
+source $HOME/.config/nvim/bundles.vim
 
 " Add let g:ale_disable_lsp = 1 to your vimrc file, before plugins are loaded.
 " See https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
@@ -139,7 +139,7 @@ let g:rails_projections = {
 
 nmap <C-p> :Files<CR>
 nmap <leader>b :Buffers<CR>
-let g:fzf_history_dir = '~/.fzf/history'
+let g:fzf_history_dir = '$HOME/.fzf/history'
 
 " Ack
 " Ag Settings
@@ -299,7 +299,7 @@ call coc#config('solargraph.shell', $SHELL)
 
 function! CheckBackspace() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+  return !col || getline('.')[col - 1]  =$HOME# '\s'
 endfunction
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -548,6 +548,6 @@ nmap <silent> ,ev :vsplit $MYVIMRC<CR>
 nmap <silent> ,eb :vsplit $HOME/.config/nvim/bundles.vim<CR>
 nmap <silent> ,sv :source $MYVIMRC<CR>
 
-if filereadable(expand("~/.vimrc.local"))
+if filereadable(expand("$HOME/.vimrc.local"))
   source $HOME/.vimrc.local
 endif
