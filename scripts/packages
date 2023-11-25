@@ -41,6 +41,8 @@ if [[ $(uname) != Darwin ]]; then
     python3-pip \
     ranger \
     ripgrep \
+    ruby \
+    ruby-dev \
     shellcheck \
     silversearcher-ag \
     stow \
@@ -92,10 +94,12 @@ if [[ $(uname) == Darwin ]]; then
       openssl \
       pinentry-mac \
       pv \
+      python \
       ranger \
       readline \
       reattach-to-user-namespace \
       ripgrep \
+      ruby \
       shellcheck \
       ssh-copy-id \
       stow \
