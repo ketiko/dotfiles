@@ -11,19 +11,26 @@ stow_dir="$root_dir/stow"
 packages=($( ls -A  -1 $stow_dir))
 
 overwrite_all=false
+skip_all=false
 
 files=($(find -L stow -type f ))
 for file in "${files[@]}"
 do
   target=$HOME/$(echo "$file" | cut -d'/' -f 3-)
   if [ -L "$target" ] || [ -f "$target" ]; then
-    if ! $overwrite_all; then
-      echo "File already exists: $target, what do you want to do? [a]bort, [o]verwrite, [O]verwrite all"
+    if ! $skip_all && ! $overwrite_all; then
+      echo "File already exists: $target, what do you want to do? [o]verwrite, [O]verwrite all, [s]kip, [S]kip all, [a]bort"
       read -r response
       case "$response" in
+        s) continue ;;
+        S) skip_all=true ;;
         O) overwrite_all=true ;;
         a) exit 1 ;;
       esac
+    fi
+
+    if $skip_all; then
+      continue
     fi
 
     if [ -L "$target" ]; then
@@ -39,6 +46,7 @@ do
 done
 
 overwrite_all=false
+skip_all=false
 
 folders=($(find -L stow -type d ))
 for folder in "${folders[@]}"
@@ -46,13 +54,19 @@ do
   target=$HOME/$(echo "$folder" | cut -d'/' -f 3-)
 
   if [ -L "$target" ] || [ -f "$target" ]; then
-    if ! $overwrite_all; then
-      echo "File already exists: $target, what do you want to do? [a]bort, [o]verwrite, [O]verwrite all"
+    if ! $skip_all && ! $overwrite_all; then
+      echo "Directory already exists: $target, what do you want to do? [o]verwrite, [O]verwrite all, [s]kip, [S]kip all, [a]bort"
       read -r response
       case "$response" in
+        s) continue ;;
+        S) skip_all=true ;;
         O) overwrite_all=true ;;
         a) exit 1 ;;
       esac
+    fi
+
+    if $skip_all; then
+      continue
     fi
 
     if [ -L "$target" ]; then
