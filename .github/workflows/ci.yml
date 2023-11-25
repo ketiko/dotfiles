@@ -13,13 +13,9 @@ jobs:
   shellcheck:
     name: 🐚 Shellcheck scripts 🐚
     runs-on: ubuntu-latest
+    container: koalaman/shellcheck-alpine
     steps:
       - uses: actions/checkout@v2
       - name: Run ShellCheck
-        uses: ludeeus/action-shellcheck@master
-        with:
-          format: gcc
-          additional_files: 'aliases.symlink bash_logout.symlink bash_profile.symlink bashrc.symlink profile.symlink zprofile.symlink'
-          severity: error
-        env:
-          SHELLCHECK_OPTS: -e SC1090 -e SC1091
+        run: |
+          for file in $(find stow/zsh stow/bash stow/linux scripts -type f); do shellcheck --format=gcc -e SC1090 -e SC1091 $file; done;
