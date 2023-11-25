@@ -7,11 +7,11 @@ set backupdir=$HOME/.vim/backup//
 
 set encoding=UTF-8
 
-source $HOME/.vimrc.bundles
-
 " Add let g:ale_disable_lsp = 1 to your vimrc file, before plugins are loaded.
 " See https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
 let g:ale_disable_lsp = 1
+
+source $HOME/.vimrc.bundles
 
 set runtimepath+=~/.fzf
 
