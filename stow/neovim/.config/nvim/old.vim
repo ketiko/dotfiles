@@ -1,13 +1,27 @@
+set viminfo+=n$HOME/.config/nvim/ninfo
+set tags+=./tags,./ruby-tags,./.git/tags,~/.rbenv/tags;
+set backupdir=$HOME/.config/vim/backup//
 source $HOME/.config/nvim/bundles.vim
 
 " Add let g:ale_disable_lsp = 1 to your vimrc file, before plugins are loaded.
 " See https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
 let g:ale_disable_lsp = 1
 
+set runtimepath+=~/.fzf
+
 syntax enable
 syntax sync fromstart
 
 " BASIC EDITING CONFIGURATION
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+if v:version > 702
+  set undofile
+  set undodir=$HOME/.vim/undo
+  set undoreload=10000
+endif
+set vb t_vb=            " No bells. Period.
+set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip,*/log/*
+set wildmode=longest,list,full  " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
 
 let mapleader = " "     " change <leader> from \ to <space>
 
@@ -52,6 +66,14 @@ noremap <leader>i <C-a>
 vnoremap << <gv
 vnoremap >> >gv
 nnoremap ,gf magg<S-v>G=`a
+
+set notimeout ttimeout ttimeoutlen=100
+
+if exists('+colorcolumn')
+  set colorcolumn=100
+else
+  match ErrorMsg '\%>100v.\+'
+end
 
 " Navigate panes vim style
 nmap <C-h> <C-w>h
@@ -104,7 +126,14 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
+if (has("termguicolors"))
+  set termguicolors
+end
+set t_Co=256
 
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+end
 colorscheme palenight
 " Italics for my favorite color scheme
 let g:palenight_terminal_italics=1
