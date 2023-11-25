@@ -1,3 +1,3 @@
-require("config/options")
+vim.cmd('source $HOME/.config/nvim/old.vim')
 
-vim.cmd('source ~/.config/nvim/old.vim')
+require("config/options")

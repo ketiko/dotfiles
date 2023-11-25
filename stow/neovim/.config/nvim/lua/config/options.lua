@@ -1,5 +1,5 @@
-
 local opt = vim.opt
+
 opt.autoindent = true          -- Copy indent from current line when starting a new line
 opt.autoread = true -- If a file is changed outside of vim, automatically reload it without asking
 opt.background = dark
