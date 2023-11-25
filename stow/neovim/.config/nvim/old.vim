@@ -577,6 +577,6 @@ nmap <silent> ,ev :vsplit $MYVIMRC<CR>
 nmap <silent> ,eb :vsplit $HOME/.config/nvim/bundles.vim<CR>
 nmap <silent> ,sv :source $MYVIMRC<CR>
 
-if filereadable(expand("$HOME/.vimrc.local"))
+if filereadable(expand("$HOME/.config/nvim/local.vim"))
   source $HOME/.vimrc.local
 endif
