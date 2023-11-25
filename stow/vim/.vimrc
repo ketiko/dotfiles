@@ -1,12 +1,7 @@
 set nocompatible " vim > vi mode.
 " set shell=bash\ --login
 set runtimepath+=$HOME/.vim
-if !has('nvim')
-  set viminfo+=n$HOME/.vim/info
-end
-if has('nvim')
-  set viminfo+=n$HOME/.config/nvim/ninfo
-end
+set viminfo+=n$HOME/.vim/info
 set tags+=./tags,./ruby-tags,./.git/tags,~/.rbenv/tags;
 set backupdir=$HOME/.vim/backup//
 
@@ -73,9 +68,7 @@ set t_ti= t_te=         " Prevent Vim from clobbering the scrollback buffer
 set tabstop=2           " Use 2 spaces for <tab>
 set tagbsearch          " use binary searching for tags
 set ttyfast
-if !has('nvim')
-  set ttyscroll=3
-end
+set ttyscroll=3
 if v:version > 702
   set undofile
   set undodir=$HOME/.vim/undo
@@ -201,10 +194,6 @@ if (has("termguicolors"))
   set termguicolors
 end
 set t_Co=256
-
-if has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-end
 
 set background=dark
 
@@ -428,11 +417,7 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+inoremap <silent><expr> <c-@> coc#refresh()
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -504,7 +489,7 @@ xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
+if has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
   inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"

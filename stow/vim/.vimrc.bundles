@@ -15,13 +15,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'rakr/vim-two-firewatch'
   Plug 'joshdick/onedark.vim'
   Plug 'KeitaNakamura/neodark.vim'
-  if has('nvim')
-    Plug 'nvim-lua/popup.nvim'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'neovim/nvim-lspconfig'
-  end
   Plug '/tfnico/vim-gradle'
   Plug 'Glench/Vim-Jinja2-Syntax'
   Plug 'Konfekt/FastFold'
@@ -131,12 +124,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'camspiers/lens.vim'
 
   Plug 'mikelue/vim-maven-plugin'
-
-  " Images
-  Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'nvim-telescope/telescope-media-files.nvim'
 
   " PlantUML
   Plug 'aklt/plantuml-syntax'
