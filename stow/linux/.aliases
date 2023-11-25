@@ -13,6 +13,12 @@ alias ll='ls -alF --color=auto'
 alias la='ls -A --color=auto'
 alias l='ls -CF --color=auto'
 
+if command -v exa > /dev/null; then
+  alias es='exa --git -F --icons --color=always'
+  alias el='exa -al --git --header -F --icons --color=always'
+  alias ea='exa -a --git -F --icons --color=always'
+fi
+
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 
