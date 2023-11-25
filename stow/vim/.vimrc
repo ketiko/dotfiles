@@ -71,7 +71,7 @@ set ttyfast
 set ttyscroll=3
 if v:version > 702
   set undofile
-  set undodir=$HOME/.vim/undo
+  set undodir=$HOME/.vim/undo//
   set undoreload=10000
 endif
 set undolevels=1000

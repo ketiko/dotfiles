@@ -1,93 +1,13 @@
-set nocompatible " vim > vi mode.
-" set shell=bash\ --login
-set runtimepath+=$HOME/.vim
-set viminfo+=n$HOME/.config/nvim/ninfo
-set tags+=./tags,./ruby-tags,./.git/tags,~/.rbenv/tags;
-set backupdir=$HOME/.config/nvim/backup//
-
-set encoding=UTF-8
-
 source ~/.config/nvim/bundles.vim
 
 " Add let g:ale_disable_lsp = 1 to your vimrc file, before plugins are loaded.
 " See https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
 let g:ale_disable_lsp = 1
 
-set runtimepath+=~/.fzf
-
 syntax enable
 syntax sync fromstart
 
 " BASIC EDITING CONFIGURATION
-set directory=$HOME/.config/nvim/swap/
-set autoindent          " Copy indent from current line when starting a new line
-set backspace=2         " makes backspace work normally
-set cmdheight=2         " Cmd bar 2 rows high
-set complete=.,w,b,u,t
-set completeopt=menu,preview
-set cursorline            " highlight current line - slow
-set expandtab           " Use spaces not tabs
-set exrc                " allow local .vimrc files per project
-set hidden              " allow unsaved background buffers and remember marks/undo for them
-set history=10000       " remember more commands and search history
-set hlsearch              " Highlight searches and search results
-set ignorecase smartcase infercase  " make searches case-sensitive only if they contain upper-case characters
-set incsearch             " Show best match while typing a search
-set laststatus=2          " Always show the status line
-set lazyredraw
-set linebreak           " Don't wrap text in the middle of a word
-set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
-set matchtime=2         " for .2 seconds
-set nobackup
-set noerrorbells        " No noise
-set nojoinspaces        " Use only 1 space after "." when joining lines instead of 2
-set nostartofline       " Don't reset cursor to start of line when moving around
-set novisualbell        " No blinking
-set nowrap
-set nowritebackup
-set number              " Show line numbers
-set numberwidth=1       " Try to use only 1 col when possible
-set report=0            " : commands always print changed line count
-set ruler               " Display position in the file
-set scrolloff=5         " Keep 5 lines (top/bottom) for scope
-set shiftwidth=2        " Indent level is 2 spaces wide
-set shortmess=atIF       " The "Press ENTER or type command to continue" prompt is jarring and usually unnecessary.
-set showcmd             " Show partial command in the last line of the screen
-set showmatch            " Show matched paren when balanced
-set showtabline=2
-set smartindent
-set smarttab            " Insert blanks properly at beginning of a line
-set softtabstop=2       " <BS> over an autoindent deletes shiftwidth worth of spaces
-set splitbelow
-set splitright
-set noswapfile
-set switchbuf=""        " do not move focus/cursor to where the buffer is already open
-set synmaxcol=1200      " Syntax coloring lines that are too long just slows down the world
-set t_ti= t_te=         " Prevent Vim from clobbering the scrollback buffer
-set tabstop=2           " Use 2 spaces for <tab>
-set tagbsearch          " use binary searching for tags
-set ttyfast
-if !has('nvim')
-  set ttyscroll=3
-end
-if v:version > 702
-  set undofile
-  set undodir=$HOME/.config/nvim/undo
-  set undoreload=10000
-endif
-set undolevels=1000
-set vb t_vb=            " No bells. Period.
-set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip,*/log/*
-set wildmenu                    " make tab completion for files/buffers act like bash
-set wildmode=longest,list,full  " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
-set autoread " If a file is changed outside of vim, automatically reload it without asking
-set signcolumn=yes " Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved. for coc
-set maxmempattern=5000
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
 
 let mapleader = " "     " change <leader> from \ to <space>
 
@@ -132,14 +52,6 @@ noremap <leader>i <C-a>
 vnoremap << <gv
 vnoremap >> >gv
 nnoremap ,gf magg<S-v>G=`a
-
-set notimeout ttimeout ttimeoutlen=100
-
-if exists('+colorcolumn')
-  set colorcolumn=100
-else
-  match ErrorMsg '\%>100v.\+'
-end
 
 " Navigate panes vim style
 nmap <C-h> <C-w>h
@@ -192,27 +104,11 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
-if (has("termguicolors"))
-  set termguicolors
-end
-set t_Co=256
-
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-set background=dark
-
-" colorscheme solarized
-" " Solarized Settings
-" if isdirectory(expand("~/.vim/plugged/vim-colors-solarized"))
-"   let g:solarized_termtrans=1
-"   let g:solarized_termcolors=16
-" endif
 
 colorscheme palenight
 " Italics for my favorite color scheme
 let g:palenight_terminal_italics=1
 
-set guifont=DroidSansMono\ Nerd\ Font\ 11
 
 " vim-rails
 let g:rails_projections = {
@@ -540,13 +436,6 @@ let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'reek']
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=Yellow
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=Black
-
-" Folding
-set foldmethod=syntax "even with nofoldenable foldmethod=syntax causes slow ins-completions"
-set foldlevel=1
-set foldlevelstart=99
-set foldnestmax=10
-set nofoldenable
 
 " vim-instant-markdown
 let g:instant_markdown_autostart = 1
