@@ -11,8 +11,6 @@ if [[ $(uname) != Darwin ]]; then
   fi
 fi
 
-# TODO: replace fasd which is no longer around
-
 if [[ $(uname) != Darwin ]]; then
   $please apt-get install -y \
     ack-grep \
@@ -38,6 +36,8 @@ if [[ $(uname) != Darwin ]]; then
     nodejs \
     npm \
     pv \
+    python3-dev \
+    python3-neovim \
     python3-pip \
     ranger \
     ripgrep \
