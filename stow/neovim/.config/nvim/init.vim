@@ -19,7 +19,7 @@ syntax enable
 syntax sync fromstart
 
 " BASIC EDITING CONFIGURATION
-set directory=$HOME/.vim/swap//
+set directory=$HOME/.config/nvim/swap/
 set autoindent          " Copy indent from current line when starting a new line
 set backspace=2         " makes backspace work normally
 set cmdheight=2         " Cmd bar 2 rows high
@@ -73,7 +73,7 @@ if !has('nvim')
 end
 if v:version > 702
   set undofile
-  set undodir=$HOME/.vim/undo
+  set undodir=$HOME/.config/nvim/undo
   set undoreload=10000
 endif
 set undolevels=1000
