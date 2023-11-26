@@ -13,7 +13,8 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 
-require("lazy").setup({
+require("lazy").setup(
+    {
         {
             'nvimdev/dashboard-nvim',
             event = 'VimEnter',
@@ -47,7 +48,6 @@ require("lazy").setup({
         'Xuyuanp/nerdtree-git-plugin',
         'altercation/vim-colors-solarized',
         'alvan/vim-closetag',
-        'antoinemadec/coc-fzf',
         'austintaylor/vim-indentobject',
         'bkad/CamelCaseMotion',
         'camspiers/animate.vim',
@@ -56,7 +56,6 @@ require("lazy").setup({
         'coderifous/textobj-word-column.vim',
         'corntrace/bufexplorer',
         'dbakker/vim-projectroot',
-        'dense-analysis/ale',
         'drewtempelmeyer/palenight.vim',
         'editorconfig/editorconfig-vim',
         'edkolev/tmuxline.vim',
@@ -77,6 +76,11 @@ require("lazy").setup({
         'mileszs/ack.vim',
         'nathanaelkane/vim-indent-guides',
         'neovim/nvim-lspconfig',
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig',
+        'jose-elias-alvarez/null-ls.nvim',
+        'jay-babu/mason-null-ls.nvim',
         'nvim-lua/plenary.nvim',
         'nvim-lua/popup.nvim',
         'nvim-telescope/telescope-media-files.nvim',
@@ -146,7 +150,6 @@ require("lazy").setup({
         { 'mikelue/vim-maven-plugin', lazy = true, ft = { 'xml', 'java' } },
         { 'mxw/vim-jsx', lazy = true, ft = { 'javascript' } },
         { 'nelstrom/vim-textobj-rubyblock', dependencies = { 'kana/vim-textobj-user' }, lazy = true, ft = { 'ruby' } },
-        { 'neoclide/coc.nvim', branch = 'release' },
         { 'neoclide/jsonc.vim', lazy = true, ft = { 'json' } },
         { 'nginx/nginx', lazy = true, ft = { 'nginx' } },
         { 'nvie/vim-flake8', lazy = true, ft = { 'python' } },
@@ -200,3 +203,32 @@ require("lazy").setup({
 vim.cmd('source $HOME/.config/nvim/old.vim')
 
 require("config/options")
+
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+        automatic_installation = true,
+    })
+
+local lspconfig = require('lspconfig')
+lspconfig.bashls.setup {}
+lspconfig.cssls.setup {}
+lspconfig.docker_compose_language_service.setup {}
+lspconfig.dockerls.setup {}
+lspconfig.gopls.setup {}
+lspconfig.graphql.setup {}
+lspconfig.html.setup {}
+lspconfig.jdtls.setup {}
+lspconfig.jsonls.setup {}
+lspconfig.lua_ls.setup {}
+lspconfig.marksman.setup {}
+lspconfig.pyright.setup {}
+lspconfig.ruby_ls.setup {}
+lspconfig.spectral.setup {}
+lspconfig.sqlls.setup {}
+lspconfig.taplo.setup {}
+lspconfig.terraformls.setup {}
+lspconfig.tflint.setup {}
+lspconfig.tsserver.setup {}
+lspconfig.vimls.setup {}
+lspconfig.yamlls.setup {}
