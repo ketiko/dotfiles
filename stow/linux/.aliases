@@ -14,6 +14,7 @@ alias la='ls -A --color=auto'
 alias l='ls -CF --color=auto'
 
 if command -v exa > /dev/null; then
+  alias e="exa"
   alias es='exa --git -F --icons --color=always'
   alias el='exa -al --git --header -F --icons --color=always'
   alias ea='exa -a --git -F --icons --color=always'
