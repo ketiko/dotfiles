@@ -212,23 +212,6 @@ let g:NERDTreeIgnore = ['^__pycache__$[[dir]]']
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 
-" Syntastic Settings
-
-let g:syntastic_javascript_checkers = ['jsxhint']
-let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
-" let g:syntastic_json_checkers=['jsonlint']
-let g:syntastic_html_tidy_exec = 'tidy5'
-let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek']
-let g:syntastic_yaml_checkers = ['yamllint']
-let g:syntastic_python_checkers = ['flake8']
-
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_auto_jump = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_mode_map = { "mode": "passive" }
-
 nmap <leader>sc :SyntasticToggleMode<CR>
 
 " Tabgar Settings
@@ -374,29 +357,9 @@ let g:gutentags_ctags_exclude = [
 
 let g:ruby_path = []
 
-" Ale
-let g:ale_sign_column_always = 1
-let g:airline#extensions#ale#enabled = 1
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_virtualtext_cursor = 'disabled'
-let g:ale_completion_enabled = 1
-let g:ale_fix_on_save = 0
-let g:ale_fixers = {
-      \   'ruby': ['rubocop'],
-      \   'javascript': ['prettier', 'eslint'],
-      \   'typescript': ['prettier', 'eslint'],
-      \   'python': ['autoflake', 'autoimport', 'flake8', 'pylint'],
-      \}
 
 " vim-stay
 set viewoptions=cursor,folds,slash,unix
-
-" javascript-libraries-syntax
-let g:used_javascript_libs = 'jquery,angularjs,react'
-
-let g:javascript_plugin_jsdoc = 1
-let g:vim_jsx_pretty_highlight_close_tag = 1
 
 " camelCaseMotion
 call camelcasemotion#CreateMotionMappings('<leader>')
