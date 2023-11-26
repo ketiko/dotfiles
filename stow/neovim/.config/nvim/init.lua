@@ -36,6 +36,24 @@ require("lazy").setup(
         -- refer to the configuration section below
       }
     },
+    {
+      "nvim-neo-tree/neo-tree.nvim",
+      branch = "v3.x",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        "MunifTanjim/nui.nvim",
+        "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+      },
+      keys = {
+        {
+          "<leader>n",
+          function()
+            require("neo-tree.command").execute({ toggle = true })
+          end,
+        },
+      },
+    },
     'nvim-tree/nvim-web-devicons',
     'KeitaNakamura/neodark.vim',
     'Konfekt/FastFold',
@@ -44,7 +62,6 @@ require("lazy").setup(
     'Quramy/vim-dtsm',
     'Raimondi/delimitMate',
     'Valloric/ListToggle',
-    'Xuyuanp/nerdtree-git-plugin',
     'altercation/vim-colors-solarized',
     'alvan/vim-closetag',
     'austintaylor/vim-indentobject',
@@ -127,7 +144,6 @@ require("lazy").setup(
     'hrsh7th/cmp-omni',
     'ruanyl/vim-sort-imports',
     'ryanoasis/vim-devicons',
-    'scrooloose/nerdtree',
     'sheerun/vim-polyglot',
     'sjl/gundo.vim',
     'slashmili/alchemist.vim',

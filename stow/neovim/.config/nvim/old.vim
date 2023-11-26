@@ -55,7 +55,7 @@ let g:java_highlight_functions = 1
 let g:java_highlight_all = 1
 
 " clear highlighted search
-nmap \ :nohlsearch<CR>
+nmap <silent> \ :nohlsearch<CR>
 
 " make ctrl i increment numbers instead of ctrl a
 " noremap <C-i> <C-a>
@@ -202,11 +202,6 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 " YankStack settings
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
-
-" NERD Tree Settings
-nmap <leader>f :NERDTreeFind<CR>
-nmap <leader>n :NERDTreeToggle %:p:h<CR>
-let g:NERDTreeIgnore = ['^__pycache__$[[dir]]']
 
 " ListToggle
 let g:lt_location_list_toggle_map = '<leader>l'
