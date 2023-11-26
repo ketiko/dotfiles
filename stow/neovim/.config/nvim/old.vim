@@ -115,7 +115,6 @@ autocmd BufReadPost *
       \ endif
 
 " Spelling
-set spell spelllang=en_us
 highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
 highlight clear SpellCap
