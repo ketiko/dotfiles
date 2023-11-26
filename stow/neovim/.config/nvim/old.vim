@@ -164,8 +164,8 @@ let g:rails_projections = {
       \   },
       \ }
 
-nmap <C-p> :Files<CR>
-nmap <leader>b :Buffers<CR>
+" nmap <C-p> :Files<CR>
+" nmap <leader>b :Buffers<CR>
 let g:fzf_history_dir = '$HOME/.fzf/history'
 
 " Ack
@@ -211,8 +211,6 @@ let g:NERDTreeIgnore = ['^__pycache__$[[dir]]']
 " ListToggle
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
-
-nmap <leader>sc :SyntasticToggleMode<CR>
 
 " Tabgar Settings
 map <leader>tb :TagbarToggle<CR>
