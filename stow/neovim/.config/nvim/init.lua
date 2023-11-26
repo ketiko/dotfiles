@@ -57,6 +57,8 @@ require("lazy").setup(
         'corntrace/bufexplorer',
         'dbakker/vim-projectroot',
         'drewtempelmeyer/palenight.vim',
+        'hrsh7th/vim-vsnip',
+        'hrsh7th/vim-vsnip-integ',
         'editorconfig/editorconfig-vim',
         'edkolev/tmuxline.vim',
         'godlygeek/tabular',
@@ -283,17 +285,17 @@ cmp.setup({
         ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
     },
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        -- { name = 'vsnip' }, -- For vsnip users.
-        -- { name = 'luasnip' }, -- For luasnip users.
-        -- { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
         { name = 'copilot', },
+        { name = 'nvim_lsp' },
         { name = 'buffer' },
         { name = 'dictionary' },
         { name = 'omni' },
         { name = 'spell' },
         { name = 'path' },
+        { name = 'vsnip' }, -- For vsnip users.
+        -- { name = 'luasnip' }, -- For luasnip users.
+        -- { name = 'ultisnips' }, -- For ultisnips users.
+        -- { name = 'snippy' }, -- For snippy users.
     }, {
             { name = 'buffer' },
         })
