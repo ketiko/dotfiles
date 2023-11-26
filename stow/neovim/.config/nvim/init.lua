@@ -243,6 +243,21 @@ require("lazy").setup(
     { 'tpope/vim-rbenv', lazy = true, ft = { 'ruby' } },
     { 'vim-ruby/vim-ruby', lazy = true, ft = { 'rb' } },
     { 'vim-scripts/JavaScript-Indent', lazy = true, ft = { 'javascript' } },
+    {
+      "folke/noice.nvim",
+      event = "VeryLazy",
+      opts = {
+        -- add any options here
+      },
+      dependencies = {
+        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+        "MunifTanjim/nui.nvim",
+        -- OPTIONAL:
+        --   `nvim-notify` is only needed, if you want to use the notification view.
+        --   If not available, we use `mini` as the fallback
+        "rcarriga/nvim-notify",
+      }
+    },
   })
 
 vim.cmd('source $HOME/.config/nvim/old.vim')

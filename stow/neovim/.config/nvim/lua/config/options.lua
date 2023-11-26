@@ -28,7 +28,6 @@ opt.incsearch = true             -- Show best match while typing a search
 opt.infercase = true
 opt.joinspaces = false       -- Use only 1 space after "." when joining lines instead of 2
 opt.laststatus = 2          -- Always show the status line
-opt.lazyredraw = true
 opt.linebreak = true           -- Don't wrap text in the middle of a word
 opt.list = true
 opt.matchtime= 2         -- for .2 seconds
