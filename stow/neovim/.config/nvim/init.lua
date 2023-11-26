@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
-            "git",
-            "clone",
-            "--filter=blob:none",
-            "https://github.com/folke/lazy.nvim.git",
-            "--branch=stable", -- latest stable release
-            lazypath,
-        })
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -59,7 +59,6 @@ require("lazy").setup(
         'drewtempelmeyer/palenight.vim',
         'editorconfig/editorconfig-vim',
         'edkolev/tmuxline.vim',
-        'github/copilot.vim',
         'godlygeek/tabular',
         'jamessan/vim-gnupg',
         'joshdick/onedark.vim',
@@ -74,6 +73,23 @@ require("lazy").setup(
         'mhinz/vim-hugefile',
         'michaeljsmith/vim-indent-object',
         'jay-babu/mason-null-ls.nvim',
+        {
+            "zbirenbaum/copilot-cmp",
+            config = function ()
+                require("copilot_cmp").setup()
+            end
+        },
+        {
+            "zbirenbaum/copilot.lua",
+            cmd = "Copilot",
+            event = "InsertEnter",
+            config = function()
+                require("copilot").setup({
+                    suggestion = { enabled = false },
+                    panel = { enabled = false },
+                })
+            end,
+        },
         'jose-elias-alvarez/null-ls.nvim',
         'mileszs/ack.vim',
         'nathanaelkane/vim-indent-guides',
@@ -118,7 +134,6 @@ require("lazy").setup(
         'vim-scripts/dbext.vim',
         'vim-scripts/matchit.zip',
         'f3fora/cmp-spell',
-        'hrsh7th/cmp-copilot',
         'vim-scripts/sudo.vim',
         'weirongxu/plantuml-previewer.vim',
         { 'MaxMEllon/vim-jsx-pretty', lazy = true, ft = { 'javascript' } },
@@ -168,25 +183,25 @@ require("lazy").setup(
                 local configs = require("nvim-treesitter.configs")
 
                 configs.setup({
-                        ensure_installed = {
-                            "c",
-                            "css",
-                            "go",
-                            "html",
-                            "java",
-                            "javascript",
-                            "lua",
-                            "query",
-                            "python",
-                            "ruby",
-                            "vim",
-                            "vimdoc",
-                        },
-                        sync_install = false,
-                        auto_install = true,
-                        highlight = { enable = true },
-                        indent = { enable = true },
-                    })
+                    ensure_installed = {
+                        "c",
+                        "css",
+                        "go",
+                        "html",
+                        "java",
+                        "javascript",
+                        "lua",
+                        "query",
+                        "python",
+                        "ruby",
+                        "vim",
+                        "vimdoc",
+                    },
+                    sync_install = false,
+                    auto_install = true,
+                    highlight = { enable = true },
+                    indent = { enable = true },
+                })
             end
         },
         { 'othree/html5.vim', lazy = true, ft = { 'html' } },
@@ -216,108 +231,108 @@ require("config/options")
 local cmp = require'cmp'
 
 cmp.setup({
-        snippet = {
-            -- REQUIRED - you must specify a snippet engine
-            expand = function(args)
-                vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-                -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-                -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-                -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-            end,
-        },
-        window = {
-            -- completion = cmp.config.window.bordered(),
-            -- documentation = cmp.config.window.bordered(),
-        },
-        -- mapping = cmp.mapping.preset.insert({
-        --         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        --         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        --         ['<C-Space>'] = cmp.mapping.complete(),
-        --         ['<C-e>'] = cmp.mapping.abort(),
-        --         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        --          mapping = {
-        --              ...
-        --              ["<Tab>"] = cmp.mapping(function(fallback)
-        --                  -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
-        --                  if cmp.visible() then
-        --                      local entry = cmp.get_selected_entry()
-        --                      if not entry then
-        --                          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-        --                      else
-        --                          cmp.confirm()
-        --                      end
-        --                  else
-        --                      fallback()
-        --                  end
-        --              end, {"i","s","c",}),
-        --          ...
-        --      }
-        --     }),
-        mapping = {
-            ["<C-p>"] = cmp.mapping.select_prev_item(),
-            ["<C-n>"] = cmp.mapping.select_next_item(),
-            ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-            ["<C-f>"] = cmp.mapping.scroll_docs(4),
-            ["<C-Space>"] = cmp.mapping.complete(),
-            ["<C-e>"] = cmp.mapping.close(),
-            ["<CR>"] = cmp.mapping.confirm({
-                    behavior = cmp.ConfirmBehavior.Replace,
-                    select = true,
-                }),
-            ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
-            ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
-        },
-        sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                -- { name = 'vsnip' }, -- For vsnip users.
-                -- { name = 'luasnip' }, -- For luasnip users.
-                -- { name = 'ultisnips' }, -- For ultisnips users.
-                -- { name = 'snippy' }, -- For snippy users.
-                { name = 'dictionary' },
-                { name = 'omni' },
-                { name = 'spell' },
-                { name = 'path' },
-                { name = 'buffer' },
-                { name = 'copilot' },
-            }, {
-                { name = 'buffer' },
-            })
-    })
+    snippet = {
+        -- REQUIRED - you must specify a snippet engine
+        expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        end,
+    },
+    window = {
+        -- completion = cmp.config.window.bordered(),
+        -- documentation = cmp.config.window.bordered(),
+    },
+    -- mapping = cmp.mapping.preset.insert({
+    --         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    --         ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    --         ['<C-Space>'] = cmp.mapping.complete(),
+    --         ['<C-e>'] = cmp.mapping.abort(),
+    --         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    --          mapping = {
+    --              ...
+    --              ["<Tab>"] = cmp.mapping(function(fallback)
+    --                  -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+    --                  if cmp.visible() then
+    --                      local entry = cmp.get_selected_entry()
+    --                      if not entry then
+    --                          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+    --                      else
+    --                          cmp.confirm()
+    --                      end
+    --                  else
+    --                      fallback()
+    --                  end
+    --              end, {"i","s","c",}),
+    --          ...
+    --      }
+    --     }),
+    mapping = {
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.close(),
+        ["<CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        }),
+        ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
+    },
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        -- { name = 'vsnip' }, -- For vsnip users.
+        -- { name = 'luasnip' }, -- For luasnip users.
+        -- { name = 'ultisnips' }, -- For ultisnips users.
+        -- { name = 'snippy' }, -- For snippy users.
+        { name = 'copilot', },
+        { name = 'buffer' },
+        { name = 'dictionary' },
+        { name = 'omni' },
+        { name = 'spell' },
+        { name = 'path' },
+    }, {
+            { name = 'buffer' },
+        })
+})
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
-        sources = cmp.config.sources({
-                { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-            }, {
-                { name = 'buffer' },
-            })
-    })
+    sources = cmp.config.sources({
+        { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+    }, {
+            { name = 'buffer' },
+        })
+})
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-            { name = 'buffer' }
-        }
-    })
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = 'buffer' }
+    }
+})
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-                { name = 'path' }
-            }, {
-                { name = 'cmdline' }
-            })
-    })
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+            { name = 'cmdline' }
+        })
+})
 
 -- -- Set up lspconfig.
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-        automatic_installation = true,
-    })
+    automatic_installation = true,
+})
 
 local lspconfig = require('lspconfig')
 lspconfig.bashls.setup { capabilities = lsp_capabilities }
@@ -352,22 +367,22 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-        callback = function(ev)
-            -- Enable completion triggered by <c-x><c-o>
-            vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-            -- Buffer local mappings.
-            -- See `:help vim.lsp.*` for documentation on any of the below functions
-            local opts = { buffer = ev.buf }
-            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-            vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-            vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-            vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        end,
-    })
+        -- Buffer local mappings.
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+        vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    end,
+})
 
