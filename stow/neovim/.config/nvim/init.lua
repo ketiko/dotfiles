@@ -212,64 +212,6 @@ vim.cmd('source $HOME/.config/nvim/old.vim')
 
 require("config/options")
 
-
-require("mason").setup()
-require("mason-lspconfig").setup({
-        automatic_installation = true,
-    })
-
-local lspconfig = require('lspconfig')
-lspconfig.bashls.setup {}
-lspconfig.cssls.setup {}
-lspconfig.docker_compose_language_service.setup {}
-lspconfig.dockerls.setup {}
-lspconfig.gopls.setup {}
-lspconfig.graphql.setup {}
-lspconfig.html.setup {}
-lspconfig.jdtls.setup {}
-lspconfig.jsonls.setup {}
-lspconfig.lua_ls.setup {}
-lspconfig.marksman.setup {}
-lspconfig.pyright.setup {}
-lspconfig.ruby_ls.setup {}
-lspconfig.spectral.setup {}
-lspconfig.sqlls.setup {}
-lspconfig.taplo.setup {}
-lspconfig.terraformls.setup {}
-lspconfig.tflint.setup {}
-lspconfig.tsserver.setup {}
-lspconfig.vimls.setup {}
-lspconfig.yamlls.setup {}
-
--- Global mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
-
--- Use LspAttach autocommand to only map the following keys
--- after the language server attaches to the current buffer
-vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-        callback = function(ev)
-            -- Enable completion triggered by <c-x><c-o>
-            vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
-            -- Buffer local mappings.
-            -- See `:help vim.lsp.*` for documentation on any of the below functions
-            local opts = { buffer = ev.buf }
-            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-            vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-            vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-            vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        end,
-    })
-
 -- Set up nvim-cmp.
 local cmp = require'cmp'
 
@@ -370,8 +312,62 @@ cmp.setup.cmdline(':', {
     })
 
 -- -- Set up lspconfig.
--- local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
--- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
---   capabilities = capabilities
--- }
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+        automatic_installation = true,
+    })
+
+local lspconfig = require('lspconfig')
+lspconfig.bashls.setup { capabilities = lsp_capabilities }
+lspconfig.cssls.setup { capabilities = lsp_capabilities}
+lspconfig.docker_compose_language_service.setup { capabilities = lsp_capabilities }
+lspconfig.dockerls.setup { capabilities = lsp_capabilities }
+lspconfig.gopls.setup { capabilities = lsp_capabilities }
+lspconfig.graphql.setup { capabilities = lsp_capabilities }
+lspconfig.html.setup { capabilities = lsp_capabilities }
+lspconfig.jdtls.setup { capabilities = lsp_capabilities }
+lspconfig.jsonls.setup { capabilities = lsp_capabilities }
+lspconfig.lua_ls.setup { capabilities = lsp_capabilities }
+lspconfig.marksman.setup { capabilities = lsp_capabilities }
+lspconfig.pyright.setup { capabilities = lsp_capabilities }
+lspconfig.ruby_ls.setup { capabilities = lsp_capabilities }
+lspconfig.spectral.setup { capabilities = lsp_capabilities }
+lspconfig.sqlls.setup { capabilities = lsp_capabilities }
+lspconfig.taplo.setup { capabilities = lsp_capabilities }
+lspconfig.terraformls.setup { capabilities = lsp_capabilities }
+lspconfig.tflint.setup { capabilities = lsp_capabilities }
+lspconfig.tsserver.setup { capabilities = lsp_capabilities }
+lspconfig.vimls.setup { capabilities = lsp_capabilities }
+lspconfig.yamlls.setup { capabilities = lsp_capabilities }
+
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+        callback = function(ev)
+            -- Enable completion triggered by <c-x><c-o>
+            vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+            -- Buffer local mappings.
+            -- See `:help vim.lsp.*` for documentation on any of the below functions
+            local opts = { buffer = ev.buf }
+            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+            vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+            vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+            vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+        end,
+    })
+
