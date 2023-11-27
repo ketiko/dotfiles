@@ -133,3 +133,8 @@ if command -v terraform &> /dev/null; then
   tf=$(which terraform)
   complete -C "$tf" terraform
 fi
+
+if command -v op &>/dev/null; then
+  # 1password cli
+  source <(op completion bash)
+fi

@@ -352,9 +352,14 @@ fi
 # fi
 
 if [ -d "$HOME/.rover/env" ]; then
+  # apollo graphql rover
   source "$HOME/.rover/env"
 fi
 
+if command -v op &>/dev/null; then
+  # 1password cli
+  eval "$(op completion zsh)"; compdef _op op
+fi
 
 if [ -f "$HOME"/.zshrc.local ]; then
   source "$HOME"/.zshrc.local
