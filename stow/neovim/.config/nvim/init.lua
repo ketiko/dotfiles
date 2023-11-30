@@ -61,6 +61,12 @@ require("lazy").setup(
             require("neo-tree.command").execute({ toggle = true })
           end,
         },
+        {
+          "<leader>f",
+          function()
+            require("neo-tree.command").execute({ reveal_force_cwd = true })
+          end,
+        },
       },
     },
     'nvim-tree/nvim-web-devicons',
@@ -137,7 +143,9 @@ require("lazy").setup(
             mappings = {
               i = {
                 ["<esc>"] = require('telescope.actions').close,
-                ["<C-h>"] = "which_key"
+                ["<C-h>"] = "which_key",
+                ["<S-Up>"] = require('telescope.actions').cycle_history_prev,
+                ["<S-Down>"] = require('telescope.actions').cycle_history_next,
               },
             },
           },
