@@ -19,7 +19,16 @@ require("lazy").setup(
       'nvimdev/dashboard-nvim',
       event = 'VimEnter',
       config = function()
-        require('dashboard').setup({ })
+        require('dashboard').setup({
+          config = {
+            week_header = { enable = true },
+            shortcut = {
+              -- action can be a function type
+              -- { desc = "Open new buffer", group = 'DashboardFiles', key = 'n', action = 'enew' },
+              { desc = "Open new buffer", group = '@property', key = 'n', action = 'enew' },
+            },
+          }
+        })
       end,
       dependencies = { {'nvim-tree/nvim-web-devicons'}}
     },

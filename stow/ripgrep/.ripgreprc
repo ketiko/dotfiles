@@ -1,2 +1,12 @@
 --hidden
 --smart-case
+--glob=!**/.git/*
+--glob=!**/.hg/*
+--glob=!**/.idea/*
+--glob=!**/.vscode/*
+--glob=!**/build/*
+--glob=!**/dist/*
+--glob=!**/.ctags
+--glob=!**/tags
+--glob=!**/*.orig
+--glob=!**/*.DS_STORE
