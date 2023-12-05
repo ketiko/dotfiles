@@ -1,9 +1,10 @@
 # profile
-# zmodload zsh/zprof
+if [[ ${PROFILE_ZSH} == "true" ]]; then
+  zmodload zsh/zprof
+fi
 
 source ~/.zi/bin/zi.zsh
 
-zi ice wait lucid
 zi ice wait lucid
 zi light zsh-users/zsh-completions
 zi light zsh-users/zsh-history-substring-search
@@ -41,11 +42,29 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^ ' autosuggest-accept
 
+if command -v brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
+
+# See https://github.com/sorin-ionescu/prezto/blob/c0cdc12708803c4503cb1b3d7d42e5c1b8ba6e86/modules/completion/init.zsh#L53C1-L68C17
+# Load and initialize the completion system ignoring insecure directories with a
+# cache time of 20 hours, so it should almost always regenerate the first time a
+# shell is opened each day.
 autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
+_comp_path="${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
+# #q expands globs in conditional expressions
+if [[ $_comp_path(#qNmh-20) ]]; then
+  # -C (skip function check) implies -i (skip security check).
+  compinit -C -d "$_comp_path"
+else
+  mkdir -p "$_comp_path:h"
+  compinit -i -d "$_comp_path"
+  # Keep $_comp_path younger than cache time even if it isn't regenerated.
+  touch "$_comp_path"
+fi
+unset _comp_path
+
 autoload -U +X bashcompinit && bashcompinit
 zmodload -i zsh/complist
 
@@ -324,27 +343,27 @@ function krestart() {
 
 function git_clone_org() {
   curl -H "Authorization: token $1" -s "https://api.github.com/orgs/$2/repos?per_page=1000" \
-      | sed -n '/"ssh_url"/s/.*ssh_url": "\([^"]*\).*/\1/p' \
-      | sort -u \
-      | xargs -n1 git clone;
-}
+    | sed -n '/"ssh_url"/s/.*ssh_url": "\([^"]*\).*/\1/p' \
+    | sort -u \
+    | xargs -n1 git clone;
+  }
 
-if command -v vault &>/dev/null; then
-  complete -o nospace -C /opt/homebrew/bin/vault vault
-fi
-
-if [ -d "$HOME/.asdf" ]; then
-  source "$HOME"/.asdf/asdf.sh
-  source $HOME/.asdf/completions/asdf.bash
-
-  if [ -d "$HOME/.asdf/plugins/java" ]; then
-    source $HOME/.asdf/plugins/java/set-java-home.zsh
+  if command -v vault &>/dev/null; then
+    complete -o nospace -C /opt/homebrew/bin/vault vault
   fi
 
-  if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
-    source $HOME/.asdf/plugins/golang/set-env.zsh
+  if [ -d "$HOME/.asdf" ]; then
+    source "$HOME"/.asdf/asdf.sh
+    source $HOME/.asdf/completions/asdf.bash
+
+    if [ -d "$HOME/.asdf/plugins/java" ]; then
+      source $HOME/.asdf/plugins/java/set-java-home.zsh
+    fi
+
+    if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
+      source $HOME/.asdf/plugins/golang/set-env.zsh
+    fi
   fi
-fi
 
 # Slow
 # if command -v minikube &>/dev/null; then
@@ -369,4 +388,6 @@ fi
 zi light zsh-users/zsh-syntax-highlighting
 
 # end profile
-# zprof
+if [[ ${PROFILE_ZSH} == "true" ]]; then
+  zprof
+fi
