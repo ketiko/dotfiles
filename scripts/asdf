@@ -11,8 +11,8 @@ if [ ! -d ~/.asdf ]; then
 
 fi
 
-. ~/.asdf/asdf.sh
-. ~/.asdf/completions/asdf.bash
+source "$HOME/.asdf/asdf.sh"
+source "$HOME/.asdf/completions/asdf.bash"
 
 test -d "$HOME/.asdf/plugins/golang" || asdf plugin add golang https://github.com/kennyp/asdf-golang.git
 test -d "$HOME/.asdf/plugins/helm" || asdf plugin add helm https://github.com/Antiarchitect/asdf-helm.git
