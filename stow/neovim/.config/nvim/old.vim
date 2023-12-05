@@ -130,10 +130,13 @@ set t_Co=256
 if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 end
-colorscheme palenight
-" Italics for my favorite color scheme
-let g:palenight_terminal_italics=1
+" colorscheme palenight
+" " Italics for my favorite color scheme
+" let g:palenight_terminal_italics=1
 
+
+" colorscheme catppuccin-mocha " catppuccin catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+colorscheme tokyonight-storm
 
 " vim-rails
 let g:rails_projections = {
@@ -282,7 +285,7 @@ let g:instant_markdown_autostart = 1
 
 " Airline Settings
 " let g:airline_theme='solarized'
-let g:airline_theme = "palenight"
+" let g:airline_theme = "palenight"
 
 " vim-go
 let g:go_fmt_command = "goimports"

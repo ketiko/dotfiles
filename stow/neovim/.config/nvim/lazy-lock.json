@@ -65,6 +65,7 @@
   "telescope.nvim": { "branch": "master", "commit": "3f5f165447d797576206e3b9bd555ea8db85b6f2" },
   "textobj-word-column.vim": { "branch": "master", "commit": "cb40e1459817a7fa23741ff6df05e4481bde5a33" },
   "tmuxline.vim": { "branch": "master", "commit": "4119c553923212cc67f4e135e6f946dc3ec0a4d6" },
+  "tokyonight.nvim": { "branch": "main", "commit": "f247ee700b569ed43f39320413a13ba9b0aef0db" },
   "tsuquyomi": { "branch": "master", "commit": "e1afca562d46907bf63270157c88b7ec8f66e46b" },
   "typescript-vim": { "branch": "master", "commit": "eafdcf5e9ee73b43d92372d69dd84458bf98c5e3" },
   "undotree": { "branch": "master", "commit": "36ff7abb6b60980338344982ad4cdf03f7961ecd" },

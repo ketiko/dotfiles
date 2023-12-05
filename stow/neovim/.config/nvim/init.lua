@@ -88,8 +88,8 @@ require("lazy").setup(
     'corntrace/bufexplorer',
     'dbakker/vim-projectroot',
     'drewtempelmeyer/palenight.vim',
-    'hrsh7th/vim-vsnip',
-    'hrsh7th/vim-vsnip-integ',
+    -- 'hrsh7th/vim-vsnip',
+    -- 'hrsh7th/vim-vsnip-integ',
     'editorconfig/editorconfig-vim',
     'edkolev/tmuxline.vim',
     'godlygeek/tabular',
@@ -106,6 +106,12 @@ require("lazy").setup(
     'mhinz/vim-hugefile',
     'michaeljsmith/vim-indent-object',
     'jay-babu/mason-null-ls.nvim',
+    {
+      "folke/tokyonight.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = {},
+    },
     {
       "zbirenbaum/copilot-cmp",
       config = function ()
@@ -315,15 +321,15 @@ require("config/options")
 local cmp = require'cmp'
 
 cmp.setup({
-  snippet = {
-    -- REQUIRED - you must specify a snippet engine
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-    end,
-  },
+  -- snippet = {
+  --   -- REQUIRED - you must specify a snippet engine
+  --   expand = function(args)
+  --     vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+  --     -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+  --     -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+  --     -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+  --   end,
+  -- },
   window = {
     -- completion = cmp.config.window.bordered(),
     -- documentation = cmp.config.window.bordered(),
@@ -364,8 +370,8 @@ cmp.setup({
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+      -- elseif luasnip.expand_or_jumpable() then
+      --   luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -373,8 +379,8 @@ cmp.setup({
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      -- elseif luasnip.jumpable(-1) then
+      --   luasnip.jump(-1)
       else
         fallback()
       end
@@ -388,7 +394,7 @@ cmp.setup({
     { name = 'omni' },
     { name = 'spell' },
     { name = 'path' },
-    { name = 'vsnip' }, -- For vsnip users.
+    -- { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
