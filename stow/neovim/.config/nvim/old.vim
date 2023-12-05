@@ -2,8 +2,6 @@ set viminfo+=n$HOME/.config/nvim/ninfo
 set tags+=./tags,./ruby-tags,./.git/tags,~/.rbenv/tags;
 set backupdir=$HOME/.config/vim/backup//
 
-source $HOME/.config/nvim/bundles.vim
-
 set runtimepath+=~/.fzf
 
 syntax enable
