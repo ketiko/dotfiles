@@ -19,6 +19,7 @@ if [ -z "$ACTION" ]; then
   . "$SCRIPTPATH"/scripts/vim
   . "$SCRIPTPATH"/scripts/neovim
   . "$SCRIPTPATH"/scripts/lunarvim
+  . "$SCRIPTPATH"/scripts/rvim
   . "$SCRIPTPATH"/scripts/tmux
   . "$SCRIPTPATH"/scripts/iterm2
   mkdir -p ~/src

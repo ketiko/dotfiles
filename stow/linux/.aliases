@@ -135,6 +135,7 @@ fi
 
 alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 alias nvchad="NVIM_APPNAME=nvchad nvim"
+alias rvim="NVIM_APPNAME=rvim nvim"
 
 if [ -f "$HOME/.aliases.local" ]; then
   source "$HOME/.aliases.local"
