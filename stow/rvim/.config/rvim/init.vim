@@ -1,7 +1,14 @@
+set nocompatible " vim > vi mode.
+" set shell=bash\ --login
 set viminfo+=n$HOME/.config/rvim/ninfo
 set tags+=./tags,./ruby-tags,./.git/tags,~/.rbenv/tags;
 set backupdir=$HOME/.config/rvim/backup//
 
+set encoding=UTF-8
+
+" Add let g:ale_disable_lsp = 1 to your vimrc file, before plugins are loaded.
+" See https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
+let g:ale_disable_lsp = 1
 source $HOME/.config/rvim/bundles.vim
 
 set runtimepath+=~/.fzf
@@ -9,18 +16,74 @@ set runtimepath+=~/.fzf
 syntax enable
 syntax sync fromstart
 
-set backspace=2         " makes backspace work normally
-
 " BASIC EDITING CONFIGURATION
+set directory=$HOME/.vim/swap//
+set autoindent          " Copy indent from current line when starting a new line
+set backspace=2         " makes backspace work normally
+set cmdheight=2         " Cmd bar 2 rows high
+set complete=.,w,b,u,t
+set completeopt=menu,preview
+set cursorline            " highlight current line - slow
+set expandtab           " Use spaces not tabs
+set exrc                " allow local .vimrc files per project
+set hidden              " allow unsaved background buffers and remember marks/undo for them
+set history=10000       " remember more commands and search history
+set hlsearch              " Highlight searches and search results
+set ignorecase smartcase infercase  " make searches case-sensitive only if they contain upper-case characters
+set incsearch             " Show best match while typing a search
+set laststatus=2          " Always show the status line
+set lazyredraw
+set linebreak           " Don't wrap text in the middle of a word
+set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set matchtime=2         " for .2 seconds
+set nobackup
+set noerrorbells        " No noise
+set nojoinspaces        " Use only 1 space after "." when joining lines instead of 2
+set nostartofline       " Don't reset cursor to start of line when moving around
+set novisualbell        " No blinking
+set nowrap
+set nowritebackup
+set number              " Show line numbers
+set numberwidth=1       " Try to use only 1 col when possible
+set report=0            " : commands always print changed line count
+set ruler               " Display position in the file
+set scrolloff=5         " Keep 5 lines (top/bottom) for scope
+set shiftwidth=2        " Indent level is 2 spaces wide
+set shortmess=atIF       " The "Press ENTER or type command to continue" prompt is jarring and usually unnecessary.
+set showcmd             " Show partial command in the last line of the screen
+set showmatch            " Show matched paren when balanced
+set showtabline=2
+set smartindent
+set smarttab            " Insert blanks properly at beginning of a line
+set softtabstop=2       " <BS> over an autoindent deletes shiftwidth worth of spaces
+set splitbelow
+set splitright
+set noswapfile
+set switchbuf=""        " do not move focus/cursor to where the buffer is already open
+set synmaxcol=1200      " Syntax coloring lines that are too long just slows down the world
+set t_ti= t_te=         " Prevent Vim from clobbering the scrollback buffer
+set tabstop=2           " Use 2 spaces for <tab>
+set tagbsearch          " use binary searching for tags
+set ttyfast
+" set ttyscroll=3
 if v:version > 702
   set undofile
-  set undodir=$HOME/.config/rvim/undo
+  set undodir=$HOME/.config/rvim/undo//
   set undoreload=10000
 endif
+set undolevels=1000
 set vb t_vb=            " No bells. Period.
 set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip,*/log/*
+set wildmenu                    " make tab completion for files/buffers act like bash
 set wildmode=longest,list,full  " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
+set autoread " If a file is changed outside of vim, automatically reload it without asking
+set signcolumn=yes " Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved. for coc
+set maxmempattern=5000
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
 
 let mapleader = " "     " change <leader> from \ to <space>
 
@@ -115,6 +178,7 @@ autocmd BufReadPost *
       \ endif
 
 " Spelling
+set spell spelllang=en_us
 highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
 highlight clear SpellCap
@@ -129,6 +193,7 @@ if (has("termguicolors"))
 end
 set t_Co=256
 
+set background=dark
 if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 end
@@ -136,6 +201,7 @@ colorscheme palenight
 " Italics for my favorite color scheme
 let g:palenight_terminal_italics=1
 
+set guifont=DroidSansMono\ Nerd\ Font\ 11
 
 " vim-rails
 let g:rails_projections = {
@@ -203,9 +269,33 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
+" NERD Tree Settings
+nmap <leader>f :NERDTreeFind<CR>
+nmap <leader>n :NERDTreeToggle %:p:h<CR>
+let g:NERDTreeIgnore = ['^__pycache__$[[dir]]']
+
 " ListToggle
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
+
+" Syntastic Settings
+
+let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+" let g:syntastic_json_checkers=['jsonlint']
+let g:syntastic_html_tidy_exec = 'tidy5'
+let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'reek']
+let g:syntastic_yaml_checkers = ['yamllint']
+let g:syntastic_python_checkers = ['flake8']
+
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_auto_jump = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_mode_map = { "mode": "passive" }
+
+nmap <leader>sc :SyntasticToggleMode<CR>
 
 " Tabgar Settings
 map <leader>tb :TagbarToggle<CR>
@@ -266,6 +356,167 @@ let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
 let g:session_autosave = 'no'
 
 
+      " \ 'coc-metals',
+let g:coc_global_extensions = [
+      \ 'coc-actions',
+      \ 'coc-css',
+      \ 'coc-dictionary',
+      \ 'coc-docker',
+      \ 'coc-emoji',
+      \ 'coc-go',
+      \ 'coc-gocode',
+      \ 'coc-graphql',
+      \ 'coc-highlight',
+      \ 'coc-html',
+      \ 'coc-java',
+      \ 'coc-java-dependency',
+      \ 'coc-jedi',
+      \ 'coc-json',
+      \ 'coc-lists',
+      \ 'coc-markdownlint',
+      \ 'coc-omni',
+      \ 'coc-python',
+      \ 'coc-sh',
+      \ 'coc-snippets',
+      \ 'coc-solargraph',
+      \ 'coc-sql',
+      \ 'coc-syntax',
+      \ 'coc-tag',
+      \ 'coc-toml',
+      \ 'coc-tsserver',
+      \ 'coc-word',
+      \ 'coc-yaml',
+      \ 'coc-yank',
+      \ ]
+call coc#config('solargraph.shell', $SHELL)
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-@> coc#refresh()
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Applying code actions to the selected code block
+" Example: `<leader>aap` for current paragraph
+nmap <leader>ca  <Plug>(coc-codeaction-cursor)
+xmap <leader>cs  <Plug>(coc-codeaction-selected)
+nmap <leader>cs  <Plug>(coc-codeaction-selected)
+
+nmap <leader>fa  :CocFzfList actions<cr>
+xmap <leader>fa  :CocFzfList actions<cr>
+" Remap keys for apply code actions affect whole buffer
+nmap <leader>as  <Plug>(coc-codeaction-source)
+" Apply the most preferred quickfix action to fix diagnostic on the current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Remap keys for applying refactor code actions
+nmap <silent> <leader>rf <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+
+" Run the Code Lens action on the current line
+nmap <leader>wl  <Plug>(coc-codelens-action)
+
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" https://github.com/neoclide/coc.nvim/issues/3473
+" This is how you correctly patch a colorscheme from your .vimrc:
+autocmd VimEnter,ColorScheme * hi! link CocFloating CocHintFloat
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocActionAsync('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>ld  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>le  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>lc  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>lo  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>ls  :<C-u>CocList -I symbols<cr>
+
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 " Run gofmt on save
@@ -278,6 +529,13 @@ let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'reek']
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=Yellow
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=Black
+
+" Folding
+set foldmethod=syntax "even with nofoldenable foldmethod=syntax causes slow ins-completions"
+set foldlevel=1
+set foldlevelstart=99
+set foldnestmax=10
+set nofoldenable
 
 " vim-instant-markdown
 let g:instant_markdown_autostart = 1
@@ -350,9 +608,29 @@ let g:gutentags_ctags_exclude = [
 
 let g:ruby_path = []
 
+" Ale
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_virtualtext_cursor = 'disabled'
+let g:ale_completion_enabled = 1
+let g:ale_fix_on_save = 0
+let g:ale_fixers = {
+      \   'ruby': ['rubocop'],
+      \   'javascript': ['prettier', 'eslint'],
+      \   'typescript': ['prettier', 'eslint'],
+      \   'python': ['autoflake', 'autoimport', 'flake8', 'pylint'],
+      \}
 
 " vim-stay
 set viewoptions=cursor,folds,slash,unix
+
+" javascript-libraries-syntax
+let g:used_javascript_libs = 'jquery,angularjs,react'
+
+let g:javascript_plugin_jsdoc = 1
+let g:vim_jsx_pretty_highlight_close_tag = 1
 
 " camelCaseMotion
 call camelcasemotion#CreateMotionMappings('<leader>')
