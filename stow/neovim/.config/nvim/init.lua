@@ -144,46 +144,47 @@ require("lazy").setup(
       'scalameta/nvim-metals',
       dependencies = { "nvim-lua/plenary.nvim" },
       ft = { "scala", "sbt", "java" },
-opts = function()
-      local metals_config = require("metals").bare_config()
+      opts = function()
+        local metals_config = require("metals").bare_config()
 
-      -- Example of settings
-      metals_config.settings = {
-        showImplicitArguments = true,
-        excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
-      }
+        -- Example of settings
+        metals_config.settings = {
+          showImplicitArguments = true,
+          excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
+        }
 
-      -- *READ THIS*
-      -- I *highly* recommend setting statusBarProvider to true, however if you do,
-      -- you *have* to have a setting to display this in your statusline or else
-      -- you'll not see any messages from metals. There is more info in the help
-      -- docs about this
-      -- metals_config.init_options.statusBarProvider = "on"
+        -- *READ THIS*
+        -- I *highly* recommend setting statusBarProvider to true, however if you do,
+        -- you *have* to have a setting to display this in your statusline or else
+        -- you'll not see any messages from metals. There is more info in the help
+        -- docs about this
+        -- metals_config.init_options.statusBarProvider = "on"
 
-      -- Example if you are using cmp how to make sure the correct capabilities for snippets are set
-      metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+        -- Example if you are using cmp how to make sure the correct capabilities for snippets are set
+        metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      metals_config.on_attach = function(client, bufnr)
-        require("metals").setup_dap()
+        metals_config.on_attach = function(client, bufnr)
+          require("metals").setup_dap()
         end
-      return metals_config
-    end,
-    config = function(self, metals_config)
-      local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = self.ft,
-        callback = function()
-          require("metals").initialize_or_attach(metals_config)
-        end,
-        group = nvim_metals_group,
-      })
-    end
+        return metals_config
+      end,
+      config = function(self, metals_config)
+        local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+        vim.api.nvim_create_autocmd("FileType", {
+          pattern = self.ft,
+          callback = function()
+            require("metals").initialize_or_attach(metals_config)
+          end,
+          group = nvim_metals_group,
+        })
+      end
     },
     'nvim-lua/plenary.nvim',
     'nvim-lua/popup.nvim',
     'nvim-telescope/telescope-media-files.nvim',
     'uga-rosa/cmp-dictionary',
     'williamboman/mason-lspconfig.nvim',
+    'b0o/schemastore.nvim',
     'williamboman/mason.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
     {
@@ -493,7 +494,6 @@ lspconfig.gopls.setup { capabilities = lsp_capabilities }
 lspconfig.graphql.setup { capabilities = lsp_capabilities }
 lspconfig.html.setup { capabilities = lsp_capabilities }
 lspconfig.jdtls.setup { capabilities = lsp_capabilities }
-lspconfig.jsonls.setup { capabilities = lsp_capabilities }
 lspconfig.lua_ls.setup { capabilities = lsp_capabilities }
 lspconfig.marksman.setup { capabilities = lsp_capabilities }
 lspconfig.pyright.setup { capabilities = lsp_capabilities }
@@ -505,7 +505,30 @@ lspconfig.terraformls.setup { capabilities = lsp_capabilities }
 lspconfig.tflint.setup { capabilities = lsp_capabilities }
 lspconfig.tsserver.setup { capabilities = lsp_capabilities }
 lspconfig.vimls.setup { capabilities = lsp_capabilities }
-lspconfig.yamlls.setup { capabilities = lsp_capabilities }
+lspconfig.yamlls.setup {
+  capabilities = lsp_capabilities,
+  settings = {
+    yaml = {
+      schemaStore = {
+        -- You must disable built-in schemaStore support if you want to use
+        -- this plugin and its advanced options like `ignore`.
+        enable = false,
+        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+        url = "",
+      },
+      schemas = require('schemastore').yaml.schemas(),
+    },
+  },
+}
+lspconfig.jsonls.setup {
+  capabilities = lsp_capabilities,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
+    },
+  },
+}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
