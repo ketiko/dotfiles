@@ -40,3 +40,6 @@ build/
 
 .env
 .env*
+
+# scala
+.bsp
