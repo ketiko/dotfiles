@@ -110,6 +110,8 @@ export FZF_DEFAULT_COMMAND='ag --hidden --smart-case --ignore .git --ignore .nod
 
 export GPG_TTY=$(tty)
 
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 lombok_jar="$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar"
 if [ -f $lombok_jar ]; then
   export JDTLS_JVM_ARGS="-javaagent:$lombok_jar"

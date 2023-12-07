@@ -18,9 +18,7 @@ test -d "$HOME/.asdf/plugins/golang" || asdf plugin add golang https://github.co
 test -d "$HOME/.asdf/plugins/helm" || asdf plugin add helm https://github.com/Antiarchitect/asdf-helm.git
 test -d "$HOME/.asdf/plugins/java" || asdf plugin add java https://github.com/halcyon/asdf-java.git
 test -d "$HOME/.asdf/plugins/krew" || asdf plugin add krew https://github.com/bjw-s/asdf-krew.git
-test -d "$HOME/.asdf/plugins/kubecolor" || asdf plugin add kubecolor https://github.com/dex4er/asdf-kubecolor.git
 test -d "$HOME/.asdf/plugins/kubectl" || asdf plugin add kubectl https://github.com/asdf-community/asdf-kubectl.git
-test -d "$HOME/.asdf/plugins/kubectl" || asdf plugin add kubectx https://gitlab.com/wt0f/asdf-kubectx.git
 test -d "$HOME/.asdf/plugins/kustomize" || asdf plugin add kustomize https://github.com/Banno/asdf-kustomize.git
 test -d "$HOME/.asdf/plugins/minikube" || asdf plugin add minikube https://github.com/alvarobp/asdf-minikube.git
 test -d "$HOME/.asdf/plugins/nodejs" || asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
