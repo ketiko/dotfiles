@@ -1,23 +1,30 @@
 #!/bin/bash
 
-SCRIPTPATH=$(pwd -P)
-echo "Changing directory to $SCRIPTPATH"
-cd "$SCRIPTPATH" || return
+# Replace any backups made during installation
 
-for linkable in $(find "$SCRIPTPATH" -name "*.symlink")
+./scripts/banner "Starting Uninstall"
+
+# for backup in $(find "$HOME" -name "*.backup")
+# do
+#   file=$(basename "$backup" .backup)
+#   target="$HOME/$file"
+#   echo "moving $backup to $file"
+#   mv -v "$target.backup" "$target"
+# done
+
+
+current_script="${BASH_SOURCE}[0]"
+current_dir=$(dirname "$current_script")
+root_dir=$(dirname "$current_dir")
+stow_dir="$root_dir/stow"
+packages=($( ls -A  -1 $stow_dir))
+
+for package in "${packages[@]}"
 do
-  file=$(basename "$linkable" .symlink)
-  target="$HOME/.$file"
-
-  # Remove all symlinks created during installation
-  if [ -L "$target" ]; then
-    rm -v "$target"
-  fi
-
-  # Replace any backups made during installation
-  if [ -e "$target.backup" ]; then
-    echo "moving $target.backup to $file"
-    mv -v "$target.backup" "$target"
-  fi
-
+  echo "unstowing $package"
+  stow -d "$stow_dir" -t "$HOME" -D "$package"
 done
+
+# rm "$HOME/.zprofile"
+
+./scripts/banner "Uninstall finished"
