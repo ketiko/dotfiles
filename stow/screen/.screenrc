@@ -1,8 +1,0 @@
-startup_message off
-term screen-256color
-vbell off
-shelltitle "$ |bash"
-altscreen on
-hardstatus on
-hardstatus alwayslastline
-caption always

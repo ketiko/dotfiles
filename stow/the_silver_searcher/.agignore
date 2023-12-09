@@ -1,8 +1,0 @@
-tags
-.sass-cache
-*.sw[a-zA-Z]
-*~
-.DS_Store
-Godeps
-node_modules
-.git

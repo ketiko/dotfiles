@@ -11,7 +11,7 @@ ARGS=$2
 if [ -z "$ACTION" ]; then
   . "$SCRIPTPATH"/scripts/packages
   . "$SCRIPTPATH"/scripts/chezmoi
-  . "$SCRIPTPATH"/scripts/dotfiles O
+  # . "$SCRIPTPATH"/scripts/dotfiles O
   . "$SCRIPTPATH"/scripts/solarized
   . "$SCRIPTPATH"/scripts/asdf
   . "$SCRIPTPATH"/scripts/zsh
