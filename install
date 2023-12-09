@@ -9,7 +9,6 @@ ARGS=$2
 ./scripts/banner "Starting Install"
 
 if [ -z "$ACTION" ]; then
-  # . "$SCRIPTPATH"/scripts/packages
   . "$SCRIPTPATH"/scripts/chezmoi
   # . "$SCRIPTPATH"/scripts/solarized
   # . "$SCRIPTPATH"/scripts/asdf
