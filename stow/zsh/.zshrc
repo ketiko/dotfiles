@@ -27,6 +27,8 @@ zi light MenkeTechnologies/zsh-more-completions
 zi ice wait lucid
 zi snippet OMZP::git
 zi ice wait lucid
+zi snippet OMZP::terraform
+zi ice wait lucid
 zi snippet OMZP::docker-compose
 # zi ice wait lucid
 # zi snippet OMZP::docker
@@ -139,6 +141,10 @@ prompt_pygmalion_precmd(){
 
   if command -v aws_prompt_info &>/dev/null; then
     PROMPT="$PROMPT$(aws_prompt_info)"
+  fi
+
+  if command -v tf_prompt_info &>/dev/null; then
+    PROMPT="$PROMPT$(tf_prompt_info)"
   fi
 
   PROMPT="$PROMPT$nl$post_prompt"
