@@ -1,0 +1,128 @@
+[help]
+  autocorrect = 0
+[core]
+  editor = nvim
+  excludesfile = ~/.gitignore
+  autocrlf = input
+  pager = diff-so-fancy | less --tabs=4 -RFX
+  attributesfile = ~/.gitattributes
+  ignorecase = true
+[color]
+  pager = true
+  status = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  ui = true
+[push]
+  default = current
+[branch]
+  autosetuprebase = local
+[clean]
+  requireForce = false
+[log]
+  abbrevCommit = true
+[rerere]
+  enabled = true
+[alias]
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --relative-date --decorate
+  lgf = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd)%Creset %an' --abbrev-commit --decorate
+  lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --relative-date --decorate --all
+  lgc = shortlog --summary --numbered
+  st = status -sb
+  sh = stash
+  shl = stash list
+  shc = stash clear
+  shs = stash save -u
+  shp = stash pop
+  ci = commit
+  cia = commit -a
+  cm = commit -m
+  cma = commit -a -m
+  br = branch
+  ba = branch -a
+  bd = branch -d
+  bm = branch -m
+  co = checkout
+  cb = checkout -b
+  chp = cherry-pick
+  df = diff
+  dt = difftool
+  da = difftool --dir-diff --no-symlinks
+  dac = difftool --dir-diff --cached --no-symlinks
+  di = diff --staged
+  ds = diff --stat
+  dsc = diff --stat --cached
+  dc = diff --cached
+  dtc = difftool --cached
+  ca = commit --amend
+  a = add
+  aa = add --all
+  au = add -u
+  aiw = !git diff -w --no-color | git apply --cached --ignore-whitespace
+  mg = merge
+  mt = mergetool
+  rb = rebase
+  rbc = rebase --continue
+  rba = rebase --abort
+  rbi = rebase --interactive
+  rbs = rebase --skip
+  rbm = "!sh -c 'git fa && git rb origin/main'"
+  ma = merge --abort
+  ft = fetch --prune --tags
+  fa = fetch --prune --all --tags
+  ff = merge --ff-only
+  pr = pull-request
+  ps = push
+  pu = push -u
+  pl = pull --rebase
+  new = log origin/master.. --reverse --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --relative-date --decorate
+[diff]
+  tool = beyondcompare
+  renames = copies
+  renameLimit = 667
+[difftool]
+  prompt = false
+[difftool "beyondcompare"]
+  cmd = bcomp $LOCAL $REMOTE -lefttitle='Old' -righttitle='New'
+  trustExitCode = true
+[difftool "icdiff"]
+  cmd = icdiff $LOCAL $REMOTE
+  trustExitCode = true
+[merge]
+  tool = beyondcompare
+[mergetool]
+  prompt = false
+  keepBackup = false
+[mergetool "beyondcompare"]
+  cmd = bcomp -automerge -iu -reviewconflicts -lefttitle='Local Changes' -righttitle='Remote Changes' -centertitle='Committed' $LOCAL $REMOTE $BASE $MERGED
+  trustExitCode = true
+[include]
+  path = ~/.gitconfig.local
+[init]
+  templatedir = ~/.git_template
+  defaultBranch = main
+[diff "image"]
+  binary = true
+  command = ~/bin/spaceman-diff
+[diff "zip"]
+  binary = true
+  textconv = unzip -c -a
+[diff "pdf"]
+  binary = true
+  command = diff-pdf $LOCAL $REMOTE
+[diff-so-fancy]
+  first-run = false
+[icdiff]
+  options = --highlight --line-numbers
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[pull]
+  rebase = true
+[rebase]
+  autoStash = true
+[commit]
+  gpgsign = true

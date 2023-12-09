@@ -1,0 +1,45 @@
+tags
+.sass-cache
+*.sw[a-zA-Z]
+*~
+*.DS_Store
+.overcommit.yml
+tags.lock
+tags.temp
+.ignore
+*.orig
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+
+.hg
+.tool-versions
+
+.env
+.env*
+
+# scala
+.bsp

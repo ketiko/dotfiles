@@ -1,0 +1,5 @@
+#!/bin/env bash
+
+if command -v xcape &> /dev/null; then
+  xcape &
+fi

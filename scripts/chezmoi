@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -e
+
+./scripts/banner "Processing chezmoi"
+
+if [ ! -f $HOME/.local/bin/chezmoi ]; then
+  sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin
+fi
+
+current_script="${BASH_SOURCE}[0]"
+current_dir=$(dirname "$current_script")
+root_dir=$(dirname "$current_dir")
+
+
+~/.local/bin/chezmoi init -S "$root_dir/home" --apply
