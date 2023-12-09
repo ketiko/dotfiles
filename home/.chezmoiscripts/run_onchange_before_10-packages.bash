@@ -2,7 +2,7 @@
 
 set -e
 
-./scripts/banner "Processing packages"
+echo -e "\033[0;32m>>>>> Installing packages <<<<<\033[0m"
 
 please=
 if [[ $(uname) != Darwin ]]; then

@@ -9,22 +9,20 @@ ARGS=$2
 ./scripts/banner "Starting Install"
 
 if [ -z "$ACTION" ]; then
-  . "$SCRIPTPATH"/scripts/packages
+  # . "$SCRIPTPATH"/scripts/packages
   . "$SCRIPTPATH"/scripts/chezmoi
-  # . "$SCRIPTPATH"/scripts/dotfiles O
-  . "$SCRIPTPATH"/scripts/solarized
-  . "$SCRIPTPATH"/scripts/asdf
-  . "$SCRIPTPATH"/scripts/zsh
-  . "$SCRIPTPATH"/scripts/vim-node-modules
-  . "$SCRIPTPATH"/scripts/vim-python-deps
-  . "$SCRIPTPATH"/scripts/vim
-  . "$SCRIPTPATH"/scripts/neovim
-  . "$SCRIPTPATH"/scripts/lunarvim
-  . "$SCRIPTPATH"/scripts/rvim
-  . "$SCRIPTPATH"/scripts/tmux
-  . "$SCRIPTPATH"/scripts/iterm2
-  mkdir -p ~/src
-  . "$SCRIPTPATH"/scripts/git ~/src
+  # . "$SCRIPTPATH"/scripts/solarized
+  # . "$SCRIPTPATH"/scripts/asdf
+  # . "$SCRIPTPATH"/scripts/vim-node-modules
+  # . "$SCRIPTPATH"/scripts/vim-python-deps
+  # . "$SCRIPTPATH"/scripts/vim
+  # . "$SCRIPTPATH"/scripts/neovim
+  # . "$SCRIPTPATH"/scripts/lunarvim
+  # . "$SCRIPTPATH"/scripts/rvim
+  # . "$SCRIPTPATH"/scripts/tmux
+  # . "$SCRIPTPATH"/scripts/iterm2
+  # mkdir -p ~/src
+  # . "$SCRIPTPATH"/scripts/git ~/src
 else
   . "$SCRIPTPATH"/scripts/"$ACTION" $ARGS
 fi

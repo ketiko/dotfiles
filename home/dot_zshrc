@@ -3,6 +3,12 @@ if [[ ${PROFILE_ZSH} == "true" ]]; then
   zmodload zsh/zprof
 fi
 
+if [ ! -d ~/.zi ]; then
+  echo 'Installing zi'
+  git clone https://github.com/z-shell/zi.git ~/.zi/bin
+  mkdir -p ~/.cache/zi/completions
+fi
+
 source ~/.zi/bin/zi.zsh
 
 zi ice wait lucid
