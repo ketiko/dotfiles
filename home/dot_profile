@@ -84,6 +84,10 @@ if [ -d "$HOME/.rd/bin" ]; then
   export PATH="$HOME/.rd/bin:$PATH"
 fi
 
+if command -v cargo > /dev/null; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 export COLORTERM=truecolor
 export CLICOLOR=1
 
