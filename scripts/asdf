@@ -14,6 +14,8 @@ fi
 source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
 
+echo -e "\033[0;32m>>>>> Installing asdf plugins <<<<<\033[0m"
+
 test -d "$HOME/.asdf/plugins/golang" || asdf plugin add golang https://github.com/kennyp/asdf-golang.git
 test -d "$HOME/.asdf/plugins/helm" || asdf plugin add helm https://github.com/Antiarchitect/asdf-helm.git
 test -d "$HOME/.asdf/plugins/java" || asdf plugin add java https://github.com/halcyon/asdf-java.git
@@ -31,8 +33,10 @@ test -d "$HOME/.asdf/plugins/rust" || asdf plugin-add rust https://github.com/as
 
 
 set +e # allow failures when installing the latest plugsin
+echo -e "\033[0;32m>>>>> Installing latest versions of asdf plugins <<<<<\033[0m"
+
 for plugin in $(asdf plugin list); do
-  echo -e "\033[0;32m>>>>> Installing asdf plugin $plugin <<<<<\033[0m"
+  echo -e "\033[0;32m>>>>> Installing latest version of asdf plugin $plugin <<<<<\033[0m"
 
   if [ "$plugin" == "java" ]; then
     # java doesn't have a latest
