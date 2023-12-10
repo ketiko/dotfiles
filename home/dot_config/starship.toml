@@ -1,5 +1,5 @@
-add_newline = false
+format = '$all'
 
 [directory]
-truncation_length = 100
+truncation_length = 10
 truncate_to_repo = false
