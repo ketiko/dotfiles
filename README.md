@@ -11,6 +11,5 @@ cd ~/.dotfiles && \
 ## Uninstall
 
 ```terminal
-cd ~/.dotfiles && \
-./uninstall
+rm -rf ~/.dotfiles
 ```
