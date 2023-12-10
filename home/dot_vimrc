@@ -7,11 +7,12 @@ set backupdir=$HOME/.vim/backup//
 
 set encoding=UTF-8
 
+source $HOME/.vimrc.bundles
+
 " Add let g:ale_disable_lsp = 1 to your vimrc file, before plugins are loaded.
 " See https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
 let g:ale_disable_lsp = 1
 
-source $HOME/.vimrc.bundles
 
 set runtimepath+=~/.fzf
 
@@ -365,7 +366,6 @@ let g:session_autosave = 'no'
 
       " \ 'coc-metals',
 let g:coc_global_extensions = [
-      \ 'coc-actions',
       \ 'coc-css',
       \ 'coc-dictionary',
       \ 'coc-docker',
@@ -445,11 +445,6 @@ xmap <leader>fa  :CocFzfList actions<cr>
 nmap <leader>as  <Plug>(coc-codeaction-source)
 " Apply the most preferred quickfix action to fix diagnostic on the current line
 nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Remap keys for applying refactor code actions
-nmap <silent> <leader>rf <Plug>(coc-codeaction-refactor)
-xmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
-nmap <silent> <leader>rs  <Plug>(coc-codeaction-refactor-selected)
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)

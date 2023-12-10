@@ -74,6 +74,10 @@ elif command -v fasd > /dev/null; then
   fi
 fi
 
+if command -v chezmoi > /dev/null; then
+  alias cm='chezmoi'
+fi
+
 if command -v docker > /dev/null; then
   alias dk='docker'
 fi
