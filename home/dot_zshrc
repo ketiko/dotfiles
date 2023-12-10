@@ -13,12 +13,9 @@ source ~/.zi/bin/zi.zsh
 
 zi wait pack atload=+"zicompinit_fast; zicdreplay" for system-completions
 
-zi ice wait lucid
-zi light z-shell/zzcomplete
-
-zi light z-shell/F-Sy-H
-zi light z-shell/H-S-MW
-zi light z-shell/z-a-eval
+# zi light z-shell/F-Sy-H
+# zi light z-shell/H-S-MW
+# zi light z-shell/z-a-eval
 
 zi ice wait lucid
 zi light zsh-users/zsh-completions
