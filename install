@@ -10,18 +10,13 @@ ARGS=$2
 
 if [ -z "$ACTION" ]; then
   . "$SCRIPTPATH"/scripts/chezmoi
-  # . "$SCRIPTPATH"/scripts/solarized
-  # . "$SCRIPTPATH"/scripts/asdf
-  # . "$SCRIPTPATH"/scripts/vim-node-modules
-  # . "$SCRIPTPATH"/scripts/vim-python-deps
-  # . "$SCRIPTPATH"/scripts/vim
-  # . "$SCRIPTPATH"/scripts/neovim
-  # . "$SCRIPTPATH"/scripts/lunarvim
-  # . "$SCRIPTPATH"/scripts/rvim
-  # . "$SCRIPTPATH"/scripts/tmux
-  # . "$SCRIPTPATH"/scripts/iterm2
-  # mkdir -p ~/src
-  # . "$SCRIPTPATH"/scripts/git ~/src
+  . "$SCRIPTPATH"/scripts/solarized
+  . "$SCRIPTPATH"/scripts/asdf
+  . "$SCRIPTPATH"/scripts/vim-node-modules
+  . "$SCRIPTPATH"/scripts/neovim
+  . "$SCRIPTPATH"/scripts/lunarvim
+  . "$SCRIPTPATH"/scripts/tmux
+  . "$SCRIPTPATH"/scripts/iterm2
 else
   . "$SCRIPTPATH"/scripts/"$ACTION" $ARGS
 fi
