@@ -5,11 +5,12 @@ fi
 
 if [ ! -d ~/.zi ]; then
   echo 'Installing zi'
-  git clone https://github.com/z-shell/zi.git ~/.zi/bin
-  mkdir -p ~/.cache/zi/completions
+  sh -c "$(curl -fsSL get.zshell.dev)" --
 fi
 
 source ~/.zi/bin/zi.zsh
+
+eval "$(starship init zsh)"
 
 zi wait pack atload=+"zicompinit_fast; zicdreplay" for system-completions
 
@@ -20,7 +21,6 @@ zi wait pack atload=+"zicompinit_fast; zicdreplay" for system-completions
 zi ice wait lucid
 zi light zsh-users/zsh-completions
 zi light zsh-users/zsh-history-substring-search
-SHOW_AWS_PROMPT=false
 ZSH_THEME_AWS_PREFIX="(\uf270:"
 ZSH_THEME_AWS_SUFFIX=")"
 zi snippet OMZP::aws
@@ -48,7 +48,6 @@ zi ice wait lucid
 zi snippet OMZP::kubectl
 zi ice wait lucid
 zi snippet OMZP::kubectx
-zi snippet OMZP::kube-ps1
 zi ice wait lucid
 zi snippet OMZP::pip
 
@@ -105,79 +104,6 @@ zstyle ':fzf-tab:*' accept-line enter
 
 autoload -U colors && colors
 
-# get the name of the branch we are on
-function git_prompt_info() {
-  if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]; then
-    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
-      ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
-          echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
-  fi
-}
-
-# Checks if working tree is dirty
-parse_git_dirty() {
-  local STATUS=''
-  local FLAGS
-  FLAGS=('--porcelain')
-  if [[ "$(command git config --get oh-my-zsh.hide-dirty)" != "1" ]]; then
-    if [[ $POST_1_7_2_GIT -gt 0 ]]; then
-      FLAGS+=('--ignore-submodules=dirty')
-    fi
-    if [[ "$DISABLE_UNTRACKED_FILES_DIRTY" == "true" ]]; then
-      FLAGS+=('--untracked-files=no')
-    fi
-    STATUS=$(command git status "${FLAGS[@]}" 2> /dev/null | tail -n1)
-  fi
-  if [[ -n $STATUS ]]; then
-    echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
-  else
-    echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
-  fi
-}
-
-prompt_pygmalion_precmd(){
-  gitinfo=$(git_prompt_info)
-  gitinfo_nocolor=$(echo "$gitinfo" | perl -pe "s/%\{[^}]+\}//g")
-  exp_nocolor="$(print -P \"$base_prompt_nocolor$gitinfo_nocolor$post_prompt_nocolor\")"
-  prompt_length=${#exp_nocolor}
-
-  nl=""
-
-  if [[ $prompt_length -gt 40 ]]; then
-    nl=$'\n%{\r%}';
-  fi
-  if command -v kube_ps1 &>/dev/null; then
-    PROMPT="$base_prompt$gitinfo$(kube_ps1)$"
-  else
-    PROMPT="$base_prompt$gitinfo"
-  fi
-
-  if command -v aws_prompt_info &>/dev/null; then
-    PROMPT="$PROMPT$(aws_prompt_info)"
-  fi
-
-  if command -v tf_prompt_info &>/dev/null; then
-    PROMPT="$PROMPT$(tf_prompt_info)"
-  fi
-
-  PROMPT="$PROMPT$nl$post_prompt"
-}
-
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}%{${fg[green]}%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{${fg[yellow]}%}\U26a1%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
-
-base_prompt="%{${fg[magenta]}%}%n%{$reset_color%}%{${fg[cyan]}%}@%{$reset_color%}%{${fg[yellow]}%}%m%{$reset_color%}%{${fg[red]}%}:%{$reset_color%}%{${fg[cyan]}%}%0~%{$reset_color%}%{${fg[red]}%}|%{$reset_color%}"
-post_prompt="%{${fg[cyan]}%}⇒%{$reset_color%}  "
-
-base_prompt_nocolor=$(echo "$base_prompt" | perl -pe "s/%\{[^}]+\}//g")
-post_prompt_nocolor=$(echo "$post_prompt" | perl -pe "s/%\{[^}]+\}//g")
-
-precmd_functions+=(prompt_pygmalion_precmd)
-
-# Apply theming defaults
-PS1="%n@%m:%~%# "
 
 ## Command history configuration
 if [ -z "$HISTFILE" ]; then
@@ -197,35 +123,48 @@ esac
 
 setopt APPEND_HISTORY
 setopt EXTENDED_HISTORY
-setopt INC_APPEND_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_DUPS # ignore duplication command history list
 setopt HIST_IGNORE_SPACE
-setopt HIST_FIND_NO_DUPS
-setopt HIST_SAVE_NO_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_VERIFY
 setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY # share command history data
+setopt always_to_end # When completing from the middle of a word, move the cursor to the end of the word
+setopt append_history         # Allow multiple sessions to append to one Zsh command history.
+setopt auto_cd              # Use cd by typing directory name if it's not a command.
+setopt auto_list            # Automatically list choices on ambiguous completion.
+setopt auto_pushd           # Make cd push the old directory onto the directory stack.
+setopt bang_hist            # Treat the '!' character, especially during Expansion.
+setopt complete_in_word # Allow completion from within a word/phrase
+setopt extended_history       # Show timestamp in history.
+setopt hist_expire_dups_first # Expire A duplicate event first when trimming history.
+setopt hist_find_no_dups      # Do not display a previously found event.
+setopt hist_ignore_all_dups   # Remove older duplicate entries from history.
+setopt hist_ignore_dups       # Do not record an event that was just recorded again.
+setopt hist_ignore_space      # Do not record an Event Starting With A Space.
+setopt hist_reduce_blanks     # Remove superfluous blanks from history items.
+setopt hist_save_no_dups      # Do not write a duplicate event to the history file.
+setopt hist_verify            # Do not execute immediately upon history expansion.
+setopt inc_append_history     # Write to the history file immediately, not when the shell exits.
+setopt interactive_comments # Comments even in interactive shells.
+setopt long_list_jobs ## jobs
+setopt multios              # Implicit tees or cats when multiple redirections are attempted.
+setopt no_beep              # Don't beep on error.
+setopt prompt_subst         # Substitution of parameters inside the prompt each time the prompt is drawn.
+setopt pushd_ignore_dups    # Don't push multiple copies directory onto the directory stack.
+setopt pushd_minus          # Swap the meaning of cd +1 and cd -1 to the opposite.
+setopt share_history          # Share history between different instances of the shell.
 
-setopt no_beep
-setopt multios
-
-# Setup the prompt with pretty colors
-setopt prompt_subst
 
 ## smart urls
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
-## jobs
-setopt long_list_jobs
 
-unsetopt correct_all # spelling correction for arguments
-unsetopt correct # spelling correction for commands
-
-setopt always_to_end # When completing from the middle of a word, move the cursor to the end of the word
-setopt complete_in_word # Allow completion from within a word/phrase
 
 # vi mode
 bindkey -v
@@ -249,9 +188,6 @@ bindkey -M vicmd 'v' edit-command-line
 # allow ctrl-p, ctrl-n for navigate history (standard behaviour)
 bindkey '^P' up-history
 bindkey '^N' down-history
-
-# https://robots.thoughtbot.com/how-to-use-arguments-in-a-rake-task
-unsetopt nomatch
 
 # bind UP and DOWN arrow keys
 zmodload zsh/terminfo

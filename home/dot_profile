@@ -88,8 +88,9 @@ if command -v cargo > /dev/null; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-export COLORTERM=truecolor
-export CLICOLOR=1
+if ! command -v starship > /dev/null; then
+  curl -sS https://starship.rs/install.sh | sh
+fi
 
 # only define LC_CTYPE if undefined
 if [ -z "$LC_CTYPE" ] && [ -z "$LC_ALL" ]; then
@@ -104,6 +105,9 @@ if [ -n "$BASH_VERSION" ]; then
   fi
 fi
 
+export COLORTERM=truecolor
+export CLICOLOR=1
+
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 export BAT_CONFIG_PATH="$HOME/.bat"
@@ -116,12 +120,12 @@ export GPG_TTY=$(tty)
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+export ASDF_GOLANG_MOD_VERSION_ENABLED=false
+
 lombok_jar="$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar"
 if [ -f $lombok_jar ]; then
   export JDTLS_JVM_ARGS="-javaagent:$lombok_jar"
 fi
-
-export ASDF_GOLANG_MOD_VERSION_ENABLED=false
 
 if [ -f "$HOME/.profile.local" ]; then
   . "$HOME/.profile.local"

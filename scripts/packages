@@ -119,9 +119,29 @@ if [[ $(uname) == Darwin ]]; then
     brew tap homebrew/cask-fonts
     brew install --cask font-hack-nerd-font
     brew install --cask font-droid-sans-mono-nerd-font
-
-    pip3 install neovim
   fi
 fi
 
-$please npm install --force -g diff-so-fancy
+$please gem install neovim
+
+$please npm install -g babel-eslint
+$please npm install -g csslint
+$please npm install -g diff-so-fancy
+$please npm install -g eslint
+$please npm install -g eslint-plugin-react
+$please npm install -g instant-markdown-d
+$please npm install -g js-yaml
+$please npm install -g jshint
+$please npm install -g jsonlint
+$please npm install -g jsxhint
+$please npm install -g neovim
+$please npm install -g react-tools
+$please npm install -g syntastic-react
+$please npm install -g tree-sitter-cli
+
+python3 -m pip install --user --upgrade neovim
+python3 -m pip install --user --upgrade pynvim
+
+if command -v sudo &> /dev/null; then
+  sudo -k
+fi

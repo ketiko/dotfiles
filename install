@@ -11,13 +11,10 @@ ARGS=$2
 if [ -z "$ACTION" ]; then
   . "$SCRIPTPATH"/scripts/packages
   . "$SCRIPTPATH"/scripts/dotfiles
-  . "$SCRIPTPATH"/scripts/solarized
-  . "$SCRIPTPATH"/scripts/asdf
-  . "$SCRIPTPATH"/scripts/vim-node-modules
-  . "$SCRIPTPATH"/scripts/neovim
   . "$SCRIPTPATH"/scripts/lunarvim
   . "$SCRIPTPATH"/scripts/tmux
   . "$SCRIPTPATH"/scripts/iterm2
+  . "$SCRIPTPATH"/scripts/asdf
 else
   . "$SCRIPTPATH"/scripts/"$ACTION" $ARGS
 fi

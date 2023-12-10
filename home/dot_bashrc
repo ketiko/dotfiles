@@ -66,37 +66,7 @@ if [ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt
   source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
 fi
 
-
-if [ "$color_prompt" = yes ]; then
-  #ColorOff='\e[0m'
-  #White='\e[0;37m'
-  #BPurple='\e[1;35m'
-  #Green='\e[0;32m'
-  #Blue='\e[0;34m'
-  #Yellow='\e[0;33m'
-  #Purple='\e[0;35m'
-  #BWhite='\e[1;37m'
-  #Orange='\e[1;31m'
-
-  #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;33m\]$(__git_ps1)\[\033[00m\]\$ '
-  if [ "$(type -t somefunc)" = 'function' ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[00;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(__git_ps1)\[\033[0;37m\]\$ '
-  else
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[00;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]\[\033[0;37m\]\$ '
-  fi
-else
-  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-  xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-  *)
-    ;;
-esac
+eval "$(starship init bash)"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

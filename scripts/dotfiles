@@ -13,4 +13,4 @@ current_dir=$(dirname "$current_script")
 root_dir=$(dirname "$current_dir")
 
 
-~/.local/bin/chezmoi init -S "$root_dir/home" --apply
+~/.local/bin/chezmoi init -S "$root_dir/home" --apply --keep-going

@@ -5,7 +5,7 @@ set -e
 echo -e "\033[0;32m>>>>> Installing asdf <<<<<\033[0m"
 
 if [ ! -d ~/.asdf ]; then
-  echo "Installing adsf"
+echo -e "\033[0;32m>>>>> Installing asdf github repo <<<<<\033[0m"
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf
   git -C ~/.asdf checkout "$(git -C ~/.asdf describe --abbrev=0 --tags)"
 
@@ -29,7 +29,11 @@ test -d "$HOME/.asdf/plugins/scala" || asdf plugin add scala https://github.com/
 test -d "$HOME/.asdf/plugins/terraform" || asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git
 test -d "$HOME/.asdf/plugins/rust" || asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
 
+
+set +e # allow failures when installing the latest plugsin
 for plugin in $(asdf plugin list); do
+  echo -e "\033[0;32m>>>>> Installing asdf plugin $plugin <<<<<\033[0m"
+
   if [ "$plugin" == "java" ]; then
     # java doesn't have a latest
     asdf install java openjdk-21
@@ -37,7 +41,6 @@ for plugin in $(asdf plugin list); do
     continue
   fi
 
-  echo "Installing $plugin"
   asdf install "$plugin" latest
   asdf global $plugin $(asdf latest $plugin)
 done
