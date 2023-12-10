@@ -2,7 +2,7 @@
 
 set -e
 
-./scripts/banner "Processing chezmoi"
+echo -e "\033[0;32m>>>>> Installing dotfiles <<<<<\033[0m"
 
 if [ ! -f $HOME/.local/bin/chezmoi ]; then
   sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin

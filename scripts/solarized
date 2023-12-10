@@ -2,7 +2,7 @@
 
 set -e
 
-./scripts/banner "Processing solarized"
+echo -e "\033[0;32m>>>>> Installing solarized <<<<<\033[0m"
 
 mkdir -p ~/.solarized
 

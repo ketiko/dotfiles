@@ -2,7 +2,7 @@
 
 set -e
 
-./scripts/banner "Processing lunarvim"
+echo -e "\033[0;32m>>>>> Installing lunarvim <<<<<\033[0m"
 
 if ! command -v lvim > /dev/null; then
   if command -v nvim > /dev/null; then

@@ -2,9 +2,8 @@
 
 set -e
 
-./scripts/banner "Processing vim-node-modules"
+echo -e "\033[0;32m>>>>> Installing vim-node-modules <<<<<\033[0m"
 
-echo "Installing Node modules for Vim Syntastic checks"
 please=
 if [[ $(uname) != Darwin ]]; then
   if command -v sudo &> /dev/null; then

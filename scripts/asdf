@@ -2,7 +2,7 @@
 
 set -e
 
-./scripts/banner "Processing asdf"
+echo -e "\033[0;32m>>>>> Installing asdf <<<<<\033[0m"
 
 if [ ! -d ~/.asdf ]; then
   echo "Installing adsf"
@@ -28,3 +28,16 @@ test -d "$HOME/.asdf/plugins/sbt" || asdf plugin add sbt https://github.com/bram
 test -d "$HOME/.asdf/plugins/scala" || asdf plugin add scala https://github.com/asdf-community/asdf-scala.git
 test -d "$HOME/.asdf/plugins/terraform" || asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git
 test -d "$HOME/.asdf/plugins/rust" || asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
+
+for plugin in $(asdf plugin list); do
+  if [ "$plugin" == "java" ]; then
+    # java doesn't have a latest
+    asdf install java openjdk-21
+    asdf global java openjdk-21
+    continue
+  fi
+
+  echo "Installing $plugin"
+  asdf install "$plugin" latest
+  asdf global $plugin $(asdf latest $plugin)
+done

@@ -2,7 +2,7 @@
 
 set -e
 
-./scripts/banner "Processing iterm2"
+echo -e "\033[0;32m>>>>> Installing iterm2 <<<<<\033[0m"
 
 if [ -n "$ITERM_PROFILE" ] ; then
   echo "Downloading iterm2 color themes..."

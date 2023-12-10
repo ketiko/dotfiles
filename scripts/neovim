@@ -2,7 +2,7 @@
 
 set -e
 
-./scripts/banner "Processing neovim"
+echo -e "\033[0;32m>>>>> Installing nevim <<<<<\033[0m"
 
 please=
 if [[ $(uname) != Darwin ]]; then

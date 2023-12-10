@@ -2,7 +2,7 @@
 
 set -e
 
-./scripts/banner "Processing tmux"
+echo -e "\033[0;32m>>>>> Installing tmux <<<<<\033[0m"
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
