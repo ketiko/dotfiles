@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-me=$(basename "$0")
-echo -e "\033[0;32m>>>>> Starting $me <<<<<\033[0m"
+echo -e "\033[0;32m>>>>> Starting install <<<<<\033[0m"
 
 SCRIPTPATH=$(pwd)
 cd "$SCRIPTPATH" || return
@@ -27,4 +26,4 @@ if command -v sudo &> /dev/null; then
   sudo -k
 fi
 
-echo -e "\033[0;32m>>>>> Ending $me <<<<<\033[0m"
+echo -e "\033[0;32m>>>>> Ending install <<<<<\033[0m"

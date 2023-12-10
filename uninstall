@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+echo -e "\033[0;32m>>>>> Starting uninstall <<<<<\033[0m"
+
+# for file in $(~/.local/bin/chezmoi managed); do
+#   echo "uninstalling '$HOME/$file'"
+#   rm -rf "$HOME/$file"
+# done
+#
+# rm "$HOME/.zprofile"
+# rm "$HOME/.dircolors"
+
+echo -e "\033[0;32m>>>>> Ending uninstall <<<<<\033[0m"
