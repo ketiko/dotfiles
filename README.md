@@ -7,10 +7,3 @@ git clone https://github.com/ketiko/dotfiles.git ~/.dotfiles && \
 cd ~/.dotfiles && \
 ./install
 ```
-
-## Uninstall
-
-```terminal
-cd ~/.dotfiles && \
-./uninstall
-```
