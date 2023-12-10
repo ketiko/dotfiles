@@ -76,6 +76,8 @@ fi
 
 if command -v chezmoi > /dev/null; then
   alias cm='chezmoi'
+  alias cma='chezmoi apply'
+  alias cme='chezmoi edit -a'
 fi
 
 if command -v yadm > /dev/null; then
