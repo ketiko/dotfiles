@@ -11,6 +11,15 @@ fi
 
 source ~/.zi/bin/zi.zsh
 
+zi wait pack atload=+"zicompinit_fast; zicdreplay" for system-completions
+
+zi ice wait lucid
+zi light z-shell/zzcomplete
+
+zi light z-shell/F-Sy-H
+zi light z-shell/H-S-MW
+zi light z-shell/z-a-eval
+
 zi ice wait lucid
 zi light zsh-users/zsh-completions
 zi light zsh-users/zsh-history-substring-search
@@ -76,6 +85,7 @@ unset _comp_path
 autoload -U +X bashcompinit && bashcompinit
 zmodload -i zsh/complist
 
+zstyle :plugin:history-search-multi-word reset-prompt-protect 1
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
