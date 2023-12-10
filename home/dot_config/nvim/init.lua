@@ -53,6 +53,27 @@ require("lazy").setup(
       }
     },
     {
+      "kelly-lin/ranger.nvim",
+      config = function()
+        local ranger_nvim = require("ranger-nvim")
+        require("ranger-nvim").setup({
+          replace_netrw = false,
+          keybinds = {
+            ["ov"] = ranger_nvim.OPEN_MODE.vsplit,
+            ["os"] = ranger_nvim.OPEN_MODE.split,
+            ["ot"] = ranger_nvim.OPEN_MODE.tabedit,
+            ["or"] = ranger_nvim.OPEN_MODE.rifle,
+          },
+        })
+        vim.api.nvim_set_keymap("n", "<leader>r", "", {
+          noremap = true,
+          callback = function()
+            require("ranger-nvim").open(true)
+          end,
+        })
+      end,
+    },
+    {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v3.x",
       dependencies = {
