@@ -53,7 +53,7 @@ set report=0            " : commands always print changed line count
 set ruler               " Display position in the file
 set scrolloff=5         " Keep 5 lines (top/bottom) for scope
 set shiftwidth=2        " Indent level is 2 spaces wide
-set shortmess=atIF       " The "Press ENTER or type command to continue" prompt is jarring and usually unnecessary.
+set shortmess=astIF     " The "Press ENTER or type command to continue" prompt is jarring and usually unnecessary.
 set showcmd             " Show partial command in the last line of the screen
 set showmatch            " Show matched paren when balanced
 set showtabline=2
