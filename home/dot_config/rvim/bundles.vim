@@ -1,8 +1,11 @@
 filetype off
 
-if filereadable(expand("~/.config/rvim/autoload/plug.vim"))
-  call plug#begin()
+if empty(glob("~/.config/rvim/autoload/plug.vim"))
+  silent! execute '!curl --create-dirs -fsSLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * silent! PlugInstall
+endif
 
+silent! if plug#begin()
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
   Plug 'jeetsukumaran/vim-pythonsense'
   Plug 'Vimjas/vim-python-pep8-indent'

@@ -16,6 +16,3 @@ python3 -m pip install --user --upgrade pynvim
 $please gem install neovim
 $please npm install -g neovim
 $please npm install -g tree-sitter-cli
-
-echo "Installing Neovim Plugins"
-nvim --headless "+Lazy! sync" +qa
