@@ -5,7 +5,7 @@ ENV TZ=America/Denver
 
 RUN apt-get update
 
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get install -y --install-recommends \
        ack-grep \
        atop \
        axel \

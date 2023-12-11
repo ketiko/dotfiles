@@ -31,7 +31,7 @@ test -d "$HOME/.asdf/plugins/sbt"       || asdf plugin add sbt https://github.co
 test -d "$HOME/.asdf/plugins/scala"     || asdf plugin add scala https://github.com/asdf-community/asdf-scala.git
 test -d "$HOME/.asdf/plugins/terraform" || asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git
 
-set +e # allow failures when installing the latest plugsin
+set +e # allow failures when installing the latest plugins
 echo -e "\033[0;32m>>>>> Installing latest versions of asdf plugins <<<<<\033[0m"
 
 for plugin in $(asdf plugin list); do
