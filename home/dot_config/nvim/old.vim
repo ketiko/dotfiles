@@ -29,32 +29,6 @@ nmap <silent> \ :nohlsearch<CR>
 " noremap <C-i> <C-a>
 noremap <leader>i <C-a>
 
-" Stay in visual mode after >>
-vnoremap << <gv
-vnoremap >> >gv
-nnoremap ,gf magg<S-v>G=`a
-
-" Navigate panes vim style
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
-
-nmap <Left> <C-w><
-nmap <Down> <C-w>+
-nmap <Up> <C-w>-
-nmap <Right> <C-w>>
-
-" Yank/Paste to system clipboard settings
-vmap ,p "+p
-vmap ,P "+P
-vmap ,y "+y
-vmap ,Y "+Y
-nmap ,p "+p
-nmap ,P "+P
-nmap ,y "+y
-nmap ,Y "+Y
-
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 "   " (happens when dropping a file on gvim).
@@ -207,7 +181,7 @@ let g:EasyMotion_use_upper = 1
 let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
 
 " Session Settings
-let g:session_autosave = 'no'
+" let g:session_autosave = 'no'
 
 
 let g:go_def_mode='gopls'
