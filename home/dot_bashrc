@@ -66,6 +66,10 @@ if [ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt
   source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
 fi
 
+if ! command -v starship > /dev/null; then
+  curl -sS https://starship.rs/install.sh | sh
+fi
+
 eval "$(starship init bash)"
 
 # Add an "alert" alias for long running commands.  Use like so:

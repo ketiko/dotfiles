@@ -88,10 +88,6 @@ if command -v cargo > /dev/null; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-if ! command -v starship > /dev/null; then
-  curl -sS https://starship.rs/install.sh | sh
-fi
-
 # only define LC_CTYPE if undefined
 if [ -z "$LC_CTYPE" ] && [ -z "$LC_ALL" ]; then
   export LC_CTYPE="${LANG%%:*}" # pick the first entry from LANG
