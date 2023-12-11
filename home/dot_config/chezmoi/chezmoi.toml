@@ -1,4 +1,7 @@
 sourceDir = "~/.dotfiles"
 [merge]
     command = "nvim"
-    args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
+    args = ["-d", "{{ .Source }}", "{{ .Destination }}"]
+[diff]
+    pager = "diff-so-fancy"
+
