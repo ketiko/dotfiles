@@ -42,7 +42,7 @@ RUN apt-get install -y --no-install-recommends \
        wget \
        zsh
 
-RUN useradd --create-home --home-dir /home/tester --shell /usr/bin/bash -p $(perl -e 'print crypt($ARGV[0], "password")' 'test') tester
+RUN useradd --create-home --home-dir /home/tester --shell /usr/bin/bash -p $(perl -e 'print crypt($ARGV[0], "password")' 'testing') tester
 RUN adduser tester sudo
 
 WORKDIR /home/tester
