@@ -1,36 +1,6 @@
-set viminfo+=n$HOME/.config/nvim/ninfo
-set tags+=./tags,./ruby-tags,./.git/tags,~/.rbenv/tags;
-set backupdir=$HOME/.config/vim/backup//
-
-set runtimepath+=~/.fzf
-
-syntax enable
-syntax sync fromstart
-
-set backspace=2         " makes backspace work normally
-
-" BASIC EDITING CONFIGURATION
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
-if v:version > 702
-  set undofile
-  set undodir=$HOME/.vim/undo
-  set undoreload=10000
-endif
-set vb t_vb=            " No bells. Period.
-set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip,*/log/*
-set wildmode=longest,list,full  " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
-
-let mapleader = " "     " change <leader> from \ to <space>
-
-" Per-Filetype Scripts
-filetype on             " File type detection on
-filetype indent on      " Use filetype-specific indenting when available
-filetype plugin on      " Load filetype plugins
-
 set ofu=syntaxcomplete#Complete
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
 autocmd FileType c setlocal omnifunc=ccomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -64,14 +34,6 @@ vnoremap << <gv
 vnoremap >> >gv
 nnoremap ,gf magg<S-v>G=`a
 
-set notimeout ttimeout ttimeoutlen=100
-
-if exists('+colorcolumn')
-  set colorcolumn=100
-else
-  match ErrorMsg '\%>100v.\+'
-end
-
 " Navigate panes vim style
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -84,25 +46,14 @@ nmap <Up> <C-w>-
 nmap <Right> <C-w>>
 
 " Yank/Paste to system clipboard settings
-if has('unnamedplus')
-  vmap ,p "+p
-  vmap ,P "+P
-  vmap ,y "+y
-  vmap ,Y "+Y
-  nmap ,p "+p
-  nmap ,P "+P
-  nmap ,y "+y
-  nmap ,Y "+Y
-else
-  vmap ,p "*p
-  vmap ,P "*P
-  vmap ,y "*y
-  vmap ,Y "*Y
-  nmap ,p "*p
-  nmap ,P "*P
-  nmap ,y "*y
-  nmap ,Y "*Y
-endif
+vmap ,p "+p
+vmap ,P "+P
+vmap ,y "+y
+vmap ,Y "+Y
+nmap ,p "+p
+nmap ,P "+P
+nmap ,y "+y
+nmap ,Y "+Y
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -121,15 +72,6 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
-
-if (has("termguicolors"))
-  set termguicolors
-end
-set t_Co=256
-
-if has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-end
 
 " colorscheme palenight
 " " Italics for my favorite color scheme
@@ -354,9 +296,6 @@ let g:gutentags_ctags_exclude = [
 let g:ruby_path = []
 
 
-" vim-stay
-set viewoptions=cursor,folds,slash,unix
-
 " camelCaseMotion
 call camelcasemotion#CreateMotionMappings('<leader>')
 
@@ -372,7 +311,3 @@ let g:sneak#label = 1
 nmap <silent> ,ev :vsplit $MYVIMRC<CR>
 nmap <silent> ,eb :vsplit $HOME/.config/nvim/bundles.vim<CR>
 nmap <silent> ,sv :source $MYVIMRC<CR>
-
-if filereadable(expand("$HOME/.config/nvim/local.vim"))
-  source $HOME/.config/nvim/local.vim
-endif
