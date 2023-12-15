@@ -68,7 +68,6 @@ if command -v brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
-
 # See https://github.com/sorin-ionescu/prezto/blob/c0cdc12708803c4503cb1b3d7d42e5c1b8ba6e86/modules/completion/init.zsh#L53C1-L68C17
 # Load and initialize the completion system ignoring insecure directories with a
 # cache time of 20 hours, so it should almost always regenerate the first time a
@@ -208,6 +207,22 @@ bindkey -M emacs '^N' history-substring-search-down
 # bind k and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
+
+
+# Be higher so that command -v blah picks up things from asdf
+if [ -d "$HOME/.asdf" ]; then
+  source $HOME/.asdf/completions/asdf.bash
+
+  if [ -d "$HOME/.asdf/plugins/java" ]; then
+    source $HOME/.asdf/plugins/java/set-java-home.zsh
+  fi
+
+  if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
+    source $HOME/.asdf/plugins/golang/set-env.zsh
+  fi
+fi
+
 source "$HOME"/.aliases
 
 if [ -f "$HOME/.fzf.zsh" ]; then
@@ -314,19 +329,6 @@ function git_clone_org() {
 
   if command -v vault &>/dev/null; then
     complete -o nospace -C /opt/homebrew/bin/vault vault
-  fi
-
-  if [ -d "$HOME/.asdf" ]; then
-    source "$HOME"/.asdf/asdf.sh
-    source $HOME/.asdf/completions/asdf.bash
-
-    if [ -d "$HOME/.asdf/plugins/java" ]; then
-      source $HOME/.asdf/plugins/java/set-java-home.zsh
-    fi
-
-    if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
-      source $HOME/.asdf/plugins/golang/set-env.zsh
-    fi
   fi
 
 # Slow
