@@ -94,13 +94,7 @@ require("lazy").setup(
         {
           "<leader>n",
           function()
-            require("neo-tree.command").execute({ toggle = true })
-          end,
-        },
-        {
-          "<leader>f",
-          function()
-            require("neo-tree.command").execute({ reveal_force_cwd = true })
+            require("neo-tree.command").execute({ reveal_force_cwd = true, toggle = true })
           end,
         },
       },
@@ -128,6 +122,13 @@ require("lazy").setup(
     -- 'hrsh7th/vim-vsnip-integ',
     'editorconfig/editorconfig-vim',
     -- 'edkolev/tmuxline.vim',
+    { 
+      'scrooloose/nerdtree',
+      dependencies = { 'Xuyuanp/nerdtree-git-plugin' },
+      keys = {
+        { "<leader>f", "<cmd>NERDTreeToggle<cr>" },
+      }
+    },
     'godlygeek/tabular',
     'jamessan/vim-gnupg',
     'joshdick/onedark.vim',
@@ -235,8 +236,8 @@ require("lazy").setup(
       end,
       keys = {
         { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find files " },
-        { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files " },
-        {'<leader>fg', "<cmd>Telescope live_grep<cr>", desc = "Live grep"},
+        -- { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files " },
+        -- {'<leader>fg', "<cmd>Telescope live_grep<cr>", desc = "Live grep"},
       }
     },
     'rakr/vim-two-firewatch',
