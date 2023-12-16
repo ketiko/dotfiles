@@ -4,8 +4,9 @@ set -e
 
 echo -e "\033[0;32m>>>>> Installing tmux <<<<<\033[0m"
 
-if [ ! -d ~/.tmux/plugins/tpm ]; then
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [ ! -d ~/.config/tmux/plugins/tpm ]; then
+  mkdir -p ~/.config/tmux/plugins
+  git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 fi
 
-~/.tmux/plugins/tpm/bin/install_plugins
+~/.config/tmux/plugins/tpm/bin/install_plugins
