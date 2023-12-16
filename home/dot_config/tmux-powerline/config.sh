@@ -23,12 +23,12 @@ export TMUX_POWERLINE_STATUS_VISIBILITY="on"
 export TMUX_POWERLINE_STATUS_INTERVAL="1"
 # The location of the window list. Can be {"absolute-centre, centre, left, right"}.
 # Note that "absolute-centre" is only supported on `tmux -V` >= 3.2.
-export TMUX_POWERLINE_STATUS_JUSTIFICATION="centre"
+export TMUX_POWERLINE_STATUS_JUSTIFICATION="left"
 
 # The maximum length of the left status bar.
 export TMUX_POWERLINE_STATUS_LEFT_LENGTH="60"
 # The maximum length of the right status bar.
-export TMUX_POWERLINE_STATUS_RIGHT_LENGTH="90"
+export TMUX_POWERLINE_STATUS_RIGHT_LENGTH="150"
 
 # Uncomment these if you want to enable tmux bindings for muting (hiding) one of the status bars.
 # E.g. this example binding would mute the left status bar when pressing <prefix> followed by Ctrl-[
@@ -53,22 +53,22 @@ export TMUX_POWERLINE_SEG_DATE_FORMAT="%F"
 export TMUX_POWERLINE_SEG_DISK_USAGE_FILESYSTEM="/"
 # }
 
-# earthquake.sh {
-# The data provider to use. Currently only "goo" is supported.
-export TMUX_POWERLINE_SEG_EARTHQUAKE_DATA_PROVIDER="goo"
-# How often to update the earthquake data in seconds.
-# Note: This is not an early warning detector, use this
-# to be informed about recent earthquake magnitudes in your
-# area. If this is too often, goo may decide to ban you form
-# their server
-export TMUX_POWERLINE_SEG_EARTHQUAKE_UPDATE_PERIOD="600"
-# Only display information when earthquakes are within this many minutes
-export TMUX_POWERLINE_SEG_EARTHQUAKE_ALERT_TIME_WINDOW="60"
-# Display time with this format
-export TMUX_POWERLINE_SEG_EARTHQUAKE_TIME_FORMAT='(%H:%M)'
-# Display only if magnitude is greater or equal to this number
-export TMUX_POWERLINE_SEG_EARTHQUAKE_MIN_MAGNITUDE="3"
-# }
+# # earthquake.sh {
+# # The data provider to use. Currently only "goo" is supported.
+# export TMUX_POWERLINE_SEG_EARTHQUAKE_DATA_PROVIDER="goo"
+# # How often to update the earthquake data in seconds.
+# # Note: This is not an early warning detector, use this
+# # to be informed about recent earthquake magnitudes in your
+# # area. If this is too often, goo may decide to ban you form
+# # their server
+# export TMUX_POWERLINE_SEG_EARTHQUAKE_UPDATE_PERIOD="600"
+# # Only display information when earthquakes are within this many minutes
+# export TMUX_POWERLINE_SEG_EARTHQUAKE_ALERT_TIME_WINDOW="60"
+# # Display time with this format
+# export TMUX_POWERLINE_SEG_EARTHQUAKE_TIME_FORMAT='(%H:%M)'
+# # Display only if magnitude is greater or equal to this number
+# export TMUX_POWERLINE_SEG_EARTHQUAKE_MIN_MAGNITUDE="3"
+# # }
 
 # gcalcli.sh {
 # gcalcli uses 24hr time format by default - if you want to see 12hr time format, set TMUX_POWERLINE_SEG_GCALCLI_MILITARY_TIME_DEFAULT to 0
@@ -205,10 +205,10 @@ export TMUX_POWERLINE_SEG_TMUX_SESSION_INFO_FORMAT="#S:#I.#P"
 export TMUX_POWERLINE_SEG_UTC_TIME_FORMAT="%H:%M %Z"
 # }
 
-# vcs_branch.sh {
-# Max length of the branch name.
-export TMUX_POWERLINE_SEG_VCS_BRANCH_MAX_LEN="24"
-# }
+# # vcs_branch.sh {
+# # Max length of the branch name.
+# export TMUX_POWERLINE_SEG_VCS_BRANCH_MAX_LEN="24"
+# # }
 
 # weather.sh {
 # The data provider to use. Currently only "yahoo" is supported.
