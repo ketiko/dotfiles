@@ -115,7 +115,7 @@ export BAT_CONFIG_PATH="$HOME/.bat"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export FZF_DEFAULT_COMMAND='rg --files --smart-case --no-ignore-vcs --hidden'
 
 export GPG_TTY=$(tty)
 
