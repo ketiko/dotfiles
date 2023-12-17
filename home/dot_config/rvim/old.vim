@@ -283,5 +283,4 @@ let g:sneak#label = 1
 
 " Quickly edit/reload the vimrc file
 nmap <silent> ,ev :vsplit $MYVIMRC<CR>
-nmap <silent> ,eb :vsplit $HOME/.config/nvim/bundles.vim<CR>
 nmap <silent> ,sv :source $MYVIMRC<CR>

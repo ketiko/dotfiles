@@ -3,4 +3,4 @@ vim.g.maplocalleader = " "
 
 require("config")
 
-vim.cmd('source $HOME/.config/nvim/old.vim')
+vim.cmd("source $HOME/.config/rvim/old.vim")

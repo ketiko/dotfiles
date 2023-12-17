@@ -136,9 +136,8 @@ if command -v kubectl >/dev/null; then
   alias kns="kubectl ns"
 fi
 
-alias lazyvim="NVIM_APPNAME=lazyvim nvim"
-alias nvchad="NVIM_APPNAME=nvchad nvim"
 alias rvim="NVIM_APPNAME=rvim nvim"
+alias ovim="NVIM_APPNAME=ovim nvim"
 
 if [ -f "$HOME/.aliases.local" ]; then
   source "$HOME/.aliases.local"

@@ -1,15 +1,15 @@
 set nocompatible " vim > vi mode.
 " set shell=bash\ --login
-set viminfo+=n$HOME/.config/rvim/ninfo
+set viminfo+=n$HOME/.config/ovim/ninfo
 set tags+=./tags,./ruby-tags,./.git/tags,~/.rbenv/tags;
-set backupdir=$HOME/.config/rvim/backup//
+set backupdir=$HOME/.config/ovim/backup//
 
 set encoding=UTF-8
 
 " Add let g:ale_disable_lsp = 1 to your vimrc file, before plugins are loaded.
 " See https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
 let g:ale_disable_lsp = 1
-source $HOME/.config/rvim/bundles.vim
+source $HOME/.config/ovim/bundles.vim
 
 set runtimepath+=~/.fzf
 
@@ -69,7 +69,7 @@ set ttyfast
 " set ttyscroll=3
 if v:version > 702
   set undofile
-  set undodir=$HOME/.config/rvim/undo//
+  set undodir=$HOME/.config/ovim/undo//
   set undoreload=10000
 endif
 set undolevels=1000
@@ -645,9 +645,9 @@ let g:sneak#label = 1
 
 " Quickly edit/reload the vimrc file
 nmap <silent> ,ev :vsplit $MYVIMRC<CR>
-nmap <silent> ,eb :vsplit $HOME/.config/rvim/bundles.vim<CR>
+nmap <silent> ,eb :vsplit $HOME/.config/ovim/bundles.vim<CR>
 nmap <silent> ,sv :source $MYVIMRC<CR>
 
-if filereadable(expand("$HOME/.config/rvim/local.vim"))
-  source $HOME/.config/rvim/local.vim
+if filereadable(expand("$HOME/.config/ovim/local.vim"))
+  source $HOME/.config/ovim/local.vim
 endif
