@@ -137,7 +137,6 @@ $please npm install -g jsxhint
 $please npm install -g neovim
 $please npm install -g react-tools
 $please npm install -g syntastic-react
-$please npm install -g tree-sitter-cli
 
 python3 -m pip install --user --upgrade neovim
 python3 -m pip install --user --upgrade pynvim
