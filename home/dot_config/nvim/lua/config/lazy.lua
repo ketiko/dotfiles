@@ -40,7 +40,7 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.lsp.none-ls" },
     { import = "lazyvim.plugins.extras.test.core" },
     -- { import = "lazyvim.plugins.extras.ui.alpha" },
-    { import = "lazyvim.plugins.extras.ui.mini-animate" },
+    -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.util.dot" },
     -- { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     { import = "lazyvim.plugins.extras.util.project" },
