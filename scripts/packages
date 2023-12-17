@@ -6,7 +6,7 @@ echo -e "\033[0;32m>>>>> Installing packages <<<<<\033[0m"
 
 please=
 if [[ $(uname) != Darwin ]]; then
-  if command -v sudo &> /dev/null; then
+  if command -v sudo &>/dev/null; then
     please=sudo
   fi
 fi
@@ -55,7 +55,7 @@ if [[ $(uname) != Darwin ]]; then
 fi
 
 if [[ $(uname) == Darwin ]]; then
-  if command -v brew &> /dev/null; then
+  if command -v brew &>/dev/null; then
     brew install \
       ack \
       axel \
@@ -66,7 +66,7 @@ if [[ $(uname) == Darwin ]]; then
       curl \
       diff-so-fancy \
       editorconfig \
-      exa \
+      eza \
       fd \
       findutils \
       fzf \
@@ -142,6 +142,6 @@ $please npm install -g tree-sitter-cli
 python3 -m pip install --user --upgrade neovim
 python3 -m pip install --user --upgrade pynvim
 
-if command -v sudo &> /dev/null; then
+if command -v sudo &>/dev/null; then
   sudo -k
 fi
