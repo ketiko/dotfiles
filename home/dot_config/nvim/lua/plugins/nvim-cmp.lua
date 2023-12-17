@@ -26,9 +26,10 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "uga-rosa/cmp-dictionary",
     },
-    config = function(_, opts)
-      -- Set up nvim-cmp.
+    opts = function()
+      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
       local cmp = require("cmp")
+      local defaults = require("cmp.config.default")()
       local luasnip = require("luasnip")
 
       local has_words_before = function()
@@ -37,16 +38,14 @@ return {
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
 
-      cmp.setup({
-        snippet = {
-          -- REQUIRED - you must specify a snippet engine
-          expand = function(args)
-            luasnip.lsp_expand(args.body) -- For `luasnip` users.
-          end,
+      return {
+        completion = {
+          completeopt = "menu,menuone,noinsert",
         },
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end,
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-e>"] = cmp.mapping.abort(),
@@ -90,7 +89,31 @@ return {
           { name = "path" },
           { name = "spell" },
         }),
-      })
+        formatting = {
+          format = function(_, item)
+            local icons = require("lazyvim.config").icons.kinds
+            if icons[item.kind] then
+              item.kind = icons[item.kind] .. item.kind
+            end
+            return item
+          end,
+        },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        experimental = {
+          ghost_text = {
+            hl_group = "CmpGhostText",
+          },
+        },
+        sorting = defaults.sorting,
+      }
+    end,
+    config = function(_, opts)
+      local cmp = require("cmp")
+
+      cmp.setup(opts)
 
       -- Set configuration for specific filetype.
       cmp.setup.filetype("gitcommit", {
