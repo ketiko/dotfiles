@@ -16,7 +16,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.dap.core" },
     { import = "lazyvim.plugins.extras.dap.nlua" },
     { import = "lazyvim.plugins.extras.editor.aerial" },
-    { import = "lazyvim.plugins.extras.editor.leap" },
+    -- { import = "lazyvim.plugins.extras.editor.leap" },
     -- { import = "lazyvim.plugins.extras.editor.mini-files" },
     { import = "lazyvim.plugins.extras.editor.navic" },
     { import = "lazyvim.plugins.extras.editor.symbols-outline" },
