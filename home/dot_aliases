@@ -37,7 +37,7 @@ alias rb='rbenv'
 alias g='git'
 alias ct="ripper-tags --tag-relative -R --verbose . && ctags -a --sort=yes --recurse=yes --tag-relative=yes --fields=+ails --extras=+q --exclude=node_modules/* --exclude=.idea/* --totals=yes ."
 alias gt="gotags -R=true -sort=true -tag-relative=true -silent=false -f='tags' ."
-alias tmux="tmux-2"
+alias tmux="tmux -2"
 alias tm="tmux -2"
 alias tms="tmux -2 new -s"
 alias tmsa="tmux -2 attach-session -t"
