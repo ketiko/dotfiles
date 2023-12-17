@@ -45,4 +45,5 @@ build/
 .bsp
 
 # jetbrains
-.fleet
+.fleet/
+.metals/
