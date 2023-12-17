@@ -52,7 +52,7 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export KEYTIMEOUT=1
 
 if [ -f "$HOME/.ssh/id_rsa" ]; then
-  if command -v keychain > /dev/null; then
+  if command -v keychain >/dev/null; then
     eval "$(keychain --eval --quiet --quick)"
   fi
 fi
@@ -66,7 +66,7 @@ if [ -d "$HOME/.asdf" ]; then
   source "$HOME"/.asdf/asdf.sh
 fi
 
-if command -v go > /dev/null; then
+if command -v go >/dev/null; then
   export GO111MODULE=auto
   if [ -d "$HOME/go" ]; then
     if [ -z "$GOPATH" ]; then
@@ -76,10 +76,10 @@ if command -v go > /dev/null; then
   fi
 fi
 
-if command -v fasd > /dev/null; then
+if command -v fasd >/dev/null; then
   fasd_cache="$HOME/.fasd-init-cache"
   if [ ! -f "$fasd_cache" ]; then
-    fasd --init auto >| "$fasd_cache"
+    fasd --init auto >|"$fasd_cache"
   fi
   . "$fasd_cache"
   unset fasd_cache
@@ -89,7 +89,7 @@ if [ -d "$HOME/.rd/bin" ]; then
   export PATH="$HOME/.rd/bin:$PATH"
 fi
 
-if command -v cargo > /dev/null; then
+if command -v cargo >/dev/null; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
@@ -115,7 +115,7 @@ export BAT_CONFIG_PATH="$HOME/.bat"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-export FZF_DEFAULT_COMMAND='ag --hidden --smart-case --ignore .git --ignore .node_modules --files-with-matches --nocolor -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
 export GPG_TTY=$(tty)
 
