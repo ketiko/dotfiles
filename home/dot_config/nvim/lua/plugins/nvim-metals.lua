@@ -1,7 +1,10 @@
 return {
   {
     "scalameta/nvim-metals",
-    dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/cmp-nvim-lsp" },
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "nvim-lua/plenary.nvim",
+    },
     ft = { "scala", "sbt", "java" },
     lazy = true,
     opts = function()
