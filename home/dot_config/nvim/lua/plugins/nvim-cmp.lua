@@ -39,80 +39,62 @@ return {
       end
 
       return {
-        completion = {
-          completeopt = "menu,menuone,noinsert",
-        },
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
-          ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<CR>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          }),
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            elseif has_words_before() then
-              cmp.complete()
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-        }),
+        -- mapping = cmp.mapping.preset.insert({
+        --   ["<C-e>"] = cmp.mapping.abort(),
+        --   ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
+        --   ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
+        --   ["<C-Space>"] = cmp.mapping.complete(),
+        --   ["<CR>"] = cmp.mapping.confirm({
+        --     behavior = cmp.ConfirmBehavior.Replace,
+        --     select = true,
+        --   }),
+        --   ["<Tab>"] = cmp.mapping(function(fallback)
+        --     if cmp.visible() then
+        --       cmp.select_next_item()
+        --     elseif luasnip.expand_or_jumpable() then
+        --       luasnip.expand_or_jump()
+        --     elseif has_words_before() then
+        --       cmp.complete()
+        --     else
+        --       fallback()
+        --     end
+        --   end, { "i", "s" }),
+        --   ["<S-Tab>"] = cmp.mapping(function(fallback)
+        --     if cmp.visible() then
+        --       cmp.select_prev_item()
+        --     elseif luasnip.jumpable(-1) then
+        --       luasnip.jump(-1)
+        --     else
+        --       fallback()
+        --     end
+        --   end, { "i", "s" }),
+        -- }),
+        --
         sources = cmp.config.sources({
-          { name = "buffer" },
-          { name = "cmp_yanky" },
           { name = "copilot" },
-          { name = "ctags" },
-          { name = "dictionary" },
-          { name = "luasnip" },
           { name = "nvim_lsp" },
+          { name = "luasnip" },
+          { name = "buffer" },
+          { name = "ctags" },
           { name = "omni" },
           { name = "path" },
+          { name = "dictionary" },
           { name = "spell" },
+          { name = "cmp_yanky" },
+          { name = "emoji" },
         }),
-        formatting = {
-          format = function(_, item)
-            local icons = require("lazyvim.config").icons.kinds
-            if icons[item.kind] then
-              item.kind = icons[item.kind] .. item.kind
-            end
-            return item
-          end,
-        },
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
         },
-        experimental = {
-          ghost_text = {
-            hl_group = "CmpGhostText",
-          },
-        },
-        sorting = defaults.sorting,
       }
     end,
     config = function(_, opts)
-      local cmp = require("cmp")
+      for _, source in ipairs(opts.sources) do
+        source.group_index = source.group_index or 1
+      end
 
+      local cmp = require("cmp")
       cmp.setup(opts)
 
       -- Set configuration for specific filetype.
