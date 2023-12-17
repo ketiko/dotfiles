@@ -1,8 +1,8 @@
 return {
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
         -- "actionlint",
         -- "ast-grep",
         -- "awk-language-server",
@@ -80,7 +80,7 @@ return {
         -- "yamlfmt",
         -- "yamllint",
         -- "yq",
-      },
-    },
+      })
+    end,
   },
 }

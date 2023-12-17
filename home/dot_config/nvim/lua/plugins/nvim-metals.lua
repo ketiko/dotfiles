@@ -23,7 +23,7 @@ return {
       -- Example if you are using cmp how to make sure the correct capabilities for snippets are set
       metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      metals_config.on_attach = function(client, bufnr)
+      metals_config.on_attach = function(_, _)
         require("metals").setup_dap()
       end
       return metals_config
