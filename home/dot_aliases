@@ -18,6 +18,11 @@ if command -v exa >/dev/null; then
   alias el='eza -al --git --header -F --icons --color=always'
   alias ea='eza -a --git -F --icons --color=always'
   alias et='eza -a --git --header -F --icons --color=always --tree'
+
+  alias l='eza --git -F --icons --color=always'
+  alias ll='eza -al --git --header -F --icons --color=always'
+  alias la='eza -a --git -F --icons --color=always'
+  alias lt='eza -a --git --header -F --icons --color=always --tree'
 fi
 
 alias dir='dir --color=auto'
