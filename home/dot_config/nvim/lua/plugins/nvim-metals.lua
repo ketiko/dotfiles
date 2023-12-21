@@ -5,8 +5,8 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "nvim-lua/plenary.nvim",
     },
-    ft = { "scala", "sbt", "java" },
     lazy = true,
+    ft = { "scala", "sbt", "java" },
     opts = function()
       local metals_config = require("metals").bare_config()
 
