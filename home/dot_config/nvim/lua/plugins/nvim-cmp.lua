@@ -1,13 +1,4 @@
 return {
-  -- Use <tab> for completion and snippets (supertab)
-  -- first: disable default <tab> and <s-tab> behavior in LuaSnip
-  {
-    "L3MON4D3/LuaSnip",
-    keys = function()
-      return {}
-    end,
-  },
-  -- then: setup supertab in cmp
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -26,107 +17,25 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "uga-rosa/cmp-dictionary",
     },
-    opts = function()
-      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+    opts = function(_, opts)
       local cmp = require("cmp")
-      local luasnip = require("luasnip")
-      local defaults = require("cmp.config.default")()
-      --
-      -- local has_words_before = function()
-      --   unpack = unpack or table.unpack
-      --   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-      --   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-      -- end
 
-      return {
-        completion = {
-          completeopt = "menu,menuone,noinsert",
-        },
-        snippet = {
-          -- REQUIRED - you must specify a snippet engine
-          expand = function(args)
-            luasnip.lsp_expand(args.body) -- For `luasnip` users.
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ["<S-CR>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ["<C-CR>"] = function(fallback)
-            cmp.abort()
-            fallback()
-          end,
-        }),
-        -- mapping = cmp.mapping.preset.insert({
-        --   ["<C-e>"] = cmp.mapping.abort(),
-        --   ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
-        --   ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
-        --   ["<C-Space>"] = cmp.mapping.complete(),
-        --   ["<CR>"] = cmp.mapping.confirm({
-        --     behavior = cmp.ConfirmBehavior.Replace,
-        --     select = true,
-        --   }),
-        --   ["<Tab>"] = cmp.mapping(function(fallback)
-        --     if cmp.visible() then
-        --       cmp.select_next_item()
-        --     elseif luasnip.expand_or_jumpable() then
-        --       luasnip.expand_or_jump()
-        --     elseif has_words_before() then
-        --       cmp.complete()
-        --     else
-        --       fallback()
-        --     end
-        --   end, { "i", "s" }),
-        --   ["<S-Tab>"] = cmp.mapping(function(fallback)
-        --     if cmp.visible() then
-        --       cmp.select_prev_item()
-        --     elseif luasnip.jumpable(-1) then
-        --       luasnip.jump(-1)
-        --     else
-        --       fallback()
-        --     end
-        --   end, { "i", "s" }),
-        -- }),
-        sources = cmp.config.sources({
-          { name = "copilot" },
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "ctags" },
-          { name = "omni" },
-          { name = "path" },
-          { name = "dictionary" },
-          { name = "spell" },
-          { name = "cmp_yanky" },
-          { name = "emoji" },
-        }),
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
-        formatting = {
-          format = function(_, item)
-            local icons = require("lazyvim.config").icons.kinds
-            if icons[item.kind] then
-              item.kind = icons[item.kind] .. item.kind
-            end
-            return item
-          end,
-        },
-        experimental = {
-          ghost_text = {
-            hl_group = "CmpGhostText",
-          },
-        },
-        sorting = defaults.sorting,
+      opts.sources = cmp.config.sources({
+        { name = "copilot" },
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "ctags" },
+        { name = "omni" },
+        { name = "path" },
+        { name = "dictionary" },
+        { name = "spell" },
+        { name = "cmp_yanky" },
+        { name = "emoji" },
+      })
+      opts.window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
       }
     end,
     config = function(_, opts)

@@ -1,6 +1,7 @@
 return {
   {
     "folke/flash.nvim",
+    optional = true,
     opts = {
       modes = {
         char = {
