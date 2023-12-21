@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+if [ -d ~/.git_template ]; then
+  rm -r ~/.git_template
+fi
+
+path=$1
+fcmd="find"
+acmd="xargs"
+
+if [[ $(uname) == Darwin ]]; then
+  fcm="gfind"
+  acmd="gxargs"
+fi
+
+$fcmd $path -type d -name ".git" | $acmd -rn 1 -I{} echo {}"/hooks" | $acmd rm -r
