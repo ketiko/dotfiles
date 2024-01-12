@@ -8,12 +8,8 @@ if command -v dircolors >/dev/null; then
     eval "$(dircolors -b)"
   fi
 fi
-alias ls='ls --color=auto'
-alias ll='ls -alF --color=auto'
-alias la='ls -A --color=auto'
-alias l='ls -CF --color=auto'
 
-if command -v exa >/dev/null; then
+if command -v eza >/dev/null; then
   alias es='eza --git -F --icons --color=always'
   alias el='eza -al --git --header -F --icons --color=always'
   alias ea='eza -a --git -F --icons --color=always'
@@ -23,6 +19,21 @@ if command -v exa >/dev/null; then
   alias ll='eza -al --git --header -F --icons --color=always'
   alias la='eza -a --git -F --icons --color=always'
   alias lt='eza -a --git --header -F --icons --color=always --tree'
+elif command -v exa >/dev/null; then
+  alias es='exa --git -F --icons --color=always'
+  alias el='exa -al --git --header -F --icons --color=always'
+  alias ea='exa -a --git -F --icons --color=always'
+  alias et='exa -a --git --header -F --icons --color=always --tree'
+
+  alias l='exa --git -F --icons --color=always'
+  alias ll='exa -al --git --header -F --icons --color=always'
+  alias la='exa -a --git -F --icons --color=always'
+  alias lt='exa -a --git --header -F --icons --color=always --tree'
+else
+  alias ls='ls --color=auto'
+  alias ll='ls -alF --color=auto'
+  alias la='ls -A --color=auto'
+  alias l='ls -CF --color=auto'
 fi
 
 alias dir='dir --color=auto'
