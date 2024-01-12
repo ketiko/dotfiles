@@ -2,7 +2,7 @@
 
 set  -euo pipefail
 
-echo -e "\033[0;32m>>>>> Installing asdf <<<<<\033[0m"
+echo -e "\033[0;32m>>>>> Starting asdf <<<<<\033[0m"
 
 if [ ! -d ~/.asdf ]; then
   echo -e "\033[0;32m>>>>> Installing asdf github repo <<<<<\033[0m"
@@ -48,3 +48,5 @@ for plugin in $(asdf plugin list); do
 done
 
 asdf reshim
+
+echo -e "\033[0;32m>>>>> Ending asdf <<<<<\033[0m"

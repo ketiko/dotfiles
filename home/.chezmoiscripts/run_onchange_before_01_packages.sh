@@ -2,7 +2,7 @@
 
 set  -euo pipefail
 
-echo -e "\033[0;32m>>>>> Installing packages <<<<<\033[0m"
+echo -e "\033[0;32m>>>>> Starting packages <<<<<\033[0m"
 
 please=
 if [[ $(uname) != Darwin ]]; then
@@ -133,3 +133,5 @@ python3 -m pip install --user --upgrade pynvim
 if command -v sudo &>/dev/null; then
   sudo -k
 fi
+
+echo -e "\033[0;32m>>>>> Ending packages <<<<<\033[0m"

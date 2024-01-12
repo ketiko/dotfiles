@@ -2,7 +2,7 @@
 
 set -e
 
-echo -e "\033[0;32m>>>>> Installing dotfiles <<<<<\033[0m"
+echo -e "\033[0;32m>>>>> Starting dotfiles <<<<<\033[0m"
 
 if [ ! -f $HOME/.local/bin/chezmoi ]; then
   sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin
@@ -14,3 +14,5 @@ root_dir=$(dirname "$current_dir")
 
 
 ~/.local/bin/chezmoi init -S "$root_dir/home" --apply --keep-going
+
+echo -e "\033[0;32m>>>>> Ending dotfiles <<<<<\033[0m"

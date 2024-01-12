@@ -2,7 +2,7 @@
 
 set  -euo pipefail
 
-echo -e "\033[0;32m>>>>> Installing latest fonts <<<<<\033[0m"
+echo -e "\033[0;32m>>>>> Starting fonts <<<<<\033[0m"
 
 fontdir="$HOME/.local/share/fonts"
 
@@ -24,3 +24,5 @@ else
 fi
 
 fc-cache -f -v
+
+echo -e "\033[0;32m>>>>> Ending fonts <<<<<\033[0m"
