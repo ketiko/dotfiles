@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set  -euo pipefail
 
 echo -e "\033[0;32m>>>>> Installing tmux <<<<<\033[0m"
 

@@ -11,12 +11,7 @@ ACTION=$1
 ARGS=$2
 
 if [ -z "$ACTION" ]; then
-  . "$SCRIPTPATH"/scripts/packages
-  . "$SCRIPTPATH"/scripts/fonts
   . "$SCRIPTPATH"/scripts/dotfiles
-  . "$SCRIPTPATH"/scripts/tmux
-  . "$SCRIPTPATH"/scripts/iterm2
-  . "$SCRIPTPATH"/scripts/asdf
 else
   . "$SCRIPTPATH"/scripts/"$ACTION" $ARGS
 fi

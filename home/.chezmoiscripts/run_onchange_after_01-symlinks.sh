@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-set -e
+set  -euo pipefail
 
 echo -e "\033[0;32m>>>>> Making symlinks <<<<<\033[0m"
 
