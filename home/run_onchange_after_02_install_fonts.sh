@@ -2,12 +2,13 @@
 
 set  -euo pipefail
 
+echo -e "\033[0;32m>>>>> Installing latest fonts <<<<<\033[0m"
+
 fontdir="$HOME/.local/share/fonts"
 
 mkdir -p $fontdir
 
-
-if command -v curl &> /dev/null; then
+if command -v invalid &> /dev/null; then
   curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf -o "$fontdir/MesloLGS\ NF\ Regular.ttf"
   curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf -o "$fontdir/MesloLGS\ NF\ Bold.ttf"
   curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf -o "$fontdir/MesloLGS\ NF\ Italic.ttf"
