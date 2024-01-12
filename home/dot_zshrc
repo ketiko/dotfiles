@@ -33,10 +33,8 @@ ZSH_THEME_AWS_SUFFIX=")"
 zi snippet OMZP::aws
 zi ice wait lucid
 zi light greymd/docker-zsh-completion
-# https://github.com/Aloxaf/fzf-tab#install
-# must load after compinit but before plugins like autosuggestions
 zi ice wait lucid
-zi light Aloxaf/fzf-tab
+zi light Aloxaf/fzf-tab # https://github.com/Aloxaf/fzf-tab#install must load after compinit but before plugins like autosuggestions
 zi light zsh-users/zsh-autosuggestions
 
 zi ice wait lucid
@@ -49,8 +47,6 @@ zi ice wait lucid
 zi snippet OMZP::terraform
 zi ice wait lucid
 zi snippet OMZP::docker-compose
-# zi ice wait lucid
-# zi snippet OMZP::docker
 zi ice wait lucid
 zi snippet OMZP::kubectl
 zi ice wait lucid
@@ -110,7 +106,6 @@ zstyle ':fzf-tab:*' accept-line enter
 
 autoload -U colors && colors
 
-
 ## Command history configuration
 if [ -z "$HISTFILE" ]; then
   HISTFILE=$HOME/.zsh_history
@@ -165,12 +160,9 @@ setopt pushd_ignore_dups    # Don't push multiple copies directory onto the dire
 setopt pushd_minus          # Swap the meaning of cd +1 and cd -1 to the opposite.
 setopt share_history          # Share history between different instances of the shell.
 
-
 ## smart urls
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
-
-
 
 # vi mode
 bindkey -v
@@ -205,8 +197,6 @@ bindkey -M emacs '^N' history-substring-search-down
 # bind k and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
-
-
 
 # Be higher so that command -v blah picks up things from asdf
 if [ -d "$HOME/.asdf" ]; then
@@ -318,16 +308,9 @@ function krestart() {
   kubectl rollout restart deployment
 }
 
-function git_clone_org() {
-  curl -H "Authorization: token $1" -s "https://api.github.com/orgs/$2/repos?per_page=1000" \
-    | sed -n '/"ssh_url"/s/.*ssh_url": "\([^"]*\).*/\1/p' \
-    | sort -u \
-    | xargs -n1 git clone;
-  }
-
-  if command -v vault &>/dev/null; then
-    complete -o nospace -C /opt/homebrew/bin/vault vault
-  fi
+if command -v vault &>/dev/null; then
+  complete -o nospace -C /opt/homebrew/bin/vault vault
+fi
 
 # Slow
 # if command -v minikube &>/dev/null; then
@@ -335,13 +318,11 @@ function git_clone_org() {
 # fi
 
 if [ -d "$HOME/.rover/env" ]; then
-  # apollo graphql rover
-  source "$HOME/.rover/env"
+  source "$HOME/.rover/env" # apollo graphql rover
 fi
 
 if command -v op &>/dev/null; then
-  # 1password cli
-  eval "$(op completion zsh)"; compdef _op op
+  eval "$(op completion zsh)"; compdef _op op # 1password cli
 fi
 
 if [ -f "$HOME"/.zshrc.local ]; then
