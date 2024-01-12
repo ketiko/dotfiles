@@ -28,8 +28,6 @@ zi wait pack atload=+"zicompinit_fast; zicdreplay" for system-completions
 zi ice wait lucid
 zi light zsh-users/zsh-completions
 zi light zsh-users/zsh-history-substring-search
-ZSH_THEME_AWS_PREFIX="(\uf270:"
-ZSH_THEME_AWS_SUFFIX=")"
 zi snippet OMZP::aws
 zi ice wait lucid
 zi light greymd/docker-zsh-completion
