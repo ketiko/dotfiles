@@ -3,7 +3,7 @@
 -- Add any additional keymaps here
 --
 --- Clear search with <esc>
-vim.keymap.set({ "i", "n" }, "\\", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+-- vim.keymap.set({ "i", "n" }, "\\", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- Yank/Paste to system clipboard settings
 vim.keymap.set("v", ",p", '"+p')
@@ -14,3 +14,6 @@ vim.keymap.set("n", ",p", '"+p')
 vim.keymap.set("n", ",P", '"+P')
 vim.keymap.set("n", ",y", '"+y')
 vim.keymap.set("n", ",Y", '"+Y')
+
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<C-p>", builtin.find_files, {})

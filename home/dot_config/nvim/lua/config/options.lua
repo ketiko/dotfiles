@@ -9,3 +9,6 @@ vim.opt.shortmess:append({
 })
 vim.opt.spell = true
 vim.opt.spelllang = { "en_us" }
+
+-- disable lazyvim autoformatting
+vim.g.autoformat = false
