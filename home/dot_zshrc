@@ -10,8 +10,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# eval "$(starship init zsh)"
-
 if [ ! -d ~/.zi ]; then
   echo 'Installing zi'
   sh -c "$(curl -fsSL get.zshell.dev)" --
