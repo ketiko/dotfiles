@@ -17,28 +17,33 @@ fi
 
 source ~/.zi/bin/zi.zsh
 
-zi ice depth=1; zi light romkatv/powerlevel10k
-
-zi wait pack atload=+"zicompinit_fast; zicdreplay" for system-completions
-
-# zi light z-shell/F-Sy-H
-# zi light z-shell/H-S-MW
-# zi light z-shell/z-a-eval
+zi ice lucid depth=1
+zi load romkatv/powerlevel10k
 
 zi ice wait lucid
-zi light zsh-users/zsh-completions
-zi light zsh-users/zsh-history-substring-search
+zi pack atload=+"zicompinit_fast; zicdreplay" for system-completions
+
+# zi load z-shell/F-Sy-H
+# zi load z-shell/H-S-MW
+# zi load z-shell/z-a-eval
+
+zi ice wait lucid
+zi load zsh-users/zsh-completions
+zi ice wait lucid
+zi load zsh-users/zsh-history-substring-search
+zi ice wait lucid
 zi snippet OMZP::aws
 zi ice wait lucid
-zi light greymd/docker-zsh-completion
+zi load greymd/docker-zsh-completion
 zi ice wait lucid
-zi light Aloxaf/fzf-tab # https://github.com/Aloxaf/fzf-tab#install must load after compinit but before plugins like autosuggestions
-zi light zsh-users/zsh-autosuggestions
+zi load Aloxaf/fzf-tab # https://github.com/Aloxaf/fzf-tab#install must load after compinit but before plugins like autosuggestions
+zi ice wait lucid
+zi load zsh-users/zsh-autosuggestions
 
 zi ice wait lucid
-zi light chitoku-k/fzf-zsh-completions
+zi load chitoku-k/fzf-zsh-completions
 zi ice wait lucid
-zi light MenkeTechnologies/zsh-more-completions
+zi load MenkeTechnologies/zsh-more-completions
 zi ice wait lucid
 zi snippet OMZP::git
 zi ice wait lucid
@@ -328,7 +333,8 @@ if [ -f "$HOME"/.zshrc.local ]; then
 fi
 
 # Keep at the end per https://github.com/zsh-users/zsh-syntax-highlighting#why-must-zsh-syntax-highlightingzsh-be-sourced-at-the-end-of-the-zshrc-file
-zi light zsh-users/zsh-syntax-highlighting
+zi ice wait lucid
+zi load zsh-users/zsh-syntax-highlighting
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
