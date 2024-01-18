@@ -19,6 +19,7 @@ echo -e "\033[0;32m>>>>> Installing asdf plugins <<<<<\033[0m"
 test -d "$HOME/.asdf/plugins/golang" || asdf plugin add golang https://github.com/kennyp/asdf-golang.git
 test -d "$HOME/.asdf/plugins/helm" || asdf plugin add helm https://github.com/Antiarchitect/asdf-helm.git
 test -d "$HOME/.asdf/plugins/java" || asdf plugin add java https://github.com/halcyon/asdf-java.git
+test -d "$HOME/.asdf/plugins/gradle" || asdf plugin add gradle https://github.com/rfrancis/asdf-gradle
 test -d "$HOME/.asdf/plugins/krew" || asdf plugin add krew https://github.com/bjw-s/asdf-krew.git
 test -d "$HOME/.asdf/plugins/kubectl" || asdf plugin add kubectl https://github.com/asdf-community/asdf-kubectl.git
 test -d "$HOME/.asdf/plugins/kustomize" || asdf plugin add kustomize https://github.com/Banno/asdf-kustomize.git
