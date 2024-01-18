@@ -20,8 +20,8 @@ source ~/.zi/bin/zi.zsh
 zi ice lucid depth=1
 zi load romkatv/powerlevel10k
 
-zi ice wait lucid
-zi pack atload=+"zicompinit_fast; zicdreplay" for system-completions
+# zi ice wait lucid
+# zi pack atload=+"zicompinit_fast; zicdreplay" for system-completions
 
 # zi load z-shell/F-Sy-H
 # zi load z-shell/H-S-MW
