@@ -14,6 +14,13 @@ alias ll='ls -alF --color=auto'
 alias la='ls -A --color=auto'
 alias l='ls -CF --color=auto'
 
+if command -v lsd >/dev/null; then
+  alias ls='lsd --color=auto --classify'
+  alias ll='lsd --color=auto --classify --long --all --header'
+  alias la='lsd --color=auto --classify --almost-all --header'
+  alias l='lsd -F --color=auto --classify'
+fi
+
 if command -v eza >/dev/null; then
   alias es='eza --git -F --icons --color=always'
   alias el='eza -al --git --header -F --icons --color=always'

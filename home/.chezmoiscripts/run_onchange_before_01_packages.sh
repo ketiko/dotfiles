@@ -33,6 +33,7 @@ if [[ $(uname) != Darwin ]]; then
     ioping \
     iotop \
     keychain \
+    lsd \
     neovim \
     nodejs \
     npm \
@@ -87,6 +88,7 @@ if [[ $(uname) == Darwin ]]; then
       htop-osx \
       hub \
       keychain \
+      lsd \
       macvim \
       ncdu \
       neofetch \
