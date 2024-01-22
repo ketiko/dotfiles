@@ -13,6 +13,6 @@ current_dir=$(dirname "$current_script")
 root_dir=$(dirname "$current_dir")
 
 
-~/.local/bin/chezmoi init -S "$root_dir/home" --apply --keep-going
+~/.local/bin/chezmoi init -S "$root_dir/home" --apply
 
 echo -e "\033[0;32m>>>>> Ending dotfiles <<<<<\033[0m"

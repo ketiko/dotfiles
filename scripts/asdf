@@ -1,0 +1,33 @@
+
+#!/usr/bin/env bash
+
+set  -euo pipefail
+
+echo -e "\033[0;32m>>>>> Updating asdf <<<<<\033[0m"
+
+source "$HOME/.asdf/asdf.sh"
+
+echo -e "\033[0;32m>>>>> Installing latest versions of asdf plugins <<<<<\033[0m"
+
+asdf update
+asdf plugin update --all
+
+set +e # allow failures when installing the latest plugins
+for plugin in $(asdf plugin list); do
+  echo -e "\033[0;32m>>>>> Installing latest version of asdf plugin $plugin <<<<<\033[0m"
+
+  if [ "$plugin" == "java" ]; then
+    # java doesn't have a latest
+    asdf install java openjdk-21
+    asdf global java openjdk-21
+    continue
+  fi
+
+  asdf install "$plugin" latest && asdf global $plugin $(asdf latest $plugin)
+done
+
+set -e
+
+asdf reshim
+
+echo -e "\033[0;32m>>>>> Ending asdf <<<<<\033[0m"

@@ -32,22 +32,4 @@ test -d "$HOME/.asdf/plugins/sbt" || asdf plugin add sbt https://github.com/bram
 test -d "$HOME/.asdf/plugins/scala" || asdf plugin add scala https://github.com/asdf-community/asdf-scala.git
 test -d "$HOME/.asdf/plugins/terraform" || asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git
 
-set +e # allow failures when installing the latest plugins
-echo -e "\033[0;32m>>>>> Installing latest versions of asdf plugins <<<<<\033[0m"
-
-for plugin in $(asdf plugin list); do
-  echo -e "\033[0;32m>>>>> Installing latest version of asdf plugin $plugin <<<<<\033[0m"
-
-  if [ "$plugin" == "java" ]; then
-    # java doesn't have a latest
-    asdf install java openjdk-21
-    asdf global java openjdk-21
-    continue
-  fi
-
-  asdf install "$plugin" latest && asdf global $plugin $(asdf latest $plugin)
-done
-
-asdf reshim
-
 echo -e "\033[0;32m>>>>> Ending asdf <<<<<\033[0m"

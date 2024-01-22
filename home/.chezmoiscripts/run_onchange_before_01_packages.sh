@@ -13,7 +13,7 @@ fi
 
 if [[ $(uname) != Darwin ]]; then
   $please apt-get install -y \
-    ack-grep \
+    ack \
     atop \
     axel \
     bar \
@@ -33,7 +33,7 @@ if [[ $(uname) != Darwin ]]; then
     ioping \
     iotop \
     keychain \
-    lsd \
+    libffi-dev\
     neovim \
     nodejs \
     npm \
