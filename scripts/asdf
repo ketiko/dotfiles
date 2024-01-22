@@ -12,7 +12,6 @@ echo -e "\033[0;32m>>>>> Installing latest versions of asdf plugins <<<<<\033[0m
 asdf update
 asdf plugin update --all
 
-set +e # allow failures when installing the latest plugins
 for plugin in $(asdf plugin list); do
   echo -e "\033[0;32m>>>>> Installing latest version of asdf plugin $plugin <<<<<\033[0m"
 
@@ -25,8 +24,6 @@ for plugin in $(asdf plugin list); do
 
   asdf install "$plugin" latest && asdf global $plugin $(asdf latest $plugin)
 done
-
-set -e
 
 asdf reshim
 

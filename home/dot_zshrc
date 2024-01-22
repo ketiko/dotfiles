@@ -202,15 +202,17 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
 # Be higher so that command -v blah picks up things from asdf
-if [ -d "$HOME/.asdf" ]; then
-  source $HOME/.asdf/completions/asdf.bash
+if command -v asdf &>/dev/null; then
+  if [ -d "$HOME/.asdf" ]; then
+    source $HOME/.asdf/completions/asdf.bash
 
-  if [ -d "$HOME/.asdf/plugins/java" ]; then
-    source $HOME/.asdf/plugins/java/set-java-home.zsh
-  fi
+    if [ -d "$HOME/.asdf/plugins/java" ]; then
+      source $HOME/.asdf/plugins/java/set-java-home.zsh
+    fi
 
-  if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
-    source $HOME/.asdf/plugins/golang/set-env.zsh
+    if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
+      source $HOME/.asdf/plugins/golang/set-env.zsh
+    fi
   fi
 fi
 
