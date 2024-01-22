@@ -98,8 +98,22 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-if [ -d "$HOME/.asdf" ]; then
-  source "$HOME/.asdf/completions/asdf.bash"
+if command -v asdf &>/dev/null; then
+  if [ -d "$HOME/.asdf" ]; then
+    source $HOME/.asdf/completions/asdf.bash
+
+    if command -v java &>/dev/null; then
+      if [ -d "$HOME/.asdf/plugins/java/set-java-home.bash" ]; then
+        source $HOME/.asdf/plugins/java/set-java-home.bash
+      fi
+    fi
+
+    if command -v go &>/dev/null; then
+      if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
+        source $HOME/.asdf/plugins/golang/set-env.bash
+      fi
+    fi
+  fi
 fi
 
 if command -v terraform &> /dev/null; then

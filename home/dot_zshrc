@@ -206,12 +206,16 @@ if command -v asdf &>/dev/null; then
   if [ -d "$HOME/.asdf" ]; then
     source $HOME/.asdf/completions/asdf.bash
 
-    if [ -d "$HOME/.asdf/plugins/java" ]; then
-      source $HOME/.asdf/plugins/java/set-java-home.zsh
+    if command -v java &>/dev/null; then
+      if [ -d "$HOME/.asdf/plugins/java/set-java-home.zsh" ]; then
+        source $HOME/.asdf/plugins/java/set-java-home.zsh
+      fi
     fi
 
-    if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
-      source $HOME/.asdf/plugins/golang/set-env.zsh
+    if command -v go &>/dev/null; then
+      if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
+        source $HOME/.asdf/plugins/golang/set-env.zsh
+      fi
     fi
   fi
 fi

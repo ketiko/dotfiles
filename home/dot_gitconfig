@@ -47,6 +47,7 @@
   cb = checkout -b
   chp = cherry-pick
   df = diff
+  dfi = diff --ignore-all-space
   dt = difftool
   da = difftool --dir-diff --no-symlinks
   dac = difftool --dir-diff --cached --no-symlinks

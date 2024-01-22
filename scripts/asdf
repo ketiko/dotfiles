@@ -7,22 +7,24 @@ echo -e "\033[0;32m>>>>> Updating asdf <<<<<\033[0m"
 
 source "$HOME/.asdf/asdf.sh"
 
-echo -e "\033[0;32m>>>>> Installing latest versions of asdf plugins <<<<<\033[0m"
+echo -e "\033[0;32m>>>>> Installing latest asdf plugins <<<<<\033[0m"
 
 asdf update
 asdf plugin update --all
 
 for plugin in $(asdf plugin list); do
-  echo -e "\033[0;32m>>>>> Installing latest version of asdf plugin $plugin <<<<<\033[0m"
-
   if [ "$plugin" == "java" ]; then
     # java doesn't have a latest
-    asdf install java openjdk-21
-    asdf global java openjdk-21
-    continue
+    latest="openjdk-21"
+  elif [ "$plugin" == "golang" ]; then
+    latest=1.21.6
+  else
+    latest=$(asdf latest $plugin)
   fi
+  echo -e "\033[0;32m>>>>> Installing $plugin version $latest <<<<<\033[0m"
 
-  asdf install "$plugin" latest && asdf global $plugin $(asdf latest $plugin)
+  asdf install "$plugin" $latest
+  asdf global $plugin $latest
 done
 
 asdf reshim
