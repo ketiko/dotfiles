@@ -201,9 +201,18 @@ bindkey -M emacs '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+# Homebrew must be before asdf for things like node to be used from asdf
+brew_prefixes=(/opt/homebrew /usr/local)
+for prefix in ${brew_prefixes[@]}; do
+  if [ -f "$prefix"/bin/brew ]; then
+    eval $("$prefix"/bin/brew shellenv)
+  fi
+done
+
 # Be higher so that command -v blah picks up things from asdf
 if command -v asdf &>/dev/null; then
   if [ -d "$HOME/.asdf" ]; then
+    source "$HOME"/.asdf/asdf.sh
     source $HOME/.asdf/completions/asdf.bash
 
     if command -v java &>/dev/null; then
@@ -276,14 +285,6 @@ if command -v flux &>/dev/null; then
   fi
   source "$completion_file"
 fi
-
-# Homebrew
-brew_prefixes=(/opt/homebrew /usr/local)
-for prefix in ${brew_prefixes[@]}; do
-  if [ -f "$prefix"/bin/brew ]; then
-    eval $("$prefix"/bin/brew shellenv)
-  fi
-done
 
 function kac() {
   local account=$1
