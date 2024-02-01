@@ -13,16 +13,29 @@ asdf update
 asdf plugin update --all
 
 for plugin in $(asdf plugin list); do
-  if [ "$plugin" == "java" ]; then
-    # java doesn't have a latest
-    latest="openjdk-21"
-  elif [ "$plugin" == "golang" ]; then
-    latest=1.21.6
-  else
-    latest=$(asdf latest $plugin)
+  set  + e
+
+  if latest=$(asdf latest $plugin) ; then
+
+    if [ "$plugin" == "direnv" ]; then
+      # java doesn't have a latest
+      asdf direnv setup --no-touch-rc-file --version latest
+      continue
+    elif [ "$plugin" == "java" ]; then
+      # java doesn't have a latest
+      latest="openjdk-21"
+    # elif [ "$plugin" == "golang" ]; then
+    #   # this is erroring in docker
+    #   latest=1.21.6
+    # elif [ "$plugin" == "kubectl" ]; then
+    #   # this is erroring in docker
+    #   latest=1.29.1
+    fi
   fi
+
   echo -e "\033[0;32m>>>>> Installing $plugin version $latest <<<<<\033[0m"
 
+  set -e
   asdf install "$plugin" $latest
   asdf global $plugin $latest
 done

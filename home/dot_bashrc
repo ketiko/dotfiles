@@ -125,3 +125,9 @@ if command -v op &>/dev/null; then
   # 1password cli
   source <(op completion bash)
 fi
+
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
+
+if [ -f "$HOME"/.bashrc.local ]; then
+  source "$HOME"/.bashrc.local
+fi
