@@ -16,10 +16,10 @@ for plugin in $(asdf plugin list); do
   set  + e
 
   if latest=$(asdf latest $plugin) ; then
-
     if [ "$plugin" == "direnv" ]; then
       # java doesn't have a latest
-      asdf direnv setup --no-touch-rc-file --version latest
+      asdf direnv setup --no-touch-rc-file --version $latest
+      asdf global direnv latest
       continue
     elif [ "$plugin" == "java" ]; then
       # java doesn't have a latest
