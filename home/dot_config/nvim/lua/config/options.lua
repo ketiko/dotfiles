@@ -12,3 +12,6 @@ vim.opt.spelllang = { "en_us" }
 
 -- disable lazyvim autoformatting
 vim.g.autoformat = false
+
+vim.opt.termguicolors = true
+

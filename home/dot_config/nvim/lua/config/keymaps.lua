@@ -17,3 +17,6 @@ vim.keymap.set("n", ",Y", '"+Y')
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<C-p>", builtin.find_files, {})
+
+vim.keymap.set('n', ',gf', 'magg<S-v>G=`a')
+vim.keymap.set('n', '\\', ':nohlsearch<CR>')
