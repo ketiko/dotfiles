@@ -10,52 +10,53 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-if [ ! -d ~/.zi ]; then
-  echo 'Installing zi'
-  sh -c "$(curl -fsSL get.zshell.dev)" --
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+if [ ! -d $ZINIT_HOME/.git ]; then
+  echo 'Installing zinit'
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-source ~/.zi/bin/zi.zsh
+source "${ZINIT_HOME}/zinit.zsh"
 
-zi ice lucid depth=1
-zi load romkatv/powerlevel10k
+zinit ice lucid depth=1
+zinit load romkatv/powerlevel10k
 
-# zi ice wait lucid depth=1
-# zi pack atload=+"zicompinit_fast; zicdreplay" for system-completions
+# zinit ice wait lucid depth=1
+# zinit pack atload=+"zicompinit_fast; zicdreplay" for system-completions
 
-# zi load z-shell/F-Sy-H
-# zi load z-shell/H-S-MW
-# zi load z-shell/z-a-eval
+# zinit load zdharma-continuum/fast-syntax-highlighting
+# zinit load zdharma-continuum/history-search-multi-word
 
-zi ice wait lucid depth=1
-zi load zsh-users/zsh-completions
-zi ice wait lucid depth=1
-zi load zsh-users/zsh-history-substring-search
-zi ice wait lucid depth=1
-zi snippet OMZP::aws
-zi ice wait lucid depth=1
-zi load greymd/docker-zsh-completion
-zi ice wait lucid depth=1
-zi load Aloxaf/fzf-tab # https://github.com/Aloxaf/fzf-tab#install must load after compinit but before plugins like autosuggestions
-zi ice wait lucid depth=1
-zi load zsh-users/zsh-autosuggestions
+zinit ice wait lucid depth=1
+zinit load zsh-users/zsh-completions
+zinit ice wait lucid depth=1
+zinit load zsh-users/zsh-history-substring-search
+zinit ice wait lucid depth=1
+zinit snippet OMZP::aws
+zinit ice wait lucid depth=1
+zinit load greymd/docker-zsh-completion
+zinit ice wait lucid depth=1
+zinit load Aloxaf/fzf-tab # https://github.com/Aloxaf/fzf-tab#install must load after compinit but before plugins like autosuggestions
+zinit ice wait lucid depth=1
+zinit load zsh-users/zsh-autosuggestions
 
-zi ice wait lucid depth=1
-zi load chitoku-k/fzf-zsh-completions
-zi ice wait lucid depth=1
-zi load MenkeTechnologies/zsh-more-completions
-zi ice wait lucid depth=1
-zi snippet OMZP::git
-zi ice wait lucid depth=1
-zi snippet OMZP::terraform
-zi ice wait lucid depth=1
-zi snippet OMZP::docker-compose
-zi ice wait lucid depth=1
-zi snippet OMZP::kubectl
-zi ice wait lucid depth=1
-zi snippet OMZP::kubectx
-zi ice wait lucid depth=1
-zi snippet OMZP::pip
+zinit ice wait lucid depth=1
+zinit load chitoku-k/fzf-zsh-completions
+zinit ice wait lucid depth=1
+zinit load MenkeTechnologies/zsh-more-completions
+zinit ice wait lucid depth=1
+zinit snippet OMZP::git
+zinit ice wait lucid depth=1
+zinit snippet OMZP::terraform
+zinit ice wait lucid depth=1
+zinit snippet OMZP::docker-compose
+zinit ice wait lucid depth=1
+zinit snippet OMZP::kubectl
+zinit ice wait lucid depth=1
+zinit snippet OMZP::kubectx
+zinit ice wait lucid depth=1
+zinit snippet OMZP::pip
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -331,8 +332,8 @@ if [ -f "$HOME"/.zshrc.local ]; then
 fi
 
 # Keep at the end per https://github.com/zsh-users/zsh-syntax-highlighting#why-must-zsh-syntax-highlightingzsh-be-sourced-at-the-end-of-the-zshrc-file
-zi ice wait lucid depth=1
-zi load zsh-users/zsh-syntax-highlighting
+zinit ice wait lucid depth=1
+zinit load zsh-users/zsh-syntax-highlighting
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
