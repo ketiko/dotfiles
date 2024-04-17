@@ -65,6 +65,8 @@ if command -v brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
+FPATH="$HOME/.zsh/completions:${FPATH}"
+
 # See https://github.com/sorin-ionescu/prezto/blob/c0cdc12708803c4503cb1b3d7d42e5c1b8ba6e86/modules/completion/init.zsh#L53C1-L68C17
 # Load and initialize the completion system ignoring insecure directories with a
 # cache time of 20 hours, so it should almost always regenerate the first time a
@@ -329,10 +331,6 @@ fi
 
 if [ -d "$HOME/.rover/env" ]; then
   source "$HOME/.rover/env" # apollo graphql rover
-fi
-
-if command -v op &>/dev/null; then
-  eval "$(op completion zsh)"; compdef _op op # 1password cli
 fi
 
 if [ -f "$HOME"/.zshrc.local ]; then
