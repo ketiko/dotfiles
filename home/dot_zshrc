@@ -248,8 +248,6 @@ vv() {
   file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vi "${file}" || return 1
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 if command -v terraform &> /dev/null; then
   tf=$(which terraform)
   complete -o nospace -C "$tf" terraform
@@ -323,11 +321,6 @@ function krestart() {
 if command -v vault &>/dev/null; then
   complete -o nospace -C /opt/homebrew/bin/vault vault
 fi
-
-# Slow
-# if command -v minikube &>/dev/null; then
-#   source <(minikube completion zsh)
-# fi
 
 if [ -d "$HOME/.rover/env" ]; then
   source "$HOME/.rover/env" # apollo graphql rover
