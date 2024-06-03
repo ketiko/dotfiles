@@ -319,6 +319,20 @@ function kexec() {
   kubectl exec -it $choice -- sh
 }
 
+function klogs() {
+  local choice=$(kubectl get pods -o custom-columns=NAME:.metadata.name --no-headers=true | fzf)
+  kubectl logs -f $choice
+}
+
+function kdescribe() {
+  local choice=$(kubectl get pods -o custom-columns=NAME:.metadata.name --no-headers=true | fzf)
+  kubectl describe pod $choice
+}
+
+function ksort() {
+  kubectl get pods --sort-by=.metadata.creationTimestamp
+}
+
 function krestart() {
   kc
   kubens

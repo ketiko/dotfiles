@@ -15,3 +15,4 @@ vim.g.autoformat = false
 
 vim.opt.termguicolors = true
 
+vim.opt.relativenumber = false
