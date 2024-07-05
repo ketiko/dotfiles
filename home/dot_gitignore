@@ -47,3 +47,6 @@ build/
 # jetbrains
 .fleet/
 .metals/
+
+*.temp
+tags.temp*
