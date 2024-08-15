@@ -148,6 +148,7 @@ fi
 if command -v kubectl >/dev/null; then
   alias kc="kubectl ctx"
   alias kns="kubectl ns"
+  alias kd="kubectl describe"
 fi
 
 alias rvim="NVIM_APPNAME=rvim nvim"

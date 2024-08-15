@@ -12,10 +12,12 @@ Plug 'kavima/vim-textobj-entire'
 Plug 'machakann/vim-highlightedyank'
 Plug 'dbakker/vim-paragraph-motion'
 Plug 'michaeljsmith/vim-indent-object'
+set NERDTree
 " set quickscope
 nmap <C-P> :action GotoFile<CR>
-nmap <Space>f :action SelectInProjectView<CR>
-nmap <Space>n :action ActivateProjectToolWindow<CR>
+" nmap <Space>f :action SelectInProjectView<CR>
+nmap <Space>f :NERDTreeFocus<CR>
+nmap <Space>n :NERDTreeToggle<CR>
 nmap <Left> <Left>
 nmap <Down> <Down>
 nmap <Up> <Up>

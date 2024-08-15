@@ -2,7 +2,7 @@ return {
   {
     "mileszs/ack.vim",
     init = function()
-      vim.g.ackprg = "rg --smart-case --vimgrep"
+      vim.g.ackprg = "ag --smart-case --vimgrep"
     end,
-  }
+  },
 }
