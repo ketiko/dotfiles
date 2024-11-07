@@ -19,14 +19,15 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
+if [ ! -d $ZSH_CACHE_DIR/completions ]; then
+  mkdir -p $ZSH_CACHE_DIR/completions
+fi
+
 zinit ice lucid depth=1
 zinit load romkatv/powerlevel10k
 
 # zinit ice wait lucid depth=1
 # zinit pack atload=+"zicompinit_fast; zicdreplay" for system-completions
-
-# zinit load zdharma-continuum/fast-syntax-highlighting
-# zinit load zdharma-continuum/history-search-multi-word
 
 zinit ice wait lucid depth=1
 zinit load zsh-users/zsh-completions
@@ -34,6 +35,8 @@ zinit ice wait lucid depth=1
 zinit load zsh-users/zsh-history-substring-search
 zinit ice wait lucid depth=1
 zinit snippet OMZP::aws
+zinit ice wait lucid depth=1
+zinit snippet OMZP::helm
 zinit ice wait lucid depth=1
 zinit load greymd/docker-zsh-completion
 zinit ice wait lucid depth=1
@@ -43,8 +46,6 @@ zinit load zsh-users/zsh-autosuggestions
 
 zinit ice wait lucid depth=1
 zinit load chitoku-k/fzf-zsh-completions
-zinit ice wait lucid depth=1
-zinit load MenkeTechnologies/zsh-more-completions
 zinit ice wait lucid depth=1
 zinit snippet OMZP::git
 zinit ice wait lucid depth=1
@@ -57,6 +58,13 @@ zinit ice wait lucid depth=1
 zinit snippet OMZP::kubectx
 zinit ice wait lucid depth=1
 zinit snippet OMZP::pip
+
+zinit ice wait lucid depth=1
+zinit for \
+  MenkeTechnologies/zsh-more-completions \
+  zdharma-continuum/fast-syntax-highlighting \
+  zdharma-continuum/history-search-multi-word
+
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 ZSH_AUTOSUGGEST_USE_ASYNC=1

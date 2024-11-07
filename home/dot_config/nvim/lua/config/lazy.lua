@@ -47,6 +47,8 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lsp.none-ls" },
     { import = "lazyvim.plugins.extras.util.dot" },
     { import = "lazyvim.plugins.extras.util.project" },
+    { import = "lazyvim.plugins.extras.editor.dial" },
+    { import = "lazyvim.plugins.extras.coding.copilot-chat" },
     -- -- import/override with your plugins
     { import = "plugins" },
   },

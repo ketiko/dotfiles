@@ -146,9 +146,11 @@ if command -v batcat >/dev/null; then
 fi
 
 if command -v kubectl >/dev/null; then
+  alias kubectl="kubectl"
   alias kc="kubectl ctx"
   alias kns="kubectl ns"
   alias kd="kubectl describe"
+  alias kg="kubectl get"
 fi
 
 alias rvim="NVIM_APPNAME=rvim nvim"
