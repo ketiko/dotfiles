@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set  -euo pipefail
+set -euo pipefail
 
 echo -e "\033[0;32m>>>>> Starting packages <<<<<\033[0m"
 

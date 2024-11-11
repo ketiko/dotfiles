@@ -366,7 +366,7 @@ zinit load zsh-users/zsh-syntax-highlighting
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+if [[ ! -f "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc" ]] || source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 # end profile
 if [[ ${PROFILE_ZSH} == "true" ]]; then
