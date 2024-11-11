@@ -33,7 +33,7 @@ if [[ $(uname) != Darwin ]]; then
     ioping \
     iotop \
     keychain \
-    libffi-dev\
+    libffi-dev \
     neovim \
     nodejs \
     npm \
@@ -118,7 +118,6 @@ if [[ $(uname) == Darwin ]]; then
       zsh
 
     brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-    brew tap homebrew/cask-fonts
     brew install --cask font-hack-nerd-font
     brew install --cask font-droid-sans-mono-nerd-font
   fi
@@ -129,8 +128,8 @@ $please gem install neovim
 $please npm install -g diff-so-fancy
 $please npm install -g neovim
 
-python3 -m pip install --user --upgrade neovim
-python3 -m pip install --user --upgrade pynvim
+MSGPACK_PUREPYTHON=1 python3 -m pip install --user --upgrade neovim
+MSGPACK_PUREPYTHON=1 python3 -m pip install --user --upgrade pynvim
 
 if command -v sudo &>/dev/null; then
   sudo -k
