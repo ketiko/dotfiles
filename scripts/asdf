@@ -1,4 +1,4 @@
-
+# vim: set ft=bash:
 #!/usr/bin/env bash
 
 set  -euo pipefail
@@ -13,24 +13,17 @@ asdf update
 asdf plugin update --all
 
 for plugin in $(asdf plugin list); do
-  set  + e
+  set +e
 
-  if latest=$(asdf latest $plugin) ; then
-    if [ "$plugin" == "direnv" ]; then
-      # java doesn't have a latest
-      asdf direnv setup --no-touch-rc-file --version $latest
-      asdf global direnv latest
-      continue
-    elif [ "$plugin" == "java" ]; then
-      # java doesn't have a latest
-      latest="openjdk-21"
-    # elif [ "$plugin" == "golang" ]; then
-    #   # this is erroring in docker
-    #   latest=1.21.6
-    # elif [ "$plugin" == "kubectl" ]; then
-    #   # this is erroring in docker
-    #   latest=1.29.1
-    fi
+  if [ "$plugin" == "java" ]; then
+    # java doesn't have a latest
+    latest="openjdk-21"
+  else
+    latest=$(asdf latest $plugin)
+  fi
+
+  if [ "$plugin" == "direnv" ]; then
+    asdf direnv setup --no-touch-rc-file --version $latest
   fi
 
   echo -e "\033[0;32m>>>>> Installing $plugin version $latest <<<<<\033[0m"
