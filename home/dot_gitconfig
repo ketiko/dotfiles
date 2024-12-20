@@ -5,6 +5,7 @@
   excludesfile = ~/.gitignore
   autocrlf = input
   pager = diff-so-fancy | less --tabs=4 -RFX
+  ; pager = delta
   attributesfile = ~/.gitattributes
   ignorecase = true
 [color]
@@ -47,10 +48,12 @@
   cb = checkout -b
   chp = cherry-pick
   df = diff
+  diff-side-by-side = -c delta.features=side-by-side diff
+  dfs = -c delta.features=side-by-side diff
   dfi = diff --ignore-all-space
-  dt = difftool
-  da = difftool --dir-diff --no-symlinks
-  dac = difftool --dir-diff --cached --no-symlinks
+  dt = difftool --tool=beyondcompare
+  da = difftool --tool=beyondcompare --dir-diff --no-symlinks
+  dac = difftool --tool=beyondcompare --dir-diff --cached --no-symlinks
   di = diff --staged
   ds = diff --stat
   dsc = diff --stat --cached
@@ -78,12 +81,18 @@
   pu = push -u
   pl = pull --rebase
   new = log origin/master.. --reverse --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --relative-date --decorate
+[interactive]
+  diffFilter = delta --color-only
 [diff]
-  tool = beyondcompare
+  colorMoved = default
+#  tool = beyondcompare
+  tool = delta
   renames = copies
   renameLimit = 667
 [difftool]
   prompt = false
+[difftool "delta"]
+  cmd = delta
 [difftool "beyondcompare"]
   cmd = bcomp $LOCAL $REMOTE -lefttitle='Old' -righttitle='New'
   trustExitCode = true
@@ -128,3 +137,13 @@
   gpgsign = true
 [gpg "ssh"]
 	allowedSignersFile = ~/.ssh/allowed_signers
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  dark = true      # or light = true, or omit for auto-detection
+  syntax-theme = base16
+  hyperlinks = true
+  ; side-by-side = true
+  line-numbers-right-format = "| "
+  line-numbers-left-format = ""
+[fetch]
+	pruneTags = true
