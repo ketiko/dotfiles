@@ -1,6 +1,6 @@
 return {
   {
-    'drewtempelmeyer/palenight.vim',
+    "drewtempelmeyer/palenight.vim",
     lazy = true,
     name = "palenight",
   },
@@ -50,7 +50,8 @@ return {
     "LazyVim/LazyVim",
     opts = {
       -- colorscheme = "catppuccin-macchiato",
-      colorscheme = "palenight",
+      -- colorscheme = "palenight",
+      colorscheme = "catppuccin-mocha",
     },
   },
 }

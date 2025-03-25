@@ -1,19 +1,27 @@
 source ~/.vimrc
-Plug 'easymotion/vim-easymotion'
+" source ~/.config/nvim/init.lua
+
 set sneak
-Plug 'preservim/nerdtree'
-Plug 'tpope/vim-surround'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-commentary'
-Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'vim-scripts/argtextobj.vim'
-Plug 'tommcdo/vim-exchange'
+set peekaboo
+set functiontextobj
+set which-key
+" set quickscope
+
+Plug 'chrisbra/matchit'
+Plug 'dbakker/vim-paragraph-motion'
+Plug 'easymotion/vim-easymotion'
+Plug 'kana/vim-textobj-entire'
 Plug 'kavima/vim-textobj-entire'
 Plug 'machakann/vim-highlightedyank'
-Plug 'dbakker/vim-paragraph-motion'
 Plug 'michaeljsmith/vim-indent-object'
-set NERDTree
-" set quickscope
+Plug 'preservim/nerdtree'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tommcdo/vim-exchange'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'vim-scripts/argtextobj.vim'
+
 nmap <C-P> :action GotoFile<CR>
 " nmap <Space>f :action SelectInProjectView<CR>
 nmap <Space>f :NERDTreeFocus<CR>
@@ -26,3 +34,19 @@ unmap gd
 unmap gy
 unmap gi
 unmap gr
+
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nmap <n-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+
+" Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
+" <A-n> is used to enter accented text e.g. ñ
+" Feel free to pick your own mappings that are not affected. I like to use <leader>
+nmap <leader><C-n> <Plug>AllWholeOccurrences
+xmap <leader><C-n> <Plug>AllWholeOccurrences
+nmap <leader>g<C-n> <Plug>AllOccurrences
+xmap <leader>g<C-n> <Plug>AllOccurrences

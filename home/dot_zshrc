@@ -61,9 +61,9 @@ zinit snippet OMZP::pip
 
 zinit ice wait lucid depth=1
 zinit for \
-  MenkeTechnologies/zsh-more-completions \
   zdharma-continuum/fast-syntax-highlighting \
   zdharma-continuum/history-search-multi-word
+  # MenkeTechnologies/zsh-more-completions \
 
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"

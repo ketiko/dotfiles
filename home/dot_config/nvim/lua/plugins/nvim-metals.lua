@@ -2,7 +2,7 @@ return {
   {
     "scalameta/nvim-metals",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
+      -- "hrsh7th/cmp-nvim-lsp",
       "nvim-lua/plenary.nvim",
     },
     lazy = true,
@@ -23,8 +23,8 @@ return {
       -- docs about this
       -- metals_config.init_options.statusBarProvider = "on"
 
-      -- Example if you are using cmp how to make sure the correct capabilities for snippets are set
-      metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- -- Example if you are using cmp how to make sure the correct capabilities for snippets are set
+      -- metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       metals_config.on_attach = function(_, _)
         require("metals").setup_dap()
