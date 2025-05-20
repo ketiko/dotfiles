@@ -73,8 +73,8 @@
   rbs = rebase --skip
   rbm = "!sh -c 'git fa && git rb origin/main'"
   ma = merge --abort
-  ft = fetch --prune --tags
-  fa = fetch --prune --all --tags
+  ft = fetch --prune
+  fa = fetch --prune --all
   ff = merge --ff-only
   pr = pull-request
   ps = push

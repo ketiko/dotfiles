@@ -6,8 +6,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-  *i*) ;;
-*) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -19,7 +19,7 @@ shopt -s histappend
 
 # Bash behavior
 shopt -s cdspell # Corrects minor spelling errors when cd-ing
-set -o vi # Set prompt to vi mode
+set -o vi        # Set prompt to vi mode
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=100000
@@ -39,7 +39,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-  xterm-color) color_prompt=yes;;
+xterm-color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -66,7 +66,7 @@ if [ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt
   source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
 fi
 
-if ! command -v starship > /dev/null; then
+if ! command -v starship >/dev/null; then
   curl -sS https://starship.rs/install.sh | sh
 fi
 
@@ -98,25 +98,25 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-if command -v asdf &>/dev/null; then
-  if [ -d "$HOME/.asdf" ]; then
-    source $HOME/.asdf/completions/asdf.bash
+# if command -v asdf &>/dev/null; then
+#   if [ -d "$HOME/.asdf" ]; then
+#     source $HOME/.asdf/completions/asdf.bash
+#
+#     if command -v java &>/dev/null; then
+#       if [ -d "$HOME/.asdf/plugins/java/set-java-home.bash" ]; then
+#         source $HOME/.asdf/plugins/java/set-java-home.bash
+#       fi
+#     fi
+#
+#     if command -v go &>/dev/null; then
+#       if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
+#         source $HOME/.asdf/plugins/golang/set-env.bash
+#       fi
+#     fi
+#   fi
+# fi
 
-    if command -v java &>/dev/null; then
-      if [ -d "$HOME/.asdf/plugins/java/set-java-home.bash" ]; then
-        source $HOME/.asdf/plugins/java/set-java-home.bash
-      fi
-    fi
-
-    if command -v go &>/dev/null; then
-      if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
-        source $HOME/.asdf/plugins/golang/set-env.bash
-      fi
-    fi
-  fi
-fi
-
-if command -v terraform &> /dev/null; then
+if command -v terraform &>/dev/null; then
   tf=$(which terraform)
   complete -C "$tf" terraform
 fi

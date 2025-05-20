@@ -11,6 +11,11 @@ if [ ! -d ~/.asdf ]; then
 
 fi
 
+if [ ! -d ~/.asdf ]; then
+  mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
+  asdf completion zsh >"${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
+fi
+
 source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
 

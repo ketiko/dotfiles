@@ -75,6 +75,7 @@ if command -v brew &>/dev/null; then
 fi
 
 FPATH="$HOME/.zsh/completions:${FPATH}"
+FPATH="${ASDF_DATA_DIR:-$HOME/.asdf}/completions:${FPATH}"
 
 ZINIT[COMPINIT_OPTS]="-C"
 # autoload -Uz compinit
@@ -228,9 +229,11 @@ done
 
 # Be higher so that command -v blah picks up things from asdf
 if command -v asdf &>/dev/null; then
+  export ASDF_DATA_DIR="$HOME/.asdf"
+  export PATH="$ASDF_DATA_DIR/shims:$PATH"
   if [ -d "$HOME/.asdf" ]; then
-    source "$HOME"/.asdf/asdf.sh
-    source $HOME/.asdf/completions/asdf.bash
+    # source "$HOME"/.asdf/asdf.sh
+    # source $HOME/.asdf/completions/asdf.bash
 
     if command -v java &>/dev/null; then
       if [ -d "$HOME/.asdf/plugins/java/set-java-home.zsh" ]; then
@@ -238,11 +241,14 @@ if command -v asdf &>/dev/null; then
       fi
     fi
 
-    if command -v go &>/dev/null; then
-      if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
+    # if command -v go &>/dev/null; then
+    #   if [ -d "$HOME/.asdf/plugins/golang/set-env.zsh" ]; then
         source $HOME/.asdf/plugins/golang/set-env.zsh
-      fi
-    fi
+        if [[ "unset" == "${GOBIN:-unset}" ]]; then
+          export GOBIN=$HOME/.asdf/plugins/golang/bin
+        fi
+    #   fi
+    # fi
   fi
 fi
 

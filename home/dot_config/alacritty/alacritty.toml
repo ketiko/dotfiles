@@ -1,0 +1,6 @@
+[general]
+# import = ["~/.config/alacritty/themes/themes/challenger_deep.toml"]
+import = ["~/.config/alacritty/themes/themes/acme.toml"]
+
+[font]
+normal = { family = "MesloLGS NF", style = "Regular" }

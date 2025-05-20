@@ -61,10 +61,10 @@ if [ -d "/usr/local/opt/go/libexec/bin" ]; then
   export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 fi
 
-# Be higher so that command -v blah picks up things from asdf
-if [ -d "$HOME/.asdf" ]; then
-  source "$HOME"/.asdf/asdf.sh
-fi
+# # Be higher so that command -v blah picks up things from asdf
+# if [ -d "$HOME/.asdf" ]; then
+#   source "$HOME"/.asdf/asdf.sh
+# fi
 
 if command -v go >/dev/null; then
   export GO111MODULE=auto
