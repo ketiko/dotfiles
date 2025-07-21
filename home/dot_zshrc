@@ -76,6 +76,8 @@ fi
 
 FPATH="$HOME/.zsh/completions:${FPATH}"
 FPATH="${ASDF_DATA_DIR:-$HOME/.asdf}/completions:${FPATH}"
+FPATH="$HOME/.docker/completions:${FPATH}"
+
 
 ZINIT[COMPINIT_OPTS]="-C"
 # autoload -Uz compinit

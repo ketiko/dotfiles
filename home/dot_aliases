@@ -145,6 +145,10 @@ if command -v batcat >/dev/null; then
   alias bat=batcat
 fi
 
+if command -v bat >/dev/null; then
+  alias batn='bat --paging=never'
+fi
+
 if command -v kubectl >/dev/null; then
   alias kubectl="kubectl"
   alias kc="kubectl ctx"
