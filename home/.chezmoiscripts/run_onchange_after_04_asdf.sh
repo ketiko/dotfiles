@@ -17,7 +17,9 @@ if [ ! -d ~/.asdf ]; then
 fi
 
 source "$HOME/.asdf/asdf.sh"
-source "$HOME/.asdf/completions/asdf.bash"
+if [ -f "$HOME/.asdf/completions/asdf.bash" ]; then
+  source "$HOME/.asdf/completions/asdf.bash"
+fi
 
 echo -e "\033[0;32m>>>>> Installing asdf plugins <<<<<\033[0m"
 test -d "$HOME/.asdf/plugins/direnv" || asdf plugin add direnv --verbose
