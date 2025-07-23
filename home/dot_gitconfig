@@ -73,13 +73,13 @@
   rbs = rebase --skip
   rbm = "!sh -c 'git fa && git rb origin/main'"
   ma = merge --abort
-  ft = fetch --prune
-  fa = fetch --prune --all
+  ft = fetch --prune --no-tags
+  fa = fetch --prune --all --no-tags
   ff = merge --ff-only
   pr = pull-request
   ps = push
   pu = push -u
-  pl = pull --rebase
+  pl = pull --rebase --no-tags
   new = log origin/master.. --reverse --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --relative-date --decorate
 [interactive]
   diffFilter = delta --color-only
@@ -146,7 +146,7 @@
   line-numbers-right-format = "| "
   line-numbers-left-format = ""
 [fetch]
-	pruneTags = true
+	pruneTags = false
 [user]
 	name = ketiko
 	email = 554453+ketiko@users.noreply.github.com
