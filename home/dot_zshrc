@@ -278,6 +278,11 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+if command -v kubectl &>/dev/null; then
+  eval "$(gh completion --shell zsh)"
+  eval "$(gh copilot alias -- zsh)"
+fi
+
 acps() {
   unset AWS_DEFAULT_PROFILE
   unset AWS_ACCESS_KEY_ID
@@ -305,6 +310,22 @@ if command -v flux &>/dev/null; then
   local completion_file="$HOME"/._completion_flux.zsh
   if [[ ! -a "$completion_file" ]]; then
     flux completion zsh > "$completion_file"
+  fi
+  source "$completion_file"
+fi
+
+if command -v kind &>/dev/null; then
+  local completion_file="$HOME"/._completion_kind.zsh
+  if [[ ! -a "$completion_file" ]]; then
+    kind completion zsh > "$completion_file"
+  fi
+  source "$completion_file"
+fi
+
+if command -v podman &>/dev/null; then
+  local completion_file="$HOME"/._completion_podman.zsh
+  if [[ ! -a "$completion_file" ]]; then
+    podman completion zsh > "$completion_file"
   fi
   source "$completion_file"
 fi
