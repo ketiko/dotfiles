@@ -147,6 +147,3 @@
   line-numbers-left-format = ""
 [fetch]
 	pruneTags = false
-[user]
-	name = ketiko
-	email = 554453+ketiko@users.noreply.github.com
