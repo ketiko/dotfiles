@@ -136,7 +136,7 @@
 [commit]
   gpgsign = true
 [gpg "ssh"]
-	allowedSignersFile = ~/.ssh/allowed_signers
+  allowedSignersFile = ~/.ssh/allowed_signers
 [delta]
   navigate = true  # use n and N to move between diff sections
   dark = true      # or light = true, or omit for auto-detection
@@ -146,4 +146,4 @@
   line-numbers-right-format = "| "
   line-numbers-left-format = ""
 [fetch]
-	pruneTags = false
+  pruneTags = false
