@@ -4,8 +4,10 @@
   editor = nvim
   excludesfile = ~/.gitignore
   autocrlf = input
-  pager = diff-so-fancy | less --tabs=4 -RFX
-  ; pager = delta
+  ; pager = less --tabs=4 -RFX
+  ; pager = delta --diff-so-fancy | less --tabs=4 -RFX
+  pager = delta
+  ; pager = diff-so-fancy | less --tabs=4 -RFX
   attributesfile = ~/.gitattributes
   ignorecase = true
 [color]
@@ -80,12 +82,11 @@
   ps = push
   pu = push -u
   pl = pull --rebase --no-tags
-  new = log origin/master.. --reverse --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --relative-date --decorate
+  new = log origin/main.. --reverse --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --relative-date --decorate
 [interactive]
   diffFilter = delta --color-only
 [diff]
   colorMoved = default
-#  tool = beyondcompare
   tool = delta
   renames = copies
   renameLimit = 667
@@ -137,13 +138,5 @@
   gpgsign = true
 [gpg "ssh"]
   allowedSignersFile = ~/.ssh/allowed_signers
-[delta]
-  navigate = true  # use n and N to move between diff sections
-  dark = true      # or light = true, or omit for auto-detection
-  syntax-theme = base16
-  hyperlinks = true
-  ; side-by-side = true
-  line-numbers-right-format = "| "
-  line-numbers-left-format = ""
 [fetch]
   pruneTags = false
