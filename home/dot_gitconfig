@@ -51,7 +51,7 @@
   chp = cherry-pick
   df = diff
   diff-side-by-side = -c delta.features=side-by-side diff
-  dfs = -c delta.features=side-by-side diff
+  dfs = -c delta.features=+side-by-side diff
   dfi = diff --ignore-all-space
   dt = difftool --tool=beyondcompare
   da = difftool --tool=beyondcompare --dir-diff --no-symlinks
