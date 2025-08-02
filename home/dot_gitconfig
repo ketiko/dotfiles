@@ -4,9 +4,9 @@
   editor = nvim
   excludesfile = ~/.gitignore
   autocrlf = input
+  pager = delta
   ; pager = less --tabs=4 -RFX
   ; pager = delta --diff-so-fancy | less --tabs=4 -RFX
-  pager = delta
   ; pager = diff-so-fancy | less --tabs=4 -RFX
   attributesfile = ~/.gitattributes
   ignorecase = true
@@ -50,8 +50,7 @@
   cb = checkout -b
   chp = cherry-pick
   df = diff
-  diff-side-by-side = -c delta.features=side-by-side diff
-  dfs = -c delta.features=+side-by-side diff
+  dfs = -c delta.side-by-side=true diff
   dfi = diff --ignore-all-space
   dt = difftool --tool=beyondcompare
   da = difftool --tool=beyondcompare --dir-diff --no-symlinks
