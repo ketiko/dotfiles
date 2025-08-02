@@ -123,8 +123,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export ASDF_GOLANG_MOD_VERSION_ENABLED=false
 
-export DELTA_FEATURES="zebra-light zebra-dark defaults line-numbers decorations keep-plus-minus-markers hyperlinks"
-# export DELTA_FEATURES=+side-by-side
+export DELTA_FEATURES="zebra-light zebra-dark line-numbers keep-plus-minus-markers hyperlinks"
 
 lombok_jar="$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar"
 if [ -f $lombok_jar ]; then
