@@ -278,9 +278,8 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-if command -v kubectl &>/dev/null; then
-  eval "$(gh completion --shell zsh)"
-  eval "$(gh copilot alias -- zsh)"
+if command -v gh &>/dev/null; then
+  eval "$(gh copilot completion zsh)"
 fi
 
 acps() {
