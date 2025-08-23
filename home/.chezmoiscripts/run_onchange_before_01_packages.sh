@@ -14,12 +14,14 @@ fi
 if [[ $(uname) != Darwin ]]; then
   $please apt-get install -y \
     ack \
+    asdf \
     atop \
     axel \
     bar \
     bat \
     build-essential \
     curl \
+    delta \
     dstat \
     editorconfig \
     exa \
@@ -59,12 +61,14 @@ if [[ $(uname) == Darwin ]]; then
   if command -v brew &>/dev/null; then
     brew install \
       ack \
+      asdf \
       axel \
       bar \
       bat \
       coreutils \
       cscope \
       curl \
+      delta \
       diff-so-fancy \
       editorconfig \
       eza \
